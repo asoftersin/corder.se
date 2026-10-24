@@ -1,0 +1,1319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="sv" xmlns="http://www.w3.org/2005/Atom" xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:s="http://jadedpixel.com/-/spec/shopify">
+  <id>https://corder.se/blogs/nyheter.atom</id>
+  <link rel="alternate" type="text/html" href="https://corder.se/blogs/nyheter"/>
+  <link rel="self" type="application/atom+xml" href="https://corder.se/blogs/nyheter.atom?page=1"/>
+  <title>Corder - Guider, nyheter och recensioner av Apple-produkter</title>
+  <updated>2026-03-25T22:22:48+01:00</updated>
+  <author>
+    <name>Corder</name>
+  </author>
+  <entry>
+    <id>https://corder.se/blogs/nyheter/iphone-laddare-apple-vs-tredjpart</id>
+    <published>2026-03-25T22:22:48+01:00</published>
+    <updated>2026-03-25T22:22:48+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://corder.se/blogs/nyheter/iphone-laddare-apple-vs-tredjpart"/>
+    <title>iPhone Laddare – Apple Original vs Tredjpart: Vilken Ska du Välja?</title>
+    <author>
+      <name>Shopify API</name>
+    </author>
+    <content type="html">
+      <![CDATA[<h2>iPhone-laddare: Måste det vara Apple Original?</h2>
+<p>Den vanligaste sökningen relaterad till iPhone-laddare i Sverige är <strong>"iPhone laddare Apple"</strong>, följt av <strong>"iPhone laddare Clas Ohlson"</strong>. Behöver du köpa Apples dyra original?</p>
+<h3>Kort svar: Nej</h3>
+<p>Alla iPhones sedan iPhone 15 använder <strong>USB-C</strong>. Vilken USB-C-laddare som helst fungerar, men det finns skillnader i hastighet och säkerhet.</p>
+<h3>Jämförelse</h3>
+<ul>
+<li>
+<strong>Apple 20W:</strong> 249 kr, snabbladdning, CE-märkt</li>
+<li>
+<strong>Kvalitets-tredjpart 20W:</strong> 99–149 kr, samma snabbladdning, CE-märkt</li>
+<li>
+<strong>Billig okänd 5W:</strong> 39 kr, ingen snabbladdning, tveksam säkerhet</li>
+</ul>
+<h3>Vad ska du kolla efter?</h3>
+<ol>
+<li>
+<strong>Minst 20W</strong> – Krävs för snabbladdning</li>
+<li>
+<strong>USB-C PD (Power Delivery)</strong> – Standarden för snabbladdning</li>
+<li>
+<strong>CE-märkning</strong> – Undvik laddare utan, kan vara brandfara</li>
+</ol>
+<h3>Vanliga frågor</h3>
+<p><strong>Skadar snabbladdning batteriet?</strong><br>Nej, iPhones har inbyggd laddningskontroll.</p>
+<p><strong>Kan jag använda MacBook-laddaren?</strong><br>Ja! iPhonen tar bara den effekt den behöver.</p>
+<p><strong>Varför inte Clas Ohlson?</strong><br>Absolut, men priserna är ofta 30–50% högre i fysisk butik.</p>
+<p>👉 <a href="/collections/laddare">Se iPhone-laddare hos Corder.se</a> – från 129 kr med snabb leverans</p>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://corder.se/blogs/nyheter/iphone-16e-batteritid-tips</id>
+    <published>2026-03-25T22:22:46+01:00</published>
+    <updated>2026-03-25T22:22:47+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://corder.se/blogs/nyheter/iphone-16e-batteritid-tips"/>
+    <title>iPhone 16e Batteritid – 12 Tips för att Få Batteriet att Räcka Hela Dagen</title>
+    <author>
+      <name>Shopify API</name>
+    </author>
+    <content type="html">
+      <![CDATA[<h2>Så förlänger du iPhone 16e:s batteritid</h2>
+<p>iPhone 16e imponerar med A18-chip och lågt pris, men batteriet på 3 561 mAh är det minsta i iPhone 16-familjen.</p>
+<h3>Hur länge håller batteriet?</h3>
+<ul>
+<li>
+<strong>Videouppspelning:</strong> Upp till 26 timmar</li>
+<li>
+<strong>Streaming:</strong> Upp till 18 timmar</li>
+<li>
+<strong>Verklig skärmtid:</strong> 6–8 timmar med normal användning</li>
+</ul>
+<h3>12 tips för längre batteritid</h3>
+<h4>Snabba vinster</h4>
+<ol>
+<li>Aktivera <strong>Optimerad batteriladdning</strong>
+</li>
+<li>Sänk skärmens ljusstyrka eller använd Automatisk ljusstyrka</li>
+<li>Aktivera <strong>Mörkt läge</strong> – OLED-skärmen drar mindre ström</li>
+<li>Stäng av onödiga notifikationer</li>
+</ol>
+<h4>Medelstora besparingar</h4>
+<ol start="5">
+<li>Stäng av <strong>bakgrundsuppdatering</strong> för onödiga appar</li>
+<li>Använd <strong>Wi-Fi istället för 5G</strong> när möjligt</li>
+<li>Stäng av <strong>platstjänster</strong> för appar som inte behöver det</li>
+<li>Minska push-notiser</li>
+</ol>
+<h4>Avancerat</h4>
+<ol start="9">
+<li>
+<strong>Strömsparläge</strong> – Lägg till i Kontrollcenter</li>
+<li>Stäng av Siri-förslag</li>
+<li>Uppdatera till <strong>iOS 26.4</strong> – batterioptimieringar för A18</li>
+<li>Kontrollera batterihälsa – under 80%? Dags att byta</li>
+</ol>
+<h3>Ladda snabbast möjligt</h3>
+<p>0 till 50% på ~30 min med 20W+ laddare. <a href="/collections/laddare">Se laddare</a> | <a href="/collections/kablar">USB-C-kablar från 79 kr</a></p>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://corder.se/blogs/nyheter/mobilskal-sugpropp-popgrip-guide</id>
+    <published>2026-03-25T22:22:45+01:00</published>
+    <updated>2026-03-25T22:22:45+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://corder.se/blogs/nyheter/mobilskal-sugpropp-popgrip-guide"/>
+    <title>Mobilskal med Sugpropp &amp; PopGrip – Varför Alla Har Det 2026</title>
+    <author>
+      <name>Shopify API</name>
+    </author>
+    <content type="html">
+      <![CDATA[<h2>Mobilskal med sugpropp – Trenden som exploderat</h2>
+<p>Sökningen efter <strong>"sugpropp mobilskal"</strong> har ökat med 300% i Sverige det senaste året.</p>
+<h3>Vad är sugpropp-mobilskal?</h3>
+<ul>
+<li>
+<strong>PopSocket / PopGrip</strong> – Utfällbar "knapp" som ger bättre grepp och fungerar som ställ</li>
+<li>
+<strong>Sugproppar</strong> – Sugkoppar som fäster mot släta ytor (speglar, glas, dashboards)</li>
+</ul>
+<h3>Fördelar</h3>
+<ul>
+<li>✅ Bättre grepp – Minimerar risken att tappa telefonen</li>
+<li>✅ Inbyggt ställ – Perfekt för video</li>
+<li>✅ Hands-free – Fäst på spegeln eller köksskåpet</li>
+<li>✅ TikTok-vänligt – Enklare att filma med en hand</li>
+</ul>
+<h3>Sugpropp vs MagSafe</h3>
+<p><strong>MagSafe:</strong> Magneter, starkare fäste, kompatibelt med laddare. <strong>Sugpropp:</strong> Billigare, fungerar på alla telefoner. <strong>Tips:</strong> Välj MagSafe-kompatibel PopGrip för bäst av båda.</p>
+<p>👉 <a href="/collections/mobilskal">Utforska mobilskal hos Corder.se</a></p>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://corder.se/blogs/nyheter/vad-ar-magsafe-guide</id>
+    <published>2026-03-25T22:22:44+01:00</published>
+    <updated>2026-03-25T22:22:44+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://corder.se/blogs/nyheter/vad-ar-magsafe-guide"/>
+    <title>Vad är MagSafe? Komplett Guide till Apples Magnetsystem 2026</title>
+    <author>
+      <name>Shopify API</name>
+    </author>
+    <content type="html">
+      <![CDATA[<h2>MagSafe – Allt du behöver veta om Apples magnetsystem</h2>
+<p>MagSafe är ett av de mest sökta orden inom iPhone-tillbehör just nu. Intresset för <strong>"iPhone 17 Pro Max MagSafe"</strong> har ökat med över 3 000% i Sverige.</p>
+<h3>Vad är MagSafe?</h3>
+<p>MagSafe är Apples system med <strong>inbyggda magneter</strong> i baksidan av din iPhone:</p>
+<ul>
+<li>
+<strong>Trådlös laddning</strong> – Upp till 25W med iPhone 17-serien</li>
+<li>
+<strong>MagSafe-skal</strong> – Mobilskal med inbyggda magneter</li>
+<li>
+<strong>MagSafe-plånbok</strong> – Korthållare som fäster magnetiskt</li>
+<li>
+<strong>Bilhållare</strong> – Montera telefonen med ett klick</li>
+</ul>
+<h3>Vilka iPhones har MagSafe?</h3>
+<p>iPhone 12 och nyare (inklusive iPhone 16e) har MagSafe. iPhone 17-serien stödjer upp till 25W, äldre modeller 15W.</p>
+<h3>Behöver jag MagSafe-skal?</h3>
+<p><strong>Ja, om du vill ha bästa upplevelsen.</strong> Utan MagSafe-skal sitter laddaren löst och du får sämre laddeffekt.</p>
+<h3>MagSafe vs Qi2</h3>
+<p>Qi2 bygger på MagSafe-teknologin. Apple licensierade sin magnetteknik till Qi2, så de är kompatibla.</p>
+<p>👉 <a href="/collections/mobilskal">Handla MagSafe-kompatibla skal hos Corder.se</a></p>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://corder.se/blogs/nyheter/basta-skal-iphone-16e</id>
+    <published>2026-03-25T22:22:43+01:00</published>
+    <updated>2026-03-25T22:22:43+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://corder.se/blogs/nyheter/basta-skal-iphone-16e"/>
+    <title>Bästa Skal till iPhone 16e 2026 – Silikonskal, MagSafe &amp; Stöttåliga</title>
+    <author>
+      <name>Shopify API</name>
+    </author>
+    <content type="html">
+      <![CDATA[<h2>Bästa mobilskal till iPhone 16e – Guiden du behöver</h2>
+<p>iPhone 16e har snabbt blivit en av Sveriges mest populära iPhones tack vare sitt lägre pris och kraftfulla A18-chip. Men vilka skal passar egentligen iPhone 16e?</p>
+<h3>Vilka skal passar iPhone 16e?</h3>
+<p>iPhone 16e har <strong>exakt samma mått som iPhone 14</strong> (147,6 × 71,6 × 7,8 mm), men det finns viktiga skillnader:</p>
+<ul>
+<li>
+<strong>Kameramodulen är annorlunda</strong> – iPhone 16e har en enda kamera, så skal med dubbla kamerahål kan se konstiga ut</li>
+<li>
+<strong>Action Button</strong> – iPhone 16e har Action Button istället för mute-switch, så äldre skal kan blockera den</li>
+<li>
+<strong>MagSafe-stöd</strong> – iPhone 16e stödjer MagSafe, så välj skal med inbyggda magneter</li>
+</ul>
+<h3>Topp 3 typer av skal för iPhone 16e</h3>
+<h4>1. Silikonskal – Bäst skydd för pengarna</h4>
+<p>Mjuka silikonskal ger utmärkt grepp och absorberar stötar. Finns i massor av färger. <strong>Pris:</strong> Från 99 kr hos <a href="/collections/mobilskal">Corder.se</a></p>
+<h4>2. MagSafe-skal – Framtidssäkert val</h4>
+<p>Med inbyggda magneter kan du enkelt fästa laddare, plånböcker och bilhållare. Sökningen efter "iPhone 16e MagSafe" har ökat med över 450%.</p>
+<h4>3. Stöttåligt skal – Max skydd</h4>
+<p>Förstärkta hörn och upphöjda kanter runt skärm och kamera.</p>
+<h3>Vanliga frågor</h3>
+<p><strong>Passar iPhone 14-skal på iPhone 16e?</strong><br>Ja, måtten är identiska. Men kontrollera att skalet inte blockerar Action Button.</p>
+<p><strong>Behöver jag MagSafe-skal?</strong><br>Rekommenderas starkt. MagSafe-skal ger 15W snabbladdning jämfört med 7,5W utan.</p>
+<p>👉 <a href="/collections/mobilskal">Se alla mobilskal hos Corder.se</a></p>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://corder.se/blogs/nyheter/billiga-mobilskal-som-faktiskt-skyddar-din-iphone-under-150-kr</id>
+    <published>2026-03-25T22:06:29+01:00</published>
+    <updated>2026-03-25T22:06:29+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://corder.se/blogs/nyheter/billiga-mobilskal-som-faktiskt-skyddar-din-iphone-under-150-kr"/>
+    <title>Billiga Mobilskal som Faktiskt Skyddar din iPhone – Under 150 kr</title>
+    <author>
+      <name>Corder</name>
+    </author>
+    <summary type="html">
+      <![CDATA[<p>Du behöver inte betala 500 kr för ett bra mobilskal. Här visar vi hur du hittar billiga skal som faktiskt skyddar din iPhone.</p><p><a class="read-more" href="https://corder.se/blogs/nyheter/billiga-mobilskal-som-faktiskt-skyddar-din-iphone-under-150-kr">Mer</a></p>]]>
+    </summary>
+    <content type="html">
+      <![CDATA[<p>Måste ett bra mobilskal kosta 400–500 kr? <strong>Absolut inte.</strong> Du kan få ett silikonskal som skyddar din iPhone utmärkt för under 150 kr. Här berättar vi vad du ska titta på – och vad du bör undvika.</p><h2>Vad avgör om ett skal skyddar?</h2><p>Priset på ett mobilskal säger förvånansvärt lite om hur bra det skyddar. Det som faktiskt spelar roll:</p><ul>
+<li>
+<strong>Material:</strong> Silikon och TPU absorberar stötar bättre än hård plast</li>
+<li>
+<strong>Upphöjda kanter:</strong> Skalet bör ha högre kant än skärmen och kameran så de inte nuddar marken vid ett tapp</li>
+<li>
+<strong>Hörnförstärkning:</strong> Extra material i hörnen – där de flesta telefoner landar</li>
+<li>
+<strong>Passform:</strong> Skal gjort specifikt för din modell sitter tätare och skyddar bättre än universalskal</li>
+</ul><h2>Vad du betalar för i dyra skal</h2><p>När du köper ett skal för 400–500 kr betalar du oftast för:</p><ul>
+<li>
+<strong>Varumärket</strong> – Kända märken som iDeal of Sweden eller Apple lägger på en rejäl premie för loggan</li>
+<li>
+<strong>Design</strong> – Unika mönster, samarbeten med designers</li>
+<li>
+<strong>Förpackning</strong> – Snygga lådor och presentförpackning</li>
+</ul><p>Inget av detta påverkar hur bra skalet skyddar din telefon.</p><h2>Vad du BÖR undvika</h2><ul>
+<li>
+<strong>Extremt billiga skal under 30 kr</strong> – Ofta tunnväggiga utan upphöjda kanter. De ger nästan inget skydd.</li>
+<li>
+<strong>Skal utan modellspecifik passform</strong> – "Passar alla iPhones" är en röd flagga. Knappar och kamera måste matcha exakt.</li>
+<li>
+<strong>Helt hårda plastskal</strong> – De spricker vid ett kraftigt tapp istället för att absorbera stöten.</li>
+</ul><h2>Så väljer du rätt billigt skal</h2><p>Följ denna checklista:</p><ol>
+<li>✅ Silikon eller TPU-material</li>
+<li>✅ Upphöjda kanter runt skärm och kamera</li>
+<li>✅ Gjort för din specifika iPhone-modell</li>
+<li>✅ Recensioner eller omdömen från andra köpare</li>
+<li>✅ Pris mellan 79–149 kr – sweet spot för kvalitet vs pris</li>
+</ol><h2>Komplett skydd under 200 kr</h2><p>Det bästa sättet att skydda din iPhone billigt:</p><ul>
+<li>
+<strong>Silikonskal</strong> (79–129 kr) – stötdämpning och grepp</li>
+<li>
+<strong>Skärmskydd i härdat glas</strong> (59–99 kr) – skyddar mot repor och sprickor</li>
+</ul><p>Totalt: Under 200 kr för komplett skydd av en telefon som kostar 10 000–20 000 kr. Det är en försäkring värd att ta.</p><p>👉 <a href="/collections/mobilskal">Silikonskal från 79 kr</a> | <a href="/collections/skarmskydd">Skärmskydd från 59 kr</a></p>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://corder.se/blogs/nyheter/silikonskal-vs-hart-skal-vilket-mobilskal-skyddar-bast</id>
+    <published>2026-03-25T22:06:28+01:00</published>
+    <updated>2026-03-25T22:06:28+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://corder.se/blogs/nyheter/silikonskal-vs-hart-skal-vilket-mobilskal-skyddar-bast"/>
+    <title>Silikonskal vs Hårt Skal – Vilket Mobilskal Skyddar Bäst?</title>
+    <author>
+      <name>Corder</name>
+    </author>
+    <summary type="html">
+      <![CDATA[<p>Jämförelse mellan silikonskal och hårda skal – stötdämpning, grepp, repskydd och pris. Vilket mobilskal är bäst för dig?</p><p><a class="read-more" href="https://corder.se/blogs/nyheter/silikonskal-vs-hart-skal-vilket-mobilskal-skyddar-bast">Mer</a></p>]]>
+    </summary>
+    <content type="html">
+      <![CDATA[<p>När du väljer mobilskal står valet ofta mellan <strong>silikonskal</strong> och <strong>hårda skal</strong>. Båda har för- och nackdelar – men vilket ger egentligen bäst skydd? Vi jämför de två materialen.</p><h2>Silikonskal – Fördelar och nackdelar</h2><h3>Fördelar</h3><ul>
+<li>
+<strong>Stötdämpning:</strong> Silikon absorberar stötar som en kudde. Vid ett tapp sprids energin ut över hela skalet istället för att koncentreras på en punkt.</li>
+<li>
+<strong>Grepp:</strong> Den mjuka ytan ger naturligt grepp – telefonen glider inte lika lätt ur handen eller från ytor.</li>
+<li>
+<strong>Flexibilitet:</strong> Lätt att sätta på och ta av utan att riskera att skada telefonen.</li>
+<li>
+<strong>Lättvikt:</strong> Väger bara några gram – du märker knappt att det sitter på.</li>
+<li>
+<strong>Prisvärt:</strong> Oftast billigare än hårda skal av samma kvalitet.</li>
+</ul><h3>Nackdelar</h3><ul>
+<li>Kan gulna över tid (genomskinliga varianter)</li>
+<li>Samlar damm och luddfibrer</li>
+<li>Mindre robust mot extrema stötar jämfört med hårda skal med förstärkta hörn</li>
+</ul><h2>Hårt skal – Fördelar och nackdelar</h2><h3>Fördelar</h3><ul>
+<li>
+<strong>Repskydd:</strong> Hård polykarbonat skyddar baksidan mot repor från nycklar och andra föremål i fickan.</li>
+<li>
+<strong>Tunnare profil:</strong> Hårda skal kan göras extremt tunna utan att förlora strukturellt skydd.</li>
+<li>
+<strong>Design:</strong> Finns i fler mönster, färger och finish (matt, blank, texturerad).</li>
+<li>
+<strong>Hållbarhet:</strong> Behåller sin form och färg längre.</li>
+</ul><h3>Nackdelar</h3><ul>
+<li>Sämre stötdämpning – ett hårt skal kan självt spricka vid kraftiga tapp</li>
+<li>Halare yta – lättare att tappa telefonen</li>
+<li>Svårare att sätta på/ta av utan att böja skalet</li>
+</ul><h2>Jämförelse sida vid sida</h2><table>
+<thead><tr>
+<th>Egenskap</th>
+<th>Silikonskal</th>
+<th>Hårt skal</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Stötdämpning</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td>Repskydd</td>
+<td>⭐⭐⭐</td>
+<td>⭐⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td>Grepp</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td>Tunnhet</td>
+<td>⭐⭐⭐</td>
+<td>⭐⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td>Hållbarhet</td>
+<td>⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td>Pris</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐</td>
+</tr>
+</tbody>
+</table><h2>Vilket material är bäst för dig?</h2><p><strong>Välj silikonskal om:</strong></p><ul>
+<li>Du tappar telefonen ibland – silikon ger bäst tappskydd</li>
+<li>Du vill ha bra grepp utan att tänka på det</li>
+<li>Du föredrar lätt vikt och lågt pris</li>
+<li>Du har barn som använder telefonen</li>
+</ul><p><strong>Välj hårt skal om:</strong></p><ul>
+<li>Du vill ha en tunn profil som inte ökar telefonens storlek</li>
+<li>Repskydd är viktigare än stötdämpning</li>
+<li>Du vill ha ett specifikt mönster eller design</li>
+</ul><h2>Vår rekommendation</h2><p>För de flesta iPhone-användare rekommenderar vi <strong>silikonskal</strong>. De ger det bästa allroundskyddet till lägst pris. Kombinera med ett <a href="/collections/skarmskydd">skärmskydd i härdat glas</a> så har du komplett skydd för under 200 kr.</p><p>👉 <a href="/collections/mobilskal">Se våra silikonskal</a></p>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://corder.se/blogs/nyheter/iphone-18-allt-vi-vet-vikbar-iphone-a20-chip-och-ny-design</id>
+    <published>2026-03-25T22:06:28+01:00</published>
+    <updated>2026-03-25T22:06:28+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://corder.se/blogs/nyheter/iphone-18-allt-vi-vet-vikbar-iphone-a20-chip-och-ny-design"/>
+    <title>iPhone 18 – Allt vi vet: Vikbar iPhone, A20-chip och ny design</title>
+    <author>
+      <name>Corder</name>
+    </author>
+    <summary type="html">
+      <![CDATA[<p>Allt om iPhone 18 – Apples första vikbara iPhone, A20-chip, variabel bländare och ny lanseringsstrategi.</p><p><a class="read-more" href="https://corder.se/blogs/nyheter/iphone-18-allt-vi-vet-vikbar-iphone-a20-chip-och-ny-design">Mer</a></p>]]>
+    </summary>
+    <content type="html">
+      <![CDATA[<p>Apple förväntas släppa iPhone 18-serien i <strong>september 2026</strong> – och den här gången kan vi få se något helt nytt: <strong>Apples första vikbara iPhone</strong>. Här samlar vi alla rykten och läckor.</p><h2>Vikbar iPhone – Äntligen?</h2><p>Det största ryktet är att Apple planerar en <strong>vikbar iPhone</strong> som släpps tillsammans med iPhone 18 Pro i september 2026. Samsung och Huawei har haft vikbara telefoner i år – nu verkar Apple vara redo att gå in på marknaden med sin egen version.</p><p>Enligt läckor ska Apples vikbara iPhone:</p><ul>
+<li>Ha en <strong>bok-liknande design</strong> som öppnas till en större skärm</li>
+<li>Använda specialutvecklat ultratunt glas istället för plast</li>
+<li>Kosta runt <strong>30 000 kr</strong> eller mer</li>
+</ul><h2>Ny lanseringsstrategi</h2><p>För första gången planerar Apple att <strong>dela upp lanseringen</strong>:</p><ul>
+<li>
+<strong>September 2026:</strong> iPhone 18 Pro, Pro Max och vikbar iPhone</li>
+<li>
+<strong>Våren 2027:</strong> iPhone 18, iPhone 18e och ev. ny Air-modell</li>
+</ul><p>Det betyder att Pro-modellerna kommer först, och budgetmodellerna följer ett halvt år senare.</p><h2>Design och skärm</h2><p>iPhone 18 Pro förväntas få:</p><ul>
+<li>
+<strong>Mindre Dynamic Island</strong> – tack vare Face ID under skärmen</li>
+<li>
+<strong>120 Hz OLED</strong> med upp till 3 000 nits ljusstyrka</li>
+<li>
+<strong>Titaniumram</strong> på alla Pro-modeller</li>
+<li>Nya färger: röd, vinröd, lila och brun</li>
+</ul><h2>Prestanda – A20-chippet</h2><p>Apple förväntas använda ett <strong>A20-chip</strong> byggt på TSMC:s nya 2nm-process. Det innebär:</p><ul>
+<li>Bättre prestanda än A19 i iPhone 17</li>
+<li>Längre batteritid tack vare effektivare transistorer</li>
+<li>12 GB RAM för kraftfullare AI-funktioner</li>
+<li>Nytt <strong>C2-modem</strong> för bättre 5G-uppkoppling</li>
+</ul><h2>Kamera – Variabel bländare</h2><p>Det mest spännande kameraryktet är en <strong>mekaniskt justerbar bländare</strong> på Pro Max-modellen – liknande en systemkamera. Det skulle ge mycket bättre kontroll över skärpedjup och ljusinsläpp, särskilt vid porträttfotografering och nattbilder.</p><h2>Batteri</h2><p>Pro-modellerna ryktas få <strong>över 5 000 mAh</strong> batterier – en rejäl uppgradering som tillsammans med 2nm-chippet kan ge rekordlång batteritid.</p><h2>Vänta eller köpa iPhone 17 nu?</h2><p><strong>Köp iPhone 17 om:</strong></p><ul>
+<li>Du behöver en ny telefon nu</li>
+<li>Du inte vill betala premiumpris för första generationens vikbar iPhone</li>
+<li>iPhone 17 har allt du behöver redan</li>
+</ul><p><strong>Vänta på iPhone 18 om:</strong></p><ul>
+<li>Du är nyfiken på vikbar iPhone</li>
+<li>Du vill ha den bästa kameran någonsin i en iPhone</li>
+<li>Du kan vänta till september 2026</li>
+</ul><h2>Förbered dig redan nu</h2><p>Oavsett vilken iPhone du har idag – skydda den med ett bra skal och skärmskydd medan du väntar på nästa generation.</p><p>👉 <a href="/collections/mobilskal">Mobilskal för alla iPhones</a> | <a href="/collections/skarmskydd">Skärmskydd</a> | <a href="/collections/laddare">Snabbladdare</a></p>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://corder.se/blogs/nyheter/passar-iphone-15-skal-till-iphone-16-komplett-kompatibilitetsguide</id>
+    <published>2026-03-25T22:06:28+01:00</published>
+    <updated>2026-03-25T22:06:28+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://corder.se/blogs/nyheter/passar-iphone-15-skal-till-iphone-16-komplett-kompatibilitetsguide"/>
+    <title>Passar iPhone 15 skal till iPhone 16? Komplett kompatibilitetsguide</title>
+    <author>
+      <name>Corder</name>
+    </author>
+    <summary type="html">
+      <![CDATA[<p>Passar iPhone 15 skal till iPhone 16? Nej – här förklarar vi varför och vilka modeller som delar skal.</p><p><a class="read-more" href="https://corder.se/blogs/nyheter/passar-iphone-15-skal-till-iphone-16-komplett-kompatibilitetsguide">Mer</a></p>]]>
+    </summary>
+    <content type="html">
+      <![CDATA[<p>Du har precis uppgraderat till iPhone 16 och undrar om ditt gamla iPhone 15-skal fortfarande passar. Kort svar: <strong>nej, ett iPhone 15-skal passar inte på iPhone 16</strong>. Här förklarar vi varför – och vilka modeller som faktiskt delar skal.</p><h2>Varför passar inte skalen mellan generationerna?</h2><p>Även om iPhone 15 och iPhone 16 ser nästan identiska ut på avstånd, finns det små men avgörande skillnader:</p><ul>
+<li>
+<strong>Kameramodulen</strong> – iPhone 16 har en ny kameraplacering med vertikalt upplägg istället för diagonalt. Ett 15-skal täcker över fel område.</li>
+<li>
+<strong>Knappar</strong> – iPhone 16 har en ny Camera Control-knapp på höger sida som inte finns på iPhone 15. Ett gammalt skal blockerar den.</li>
+<li>
+<strong>Mått</strong> – Marginella skillnader i tjocklek och kantradie gör att skalet antingen sitter löst eller inte går att trycka på plats.</li>
+</ul><h2>Vilka iPhones delar skal?</h2><p>Här är en översikt över vilka modeller som är skalkompatibla med varandra:</p><table>
+<thead><tr>
+<th>Skal för</th>
+<th>Passar även</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>iPhone 16e</strong></td>
+<td>Inga andra modeller</td>
+</tr>
+<tr>
+<td><strong>iPhone 16</strong></td>
+<td>Endast iPhone 16</td>
+</tr>
+<tr>
+<td><strong>iPhone 16 Pro</strong></td>
+<td>Endast iPhone 16 Pro</td>
+</tr>
+<tr>
+<td><strong>iPhone 15</strong></td>
+<td>Endast iPhone 15</td>
+</tr>
+<tr>
+<td><strong>iPhone 14</strong></td>
+<td>iPhone 13 (samma mått!)</td>
+</tr>
+<tr>
+<td><strong>iPhone 13</strong></td>
+<td>iPhone 14 (samma mått!)</td>
+</tr>
+<tr>
+<td><strong>iPhone SE (2022)</strong></td>
+<td>iPhone 7, 8, SE (2020)</td>
+</tr>
+</tbody>
+</table><p><strong>Tumregel:</strong> Köp alltid skal gjort specifikt för din modell. Även när måtten är identiska (som iPhone 13/14) kan kamerautsänkningar skilja sig.</p><h2>Vad händer om jag använder fel skal?</h2><ul>
+<li>
+<strong>Kameran blockeras</strong> – Skalets kamerautskärning matchar inte, vilket kan orsaka skuggor eller blockera blixten</li>
+<li>
+<strong>Knappar fungerar inte</strong> – Camera Control eller Action Button kan bli otåtkomliga</li>
+<li>
+<strong>Dåligt skydd</strong> – Ett löstsittande skal absorberar inte stötar ordentligt vid ett tapp</li>
+</ul><h2>Behöver iPhone 17 nya skal?</h2><p>Ja! iPhone 17-serien har en helt ny design med horisontell kameramodul. Inga äldre skal passar. Dessutom har iPhone 17 Air en unik formfaktor på bara 5,6 mm som kräver helt egna skal.</p><h2>Hitta rätt skal för din iPhone</h2><p>Hos Corder har vi silikonskal för de populäraste iPhone-modellerna. Välj din modell så visar vi bara skal som passar perfekt.</p><p>👉 <a href="/collections/mobilskal">Se alla mobilskal</a></p>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://corder.se/blogs/nyheter/usb-c-snabbladdning-for-iphone-komplett-guide-2026</id>
+    <published>2026-03-25T21:58:15+01:00</published>
+    <updated>2026-03-25T21:58:15+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://corder.se/blogs/nyheter/usb-c-snabbladdning-for-iphone-komplett-guide-2026"/>
+    <title>USB-C Snabbladdning för iPhone – Komplett Guide 2026</title>
+    <author>
+      <name>Corder</name>
+    </author>
+    <summary type="html">
+      <![CDATA[<p>Allt om USB-C snabbladdning för iPhone – vilken kabel och laddare du behöver, laddningshastigheter och vanliga misstag.</p><p><a class="read-more" href="https://corder.se/blogs/nyheter/usb-c-snabbladdning-for-iphone-komplett-guide-2026">Mer</a></p>]]>
+    </summary>
+    <content type="html">
+      <![CDATA[<p>Sedan iPhone 15 har alla iPhones USB-C istället för Lightning. Men visste du att <strong>alla USB-C-kablar inte är lika</strong>? Rätt kabel och laddare kan ladda din iPhone från 0 till 50% på bara 30 minuter. Fel kombination kan ta flera timmar. Här förklarar vi allt.</p><h2>Grunderna: Vad är USB-C snabbladdning?</h2><p>USB-C är en kontakttyp – den lilla ovala kontakten. Men bakom kontakten döljer sig olika standarder som avgör hur snabbt data överförs och hur mycket ström som kan gå igenom kabeln.</p><p>För snabbladdning av iPhone behöver du:</p><ul>
+<li>En <strong>USB-C-kabel</strong> som stöder Power Delivery (PD)</li>
+<li>En <strong>laddare på minst 20W</strong>
+</li>
+</ul><h2>Hur snabbt laddar iPhone egentligen?</h2><table>
+<thead><tr>
+<th>Laddare</th>
+<th>0–50%</th>
+<th>0–100%</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>5W (gammal Apple-laddare)</td>
+<td>~90 min</td>
+<td>~3,5 timmar</td>
+</tr>
+<tr>
+<td>20W USB-C (rekommenderas)</td>
+<td>~30 min</td>
+<td>~1,5 timmar</td>
+</tr>
+<tr>
+<td>30W+ USB-C</td>
+<td>~25 min</td>
+<td>~1,5 timmar</td>
+</tr>
+</tbody>
+</table><p><strong>Observera:</strong> iPhone begränsar laddeffekten till ungefär 27W, så en laddare på 30W eller 65W ger ingen märkbar skillnad jämfört med 20W.</p><h2>Vilken kabel behöver du?</h2><h3>Längd</h3><ul>
+<li>
+<strong>1 meter</strong> – Standard, bra för nattduksbord och skrivbord</li>
+<li>
+<strong>2 meter</strong> – Perfekt om vägguttaget sitter långt bort</li>
+<li>
+<strong>3 meter</strong> – Praktiskt i soffan men kan ge marginellt långsammare laddning</li>
+</ul><h3>Kvalitet och hållbarhet</h3><ul>
+<li>
+<strong>Flätad nylon</strong> – Tåligare än vanlig plast, tål böjning bättre</li>
+<li>
+<strong>Förstärkta kontakter</strong> – Aluminiumhölje förhindrar att kontakten bryts vid böjpunkten</li>
+<li>
+<strong>Certifierad</strong> – Leta efter USB-IF-certifiering för garanterad kompatibilitet</li>
+</ul><h2>Vanliga misstag</h2><h3>"Jag använder min gamla Lightning-laddare med en adapter"</h3><p>Adaptrar fungerar men begränsar ofta laddningshastigheten. Investera i en riktig USB-C-kabel – det är billigare än du tror.</p><h3>"Snabbladdning förstör batteriet"</h3><p>En vanlig myt. Apples batterihantering i iOS skyddar batteriet automatiskt genom att sakta ner laddningen vid 80%. Du kan tryggt snabbladda varje dag.</p><h3>"Alla USB-C-kablar är likadana"</h3><p>Nej! Billiga kablar utan PD-stöd laddar med bara 5W – lika långsamt som den gamla 5W-laddaren som följde med iPhone 6.</p><h2>Vår rekommendation</h2><p>För de flesta iPhone-användare rekommenderar vi:</p><ul>
+<li>En <strong>20W USB-C-laddare</strong> – räcker för maximal iPhone-laddning</li>
+<li>En <strong>USB-C till USB-C-kabel (1m eller 2m)</strong> med PD-stöd</li>
+<li>Ha gärna en extra kabel i väskan eller på jobbet</li>
+</ul><h2>Handla kablar och laddare</h2><p>Hos Corder hittar du prisvärda USB-C-kablar och snabbladdare som är testade för iPhone. Snabb leverans inom Sverige.</p><p>👉 <a href="/collections/kablar">USB-C Kablar</a> | <a href="/collections/laddare">Snabbladdare</a></p>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://corder.se/blogs/nyheter/basta-skarmskydd-till-iphone-2026-hardat-glas-bast-i-test</id>
+    <published>2026-03-25T21:58:15+01:00</published>
+    <updated>2026-03-25T21:58:15+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://corder.se/blogs/nyheter/basta-skarmskydd-till-iphone-2026-hardat-glas-bast-i-test"/>
+    <title>Bästa Skärmskydd till iPhone 2026 – Härdat Glas Bäst i Test</title>
+    <author>
+      <name>Corder</name>
+    </author>
+    <summary type="html">
+      <![CDATA[<p>Guide till skärmskydd för iPhone – härdat glas vs plastfilm, montering utan bubblor och vilka modeller som passar.</p><p><a class="read-more" href="https://corder.se/blogs/nyheter/basta-skarmskydd-till-iphone-2026-hardat-glas-bast-i-test">Mer</a></p>]]>
+    </summary>
+    <content type="html">
+      <![CDATA[<p>Din iPhone-skärm är en av de dyraste delarna att reparera – en trasig skärm på iPhone 17 Pro kostar över 4 000 kr att byta. Ett <strong>skärmskydd i härdat glas</strong> kostar under 100 kr och kan rädda dig från den kostnaden. Här går vi igenom allt du behöver veta.</p><h2>Varför behöver du skärmskydd?</h2><p>Trots att Apple använder <strong>Ceramic Shield</strong> på alla moderna iPhones, är skärmen inte osårbar. Sand, nycklar och andra hårda föremål i fickan orsakar mikrorepor som förstör skärmens klarhet över tid. Ett skärmskydd tar stöten istället.</p><h2>Typer av skärmskydd</h2><h3>Härdat glas (rekommenderas)</h3><ul>
+<li>
+<strong>Tjocklek:</strong> 0,33 mm – känns knappt</li>
+<li>
+<strong>Hårdhet:</strong> 9H på Mohs-skalan – motståndskraftigt mot de flesta repor</li>
+<li>
+<strong>Känsla:</strong> Slät yta som originalglaset</li>
+<li>
+<strong>Skydd:</strong> Absorberar stötar och spricker istället för skärmen</li>
+</ul><h3>Plastfilm (budget)</h3><ul>
+<li>Billigare men skyddar främst mot repor, inte stötar</li>
+<li>Kan kännas "klibbig" att swipa på</li>
+<li>Rekommenderas inte för dagligt bruk</li>
+</ul><h3>Privacy-glas (integritetsskydd)</h3><ul>
+<li>Mörkar skärmen för personer som tittar från sidan</li>
+<li>Perfekt för pendling i kollektivtrafiken</li>
+<li>Något mörkare skärm rakt framifrån</li>
+</ul><h2>Så monterar du skärmskydd utan bubblor</h2><ol>
+<li>
+<strong>Rengör skärmen</strong> – Använd den medföljande spritservetten och mikrofiberduken</li>
+<li>
+<strong>Dammfri miljö</strong> – Bäst resultat i badrummet efter en varm dusch (ångan binder damm)</li>
+<li>
+<strong>Rikta in</strong> – Börja med att passa in hörnen, lägg sedan ner glaset från en sida</li>
+<li>
+<strong>Tryck ut bubblor</strong> – Dra med en plastskrapa från mitten utåt</li>
+<li>
+<strong>Små bubblor?</strong> – Försvinner ofta av sig själva inom 24–48 timmar</li>
+</ol><h2>Kompatibilitet – Vilken modell passar?</h2><p>Varje iPhone-modell har unika skärmmått. Se till att köpa rätt skärmskydd:</p><ul>
+<li>
+<strong>iPhone 17 / 17 Air</strong> – Ny skärmstorlek, köp 17-specifikt skydd</li>
+<li>
+<strong>iPhone 16 / 16 Pro</strong> – Egna mått, ej kompatibla med varandra</li>
+<li>
+<strong>iPhone 15 / 14 / 13</strong> – iPhone 14 och 13 delar samma skärmstorlek</li>
+</ul><h2>Vanliga frågor</h2><h3>Passar iPhone 15-skärmskydd till iPhone 16?</h3><p>Nej, iPhone 16 har andra dimensioner och kamerautskärning. Du behöver ett skydd gjort specifikt för din modell.</p><h3>Förstör skärmskydd Face ID?</h3><p>Nej, moderna skärmskydd i härdat glas har utskärningar för Face ID-sensorerna och påverkar inte funktionen.</p><h3>Hur ofta ska man byta skärmskydd?</h3><p>Byt när du ser synliga repor eller sprickor. Ett skadat skärmskydd ger sämre skydd. De flesta byter var 6–12:e månad.</p><h2>Handla skärmskydd hos Corder</h2><p>Vi säljer skärmskydd i härdat glas för alla populära iPhone-modeller. Snabb leverans inom Sverige och alltid fria returer.</p><p>👉 <a href="/collections/skarmskydd">Se alla skärmskydd</a></p>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://corder.se/blogs/nyheter/ios-26-4-10-nya-funktioner-du-kan-anvanda-redan-nu</id>
+    <published>2026-03-25T21:58:15+01:00</published>
+    <updated>2026-03-25T21:58:15+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://corder.se/blogs/nyheter/ios-26-4-10-nya-funktioner-du-kan-anvanda-redan-nu"/>
+    <title>iOS 26.4 – 10 nya funktioner du kan använda redan nu</title>
+    <author>
+      <name>Corder</name>
+    </author>
+    <summary type="html">
+      <![CDATA[<p>Apple har släppt iOS 26.4 – här är 10 nya funktioner du kan använda direkt på din iPhone.</p><p><a class="read-more" href="https://corder.se/blogs/nyheter/ios-26-4-10-nya-funktioner-du-kan-anvanda-redan-nu">Mer</a></p>]]>
+    </summary>
+    <content type="html">
+      <![CDATA[<p>Apple har precis släppt <strong>iOS 26.4</strong> – den senaste uppdateringen till det stora iOS 26 som kom i september 2025. Här är de bästa nya funktionerna du kan börja använda direkt på din iPhone.</p><h2>1. Playlist Playground i Apple Music</h2><p>Beskriv din stämning med ord – "chill sommarkväll med akustisk gitarr" – och Apple Music skapar automatiskt en spelningslista åt dig med hjälp av AI. Perfekt för fester, träning eller studier.</p><h2>2. Förbättrad stöldskydd</h2><p><strong>Stolen Device Protection</strong> är nu aktiverat som standard. Om någon stjäl din iPhone behöver de Face ID eller Touch ID för att ändra lösenord, stänga av Hitta min iPhone eller komma åt sparade lösenord – även om de känner till din kod.</p><h2>3. Liquid Glass överallt</h2><p>iOS 26:s nya "Liquid Glass"-design har fått ytterligare polering i 26.4. Genomskinliga glas-effekter, mjukare animationer och bättre läsbarhet gör hela gränssnittet mer responsivt.</p><h2>4. Videopoddar</h2><p>Podcasts-appen stöder nu fullständiga videopoddar – inte bara ljud. Bläddra bland populära videopoddar och titta direkt i appen.</p><h2>5. Smartare Siri med Apple Intelligence</h2><p>Siri kan nu förstå sammanhang bättre och utföra komplexa uppgifter i flera steg. Be Siri "skicka det fotot jag tog igår till mamma" och den förstår exakt vad du menar.</p><h2>6. Hold Assist i Telefon-appen</h2><p>Sitter du i telefonkö? <strong>Hold Assist</strong> väntar åt dig och meddelar när en riktig person svarar. En av de mest praktiska nyheterna i iOS 26.</p><h2>7. Minskade ljuseffekter</h2><p>Ny tillgänglighetsinställning som dämpar de starkaste Liquid Glass-effekterna för dig som tycker de är distraherande eller ansträngande för ögonen.</p><h2>8. Förbättrad kamera</h2><p>Kameraappen har ett förenklat gränssnitt med grupperade kontroller. Ny "Audio Zoom"-funktion låter dig fokusera ljudinspelningen på det du filmar – perfekt för konserter och event.</p><h2>9. Anpassningsbara appsymboler</h2><p>Anpassa färgtonen på alla appsymboler – ljust, mörkt eller genomskinligt läge som låter bakgrundsbilden synas igenom. Din hemskärm har aldrig sett så personlig ut.</p><h2>10. Gruppröstningar i Meddelanden</h2><p>Skapa snabba omröstningar direkt i gruppchatter i Meddelanden. "Pizza eller sushi ikväll?" – alla kan rösta utan att det blir kaos i chatten.</p><h2>Vilka iPhones stöder iOS 26?</h2><p>iOS 26 kräver <strong>iPhone 11 eller nyare</strong>. De mest avancerade AI-funktionerna (Apple Intelligence) kräver iPhone 15 Pro eller nyare. Äldre modeller som iPhone XR och XS stöds inte längre.</p><h2>Skydda din uppdaterade iPhone</h2><p>Ny mjukvara förtjänar ett bra skydd. Ett kvalitetsskal och skärmskydd skyddar din investering – oavsett om du har den senaste iPhone 17 eller en äldre modell.</p><p>👉 <a href="/collections/mobilskal">Mobilskal för alla iPhones</a> | <a href="/collections/skarmskydd">Skärmskydd i härdat glas</a></p>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://corder.se/blogs/nyheter/iphone-17-vs-iphone-16-ska-du-uppgradera-komplett-jamforelse-2026</id>
+    <published>2026-03-25T21:58:14+01:00</published>
+    <updated>2026-03-25T21:58:15+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://corder.se/blogs/nyheter/iphone-17-vs-iphone-16-ska-du-uppgradera-komplett-jamforelse-2026"/>
+    <title>iPhone 17 vs iPhone 16 – Ska du uppgradera? Komplett jämförelse 2026</title>
+    <author>
+      <name>Corder</name>
+    </author>
+    <summary type="html">
+      <![CDATA[<p>Komplett jämförelse mellan iPhone 17 och iPhone 16 – design, skärm, kamera, pris och om det är värt att uppgradera.</p><p><a class="read-more" href="https://corder.se/blogs/nyheter/iphone-17-vs-iphone-16-ska-du-uppgradera-komplett-jamforelse-2026">Mer</a></p>]]>
+    </summary>
+    <content type="html">
+      <![CDATA[<p>Apple släppte iPhone 17-serien i september 2025 och det är den största designförändringen på år. Men är det värt att uppgradera från iPhone 16? Vi går igenom alla skillnader så du kan fatta rätt beslut.</p><h2>Design – En helt ny look</h2><p>iPhone 17 Pro har fått en ny horisontell kameramodul på baksidan, liknande Google Pixel-serien. Det är det mest uppenbara visuella skiftet sedan iPhone X. Den helt nya <strong>iPhone 17 Air</strong> är dessutom bara 5,6 mm tunn – Apples tunnaste telefon någonsin.</p><p>iPhone 16 behåller det vertikala kameraupplägget och den bekanta designen. Om du gillar den nuvarande looken finns det ingen anledning att byta enbart för designen.</p><h2>Skärm – 120 Hz för alla</h2><p>Äntligen! <strong>Alla iPhone 17-modeller</strong> har nu 120 Hz ProMotion-skärmar med Always-On Display. Det var tidigare reserverat för Pro-modellerna. iPhone 16 (icke-Pro) sitter fortfarande på 60 Hz.</p><p>Om du har en iPhone 16 (standard) och tycker att scrollning känns seg, är detta ensamt en bra anledning att uppgradera.</p><h2>Prestanda – A19 vs A18</h2><p>iPhone 17 drivs av det nya <strong>A19-chippet</strong> med 12 GB RAM, jämfört med A18 och 8 GB i iPhone 16. I praktiken märks skillnaden främst i AI-funktioner och krävande appar. För vardagligt användande är båda telefonerna snabba.</p><h2>Kamera – Bättre selfies och ny teknik</h2><p>iPhone 17 har en uppgraderad 18 MP frontkamera med “Center Stage” för bättre gruppselfies. Bakkameran på standardmodellen har nu dubbla 48 MP-sensorer. Pro-modellerna får en uppgraderad telefoto med bättre makrofotografering.</p><h2>Batteri och laddning</h2><p>Båda generationerna stöder <strong>USB-C snabbladdning</strong> – från 0 till 50% på 30 minuter med en 20W-laddare. iPhone 17 stöder dessutom den nya Qi 2.2-standarden för trådlös laddning.</p><p><strong>Tips:</strong> Oavsett vilken iPhone du har behöver du en bra <a href="/collections/kablar">USB-C laddkabel</a> och en <a href="/collections/laddare">snabbladdare</a> för att få ut maximal laddningshastighet.</p><h2>Pris i Sverige</h2><ul>
+<li>
+<strong>iPhone 17:</strong> Från ca 12 995 kr (256 GB standard)</li>
+<li>
+<strong>iPhone 17 Air:</strong> Från ca 15 995 kr</li>
+<li>
+<strong>iPhone 17 Pro:</strong> Från ca 17 495 kr</li>
+<li>
+<strong>iPhone 16:</strong> Från ca 10 995 kr (nedsatt)</li>
+</ul><h2>Ska du uppgradera?</h2><p><strong>Uppgradera om:</strong></p><ul>
+<li>Du har iPhone 15 eller äldre – då är språnget kännbart</li>
+<li>Du vill ha 120 Hz-skärm utan att behöva köpa Pro</li>
+<li>Kameran är viktig och du vill ha det senaste</li>
+</ul><p><strong>Behåll iPhone 16 om:</strong></p><ul>
+<li>Du är nöjd med prestandan och kameran</li>
+<li>Du vill spara pengar – iPhone 16 är fortfarande en fantastisk telefon</li>
+<li>Du köpte din iPhone 16 nyligen</li>
+</ul><h2>Skydda din iPhone – oavsett modell</h2><p>Oavsett om du behåller din iPhone 16 eller uppgraderar till 17 – ett bra skal och skärmskydd är ett måste. Ett silikonskal absorberar stötar och skyddar mot repor i vardagen.</p><p>👉 <a href="/collections/mobilskal">Se våra mobilskal</a> | <a href="/collections/skarmskydd">Skärmskydd för alla iPhone-modeller</a></p>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://corder.se/blogs/nyheter/basta-mobilskalet-2026-guide-iphone-16</id>
+    <published>2026-03-16T01:02:46+01:00</published>
+    <updated>2026-03-16T01:05:00+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://corder.se/blogs/nyheter/basta-mobilskalet-2026-guide-iphone-16"/>
+    <title>Bästa Mobilskalet 2026 – Guide för iPhone 16, 16 Pro &amp; 16e</title>
+    <author>
+      <name>Johan Studt</name>
+    </author>
+    <content type="html">
+      <![CDATA[<h2>Vilket mobilskal passar din iPhone bäst?</h2><p>Att välja rätt mobilskal kan vara avgörande för hur länge din iPhone håller sig i toppskick. I den här guiden jämför vi de vanligaste typerna av mobilskal för iPhone 16, iPhone 16 Pro och iPhone 16e så att du kan göra ett informerat val.</p><h2>Tre typer av mobilskal – fördelar och nackdelar</h2><h3>1. Silikonskal – det populäraste valet</h3><p>Silikonskal är det överlägset mest populära valet bland iPhone-användare i Sverige. De erbjuder ett mjukt och behagligt grepp, absorberar stötar effektivt och finns i mängder av färger och designer. Silikonmaterialet är flexibelt nog att enkelt ta av och på, men tillräckligt styvt för att skydda mot vardagliga stötar och fall. Dessutom är silikonskal ofta det mest prisvärda alternativet.</p><h3>2. Hårt skal – maximalt skydd</h3><p>Hårda skal, ofta tillverkade i polykarbonat eller liknande material, ger ett robust skydd mot kraftigare slag. De är tunnare än silikonskal och ger telefonen en slimmad profil. Nackdelen är att de inte dämpar stötar lika bra och kan kännas hala i handen.</p><h3>3. Plånboksfodral – allt-i-ett-lösning</h3><p>Plånboksfodral kombinerar mobilskydd med kortfickor och ibland ett ställ. De skyddar även skärmen när fodralet är stängt. Dock är de tjockare, tyngre och kan göra det opraktiskt att använda telefonen med en hand.</p><h2>Varför silikonskal är bäst för de flesta</h2><p>För de allra flesta iPhone-användare är ett silikonskal det smartaste valet. Det ger tillräckligt skydd för vardagsbruk, känns bra att hålla i och kostar inte skjortan. Kombinerat med ett <strong>skärmskydd i härdat glas</strong> har du ett komplett skydd för din iPhone 16.</p><h2>Mobilskal från Corder</h2><p>Hos <strong>Corder.se</strong> hittar du ett brett utbud av silikonskal för iPhone 16, iPhone 16 Pro och iPhone 16e. Våra skal är designade för att passa perfekt, med exakta utskärningar för kamera och knappar. Vi erbjuder snabb leverans inom Sverige och fri frakt vid köp över 299 kr.</p><p>Besök <a href="https://corder.se">corder.se</a> och hitta ditt nya mobilskal idag!</p>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://corder.se/blogs/nyheter/upptack-det-perfekta-iphone-skalet-hos-corder-din-ultimata-guide</id>
+    <published>2023-11-14T12:42:11+01:00</published>
+    <updated>2023-11-14T12:42:13+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://corder.se/blogs/nyheter/upptack-det-perfekta-iphone-skalet-hos-corder-din-ultimata-guide"/>
+    <title>Upptäck det Perfekta iPhone Skalet hos Corder: Din Ultimata Guide</title>
+    <author>
+      <name>Johan Studt</name>
+    </author>
+    <content type="html">
+      <![CDATA[<hr>
+<p><strong>Upptäck det Perfekta iPhone Skalet hos Corder: Din Ultimata Guide</strong></p>
+<table>
+<thead>
+<tr>
+<th>Viktiga Punkter</th>
+<th>Beskrivning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Mångfald av iPhone Skal</strong></td>
+<td>Utforska ett brett utbud av skal för iPhone 13, 13 Pro, 14 och 14 Pro hos Corder.</td>
+</tr>
+<tr>
+<td><strong>Sommarkollektion 2022</strong></td>
+<td>Ta del av vår unika <a href="/collections/sommarkollektion-2022">Sommarkollektion 2022</a> för trendiga och funktionella skal.</td>
+</tr>
+<tr>
+<td><strong>Nyheter och Bästsäljare</strong></td>
+<td>Uppdatera dig med de senaste trenderna och populära valen i våra <a href="/collections/bastsaljare">bästsäljare</a> och <a href="/collections/nyheter-2">nyheter</a>.</td>
+</tr>
+<tr>
+<td><strong>Personligt Skydd och Stil</strong></td>
+<td>Anpassa din iPhone med skal som speglar din personliga stil och ger optimalt skydd.</td>
+</tr>
+</tbody>
+</table>
+<h3></h3>
+<h3 id="din-guide-till-iphone-skal">Din Guide till iPhone Skal</h3>
+<p><strong>iPhone 13 Skal: En Ny Era av Mobilskydd</strong></p>
+<p>iPhone 13 är en revolution inom smarttelefoner, och ett skal från Corder är det perfekta sättet att skydda din investering. Vårt sortiment av iPhone 13 skal erbjuder en blandning av stil och funktionalitet. Oavsett om du söker något minimalistiskt eller ett skal med mer uttryck, hittar du det här. Varje skal är noggrant utformat för att ge bästa möjliga skydd utan att kompromissa med telefonens design och funktionalitet.</p>
+<p><strong>iPhone 13 Pro Skal: Kombinera Mode med Funktionalitet</strong></p>
+<p>iPhone 13 Pro skal från Corder är mer än bara ett skydd – de är en modeaccessoar. Med en rad olika stilar och färger kan du enkelt hitta ett skal som matchar din dagliga outfit och personliga smak. Dessa skal är inte bara snygga utan också konstruerade för att ge din iPhone 13 Pro det skydd den behöver.</p>
+<p><strong>iPhone 14 Pro Skal: Elegans och Skydd</strong></p>
+<p>När det gäller iPhone 14 Pro, förtjänar din enhet inget annat än det bästa. Våra iPhone 14 Pro skal är designade för att matcha denna högteknologiska enhetens elegans och kraft. Med en balans mellan robust skydd och estetisk tilltalande design, är våra skal ett måste för alla iPhone 14 Pro-användare.</p>
+<p> </p>
+<p><strong>iPhone 14 Skal: Modern Skyddsteknik</strong></p>
+<p>För iPhone 14-användare erbjuder Corder skal som kombinerar modern skyddsteknik med trendiga designelement. Våra iPhone 14 skal är perfekta för den moderna användaren som värdesätter både funktionalitet och stil.</p>
+<hr><hr>
+<h3></h3>
+<h3>Din Guide till iPhone Skal</h3>
+<p><strong>Personlig Touch med Corders Mobilskal</strong></p>
+<p>Hos Corder tror vi att ett skal är mer än bara ett skydd för din telefon; det är ett uttryck för din personliga stil. I vår <a href="/collections/mobilskal">mobilskalskollektion</a> hittar du en mängd olika stilar och mönster som passar alla smaker och behov. Från sofistikerade enfärgade skal till lekfulla mönster, erbjuder vi en unik mix som verkligen gör din iPhone personlig.</p>
+<p><strong>Skydda Din iPhone med Stil</strong></p>
+<p>Varje iPhone-användare vet att det inte bara handlar om att skydda telefonen mot repor och stötar; det handlar också om att göra det med stil. Våra skal är designade för att vara lika estetiskt tilltalande som de är funktionella. Oavsett om du letar efter ett diskret, klart skal eller något med mer karaktär, har vi det perfekta skalet för dig.</p>
+<p><strong>Varför Välja Corders iPhone Skal?</strong></p>
+<ul>
+<li>
+<strong>Kvalitet och Hållbarhet</strong>: Våra iPhone skal är tillverkade av högkvalitativa material som garanterar långvarigt skydd.</li>
+<li>
+<strong>Stil och Mångsidighet</strong>: Med ett brett utbud av designer och färger, kan du enkelt hitta ett skal som passar din stil.</li>
+<li>
+<strong>Perfekt Passform</strong>: Varje skal är designat för att passa perfekt till din specifika iPhone-modell, vilket säkerställer full tillgång till alla funktioner och knappar.</li>
+</ul>
+<h3 id="sammanfattning">Sammanfattning</h3>
+<p>Corder erbjuder en omfattande samling av skal för iPhone 13, 13 Pro, 14 och 14 Pro, som kombinerar elegant design med robust skydd. Våra skal är inte bara praktiska men också en förlängning av din personliga stil. Upptäck hela vårt sortiment i vår <a href="/collections/mobilskal">mobilskalskollektion</a> och välj det skal som bäst speglar din personlighet och livsstil.</p>
+<hr>
+<hr>
+<h3 id="avslutande-tankar-skydda-och-stilisera-din-iphone-med-corder">Avslutande Tankar: Skydda och Stilisera Din iPhone med Corder</h3>
+<p>Att välja rätt skal för din iPhone hos Corder innebär inte bara att du skyddar din dyrbara enhet, men också att du uttrycker din unika stil. Vi förstår att din iPhone är mer än bara en telefon – det är en personlig följeslagare i din dagliga livsstil. Därför erbjuder vi skal som kombinerar funktionalitet med estetisk skönhet, för att du ska kunna göra ett statement varje gång du tar fram din telefon.</p>
+<p><strong>Varför Corder är Ditt Bästa Val för iPhone Skal</strong></p>
+<ul>
+<li>
+<strong>Innovativa och Trendiga Designs</strong>: Våra skal är inte bara skyddande utan också trendigt designade för att spegla de senaste modetrenderna.</li>
+<li>
+<strong>Högkvalitativa Material</strong>: Vi använder bara de bästa materialen för att skapa skal som är hållbara och pålitliga.</li>
+<li>
+<strong>Anpassad Kundservice</strong>: Vår kundservice är alltid redo att hjälpa dig att hitta det perfekta skalet och svara på alla dina frågor. </li>
+</ul>
+<h3 id="corder-din-one-stop-shop-f-r-iphone-skal">Corder - Din One-Stop Shop för iPhone Skal</h3>
+<p>Oavsett om du letar efter ett skal för din nya iPhone 14 eller vill fräscha upp din nuvarande iPhone 13, har Corder ett brett utbud för att möta dina behov. Upptäck vårt sortiment idag och hitta det perfekta skalet som skyddar din iPhone och lyfter din personliga stil. Besök vår hemsida för att se våra <a href="/collections/nyheter-2">nyheter</a> och <a href="/collections/bastsaljare">bästsäljare</a>, och gör ditt val från vår <a href="/collections/sommarkollektion-2022">Sommarkollektion 2022</a>.</p>
+<p>Tack för att du läste vår guide till iPhone skal hos Corder. Vi hoppas att du hittar det perfekta skalet som matchar din stil och behov.</p>
+<hr>
+]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://corder.se/blogs/nyheter/har-iphone-13-och-14-samma-skal-en-utforlig-guide</id>
+    <published>2023-11-14T11:52:32+01:00</published>
+    <updated>2023-11-14T11:52:32+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://corder.se/blogs/nyheter/har-iphone-13-och-14-samma-skal-en-utforlig-guide"/>
+    <title>Har iPhone 13 och 14 Samma Skal? En Utförlig Guide</title>
+    <author>
+      <name>Johan Studt</name>
+    </author>
+    <summary type="html">
+      <![CDATA[<meta charset="utf-8"><span data-mce-fragment="1">Upptäck om iPhone 13 och 14 skal är kompatibla i vår djupgående guide. Med Apple som kontinuerligt förnyar sin smartphone-design, är det viktigt för iPhone-användare att veta om deras tillbehör är utbytbara mellan modellerna. Vi utforskar de fysiska och designmässiga skillnaderna mellan iPhone 13 och 14 för att ge dig klarhet i skalens kompatibilitet. Dessutom, ta en titt på vårt omfattande sortiment av stilfulla och skyddande skal, perfekta för både iPhone 13 och 14. Från vår exklusiva Sommarkollektion 2022 till våra bästsäljande och nyaste skal, hittar du allt du behöver för att skydda och personifiera din iPhone hos Corder.</span><p><a class="read-more" href="https://corder.se/blogs/nyheter/har-iphone-13-och-14-samma-skal-en-utforlig-guide">Mer</a></p>]]>
+    </summary>
+    <content type="html">
+      <![CDATA[<hr>
+<h1 id="har-iphone-13-och-14-samma-skal-en-utf-rlig-guide">Har iPhone 13 och 14 Samma Skal? En Utförlig Guide</h1>
+<p><strong>Nyckeluttag</strong></p>
+<table style="width: 547px;">
+<thead>
+<tr>
+<th style="width: 159.203px;">Fråga</th>
+<th style="width: 370.797px;">Svar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="width: 159.203px;">Är iPhone 13 och 14 skal kompatibla?</td>
+<td style="width: 370.797px;">
+<meta charset="utf-8"> <span>Nej. iPhone 14 är 0,01 tum tjockare än iPhone 13. I grund och botten kommer iPhone 13-fodral att passa iPhone 14 eftersom storleken och formen är densamma. Dock har volym- och låsknappen flyttats något. Detta innebär att iPhone 13-fodral inte kommer att passa iPhone 14, eftersom det kommer att påverka enhetens funktionalitet.</span>
+</td>
+</tr>
+<tr>
+<td style="width: 159.203px;">Var kan jag hitta skal för iPhone 13 och 14?</td>
+<td style="width: 370.797px;">Upptäck billiga <a href="/collections/bastsaljare">bästsäljande skal</a> och <a href="/collections/nyheter-2">nyheter</a> för iPhone 13 och 14</td>
+</tr>
+<tr>
+<td style="width: 159.203px;">Vilka typer av skal finns tillgängliga?</td>
+<td style="width: 370.797px;">Utforska <a href="/collections/sommarkollektion-2022">sommarkollektionen 2022</a> och andra skalalternativ</td>
+</tr>
+<tr>
+<td style="width: 159.203px;">Hur väljer jag det bästa skyddet för min iPhone?</td>
+<td style="width: 370.797px;">Lär dig om olika skal, inklusive <a href="/collections/mobilskal">mobilskal</a> och <a href="/collections/skarmskydd">skärmskydd</a>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Introduktion</strong></p>
+<p>När Apple släpper en ny iPhone-modell, uppstår ofta frågan bland användare om tillbehören, särskilt skal, är kompatibla mellan de olika modellerna. Detta är en viktig fråga för många, eftersom rätt mobilskal inte bara skyddar telefonen utan också uttrycker personlig stil. I denna artikel utforskar vi om iPhone 13 och 14 har samma skal, och vilka alternativ som finns tillgängliga för båda modellerna.</p>
+<p><strong>Är iPhone 13 och 14 skal kompatibla?</strong></p>
+<p>För att förstå om iPhone 13 och iPhone 14 skal är kompatibla måste vi titta på de fysiska dimensionerna och designelementen hos båda telefonmodellerna. Även om dessa två modeller delar liknande designegenskaper, kan även mindre skillnader i storlek och formfaktor påverka skalens kompatibilitet.</p>
+<p>Det är viktigt att notera att även små skillnader i kamerautskärningen, knapparnas placering eller telefonens tjocklek kan göra att ett skal som är avsett för en modell inte passar den andra. Därför rekommenderar vi att du alltid kontrollerar specifikationerna för det specifika skalet innan köp.</p>
+<p><img src="https://files.oaiusercontent.com/file-aYvHkyGzNdn7TiMRnImJCgsm?se=2023-11-14T11%3A43%3A49Z&amp;sp=r&amp;sv=2021-08-06&amp;sr=b&amp;rscc=max-age%3D3599%2C%20immutable&amp;rscd=attachment%3B%20filename%3Db042de61-9979-4112-ba53-9af590602f27&amp;sig=dZJBsLEYZsVGgim9dba/82Q%2B0Xvq9qUodZErVj09jxA%3D" width="536" height="319"></p>
+<p><strong>Var kan jag hitta skal för iPhone 13 och 14?</strong></p>
+<p>Om du letar efter skal till din iPhone 13 eller 14, erbjuder Corder en mängd olika alternativ. Du kan hitta allt från <a href="/collections/bastsaljare">bästsäljande skal</a> som kombinerar stil med skydd, till <a href="/collections/nyheter-2">nyheter</a> som speglar de senaste trenderna och innovationerna inom mobilskal.</p>
+<p>Varje skal i vårt sortiment är utformat för att erbjuda optimalt skydd samtidigt som det behåller telefonens estetik och funktionalitet. Oavsett om du letar efter något minimalistiskt eller ett skal med mer uttryckfull design, hittar du det i vårt sortiment. </p>
+<hr><hr>
+<p><strong>Vilka typer av skal finns tillgängliga för iPhone 13 och 14?</strong></p>
+<p>När det kommer till skal för iPhone 13 och 14, är variationen enorm. På Corder har vi en bred palett av skal att välja mellan. För sommarens alla äventyr kan du utforska vår <a href="/collections/sommarkollektion-2022">Sommarkollektion 2022</a>, där varje skal är designat för att ge din telefon ett unikt utseende samtidigt som det skyddar mot dagligt slitage.</p>
+<p>För dem som föredrar klassiska och tidlösa alternativ, erbjuder vi ett urval av <a href="/collections/mobilskal">mobilskal</a> som kombinerar robust skydd med elegant design. Våra skal finns i olika material, från hårdplast till mjukare silikon, och varje material erbjuder unika fördelar i form av skydd och stil.</p>
+<p><strong>Hur väljer jag det bästa skyddet för min iPhone?</strong></p>
+<p>Att välja rätt skal för din iPhone handlar inte bara om stil, utan också om funktionalitet och skydd. Förutom traditionella mobilskal finns det andra alternativ såsom <a href="/collections/skarmskydd">skärmskydd</a> som ger ett extra lager av skydd för din telefons skärm. Det är viktigt att kombinera ett bra skal med ett skärmskydd för maximalt skydd mot repor och stötar.</p>
+<p>För de som ofta är på språng kan det också vara värt att överväga robustare alternativ. Dessa skal är ofta tjockare och ger bättre skydd mot fall och stötar. Corder erbjuder skal som är både snygga och funktionella, så att du inte behöver kompromissa med utseendet för att få bästa möjliga skydd.</p>
+<p><strong>Tillbehör som kompletterar ditt skal</strong></p>
+<p>För en komplett mobilupplevelse rekommenderar vi att du också tittar på våra andra tillbehör. Vi har ett brett utbud av <a href="/collections/kablar">kablar</a> som är kompatibla med både iPhone 13 och 14, vilket säkerställer att du alltid har nödvändig laddning till hands. Och för dig som använder AirPods, har vi snygga och skyddande <a href="/collections/airpods-skal">AirPods-skal</a> som kompletterar ditt mobilskal.</p>
+<hr>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://corder.se/blogs/nyheter/macos-sonoma-10-nya-funktioner-du-kommer-att-alska</id>
+    <published>2023-11-07T00:03:18+01:00</published>
+    <updated>2023-11-07T00:03:20+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://corder.se/blogs/nyheter/macos-sonoma-10-nya-funktioner-du-kommer-att-alska"/>
+    <title>macOS Sonoma: 10 nya funktioner du kommer att älska</title>
+    <author>
+      <name>Johan Studt</name>
+    </author>
+    <content type="html">
+      <![CDATA[<meta charset="utf-8">
+<p data-sourcepos="1:1-1:51" data-mce-fragment="1"><strong data-mce-fragment="1">Funktioner i macOS Sonoma du bör kolla in först</strong></p>
+<p data-sourcepos="3:1-3:271" data-mce-fragment="1"><span data-mce-fragment="1">Efter tre månaders betatestning är macOS Sonoma äntligen tillgänglig för alla.</span><span data-mce-fragment="1"> macOS-uppdateringar får ofta inte lika mycket uppmärksamhet som iOS-uppdateringar under betatestningsprocessen,</span><span data-mce-fragment="1"> men det finns gott om anmärkningsvärda skäl att installera den nya programvaran.</span></p>
+<p data-sourcepos="3:1-3:271" data-mce-fragment="1"><span data-mce-fragment="1"><iframe title="YouTube video player" src="https://www.youtube.com/embed/tgeqM3RqhF4?si=DXFKRxjhK3t6LdYG" height="315" width="560" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" frameborder="0"></iframe></span></p>
+<p data-sourcepos="5:1-5:92" data-mce-fragment="1"><span data-mce-fragment="1">Här är några av de mest spännande nya funktionerna i macOS Sonoma som du bör kolla in först:</span></p>
+<p data-sourcepos="7:1-7:34" data-mce-fragment="1"><strong data-mce-fragment="1">Interaktiva skrivbordswidgetar</strong></p>
+<p data-sourcepos="9:1-9:295" data-mce-fragment="1"><span data-mce-fragment="1">Widgets är inte längre begränsade till meddelandecentret i macOS Sonoma.</span><span data-mce-fragment="1"> Nu kan du lägga till interaktiva widgets direkt på ditt skrivbord.</span><span data-mce-fragment="1"> Det innebär att du kan kontrollera påminnelser,</span><span data-mce-fragment="1"> styra smarta hemprodukter och interagera med tredjepartsappar utan att behöva öppna den fullständiga appen.</span></p>
+<p data-sourcepos="11:1-11:239" data-mce-fragment="1"><span data-mce-fragment="1">För att lägga till en widget på ditt skrivbord,</span><span data-mce-fragment="1"> klicka helt enkelt på "+"-knappen i det övre högra hörnet av din skärm och välj widgeten du vill lägga till.</span><span data-mce-fragment="1"> Du kan sedan ändra storlek och flytta widgeten till var du vill på ditt skrivbord.</span></p>
+<p data-sourcepos="11:1-11:239" data-mce-fragment="1"><span data-mce-fragment="1"><img src="https://images.macrumors.com/t/uEb5t7QW1NJxsmCAxUCuQnGGrbI=/1600x0/article-new/2023/06/macos-sonoma-widgets.jpg"></span></p>
+<p data-sourcepos="13:1-13:21" data-mce-fragment="1"><strong data-mce-fragment="1">Presenter Overlay</strong></p>
+<p data-sourcepos="15:1-15:226" data-mce-fragment="1"><span data-mce-fragment="1">Om du ofta ger presentationer kommer du att älska den nya Presenter Overlay-funktionen i macOS Sonoma.</span><span data-mce-fragment="1"> Den här funktionen låter dig dela din skärm i FaceTime eller tredjepartsvideoappar som Zoom utan att blockera ditt ansikte.</span></p>
+<p data-sourcepos="17:1-17:245" data-mce-fragment="1"><span data-mce-fragment="1">För att använda Presenter Overlay-funktionen,</span><span data-mce-fragment="1"> öppna helt enkelt kontrollpanelen och klicka på knappen "Presenter Overlay".</span><span data-mce-fragment="1"> Du kan sedan välja att visa ditt ansikte i ett litet överläggsfönster eller i ett större fönster bredvid din delade skärm.</span></p>
+<p data-sourcepos="19:1-19:20" data-mce-fragment="1"><strong data-mce-fragment="1">3D-videoeffekter</strong></p>
+<p data-sourcepos="21:1-21:249" data-mce-fragment="1"><span data-mce-fragment="1">macOS Sonoma introducerar också ett antal nya 3D-videoeffekter som du kan använda för att göra dina videosamtal mer roliga och engagerande.</span><span data-mce-fragment="1"> Dessa effekter inkluderar hjärtan,</span><span data-mce-fragment="1"> tummen upp,</span><span data-mce-fragment="1"> tummen ner,</span><span data-mce-fragment="1"> ballonger,</span><span data-mce-fragment="1"> konfetti,</span><span data-mce-fragment="1"> laser,</span><span data-mce-fragment="1"> fyrverkerier och åska.</span></p>
+<p data-sourcepos="23:1-23:200" data-mce-fragment="1"><span data-mce-fragment="1">För att använda en 3D-videoeffekt,</span><span data-mce-fragment="1"> klicka helt enkelt på "Effekter"-knappen i det nedre högra hörnet av ditt videosamtalfönster.</span><span data-mce-fragment="1"> Du kan sedan välja effekten du vill använda från listan med alternativ.</span></p>
+<p data-sourcepos="25:1-25:12" data-mce-fragment="1"><strong data-mce-fragment="1">Spelläge</strong></p>
+<p data-sourcepos="27:1-27:238" data-mce-fragment="1"><span data-mce-fragment="1">Om du är en gamer kommer du att vara glad över att veta att macOS Sonoma innehåller en ny spellägesfunktion.</span><span data-mce-fragment="1"> Den här funktionen optimerar din Macs prestanda för spel,</span><span data-mce-fragment="1"> så att du kan njuta av en smidigare och mer uppslukande spelupplevelse.</span></p>
+<p data-sourcepos="29:1-29:104" data-mce-fragment="1"><span data-mce-fragment="1">För att aktivera spelläge,</span><span data-mce-fragment="1"> gå till Systeminställningar &gt; Spel och markera kryssrutan bredvid "Spelläge".</span></p>
+<p data-sourcepos="29:1-29:104" data-mce-fragment="1"><span data-mce-fragment="1"><img src="https://images.macrumors.com/t/Fwe96oaWefPk2xAxljpgrmnW5vc=/1600x0/article-new/2023/09/macos-sonoma-presenter-overlay.jpg"></span></p>
+<p data-sourcepos="31:1-31:21" data-mce-fragment="1"><strong data-mce-fragment="1">Safari-funktioner</strong></p>
+<p data-sourcepos="33:1-33:73" data-mce-fragment="1"><span data-mce-fragment="1">macOS Sonoma innehåller också ett antal nya Safari-funktioner,</span><span data-mce-fragment="1"> inklusive:</span></p>
+<ul data-sourcepos="35:1-38:0" data-mce-fragment="1">
+<li data-sourcepos="35:1-35:178" data-mce-fragment="1">
+<strong data-mce-fragment="1">Pausable GIF-filer:</strong><span data-mce-fragment="1"> Du kan nu pausa GIF-filer genom att klicka på dem.</span><span data-mce-fragment="1"> Det här är ett bra sätt att undvika att behöva bläddra förbi GIF-filer som du inte är intresserad av.</span>
+</li>
+<li data-sourcepos="36:1-36:160" data-mce-fragment="1">
+<strong data-mce-fragment="1">Förbättrad textrendering:</strong><span data-mce-fragment="1"> Safari använder nu en ny textrenderingsmotor som gör att texten ser skarpare och mer läsbar ut,</span><span data-mce-fragment="1"> särskilt på högupplösta skärmar.</span>
+</li>
+<li data-sourcepos="37:1-38:0" data-mce-fragment="1">
+<strong data-mce-fragment="1">Webbapplikationer:</strong><span data-mce-fragment="1"> Du kan nu skapa webbappar från dina favoritwebbplatser.</span><span data-mce-fragment="1"> Det innebär att du kan öppna dessa webbplatser i ett separat fönster,</span><span data-mce-fragment="1"> precis som en vanlig app.<br><img src="https://images.macrumors.com/t/3LBA3FXvGWr3mhjgwPwb0EsYnj4=/1600x0/article-new/2023/09/macOS-Sonoma-Safari-Profiles.jpg" data-mce-fragment="1" data-mce-src="https://images.macrumors.com/t/3LBA3FXvGWr3mhjgwPwb0EsYnj4=/1600x0/article-new/2023/09/macOS-Sonoma-Safari-Profiles.jpg"><br></span>
+</li>
+</ul>
+<p data-sourcepos="39:1-39:41" data-mce-fragment="1"><strong data-mce-fragment="1">Förbättrade tillgänglighetsfunktioner</strong></p>
+<p data-sourcepos="41:1-41:81" data-mce-fragment="1"><span data-mce-fragment="1">macOS Sonoma innehåller också ett antal nya tillgänglighetsfunktioner,</span><span data-mce-fragment="1"> inklusive:</span></p>
+<ul data-sourcepos="43:1-47:94" data-mce-fragment="1">
+<li data-sourcepos="43:1-43:92" data-mce-fragment="1">
+<strong data-mce-fragment="1">Bättre autocorrect:</strong><span data-mce-fragment="1"> Autocorrect har förbättrats för att vara mer korrekt och pålitlig.</span>
+</li>
+<li data-sourcepos="44:1-44:187" data-mce-fragment="1">
+<strong data-mce-fragment="1">Pausable GIF-filer i Safari:</strong><span data-mce-fragment="1"> Du kan nu pausa GIF-filer genom att klicka på dem.</span><span data-mce-fragment="1"> Det här är ett bra sätt att undvika att behöva bläddra förbi GIF-filer som du inte är intresserad av.</span>
+</li>
+<li data-sourcepos="45:1-45:182" data-mce-fragment="1">
+<strong data-mce-fragment="1">Inget behov av att säga "hej" innan du ställer en fråga till Siri:</strong><span data-mce-fragment="1"> Du kan nu ställa frågor till Siri genom att helt enkelt säga "Siri".</span><span data-mce-fragment="1"> Du behöver inte längre säga "hej" först.</span>
+</li>
+<li data-sourcepos="46:1-46:157" data-mce-fragment="1">
+<strong class="animating" data-mce-fragment="1">Justerbar textstorlek i appar:</strong><span class="animating" data-mce-fragment="1"><span data-mce-fragment="1"> </span>Du kan nu justera textstorleken i vilken app som helst genom att gå till appen menyrad och välja "Visa" &gt; "Textstorlek".</span>
+</li>
+<li class="animating" data-sourcepos="47:1-47:94" data-mce-fragment="1">
+<strong class="animating" data-mce-fragment="1">Bättre text-till-tal i Live Speech:</strong><span class="animating" data-mce-fragment="1"><span data-mce-fragment="1"> </span>Live Speech har förbättrats för att vara mer korrekt<br><br><meta charset="utf-8">
+<strong class="animating" data-mce-fragment="1">Det här är bara några av de många nya funktionerna i macOS Sonoma. Se till att utforska det nya operativsystemet och se vad mer du kan hitta.</strong><br></span>
+</li>
+</ul>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://corder.se/blogs/nyheter/kopguide-for-apple-watch-series-9-vs-ultra-2</id>
+    <published>2023-11-06T23:33:09+01:00</published>
+    <updated>2023-11-06T23:33:10+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://corder.se/blogs/nyheter/kopguide-for-apple-watch-series-9-vs-ultra-2"/>
+    <title>Köpguide för Apple Watch Series 9 vs Ultra 2</title>
+    <author>
+      <name>Johan Studt</name>
+    </author>
+    <content type="html">
+      <![CDATA[<meta charset="utf-8">
+<p data-mce-fragment="1">Vid sitt evenemang "Wonderlust" 2023, vid sidan av Apple Watch Series 9, annonserade Apple Apple Watch Ultra 2. Apple Watch Ultra är en relativt ny typ av smartklocka från Apple med fokus på att klara extrema miljöer, en hög hållbarhetsnivå, förlängd batteritid och ytterligare funktioner för att underlätta aktiviteter som dykning och utforskning.</p>
+<p data-mce-fragment="1"><img src="https://images.macrumors.com/t/XPrSK7yuqyH18S4S6V2FG2JbuRM=/1600x0/article-new/2023/09/Apple-Watch-Series-9-vs-Ultra-2-Buyers-Guide.jpg" data-mce-src="https://images.macrumors.com/t/XPrSK7yuqyH18S4S6V2FG2JbuRM=/1600x0/article-new/2023/09/Apple-Watch-Series-9-vs-Ultra-2-Buyers-Guide.jpg"></p>
+<p data-mce-fragment="1"> </p>
+<p data-mce-fragment="1"><strong data-mce-fragment="1">Köpguide för Apple Watch Series 9 vs Ultra 2</strong> Både Apple Watch Series 9 och Apple Watch Ultra 2 har S9-chipet, en andra generationens Ultra Wideband-chip, en Always-On Retina-skärm, IP6X-dammtålighet och mer, men det finns betydande skillnader mellan de två enheterna.</p>
+<table data-mce-fragment="1">
+<thead data-mce-fragment="1">
+<tr data-mce-fragment="1">
+<th data-mce-fragment="1"><span style="color: #00aaff; background-color: #ffffff;" data-mce-style="color: #00aaff; background-color: #ffffff;">Egenskaper</span></th>
+<th data-mce-fragment="1"><span style="color: #00aaff;" data-mce-style="color: #00aaff;">Apple Watch Series 9</span></th>
+<th data-mce-fragment="1">Apple Watch Ultra (andra generationen)</th>
+</tr>
+</thead>
+<tbody data-mce-fragment="1">
+<tr data-mce-fragment="1">
+<td data-mce-fragment="1">Casing</td>
+<td data-mce-fragment="1">Aluminiumhölje</td>
+<td data-mce-fragment="1">Rymdskyddshölje</td>
+</tr>
+<tr data-mce-fragment="1">
+<td data-mce-fragment="1">Framkristall</td>
+<td data-mce-fragment="1">Kurvor vid kanterna på formad aluminiumhölje</td>
+<td data-mce-fragment="1">Lättare, korrosionsbeständigt skal med upphöjda kanter för att skydda platt safirkristall</td>
+</tr>
+<tr data-mce-fragment="1">
+<td data-mce-fragment="1">Digital Crown med haptisk feedback och sidoknapp</td>
+<td data-mce-fragment="1">Digital Crown med haptisk feedback, sidoknapp och anpassningsbar Action-knapp</td>
+<td data-mce-fragment="1"></td>
+</tr>
+<tr data-mce-fragment="1">
+<td data-mce-fragment="1">Storlek (vertikal)</td>
+<td data-mce-fragment="1">45 mm eller 41 mm</td>
+<td data-mce-fragment="1">49 mm kassstorlek (vertikal)</td>
+</tr>
+<tr data-mce-fragment="1">
+<td data-mce-fragment="1">Tjocklek</td>
+<td data-mce-fragment="1">10,7 mm</td>
+<td data-mce-fragment="1">14,4 mm</td>
+</tr>
+<tr data-mce-fragment="1">
+<td data-mce-fragment="1">Vikt</td>
+<td data-mce-fragment="1">31,9 gram till 51,5 gram</td>
+<td data-mce-fragment="1">61,4 gram</td>
+</tr>
+<tr data-mce-fragment="1">
+<td data-mce-fragment="1">Framglas</td>
+<td data-mce-fragment="1">Ion-X-framglas (aluminium) eller safirkristall (rostfritt stål)</td>
+<td data-mce-fragment="1">Safirkristallfrämglas</td>
+</tr>
+<tr data-mce-fragment="1">
+<td data-mce-fragment="1">Skärm</td>
+<td data-mce-fragment="1">Kurvad skärm med refraktiv kant</td>
+<td data-mce-fragment="1">Platt skärm</td>
+</tr>
+<tr data-mce-fragment="1">
+<td data-mce-fragment="1">Skärmområde</td>
+<td data-mce-fragment="1">904 kvadratmeter (41 mm) eller 1 143 kvadratmeter (45 mm)</td>
+<td data-mce-fragment="1">1164 kvadratmeter</td>
+</tr>
+<tr data-mce-fragment="1">
+<td data-mce-fragment="1">Upplösning</td>
+<td data-mce-fragment="1">352 x 430 pixlar (41 mm) eller 396 x 484 pixlar (45 mm)</td>
+<td data-mce-fragment="1">410 x 502 pixlar</td>
+</tr>
+<tr data-mce-fragment="1">
+<td data-mce-fragment="1">Max ljusstyrka</td>
+<td data-mce-fragment="1">Upp till 2 000 nits</td>
+<td data-mce-fragment="1">Upp till 3 000 nits</td>
+</tr>
+<tr data-mce-fragment="1">
+<td data-mce-fragment="1">Exklusiva Wayfinder- och Modular Ultra-ansikten</td>
+<td data-mce-fragment="1">Nattläge för låg synlighet</td>
+<td data-mce-fragment="1">Dubbla högtalare</td>
+</tr>
+<tr data-mce-fragment="1">
+<td data-mce-fragment="1">GPS (L1)</td>
+<td data-mce-fragment="1">Precision dubbelbands-GPS (L1 och L5)</td>
+<td data-mce-fragment="1">86-decibel sirensignal för att locka uppmärksamhet</td>
+</tr>
+<tr data-mce-fragment="1">
+<td data-mce-fragment="1">Vattentålighet</td>
+<td data-mce-fragment="1">Vattentålig upp till 50 meter</td>
+<td data-mce-fragment="1">Vattentålig upp till 100 meter, simning och rekreation upp till 40 meter</td>
+</tr>
+<tr data-mce-fragment="1">
+<td data-mce-fragment="1">Testad enligt MIL-STD 810H</td>
+<td data-mce-fragment="1">EN13319-certifiering</td>
+<td data-mce-fragment="1">Vattentemperatursensor, djupmätare och dykdatorapp</td>
+</tr>
+<tr data-mce-fragment="1">
+<td data-mce-fragment="1">Batteritid</td>
+<td data-mce-fragment="1">Upp till 18 timmar, upp till 36 timmar i läge med låg strömförbrukning</td>
+<td data-mce-fragment="1">Upp till 36 timmars batteritid, upp till 72 timmar i läge med låg strömförbrukning</td>
+</tr>
+<tr data-mce-fragment="1">
+<td data-mce-fragment="1">Färger (aluminium)</td>
+<td data-mce-fragment="1">Midnatt, Starlight, Silver, Rosa och PRODUCT(RED)</td>
+<td data-mce-fragment="1">Endast naturlig titanfinish</td>
+</tr>
+<tr data-mce-fragment="1">
+<td data-mce-fragment="1">Pris</td>
+<td data-mce-fragment="1">Börjar på $399 (aluminium) och $699 (rostfritt stål)</td>
+<td data-mce-fragment="1">Pris på $799</td>
+</tr>
+</tbody>
+</table>
+<p data-mce-fragment="1"> </p>
+<p data-mce-fragment="1">Apple Watch Ultra erbjuder specifika förmågor för att möta kraven för dem som behöver att deras Apple Watch ska ge hjälp i utmanande miljöer. Om du behöver en mer hållbar Apple Watch med funktioner som en ljusare skärm, högre högtalare, en pålitligare GPS, bättre vattentålighet med mera, är Apple Watch Ultra utan tvekan det bästa valet.</p>
+<p data-mce-fragment="1">Apple Watch Ultra är också den största och mest funktionsspäckade Apple Watch-alternativet som finns tillgängligt, för att inte tala om att det erbjuder den första verkliga omdesignen av enheten sedan dess introduktion 2015.</p>
+<p data-mce-fragment="1">För teknikentusiaster representerar Apple Watch Ultra ett sätt att få en ny Apple Watch-upplevelse med de bästa specifikationerna. Funktioner som längre batteritid och en större, ljusare skärm är också mycket tillgängliga och kommer att vara fördelaktiga för alla användare. Därför kan vissa kunder fortfarande vara benägna att välja Apple Watch Ultra 2 framför Apple Watch Series 9, även om de inte behöver den för användning i utmanande miljöer.</p>
+<p data-mce-fragment="1">Som den största Apple Watch-modellen hittills kan Apple Watch Ultras storlek vara för stor för alla. Om du redan föredrar 41 mm Apple Watch-kassstorlek kan Apple Watch Ultra vara alltför stor och klumpig för dig. Om du är osäker kan det vara värt att besöka en Apple Store och prova på Apple Watch Ultra personligen för att få känslan för storleken och avgöra om den är för stor och klumpig för dig.</p>
+<p data-mce-fragment="1">Likaså kan Apple Watch Ultras utseende inte tilltala vissa köpare. Om du föredrar Apple Watch i rostfritt stål och letar efter en mer modeinriktad smartklocka som passar bra med premiumband, kan Apple Watch Ultras mer aggressiva, tåliga design inte vara för dig.</p>
+<p data-mce-fragment="1">Om Apple Watch Ultra är utanför din prisklass men du fortfarande vill använda din Apple Watch i utmanande miljöer, är det värt att komma ihåg att Series 9 fortfarande erbjuder en hållbar design med en stark främre kristall, vattentålighet och många av Apple Watch Ultra 2 mjukvarufunktioner som markering av waypoints.</p>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://corder.se/blogs/nyheter/ios-17-allt-du-behover-veta</id>
+    <published>2023-11-06T23:20:01+01:00</published>
+    <updated>2023-11-06T23:22:39+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://corder.se/blogs/nyheter/ios-17-allt-du-behover-veta"/>
+    <title>iOS 17: Allt du behöver veta</title>
+    <author>
+      <name>Johan Studt</name>
+    </author>
+    <content type="html">
+      <![CDATA[<strong data-mce-fragment="1"><span data-mce-fragment="1">iOS 17,</span><span data-mce-fragment="1"> som släpptes i september 2023,</span><span data-mce-fragment="1"> är en stor uppdatering med många nya funktioner och förbättringar.</span><span data-mce-fragment="1"> I den här artikeln kommer vi att gå igenom alla de viktigaste funktionerna i iOS 17,</span><span data-mce-fragment="1"> så att du kan lära dig allt du behöver veta om den senaste versionen av Apples mobiloperativsystem.</span><img src="https://images.macrumors.com/t/8ImtosIcobvfnnpEolOC7Qe1HaA=/1600x0/article-new/2023/09/iOS-17-Ultimate-Guide-Feature-2.5.jpg"></strong><br><meta charset="utf-8">
+<p data-sourcepos="7:1-7:27" data-mce-fragment="1"> </p>
+<p data-sourcepos="7:1-7:27" data-mce-fragment="1"><strong data-mce-fragment="1">Nya funktioner i iOS 17</strong></p>
+<p data-sourcepos="9:1-9:56" data-mce-fragment="1"><span data-mce-fragment="1">Här är några av de viktigaste nya funktionerna i iOS 17:</span></p>
+<ul data-sourcepos="11:1-16:0" data-mce-fragment="1">
+<li data-sourcepos="11:1-11:187" data-mce-fragment="1">
+<strong data-mce-fragment="1">Standby:</strong><span data-mce-fragment="1"> En ny funktion som låter dig se viktig information på avstånd medan din iPhone laddas.</span><span data-mce-fragment="1"> Du kan till exempel se klockan,</span><span data-mce-fragment="1"> datumet,</span><span data-mce-fragment="1"> väderprognosen och dina senaste meddelanden.</span>
+</li>
+<li data-sourcepos="12:1-12:257" data-mce-fragment="1">
+<strong data-mce-fragment="1">Interaktiva widgetar:</strong><span data-mce-fragment="1"> Widgetar på hemskärmen,</span><span data-mce-fragment="1"> låsskärmen och Standby är nu ännu mer praktiska med interaktiva funktioner.</span><span data-mce-fragment="1"> Du kan till exempel bocka av en uppgift,</span><span data-mce-fragment="1"> styra belysningen i ditt hem eller spela upp ett nytt poddavsnitt direkt från en widget.</span>
+</li>
+<li data-sourcepos="13:1-13:131" data-mce-fragment="1">
+<strong data-mce-fragment="1">Kontaktaffischer:</strong><span data-mce-fragment="1"> En ny funktion som låter dig se mer information om en kontakt,</span><span data-mce-fragment="1"> till exempel deras foto,</span><span data-mce-fragment="1"> yrke och intressen.</span>
+</li>
+<li data-sourcepos="14:1-14:226" data-mce-fragment="1">
+<strong data-mce-fragment="1">Namedrop:</strong><span data-mce-fragment="1"> En ny funktion som gör det enkelt att hitta och dela kontaktinformation med andra.</span><span data-mce-fragment="1"> När du ser någons namn på en webbplats eller i en app kan du helt enkelt klicka på det för att lägga till dem i dina kontakter.</span>
+</li>
+<li data-sourcepos="15:1-16:0" data-mce-fragment="1">
+<strong data-mce-fragment="1">Varning för känsligt innehåll:</strong><span data-mce-fragment="1"> En ny funktion som ger dig suddiga känsliga bilder och videor innan du tittar på dem.</span>
+</li>
+</ul>
+<p><span data-mce-fragment="1"><img src="https://images.macrumors.com/t/46FErAZtx0taqPgkrrCUN-_3Ui8=/1600x0/article-new/2023/06/iOS-17-Lockscreen-Feature.jpg"></span></p>
+<p data-sourcepos="17:1-17:26" data-mce-fragment="1"><strong data-mce-fragment="1">Förbättringar i iOS 17</strong></p>
+<p data-sourcepos="19:1-19:101" data-mce-fragment="1"><span data-mce-fragment="1">Utöver de nya funktionerna har Apple också gjort en rad förbättringar i iOS 17.</span><span data-mce-fragment="1"> Här är några exempel:</span></p>
+<ul data-sourcepos="21:1-24:0" data-mce-fragment="1">
+<li data-sourcepos="21:1-21:83" data-mce-fragment="1">
+<strong data-mce-fragment="1">Förbättrad batteritid:</strong><span data-mce-fragment="1"> iOS 17 ska ge längre batteritid än tidigare versioner.</span>
+</li>
+<li data-sourcepos="22:1-22:85" data-mce-fragment="1">
+<strong data-mce-fragment="1">Bättre prestanda:</strong><span data-mce-fragment="1"> iOS 17 ska vara snabbare och smidigare än tidigare versioner.</span>
+</li>
+<li data-sourcepos="23:1-24:0" data-mce-fragment="1">
+<strong data-mce-fragment="1">Nya appar och funktioner från tredjepartsutvecklare:</strong><span data-mce-fragment="1"> Många tredjepartsutvecklare har uppdaterat sina appar med nya funktioner och förbättringar som är kompatibla med iOS 17.</span>
+</li>
+</ul>
+<p><span data-mce-fragment="1"><img src="https://images.macrumors.com/t/7EpsqlkI5ke5zVhc1T3CVIq85VE=/1600x0/article-new/2023/06/iOS-17-Safety-Feature.jpg"></span></p>
+<p data-sourcepos="25:1-25:34" data-mce-fragment="1"><strong data-mce-fragment="1">Hur man uppdaterar till iOS 17</strong></p>
+<p data-sourcepos="27:1-27:147" data-mce-fragment="1"><span data-mce-fragment="1">För att uppdatera till iOS 17 behöver du en iPhone 8 eller senare.</span><span data-mce-fragment="1"> Du kan uppdatera genom att gå till Inställningar &gt; Allmänt &gt; Programuppdatering.</span></p>
+<p data-sourcepos="29:1-29:18" data-mce-fragment="1"><strong data-mce-fragment="1">Sammanfattning</strong></p>
+<p data-sourcepos="31:1-31:192" data-mce-fragment="1"><span data-mce-fragment="1">iOS 17 är en stor uppdatering med många nya funktioner och förbättringar.</span><span data-mce-fragment="1"> Om du har en iPhone 8 eller senare är det värt att uppdatera till iOS 17 för att få tillgång till alla nya funktioner.</span></p>
+<p data-sourcepos="33:1-33:31" data-mce-fragment="1"><strong data-mce-fragment="1">Tips för att använda iOS 17</strong></p>
+<p data-sourcepos="35:1-35:41" data-mce-fragment="1"><span data-mce-fragment="1">Här är några tips för att använda iOS 17:</span></p>
+<ul data-sourcepos="37:1-40:0" data-mce-fragment="1">
+<li data-sourcepos="37:1-37:168" data-mce-fragment="1">
+<strong data-mce-fragment="1">Utforska de nya funktionerna:</strong><span data-mce-fragment="1"> Ta dig tid att utforska de nya funktionerna i iOS 17.</span><span data-mce-fragment="1"> Du kan hitta information om hur du använder dem i Apples supportdokumentation.</span>
+</li>
+<li data-sourcepos="38:1-38:114" data-mce-fragment="1">
+<strong data-mce-fragment="1">Anpassa din iPhone:</strong><span data-mce-fragment="1"> Du kan anpassa din iPhone genom att ändra bakgrundsbild,</span><span data-mce-fragment="1"> ikoner och andra inställningar.</span>
+</li>
+<li data-sourcepos="39:1-40:0" data-mce-fragment="1">
+<strong class="animating" data-mce-fragment="1">Installera appar från App Store:</strong><span class="animating" data-mce-fragment="1"><span data-mce-fragment="1"> </span>Det finns många appar och spel tillgängliga i App Store som kan göra din iPhone ännu mer användbar.</span>
+</li>
+</ul>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://corder.se/blogs/nyheter/apples-scary-fast-event-allt-du-behover-veta</id>
+    <published>2023-11-02T12:29:39+01:00</published>
+    <updated>2023-11-02T12:30:58+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://corder.se/blogs/nyheter/apples-scary-fast-event-allt-du-behover-veta"/>
+    <title>Apples Scary Fast Event - Allt du behöver veta</title>
+    <author>
+      <name>Johan Studt</name>
+    </author>
+    <summary type="html">
+      <![CDATA[<meta charset="utf-8">
+<p data-mce-fragment="1">Apple nyligen höll ett händelserikt evenemang, 'Scary Fast,' där de introducerade spännande nyheter inom teknikvärlden. Huvudattraktionen var de nya M3-chippen, som kommer att finnas i Apples senaste 24-tums iMac och MacBook Pro. Dessa chip har imponerande grafisk prestanda och en betydande ökning av batteritiden. Touch Bar har tagits bort från MacBook Pro, och den nya Space Black-färgen ger den en modern look.</p>
+<p data-mce-fragment="1">Den nya iMac-modellen erbjuder också M3-chip och kommer i olika färger, med en imponerande 4,5K retina-skärm och högkvalitativ FaceTime-kamera. Apple överraskade också genom att avslöja att hela evenemanget spelades in på en iPhone och redigerades på en Mac, vilket visar deras imponerande tekniska kapacitet.</p>
+<p data-mce-fragment="1">Sammanfattningsvis, Apples 'Scary Fast' evenemang presenterade spännande uppgraderingar och produkter. M3-chippen är betydande förbättringar från M1, vilket ger användarna kraftfulla och effektiva datorer för arbete och underhållning.</p><p><a class="read-more" href="https://corder.se/blogs/nyheter/apples-scary-fast-event-allt-du-behover-veta">Mer</a></p>]]>
+    </summary>
+    <content type="html">
+      <![CDATA[<h1><meta charset="utf-8"></h1>
+<h2>Apple höll nyligen ett evenemang med namnet 'Scary Fast', där de presenterade flera nya produkter.</h2>
+<h2><img src="https://techcrunch.com/wp-content/uploads/2023/10/Screenshot-2023-10-30-at-5.05.52-PM.png?resize=680,362" data-mce-src="https://techcrunch.com/wp-content/uploads/2023/10/Screenshot-2023-10-30-at-5.05.52-PM.png?resize=680,362"></h2>
+<h2>NYA M3-chip </h2>
+<p data-mce-fragment="1"><br>De nya M3-chippen var i fokus på evenemanget och kommer att finnas i Apples nya 24-tums iMac och MacBook Pro. Apple har betonat grafisk prestanda med hårdvaruaccelererad ray tracing, mesh shading och Dynamic Caching. Apple hävdar att M3 renderar 2,5 gånger snabbare än M1 och att dess CPU är 30% snabbare än M1.<br><br><strong>NYA MACBOOK PRO</strong></p>
+<p data-mce-fragment="1"> </p>
+<p data-mce-fragment="1"><strong><img src="https://techcrunch.com/wp-content/uploads/2023/10/Screenshot-2023-10-30-at-5.20.46-PM.png?resize=680,385" data-mce-src="https://techcrunch.com/wp-content/uploads/2023/10/Screenshot-2023-10-30-at-5.20.46-PM.png?resize=680,385"></strong></p>
+<p data-mce-fragment="1">De nya MacBook Pro-modellerna har uppgraderade interna komponenter och finns i storlekarna 14 och 16 tum. Den nya färgen på MacBook Pro är Space Black. Båda modellerna har M3-chip och en batteritid på 22 timmar på en enda laddning. Touch Bar har avlägsnats från MacBook Pro.<br><br><strong>NY M3 IMAC</strong></p>
+<p data-mce-fragment="1"><strong><img src="https://techcrunch.com/wp-content/uploads/2023/10/Screenshot-2023-10-30-at-5.28.21-PM.png?resize=680,381" data-mce-src="https://techcrunch.com/wp-content/uploads/2023/10/Screenshot-2023-10-30-at-5.28.21-PM.png?resize=680,381"></strong></p>
+<p data-mce-fragment="1">Den nya iMac-modellen har också M3-chip och finns i flera färger. Den har en 4,5K retina-skärm, 1080p FaceTime-kamera och ett sexhögtalarsystem som stöder Dolby Atmos och Spatial Audio. Apple avslöjade också att hela evenemanget spelades in på en iPhone och redigerades på en Mac. Hela evenemanget finns tillgängligt på Apples webbplats.</p>
+<p data-mce-fragment="1">Det nya M3-chippet är en stor uppdatering från M1-chipet. M3-chippet har en snabbare CPU och GPU, vilket gör att datorerna kan hantera mer krävande uppgifter. M3-chippet har också en bättre batteritid än M1-chipet.</p>
+<p data-mce-fragment="1">Den nya MacBook Pro-modellen har uppgraderade interna komponenter, inklusive M3-chippet. Den nya färgen på MacBook Pro är Space Black, vilket ger den en modern och elegant look. <br><br><strong>Hej då Touch Bar</strong><br><img src="https://techcrunch.com/wp-content/uploads/2016/10/tabs-safari-touch-bar.jpg?resize=680,380" data-mce-src="https://techcrunch.com/wp-content/uploads/2016/10/tabs-safari-touch-bar.jpg?resize=680,380" data-mce-fragment="1"><br>Touch Bar har avlägsnats från MacBook Pro, vilket kan vara en besvikelse för vissa användare som gillade funktionen.</p>
+<p data-mce-fragment="1">Den nya iMac-modellen har också M3-chip och finns i flera färger. Den har en 4,5K retina-skärm, 1080p FaceTime-kamera och ett sexhögtalarsystem som stöder Dolby Atmos och Spatial Audio. Den nya iMac-modellen är en stor uppdatering från den tidigare modellen och är perfekt för användare som behöver en kraftfull dator för arbete eller underhållning.</p>
+<p data-mce-fragment="1">Apple avslöjade också att hela evenemanget spelades in på en iPhone och redigerades på en Mac. Detta visar hur långt teknologin har utvecklats och Apples tekniska förmåga. Hela evenemanget finns tillgängligt på Apples webbplats för alla som vill titta på det igen eller för första gången.</p>
+<p data-mce-fragment="1">Sammanfattningsvis var Apples "Scary Fast" evenemang en stor framgång med flera spännande produktavslöjanden. De nya M3-chippen är en stor uppdatering från M1-chipet och ger datorerna mer kraft och bättre batteritid. Den nya MacBook Pro-modellen har en modern och elegant look med Space Black-färgen och den nya iMac-modellen är perfekt för användare som behöver en kraftfull dator för arbete eller underhållning<br><br><iframe width="560" height="315" src="https://www.youtube.com/embed/ctkW3V0Mh-k?si=sA952cace9SWzwUt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe></p>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://corder.se/blogs/nyheter/skarmskydd-varfor-alla-anvander-det-och-varfor-du-borde-gora-det-ocksa</id>
+    <published>2023-03-21T19:50:42+01:00</published>
+    <updated>2023-03-21T20:37:56+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://corder.se/blogs/nyheter/skarmskydd-varfor-alla-anvander-det-och-varfor-du-borde-gora-det-ocksa"/>
+    <title>Skärmskydd - varför alla använder det och varför du borde göra det också!</title>
+    <author>
+      <name>Johan Studt</name>
+    </author>
+    <content type="html">
+      <![CDATA[<p>Skärmskydd - Varför du behöver det och hur du väljer rätt!<br><br>Om du har en smartphone, surfplatta eller laptop så vet du hur viktig skärmen är för din upplevelse. Skärmen är det som visar dig all information, bilder och videor som du vill se. Men skärmen är också den del av din enhet som är mest utsatt för repor, smuts och stötar. Därför är det smart att skydda den med ett skärmskydd.<br><br>Ett skärmskydd eller displayskydd fungerar som en förstärkning av det befintliga glaset genom att det får en skyddande yta som tar reporna istället för att den riktiga mobilskärmen ska göra det. Många av skydden är tillverkade i tunt, härdat glas som knappt syns och har stor reptålighet. Ett skärmskydd kan också minska risken för sprickor i glaset om du tappar din enhet.<br><br>Men hur väljer man rätt skärmskydd för sin enhet? Det finns många olika typer av skärmskydd på marknaden, med olika egenskaper och priser. Här är några saker att tänka på när du ska köpa ett skärmskydd:<br><br><strong>Passform</strong>: Det är viktigt att skärmskyddet passar perfekt till din enhets modell och storlek. Ett för litet eller för stort skydd kan lämna delar av skärmen oskyddade eller hindra funktioner som kameror eller sensorer. Du kan hitta specifika skydd för olika märken och modeller på nätet eller i butik.</p>
+<p><br><strong>Material</strong>: Det vanligaste materialet för skärmskydd är härdat glas, men det finns också andra alternativ som plastfilm eller hybridmaterial. Härdat glas ger bäst skydd mot repor och stötar, men kan vara dyrare och tjockare än andra material. Plastfilm är billigare och tunnare, men mindre hållbart och mer svårapplicerat än glas. Hybridmaterial kombinerar egenskaperna hos både glas och plastfilm.</p>
+<p><br><strong>Funktioner</strong>: Beroende på vad du vill ha ut av ditt skärmskydd så kan du välja mellan olika funktioner som anti-reflex, anti-fingeravtryck, anti-bakteriell eller privacy-filter. Anti-reflex minskar bländning från solljus eller lampor på din skärm. Anti-fingeravtryck gör att din skärm inte blir smutsig av fett från dina fingrar. Anti-bakteriell hindrar bakterier från att växa på din skärm. Privacy-filter gör att bara du kan se vad som visas på din skärm från en viss vinkel</p>
+<p><strong>Applicering</strong>: När du har köpt ett skärmskydd så måste du applicera det på din enhet. Det kan vara lite klurigt att få det rätt, men om du följer några enkla steg så kan du lyckas. Först måste du rengöra din skärm noggrant med en mikrofiberduk eller en alkoholservett för att ta bort all smuts och fett. Sedan måste du pilla bort skyddsfilmen från skärmskyddets klistriga sida och centrera det mot skärmen. Du kan använda riktningsklistermärken eller telefonens knappar och håligheter för att hjälpa dig att placera skyddet rakt. Tryck sedan till skyddet för att klistret ska fästa ordentligt och använd rengöringsduken för att trycka ut eventuella luftbubblor mot närmaste kant.</p>
+<meta charset="utf-8">
+<p><span>Som du ser så finns det många fördelar med att använda ett skärmskydd för din enhet. Det kan förlänga livslängden på din skärm, förbättra din visuella upplevelse och spara dig pengar på reparationer. Men det är också viktigt att välja ett skärmskydd som passar dina behov och preferenser. Tänk på passformen, materialet och funktionerna när du ska köpa ett skärmskydd. Och glöm inte att applicera det rätt för att få bästa resultat.<br><br></span>Ni kan finna skärmskydd hos oss<strong> <a href="https://corder.se/products/skarmskydd-for-iphone-14-13-13-pro" title="Skärmskydd">här</a></strong>. </p>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://corder.se/blogs/nyheter/ryktena-om-iphone-15-vad-vi-vet-sa-har-langt</id>
+    <published>2023-03-17T23:34:12+01:00</published>
+    <updated>2023-03-17T23:34:33+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://corder.se/blogs/nyheter/ryktena-om-iphone-15-vad-vi-vet-sa-har-langt"/>
+    <title>Ryktena om iPhone 15: vad vi vet så här långt</title>
+    <author>
+      <name>Johan Studt</name>
+    </author>
+    <summary type="html">
+      <![CDATA[<meta charset="utf-8"><span>Rykten om iPhone 15 antyder att det kommer att finnas fyra modeller med samma storlek som iPhone 14, inklusive två 6,1-tums och två 6,7-tums modeller. Det förväntas att de bästa funktionerna kommer att finnas på iPhone 15 Pro-modellerna och att de vanliga modellerna får en uppgradering till A16-chipet. Enligt ryktena kommer iPhone 15 att ha en USB-C-port istället för Lightning och Dynamic Island kommer att vara tillgängligt för alla utom de vanliga modellerna. iPhone 15 Pro-modellerna kommer att stödja högre hastigheter för dataöverföringar med USB 3.2 eller Thunderbolt 3, vilket ger dem en fördel gentemot de vanliga modellerna. Priserna förväntas vara desamma som för iPhone 14-modellerna.</span><p><a class="read-more" href="https://corder.se/blogs/nyheter/ryktena-om-iphone-15-vad-vi-vet-sa-har-langt">Mer</a></p>]]>
+    </summary>
+    <content type="html">
+      <![CDATA[<meta charset="utf-8">
+<h1>Ryktena om iPhone 15: vad vi vet så här långt</h1>
+<p>Iphone 15 är fortfarande flera månader bort, men det är svårt för Apple att hålla hemligheter om iPhone-serien eftersom det finns så många olika leverantörer involverade, varav vissa läcker information. Vi förväntar oss totalt fyra iPhone 15-modeller i samma storlekar som iPhone 14-modellerna, inklusive två 6,1-tums iPhones och två 6,7-tums iPhones. En av de 6,1-tums iPhones kommer att vara standard iPhone 15, medan en av de 6,7-tums modellerna kommer att vara en iPhone 15 "Plus". De andra 6,1 och 6,7-tums iPhone-modellerna kommer att vara högre och mer dyra "Pro"-modeller.</p>
+<p>Som med iPhone 14-serien kommer de bästa funktionerna att reserveras för iPhone 15 Pro-modellerna för att motivera det extra priset.</p>
+<p>Ryktet säger att vi kan förvänta oss en USB-C-port istället för en Lightning-port på alla iPhone 15-modeller och att Dynamic Island kommer att finnas tillgängligt för iPhone 15 och iPhone 15 Plus, förutom iPhone 15 Pro och Pro Max. Det innebär att Apple kommer att göra sig av med det jack som det har använt sedan iPhone X för flaggskepps-iPhone-serien.</p>
+<p>Apple planerar att använda Qualcomm modemchip för de nya enheterna, eftersom dess egna modemchip som utvecklas inte är riktigt klara. De vanliga iPhone 15-modellerna får en uppgradering till A16-chipet som fanns i iPhone 14 Pro-modellerna, medan iPhone 15 Pro-modellerna använder snabbare och mer effektiva 3-nanometer A17-chips. Pro-modellerna kan få en uppgradering till titanskärmar och vissa mindre designförändringar med mer böjda enhetskantverktyg, och det förväntas också att iPhone 15 Pro Max får periskoplins-teknologi för förbättrade zoomförmågor.</p>
+<meta charset="utf-8">
+<p>De nya iPhone 15 Pro-modellerna med USB-C-portar kommer att stödja högre hastigheter för dataöverföringar, medan de vanliga iPhone 15-modellerna kommer att fortsätta ha USB 2.0-hastigheter, vilket är samma som för Lightning, vilket ger Pro-modellerna en fördel.</p>
+<p>Enligt Apple-analytikern Ming-Chi Kuo kommer iPhone 15 Pro-modellerna att stödja "minst" USB 3.2 eller Thunderbolt 3. Med uppgraderingen skulle iPhone 15 Pro-modellerna kunna överföra video och andra filtyper mycket snabbare. USB 2.0-överföringshastigheter är begränsade till 480 Mb/s, medan USB 3.2 stöder hastigheter upp till 20 Gb/s. Om Apple erbjuder stöd för Thunderbolt 3 för iPhone 15 Pro-modellerna, kan dataöverföringshastigheterna vara upp till 40 Gb/s.</p>
+<p>Priserna på iPhone 15-modellerna förväntas förbli desamma, med den vanliga instegsnivån på 6,1-tums enheten som börjar på 799 dollar och 6,7-tums iPhone 15 Plus som börjar på 899 dollar.</p>
+<p>Den här sammanställningen täcker allt vi har hört om iPhone 15.</p>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://corder.se/blogs/nyheter/10-saker-du-behover-veta-om-snabbladdning-och-dess-paverkan-pa-batteriet</id>
+    <published>2023-03-17T23:13:12+01:00</published>
+    <updated>2023-03-21T19:21:30+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://corder.se/blogs/nyheter/10-saker-du-behover-veta-om-snabbladdning-och-dess-paverkan-pa-batteriet"/>
+    <title>8 saker du behöver veta om snabbladdning och dess påverkan på batteriet</title>
+    <author>
+      <name>Johan Studt</name>
+    </author>
+    <summary type="html">
+      <![CDATA[<meta charset="utf-8"><span>I detta inlägg går vi igenom allt du behöver veta om snabbladdning på mobiltelefoner och dess påverkan på batteriet. Vi förklarar vad snabbladdning är och hur det fungerar samt hur det kan påverka batteriets livslängd. Vi ger också tips för att maximera batteriets livslängd med snabbladdning och hur man undviker överhettning som kan skada batteriet. </span><p><a class="read-more" href="https://corder.se/blogs/nyheter/10-saker-du-behover-veta-om-snabbladdning-och-dess-paverkan-pa-batteriet">Mer</a></p>]]>
+    </summary>
+    <content type="html">
+      <![CDATA[<meta charset="utf-8">
+<p>Snabbladdning är en teknik som revolutionerade laddningen av våra smartphones och andra mobila enheter. Istället för att vänta i timmar på att våra enheter ska laddas fullt, kan vi nu ladda upp dem på bara några minuter. Men vad är snabbladdning egentligen och hur fungerar det? Här är svaren på några av de vanligaste frågorna om snabbladdning.</p>
+<p><strong>Vad är snabbladdning?</strong></p>
+<p>Snabbladdning är en teknik som används för att ladda smartphones och andra mobila enheter mycket snabbare än traditionell laddning. Det innebär att en högre strömstyrka eller spänning levereras till enheten, vilket gör att den kan laddas snabbare.</p>
+<p><strong>Hur fungerar snabbladdning?</strong></p>
+<p>Snabbladdning fungerar genom att höja strömstyrkan eller spänningen som levereras till enheten. Detta gör att batteriet kan laddas snabbare utan att det tar skada. De flesta moderna smartphones har inbyggd snabbladdningsteknik och kan laddas upp till 50-60% på bara en halvtimme.</p>
+<p><strong>Vilka typer av snabbladdning finns det?</strong></p>
+<p>Det finns flera olika snabbladdningstekniker på marknaden idag, inklusive Qualcomm Quick Charge, USB Power Delivery, MediaTek Pump Express och OnePlus Dash Charge. Varje teknik använder olika metoder för att höja strömstyrkan eller spänningen som levereras till enheten.</p>
+<p><strong>Vad är fördelarna med snabbladdning?</strong></p>
+<p> Fördelen med snabbladdning är att du kan ladda din enhet mycket snabbare än med traditionell laddning. Det innebär att du kan ladda din enhet på några minuter istället för att behöva vänta flera timmar. Snabbladdning är särskilt användbart när du har bråttom och behöver använda din enhet snabbt.</p>
+<p><strong>Vilken typ av laddare bör jag använda för snabbladdning?</strong></p>
+<p>Det är viktigt att använda en laddare som är avsedd för din enhet och stöder snabbladdning. En felaktig laddare kan skada din enhet och även ditt batteri. Det är också viktigt att välja en laddare med rätt wattage rating för din enhet.</p>
+<p><strong>Vilken typ av batteri är bäst lämpad för snabbladdning?</strong></p>
+<p>Lithium-ion-batterier är den vanligaste batteritypen som används i smartphones och är också bäst lämpade för snabbladdning. Dessa batterier kan laddas snabbt utan att det tar skada.</p>
+<p><strong>Vilken påverkan kan snabbladdning ha på batteriet?</strong></p>
+<p>Snabbladdning kan ha en negativ påverkan på batteriets livslängd genom överhettning och andra problem. Men med rätt snabbladdningsteknik och laddare kan du minimera risken för skador på batteriet.</p>
+<p><strong>Hur kan jag undvika överhettning med snabbladdning?</strong> Du bör undvika att ladda din enhet i en miljö som är för varm eller för kall.</p>
+<meta charset="utf-8">
+<p>Tack för att du tog dig tid att läsa detta blogginlägg om snabbladdning av smartphones. Som du har lärt dig, kan snabbladdning vara en bekväm och tidsbesparande teknik för att ladda din enhet. Men det finns också potentiella nackdelar att ta hänsyn till, inklusive överhettning och skador på batteriet.</p>
+<p>Genom att välja rätt typ av laddare och undvika att ladda i för varma eller kalla miljöer kan du minimera risken för skador på din enhet och förbättra dess livslängd. Som alltid är det viktigt att läsa instruktionerna noggrant och följa rekommendationerna från tillverkaren för att få bästa möjliga prestanda från din enhet.</p>
+<p>Vi hoppas att detta blogginlägg har gett dig en bättre förståelse för snabbladdning av smartphones och att du nu känner dig bättre rustad att fatta beslut om hur du vill ladda din enhet. Om du har ytterligare frågor eller funderingar är du alltid välkommen att höra av dig till oss eller experter på området för ytterligare råd och tips.</p>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://corder.se/blogs/nyheter/10-tips-for-att-maximera-batteritiden-pa-din-mobil</id>
+    <published>2023-03-17T22:41:24+01:00</published>
+    <updated>2023-03-17T22:41:26+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://corder.se/blogs/nyheter/10-tips-for-att-maximera-batteritiden-pa-din-mobil"/>
+    <title>10 tips för att maximera batteritiden på din mobil</title>
+    <author>
+      <name>Johan Studt</name>
+    </author>
+    <summary type="html">
+      <![CDATA[<meta charset="utf-8"><span>Vill du öka batteritiden på din mobil och slippa ladda den hela tiden? Då har du kommit rätt! Vi har samlat 10 användbara tips för att förlänga batteritiden på din mobil. Lär dig hur du kan optimera inställningar, stänga av funktioner som drar mycket ström och välja rätt tillbehör för att hålla batteriet vid liv. Följ dessa enkla tips för att få ut det mesta av din mobil och slipp oroa dig för att batteriet ska ta slut mitt i dagen.</span><p><a class="read-more" href="https://corder.se/blogs/nyheter/10-tips-for-att-maximera-batteritiden-pa-din-mobil">Mer</a></p>]]>
+    </summary>
+    <content type="html">
+      <![CDATA[<meta charset="utf-8">
+<p>Att vara utan batteri på mobilen kan vara en mardröm för många av oss, särskilt när vi behöver den som mest. Men det finns saker du kan göra för att förlänga batteritiden på din mobil och undvika att stå utan ström i onödan.</p>
+<h3>Här är 10 enkla tips som hjälper dig att maximera batteritiden på din mobil:</h3>
+<ol>
+<li>
+<p>Sänk ljusstyrkan på skärmen: Ljusstyrkan på skärmen är en av de största energislukarna på din mobil. Genom att sänka ljusstyrkan kan du spara en hel del batteritid.</p>
+</li>
+<li>
+<p>Slå av vibrationsläget: Vibrationsläget kan också dra mycket batteri. Om du inte behöver det, stäng av det helt.</p>
+</li>
+<li>
+<p>Stäng av automatisk uppdatering: Automatiska uppdateringar på appar och program kan orsaka stora batteridräneringar. Stäng av denna funktion för att spara batteritid.</p>
+</li>
+<li>
+<p>Slå av Bluetooth och Wi-Fi när de inte används: Om du inte använder Bluetooth eller Wi-Fi, se till att de är avstängda. De söker annars hela tiden efter signaler och drar onödigt mycket batteri.</p>
+</li>
+<li>
+<p>Använd flygplansläget när du inte behöver anslutning: Om du inte behöver anslutning till nätet, använd flygplansläget för att spara på batteriet.</p>
+</li>
+<li>
+<p>Använd en svart bakgrundsbild: OLED-skärmar, som många mobiler har idag, förbrukar mindre energi när de visar svart. Genom att använda en svart bakgrundsbild kan du spara lite extra batteritid.</p>
+</li>
+<li>
+<p>Slå av push-notiser: Push-notiser för appar och e-postmeddelanden kan orsaka stora batteridräneringar. Stäng av dem för att spara batteritid.</p>
+</li>
+<li>
+<p>Använd enkel bakgrundsbild: En enkel bakgrundsbild som inte är för rörig kan hjälpa till att spara batteritid.</p>
+</li>
+<li>
+<p>Stäng av rörelseeffekter: Om du har rörelseeffekter påslagna på din mobil, som t.ex. parallaxeffekten, kan du spara lite batteritid genom att stänga av dem.</p>
+</li>
+<li>
+<p>Stäng av funktioner du inte använder: Om du har funktioner som du inte använder, som t.ex. NFC, se till att de är avstängda för att spara på batteritid.</p>
+</li>
+</ol>
+<p>Genom att följa dessa enkla tips kan du förlänga batteritiden på din mobil och undvika att stå utan ström när du behöver den som mest.</p>
+<p>Vill du ha ännu fler tips om hur du kan maximera batteritiden på din mobil? Kolla in vårt sortiment av mobiltillbehör på vår hemsida, där vi har allt från laddningskablar och batteripack till mobilskal och skärmskydd.</p>
+<p> </p>
+<p><strong>Källor: </strong></p>
+<meta charset="utf-8">
+<ol>
+<li>Apple - "Battery and Performance": <a href="https://www.apple.com/batteries/maximizing-performance/" target="_new">https://www.apple.com/batteries/maximizing-performance/</a>
+</li>
+<li>Android Central - "How to extend your Android phone's battery life": <a href="https://www.androidcentral.com/how-extend-your-android-phones-battery-life" target="_new">https://www.androidcentral.com/how-extend-your-android-phones-battery-life</a>
+</li>
+<li>Battery University - "How to Prolong Lithium-based Batteries": <a href="https://batteryuniversity.com/learn/article/how_to_prolong_lithium_based_batteries" target="_new">https://batteryuniversity.com/learn/article/how_to_prolong_lithium_based_batteries</a>
+</li>
+<li>Digital Trends - "Battery-saving tips for iOS and Android": <a href="https://www.digitaltrends.com/mobile/how-to-save-battery-life-on-your-iphone/" target="_new">https://www.digitaltrends.com/mobile/how-to-save-battery-life-on-your-iphone/</a>
+</li>
+<li>Tom's Guide - "How to Save Battery Life on Your Android Phone": <a href="https://www.tomsguide.com/us/save-battery-life-android,review-5415.html" target="_new">https://www.tomsguide.com/us/save-battery-life-android,review-5415.html</a>
+</li>
+<li>Wired - "5 Battery Myths You Probably Still Believe": <a href="https://www.wired.com/2016/06/5-battery-myths-probably-still-believe/" target="_new">https://www.wired.com/2016/06/5-battery-myths-probably-still-believe/</a>
+</li>
+<li>Battery University - "Why Lithium-ion Batteries Fail": <a href="https://batteryuniversity.com/learn/article/why_lithium_ion_batteries_fail" target="_new">https://batteryuniversity.com/learn/article/why_lithium_ion_batteries_fail</a>
+</li>
+<li>Popular Science - "10 phone battery myths debunked": <a href="https://www.popsci.com/10-phone-battery-myths-debunked/" target="_new">https://www.popsci.com/10-phone-battery-myths-debunked/</a>
+</li>
+</ol>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://corder.se/blogs/nyheter/satt-fart-pa-2023-med-dessa-3-mobiltillbehor-for-din-iphone</id>
+    <published>2023-03-15T23:13:57+01:00</published>
+    <updated>2023-03-15T23:13:57+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://corder.se/blogs/nyheter/satt-fart-pa-2023-med-dessa-3-mobiltillbehor-for-din-iphone"/>
+    <title>Sätt fart på 2023 med dessa 3 mobiltillbehör för din iPhone</title>
+    <author>
+      <name>Johan Studt</name>
+    </author>
+    <summary type="html">
+      <![CDATA[<meta charset="utf-8"><span>Bli redo att sätta fart på 2023 med dessa tre mobiltillbehör för din iPhone! Med det senaste och mest eftertraktade mobilskal på marknaden kan du skydda din telefon samtidigt som du uttrycker din personliga stil. En riktigt slitstark usb-kabel håller dig ansluten med en säker och pålitlig laddning, och med den ultimata laddningsadaptern kan du ladda din telefon snabbt och enkelt. Dessa tillbehör är oumbärliga för den moderna iPhone-användaren och kommer definitivt att göra 2023 till det bästa året hittills för din mobilupplevelse!</span><p><a class="read-more" href="https://corder.se/blogs/nyheter/satt-fart-pa-2023-med-dessa-3-mobiltillbehor-for-din-iphone">Mer</a></p>]]>
+    </summary>
+    <content type="html">
+      <![CDATA[<meta charset="utf-8">
+<div class="group w-full text-gray-800 dark:text-gray-100 border-b border-black/10 dark:border-gray-900/50 bg-gray-50 dark:bg-[#444654]">
+<div class="text-base gap-4 md:gap-6 md:max-w-2xl lg:max-w-2xl xl:max-w-3xl p-4 md:py-6 flex lg:px-0 m-auto">
+<div class="relative flex w-[calc(100%-50px)] flex-col gap-1 md:gap-3 lg:w-[calc(100%-115px)]">
+<div class="flex flex-grow flex-col gap-3">
+<div class="min-h-[20px] flex flex-col items-start gap-4 whitespace-pre-wrap">
+<div class="markdown prose w-full break-words dark:prose-invert dark">
+<meta charset="utf-8">
+<p>Våren är här och vad bättre sätt att börja den på än att ta hand om din iPhone? Vi har sammanställt en lista över de tre bästa mobiltillbehören som du behöver för att sätta fart på våren 2023.</p>
+<ol>
+<li>Mobilskal</li>
+</ol>
+<p>Ett mobilskal är ett av de viktigaste tillbehören du kan ha till din iPhone. Det skyddar inte bara din telefon från repor och skador, utan ger också extra grepp så att du kan hålla fast din telefon säkert. Idag finns det många olika typer av mobilskal på marknaden, från tunt och minimalistiskt till robust och skyddande. Vilken typ du väljer beror på din livsstil och dina behov. Hos oss hittar du ett stort urval av mobilskal för olika modeller av iPhone. </p>
+<ol start="2">
+<li>USB-kabel</li>
+</ol>
+<p>En pålitlig USB-kabel är oumbärlig för att ladda och synka din iPhone. Numera finns det USB-kablar som är riktigt slitstarka och smidiga, vilket gör det möjligt för dig att enkelt ta med dig dem överallt. Med en lång kabel kan du också ladda din iPhone medan du använder den utan att behöva sitta alldeles intill ett eluttag. Vi har ett brett utbud av USB-kablar för din iPhone tillgängliga i vår butik.</p>
+<ol start="3">
+<li>Skärmskydd</li>
+</ol>
+<p>Ett skärmskydd skyddar din iPhone från repor och sprickor på skärmen. Skärmskydd finns i många olika material, inklusive plast och härdat glas. Härdat glas är den mest populära typen av skärmskydd på grund av dess hållbarhet och tålighet. Detta tillbehör är lätt att applicera och kan också hjälpa till att minska mängden fingeravtryck på din skärm. Vi har ett stort utbud av skärmskydd för din iPhone i olika material och modeller.</p>
+<meta charset="utf-8">
+<p>Här är en lista med länkar till våra tre oumbärliga mobiltillbehör för 2023 på corder.se:</p>
+<ol>
+<li>Mobilskal: <a href="https://corder.se/collections/mobilskal" target="_new">https://corder.se/collections/mobilskal</a>
+</li>
+<li>Kablar: <a href="https://corder.se/collections/kablar" target="_new">https://corder.se/collections/kablar</a>
+</li>
+<li>Skärmskydd för iPhone 14, 13, 13 Pro: <a href="https://corder.se/products/skarmskydd-for-iphone-14-13-13-pro" target="_new">https://corder.se/products/skarmskydd-for-iphone-14-13-13-pro</a>
+</li>
+</ol>
+<p>Besök vår hemsida och upplev mobilupplevelsen på ett helt nytt sätt!</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://corder.se/blogs/nyheter/silikon-vs-tpu-vilket-mobilskal-ger-bast-skydd</id>
+    <published>2023-03-15T22:26:03+01:00</published>
+    <updated>2023-03-15T22:37:22+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://corder.se/blogs/nyheter/silikon-vs-tpu-vilket-mobilskal-ger-bast-skydd"/>
+    <title>Silikon vs TPU: Vilket mobilskal ger bäst skydd?</title>
+    <author>
+      <name>Johan Studt</name>
+    </author>
+    <summary type="html">
+      <![CDATA[<meta charset="utf-8"><span>I detta blogginlägg jämför vi två vanliga typer av mobilskal: Silikonskal och TPU-skal. Silikonskal är mjuka, flexibla och finns i många färger och mönster. De ger ett mjukt grepp och skyddar mot stötar och repor. Nackdelen är att de kan dra till sig damm och smuts. TPU-skal är gjorda av en blandning av plast och gummi, är starkare och ger bättre skydd mot stötar och repor än silikonskal. De är mindre benägna att dra till sig damm och smuts, men kan vara något dyrare och tyngre än silikonskal. Vilket skal du väljer beror på dina personliga preferenser och behov, men båda ger bra skydd för din mobiltelefon.</span><p><a class="read-more" href="https://corder.se/blogs/nyheter/silikon-vs-tpu-vilket-mobilskal-ger-bast-skydd">Mer</a></p>]]>
+    </summary>
+    <content type="html">
+      <![CDATA[<meta charset="utf-8">
+<p>Mobilskal är ett viktigt tillbehör till din smartphone som skyddar den mot skador och slitage. Det finns många olika typer av mobilskal att välja mellan, men två av de vanligaste är silikonskal och TPU-skal. Båda materialen är populära på grund av deras flexibilitet och skyddande egenskaper, men det finns några skillnader mellan dem.</p>
+<p>Silikonskal är tillverkade av mjuka och flexibla silikonmaterial som är lätta att applicera och ta bort från din telefon. De är oftast väldigt tunna och ger ett mjukt och behagligt grepp, samtidigt som de skyddar mot stötar och repor. Silikonskal finns i en mängd olika färger och mönster, vilket gör dem till ett populärt val för dem som vill ha en personlig touch på sin telefon. Nackdelen med silikonskal är att de kan dra till sig damm och smuts, vilket kan vara svårt att rengöra.</p>
+<meta charset="utf-8">
+<h3><strong>Fördelar med silikonskal: </strong></h3>
+<ul>
+<li>Ger ett mjukt och behagligt grepp.</li>
+<li>Finns i en mängd olika färger och mönster.</li>
+<li>Lätt att applicera och ta bort från telefonen.</li>
+<li>Skyddar mot stötar och repor.</li>
+<li>Passar bra för dem som vill ha en personlig touch på sin telefon.</li>
+</ul>
+<h3><strong>Nackdelar med silikonskal: </strong></h3>
+<ul>
+<li>Kan dra till sig damm och smuts, vilket kan vara svårt att rengöra.</li>
+<li>Kan bli missfärgade eller tappa formen över tid.</li>
+<li>Ger inte lika hållbart skydd som TPU-skal.</li>
+</ul>
+<p>TPU-skal är tillverkade av termoplastiskt polyuretan, som är en blandning av plast och gummi. TPU är ett starkt och tåligt material som är mycket effektivt för att skydda din telefon mot stötar och repor. TPU-skal är vanligtvis lite tjockare än silikonskal och ger ett fastare grepp, vilket gör dem till ett bra val för dem som vill ha en bättre kontroll över sin telefon. TPU-skal är också mindre benägna att dra till sig damm och smuts, vilket gör dem lättare att rengöra.</p>
+<meta charset="utf-8">
+<h3><strong>Fördelar med TPU-skal: </strong></h3>
+<ul>
+<li>Ger ett fastare grepp och bättre kontroll över telefonen.</li>
+<li>Starkt och tåligt material som ger bättre skydd mot stötar och repor.</li>
+<li>Mindre benägna att dra till sig damm och smuts, vilket gör dem lättare att rengöra.</li>
+<li>Passar bra för dem som vill ha ett skal som håller länge och ger bättre skydd.</li>
+</ul>
+<h3><strong>Nackdelar med TPU-skal: </strong></h3>
+<ul>
+<li>TPU-skal kan vara något dyrare än silikonskal.</li>
+<li>Kan vara något tyngre och mindre flexibla än silikonskal.</li>
+<li>Mindre färg- och mönsteralternativ än silikonskal.</li>
+</ul>
+<p>Så vilket skal är bäst? Det beror på dina personliga preferenser och behov. Om du vill ha ett skal som ger ett mjukt grepp och en personlig touch på din telefon är silikonskal ett bra val. Om du vill ha ett starkt och tåligt skal som ger bättre kontroll och skydd mot stötar och repor är TPU-skal det bättre alternativet. Oavsett vilket skal du väljer är det viktigt att ha ett som passar din telefon och ger det skydd du behöver för att hålla din telefon i bästa skick.</p>]]>
+    </content>
+  </entry>
+</feed>

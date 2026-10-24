@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Corder – Mobiltillbehör designade i Sverige</title>
+<meta name="description" content="Corder gör TPU-skal, laddare och kablar för iPhone. Designat och utvecklat i Sverige sedan 2019. Finns hos återförsäljare i södra Sverige.">
+<link rel="canonical" href="https://corder.se/">
+<meta name="theme-color" content="#2d2c2f">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Corder">
+<meta property="og:locale" content="sv_SE">
+<meta property="og:title" content="Corder – Mobiltillbehör designade i Sverige">
+<meta property="og:description" content="TPU-skal, laddare och kablar för iPhone. Designat och utvecklat i Sverige sedan 2019.">
+<meta property="og:url" content="https://corder.se/">
+<meta property="og:image" content="https://corder.se/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/fonts/inter-tight-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="img/hero-18pro.webp" as="image" media="(min-width: 901px)">
+<link rel="stylesheet" href="/assets/fonts.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://corder.se/#org", "name": "Corder", "legalName": "Corder Group AB", "url": "https://corder.se/", "logo": "https://corder.se/assets/ikon-512.png", "foundingDate": "2019", "taxID": "559227-0226", "address": {"@type": "PostalAddress", "addressLocality": "Kungsbacka", "addressCountry": "SE"}, "email": "sales@corder.se", "sameAs": ["https://www.instagram.com/corderofficial", "https://www.tiktok.com/@corderofficial", "https://www.facebook.com/cordergroup"]}, {"@type": "WebSite", "@id": "https://corder.se/#site", "url": "https://corder.se/", "name": "Corder", "inLanguage": "sv", "publisher": {"@id": "https://corder.se/#org"}}]}</script>
+<style>
+  :root {
+    --ink: #111111;
+    --muted: #6e6e6e;
+    --faint: #c9c9c9;
+    --line: #e7e7e7;
+    --paper: #ffffff;
+    --stone: #3b3c40;
+    --night: #0b0b0b;
+    --night-line: #262626;
+    --night-muted: #8a8a8a;
+    --max: 1440px;
+    --gutter: clamp(16px, 4vw, 56px);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 "Inter Tight", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; height: auto; display: block; }
+  h1, h2, h3 { font-weight: 300; letter-spacing: -.025em; line-height: 1.05; margin: 0; }
+  p { margin: 0 0 1em; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+  .caps { font-size: .72rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; }
+
+  /* Header + flytande produktkort */
+  .top { position: fixed; inset: 0 0 auto 0; z-index: 60; display: flex; justify-content: space-between; align-items: flex-start; padding: 22px var(--gutter); pointer-events: none; color: #fff; transition: color .3s; }
+  .top.on-light { color: var(--ink); }
+  .top > * { pointer-events: auto; }
+  .brand-nav { display: flex; gap: clamp(28px, 6vw, 96px); align-items: baseline; }
+  .logo { font: 400 1.65rem/1 Jost, sans-serif; letter-spacing: .03em; }
+  .brand-nav ul { display: flex; gap: clamp(24px, 5vw, 80px); list-style: none; margin: 0; padding: 0; font-size: .85rem; font-weight: 500; }
+  .brand-nav ul a { opacity: .9; }
+  .brand-nav ul a:hover { opacity: .55; }
+  .card { background: #fff; color: var(--ink); border-radius: 8px; width: min(540px, 40vw); padding: 12px 12px 0; box-shadow: 0 10px 40px rgba(0,0,0,.08); }
+  .card-row { display: grid; grid-template-columns: 36px 1fr auto auto; gap: 18px; align-items: center; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .card-mark { width: 26px; height: 26px; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center; font: 400 15px/1 Jost, sans-serif; }
+  .card-meta { font-size: .8rem; color: var(--muted); line-height: 1.35; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; background: var(--ink); color: #fff; border-radius: 4px; padding: 11px 22px; font-size: .85rem; font-weight: 500; transition: opacity .2s; white-space: nowrap; }
+  .btn:hover { opacity: .8; }
+  .card-sub { display: flex; justify-content: space-between; align-items: center; padding: 12px 6px 14px; }
+  .card-sub b { font-weight: 400; font-size: 1.15rem; }
+  .card-sub nav { display: flex; gap: 40px; font-size: .82rem; }
+  .card-sub nav a:hover { color: var(--muted); }
+  @media (max-width: 900px) {
+    .brand-nav ul { display: none; }
+    .card { position: fixed; left: 12px; right: 12px; bottom: 12px; width: auto; padding: 10px; }
+    .card-row { grid-template-columns: 30px 1fr auto; border: 0; padding: 0; }
+    .card-row .card-meta:nth-of-type(3), .card-sub { display: none; }
+  }
+
+  /* Hero */
+  .hero { position: relative; height: 160vh; background: #2d2c2f; color: #fff; }
+  .hero-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; align-items: center; padding: 0 var(--gutter); }
+  .hero-photo { position: absolute; inset: 0; }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%; transform: scale(calc(1.06 - var(--p, 0) * .06)) translateY(calc(var(--p, 0) * -2%)); transform-origin: 70% 40%; will-change: transform; }
+  .hero h1 { position: relative; font-size: clamp(2.4rem, 4.4vw, 4rem); max-width: 9.5em; transform: translateY(calc(var(--p, 0) * -40px)); opacity: calc(1 - var(--p, 0) * 1.6); }
+  .hero-foot { position: absolute; left: var(--gutter); bottom: 32px; max-width: 360px; color: rgba(255,255,255,.62); }
+  .hero-foot .caps { color: #fff; display: block; margin-bottom: 6px; }
+  @media (min-width: 901px) and (max-width: 1400px) {
+    .hero-stage { align-items: flex-start; padding-top: 22vh; }
+    .hero-photo img { object-position: 100% 50%; }
+    .hero h1 { font-size: clamp(2.2rem, 3.4vw, 3rem); }
+  }
+  /* Nästan kvadratiska fönster: fotot täcker bara högra delen och tonas in */
+  @media (min-width: 901px) and (max-aspect-ratio: 8/5) {
+    .hero-photo { left: 34%; -webkit-mask-image: linear-gradient(to right, transparent, #000 22%); mask-image: linear-gradient(to right, transparent, #000 22%); }
+    .hero-photo img { object-position: 78% 50%; }
+  }
+  @media (max-width: 900px) {
+    .hero { height: auto; background: #3b3b3f; }
+    .hero-stage { position: relative; height: auto; flex-direction: column; align-items: stretch; padding: 120px 0 0; }
+    .hero h1 { order: -1; padding: 0 var(--gutter); margin-bottom: 8px; transform: none; opacity: 1; }
+    .hero-photo { position: relative; }
+    .hero-photo img { height: auto; transform: none; }
+    .hero-foot { display: none; }
+  }
+
+  /* Intro med ord som tänds vid scroll */
+  .intro { padding: clamp(120px, 18vw, 240px) 0 clamp(100px, 14vw, 200px); }
+  .intro .wrap { max-width: 1240px; }
+  .reveal { font-size: clamp(2rem, 4.6vw, 4.3rem); font-weight: 300; letter-spacing: -.03em; line-height: 1.12; margin: 0; }
+  .reveal .w { color: var(--faint); transition: color .25s; }
+  .reveal .w.lit { color: var(--ink); }
+  .thumb { position: relative; display: inline-block; width: 1.05em; height: .95em; vertical-align: -.14em; margin: 0 .08em; background: #f3f3f1; border: 1px solid var(--line); border-radius: .12em; box-shadow: 0 4px 16px rgba(0,0,0,.05); }
+  .thumb img { position: absolute; inset: 12%; width: 76%; height: 76%; object-fit: contain; }
+  .intro-sub { margin-top: 56px; font-size: clamp(1.15rem, 2vw, 1.8rem); font-weight: 300; color: var(--muted); }
+  .intro-sub b { font-weight: 400; color: var(--ink); }
+
+  /* Mörk sektion: design + färger */
+  .night { background: var(--night); color: #fff; }
+  .design { display: grid; grid-template-columns: minmax(260px, 1fr) 1.4fr; gap: var(--gutter); align-items: center; min-height: 100vh; padding: 120px 0 80px; position: relative; }
+  .design h2 { font-size: clamp(2rem, 3vw, 2.6rem); margin-bottom: 26px; }
+  .design p { color: var(--night-muted); max-width: 340px; }
+  .dots { display: flex; gap: 12px; margin-top: 36px; }
+  .dot { width: 38px; height: 38px; border-radius: 50%; border: 0; cursor: pointer; outline: 1.5px solid transparent; outline-offset: 4px; transition: outline-color .2s; }
+  .dot[aria-pressed="true"] { outline-color: rgba(255,255,255,.75); }
+  .dot-name { margin-top: 16px; font-size: .85rem; color: var(--night-muted); }
+  .design-stage { position: relative; height: min(84vh, 820px); display: grid; place-items: center; }
+  .design-stage img { position: absolute; height: 100%; width: auto; transition: opacity .5s, transform .7s cubic-bezier(.2,.7,.2,1); filter: drop-shadow(0 50px 70px rgba(0,0,0,.7)); }
+  .design-stage img.out { opacity: 0; transform: translateY(18px) rotate(-2deg); }
+  .design-cap { position: absolute; left: 22%; bottom: 0; max-width: 380px; color: var(--night-muted); }
+  .design-cap .caps { color: #fff; display: block; margin-bottom: 6px; }
+  @media (max-width: 900px) {
+    .design { grid-template-columns: 1fr; min-height: 0; }
+    .design-stage { height: 60vh; }
+    .design-cap { position: static; margin-top: 24px; }
+  }
+
+  /* Spec-blad */
+  .specs { padding: 40px 0 clamp(100px, 12vw, 180px); }
+  .specs-head { display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid var(--night-line); padding-top: 64px; margin-bottom: 64px; gap: 24px; }
+  .specs-head h2 { font-size: clamp(2.6rem, 5vw, 4.4rem); }
+  .stats { display: flex; gap: 0; border: 1px solid var(--night-line); border-radius: 6px; }
+  .stat { padding: 14px 26px; text-align: center; border-left: 1px solid var(--night-line); }
+  .stat:first-child { border-left: 0; }
+  .stat b { display: block; font-size: 1.7rem; font-weight: 300; line-height: 1.1; }
+  .stat span { font-size: .7rem; color: var(--night-muted); }
+  .spec-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 72px var(--gutter); }
+  .spec { display: grid; grid-template-columns: 1fr 120px; gap: 28px; align-items: start; }
+  .spec h3 { font-size: 1.35rem; font-weight: 400; margin-bottom: 18px; }
+  .spec dl { margin: 0; font-size: .8rem; }
+  .spec dl div { display: flex; justify-content: space-between; gap: 16px; padding: 9px 0; border-bottom: 1px solid var(--night-line); }
+  .spec dt { color: var(--night-muted); }
+  .spec dd { margin: 0; text-align: right; }
+  .spec-img { height: 150px; display: grid; place-items: center; }
+  .spec-img img { max-height: 100%; width: auto; }
+  @media (max-width: 900px) {
+    .spec-grid { grid-template-columns: 1fr; }
+    .specs-head { flex-direction: column; align-items: flex-start; }
+    .spec { grid-template-columns: 1fr 72px; }
+    .spec-img { height: 96px; }
+  }
+
+  /* Guider */
+  .guides { padding: clamp(100px, 12vw, 180px) 0; }
+  .guides-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; gap: 24px; }
+  .guides-head h2 { font-size: clamp(2.6rem, 5vw, 4.4rem); }
+  .guides-head p { color: var(--muted); max-width: 340px; margin: 0; }
+  .guide { display: grid; grid-template-columns: 160px 1fr 40px; gap: 24px; align-items: baseline; padding: 26px 0; border-top: 1px solid var(--line); }
+  .guide:last-child { border-bottom: 1px solid var(--line); }
+  .guide .caps { color: var(--muted); }
+  .guide h3 { font-size: clamp(1.3rem, 2.4vw, 2rem); transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+  .guide .arrow { justify-self: end; transition: transform .35s; }
+  .guide:hover h3 { transform: translateX(12px); }
+  .guide:hover .arrow { transform: translateX(6px); }
+  @media (max-width: 700px) { .guide { grid-template-columns: 1fr 24px; } .guide .caps { grid-column: 1 / -1; } .guides-head { flex-direction: column; align-items: flex-start; } }
+
+  /* Återförsäljare */
+  .retail { background: #ececea; padding: clamp(100px, 12vw, 180px) 0; }
+  .retail .wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: var(--gutter); align-items: end; }
+  .retail h2 { font-size: clamp(2.6rem, 6vw, 5.6rem); }
+  .retail-card { background: #fff; border-radius: 8px; padding: 28px; }
+  .retail-card p { color: var(--muted); }
+  .retail-card ul { list-style: none; padding: 0; margin: 0 0 24px; font-size: .9rem; }
+  .retail-card li { padding: 10px 0; border-bottom: 1px solid var(--line); }
+  @media (max-width: 900px) { .retail .wrap { grid-template-columns: 1fr; } }
+
+  /* Footer */
+  footer { background: var(--stone); color: #fff; padding: 72px 0 120px; }
+  .foot { display: grid; grid-template-columns: 1.2fr repeat(3, 1fr); gap: 32px; }
+  .foot h4 { font-size: .85rem; font-weight: 500; margin: 0 0 14px; }
+  .foot ul { list-style: none; margin: 0; padding: 0; font-size: .85rem; }
+  .foot li { padding: 4px 0; color: rgba(255,255,255,.6); }
+  .foot li a:hover { color: #fff; }
+  .foot-base { margin-top: 72px; font-size: .78rem; color: rgba(255,255,255,.5); }
+  @media (max-width: 700px) { .foot { grid-template-columns: 1fr 1fr; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .hero { height: 100vh; }
+    .hero h1, .hero-photo img { transform: none !important; opacity: 1 !important; }
+    .reveal .w { color: var(--ink); }
+  }
+  /* Tillgänglighet och sidbyten */
+  @view-transition { navigation: auto; }
+  .skip { position: absolute; left: 12px; top: -60px; z-index: 100; background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 6px; font-size: .9rem; transition: top .2s; }
+  .skip:focus { top: 12px; }
+  #innehall:focus { outline: none; }
+  :focus-visible { outline: 2px solid #4a8cff; outline-offset: 3px; border-radius: 4px; }
+  .dot:focus-visible { outline-color: #fff; outline-offset: 4px; border-radius: 50%; }
+
+  /* Butiker */
+  .stores { padding: clamp(100px, 12vw, 180px) 0; }
+  .stores-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 48px; flex-wrap: wrap; }
+  .stores-head h2 { font-size: clamp(2.6rem, 5vw, 4.4rem); }
+  .stores-head p { color: var(--muted); max-width: 360px; margin: 0; }
+  .store-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 16px; }
+  .store { border: 1px solid var(--line); border-radius: 12px; padding: 26px; display: flex; flex-direction: column; gap: 6px; transition: border-color .2s; }
+  .store:hover { border-color: var(--ink); }
+  .store .caps { color: var(--muted); }
+  .store h3 { font-size: 1.6rem; }
+  .store a { margin-top: 14px; font-size: .9rem; font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
+  .store.tip { background: #f4f4f2; border-color: transparent; }
+
+</style>
+</head>
+<body>
+<a class="skip" href="#innehall">Hoppa till innehållet</a>
+
+<div class="top" id="top">
+  <div class="brand-nav">
+    <a href="#" class="logo" aria-label="Corder startsida">corder</a>
+    <ul>
+      <li><a href="#sortiment">Sortiment</a></li>
+      <li><a href="#butiker">Butiker</a></li>
+      <li><a href="#aterforsaljare">Företag</a></li>
+      <li><a href="#guider">Resurser</a></li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-row">
+      <span class="card-mark">c</span>
+      <span class="card-meta">Corder TPU-skal<br>iPhone 14–18</span>
+      <span class="card-meta">5 färger<br>Est. 2019</span>
+      <a href="#butiker" class="btn">Hitta butik</a>
+    </div>
+    <div class="card-sub">
+      <b>TPU-skal</b>
+      <nav><a href="#design">Översikt</a><a href="#sortiment">Sortiment</a></nav>
+    </div>
+  </div>
+</div>
+
+<section class="hero" id="hero" data-theme="dark">
+  <div class="hero-stage">
+    <picture class="hero-photo">
+      <source media="(max-width: 900px)" srcset="img/hero-18pro-mobil.webp" width="900" height="1022">
+      <img src="img/hero-18pro.webp" alt="En hand håller en iPhone 18 Pro i Corders skogsgröna TPU-skal" width="2400" height="1340">
+    </picture>
+    <h1>Bra mobiltillbehör. Ännu bättre priser.</h1>
+    <div class="hero-foot"><span class="caps">Designat i Sverige.</span>Skal, laddare och kablar för iPhone sedan 2019.</div>
+  </div>
+</section>
+
+<section class="intro" id="innehall" tabindex="-1" data-theme="light">
+  <div class="wrap">
+    <p class="reveal" id="reveal">Corder gör skal&nbsp;<span class="thumb"><img src="img/cut/16p-pink.webp" alt=""></span>, laddare&nbsp;<span class="thumb"><img src="img/cut/laddare-20w.webp" alt=""></span> och kablar&nbsp;<span class="thumb"><img src="img/cut/kabel-c-lightning.webp" alt=""></span> för iPhone. Med låga marginaler, så att bra tillbehör blir tillgängliga för fler.</p>
+    <p class="intro-sub">Och de finns i <b>butiker runt om i södra Sverige.</b></p>
+  </div>
+</section>
+
+<section class="night" id="design" data-theme="dark">
+  <div class="wrap design">
+    <div>
+      <h2>Ett skal.<br>Fem färger.</h2>
+      <p>TPU-skal till allt från iPhone 14 till iPhone 18 Pro. Samma enkla form till varje modell.</p>
+      <div class="dots" role="group" aria-label="Välj färg">
+        <button class="dot" style="background:#3d5143" data-img="17p-skogsgron" data-name="Skogsgrön" data-model="iPhone 17 Pro" aria-pressed="true" aria-label="Skogsgrön"></button>
+        <button class="dot" style="background:#4a6684" data-img="16p-blue" data-name="Blå" aria-pressed="false" aria-label="Blå"></button>
+        <button class="dot" style="background:#1c1c1c;box-shadow:inset 0 0 0 1px #444" data-img="16p-black" data-name="Svart" aria-pressed="false" aria-label="Svart"></button>
+        <button class="dot" style="background:#f5a493" data-img="16p-pink" data-name="Rosa" aria-pressed="false" aria-label="Rosa"></button>
+        <button class="dot" style="background:#b9bdf0" data-img="16p-purple" data-name="Lila" aria-pressed="false" aria-label="Lila"></button>
+      </div>
+      <div class="dot-name" id="dot-name">Skogsgrön · iPhone 17 Pro</div>
+    </div>
+    <div class="design-stage" id="stage">
+      <img src="img/cut/17p-skogsgron.webp" alt="Corder TPU-skal i vald färg" width="511" height="1020">
+    </div>
+    <div class="design-cap"><span class="caps">Est. 2019.</span>Designed and developed in Sweden, präglat på baksidan av varje skal.</div>
+  </div>
+
+  <div class="wrap specs" id="sortiment">
+    <div class="specs-head">
+      <h2>Sortiment.</h2>
+      <div class="stats">
+        <div class="stat"><b>2019</b><span>grundat</span></div>
+        <div class="stat"><b>3</b><span>kategorier</span></div>
+        <div class="stat"><b>10</b><span>iPhone-modeller</span></div>
+      </div>
+    </div>
+    <div class="spec-grid">
+      <div class="spec">
+        <div>
+          <h3>Mobilskal</h3>
+          <dl>
+            <div><dt>Typ</dt><dd>TPU-skal</dd></div>
+            <div><dt>iPhone 18-serien</dt><dd>18 Pro</dd></div>
+            <div><dt>iPhone 17-serien</dt><dd>17, 17 Pro</dd></div>
+            <div><dt>iPhone 16-serien</dt><dd>16e, 16, 16 Pro</dd></div>
+            <div><dt>iPhone 15-serien</dt><dd>15, 15 Pro</dd></div>
+            <div><dt>iPhone 14-serien</dt><dd>14, 14 Pro</dd></div>
+            <div><dt>Färger iPhone 17–18</dt><dd>Svart, Skogsgrön</dd></div>
+            <div><dt>Färger iPhone 14–16</dt><dd>Svart, Blå, Rosa, Lila</dd></div>
+          </dl>
+        </div>
+        <div class="spec-img"><img src="img/cut/16-black.webp" alt="" loading="lazy"></div>
+      </div>
+      <div class="spec">
+        <div>
+          <h3>Laddare</h3>
+          <dl>
+            <div><dt>Snabbladdare 20W</dt><dd>USB-C</dd></div>
+            <div><dt>Snabbladdare 20W Dual Port</dt><dd>USB-C</dd></div>
+            <div><dt>Snabbladdare 18W</dt><dd>USB-A</dd></div>
+          </dl>
+        </div>
+        <div class="spec-img"><img src="img/cut/laddare-20w.webp" alt="" loading="lazy"></div>
+      </div>
+      <div class="spec">
+        <div>
+          <h3>Kablar</h3>
+          <dl>
+            <div><dt>USB-C till USB-C</dt><dd>2 m</dd></div>
+            <div><dt>USB-A till USB-C</dt><dd>1,5 m</dd></div>
+            <div><dt>USB-A till Lightning</dt><dd>2 m</dd></div>
+            <div><dt>USB-C till Lightning</dt><dd>Laddkabel</dd></div>
+          </dl>
+        </div>
+        <div class="spec-img"><img src="img/cut/kabel-c-lightning.webp" alt="" loading="lazy"></div>
+      </div>
+      <div class="spec">
+        <div>
+          <h3>Material</h3>
+          <dl>
+            <div><dt>Skal</dt><dd>TPU (termoplastisk polyuretan)</dd></div>
+            <div><dt>Egenskaper</dt><dd>Stötdämpande, formstabilt</dd></div>
+            <div><dt>Läs mer</dt><dd><a href="/blogs/nyheter/silikon-vs-tpu-vilket-mobilskal-ger-bast-skydd/">Vad är ett TPU-skal?</a></dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="guides" id="guider" data-theme="light">
+  <div class="wrap">
+    <div class="guides-head">
+      <h2>Apple-guider.</h2>
+      <p>Raka svar om skal, material och kompatibilitet. Skrivna av oss som jobbar med tillbehören varje dag.</p>
+    </div>
+    <a class="guide" href="/blogs/nyheter/silikon-vs-tpu-vilket-mobilskal-ger-bast-skydd/"><span class="caps">Mobilskal</span><h3>Vad är ett TPU-skal? TPU vs silikon</h3><span class="arrow">→</span></a>
+    <a class="guide" href="/blogs/nyheter/basta-skarmskydd-till-iphone-2026-hardat-glas-bast-i-test/"><span class="caps">Skärmskydd</span><h3>Bästa skärmskydd till iPhone 2026</h3><span class="arrow">→</span></a>
+    <a class="guide" href="/blogs/nyheter/har-iphone-13-och-14-samma-skal-en-utforlig-guide/"><span class="caps">Mobilskal</span><h3>Har iPhone 13 och 14 samma skal?</h3><span class="arrow">→</span></a>
+  </div>
+</section>
+
+<section class="stores" id="butiker" data-theme="light">
+  <div class="wrap">
+    <div class="stores-head">
+      <h2>Hitta Corder<br>i butik.</h2>
+      <p>Här finns Corders skal, laddare och kablar. Fråga i butiken efter just din modell.</p>
+    </div>
+    <div class="store-grid">
+      <div class="store"><span class="caps">Jönköping</span><h3>Go Banana</h3><a href="https://www.google.com/maps/search/?api=1&amp;query=Go+Banana+J%C3%B6nk%C3%B6ping" rel="noopener" target="_blank">Visa på karta</a></div>
+      <div class="store"><span class="caps">Mullsjö</span><h3>VIP Mullsjö</h3><a href="https://www.google.com/maps/search/?api=1&amp;query=VIP+Mullsj%C3%B6" rel="noopener" target="_blank">Visa på karta</a></div>
+      <div class="store tip"><span class="caps">Saknar du en butik?</span><h3>Tipsa oss</h3><a href="mailto:sales@corder.se?subject=Butikstips">sales@corder.se</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="retail" id="aterforsaljare" data-theme="light">
+  <div class="wrap">
+    <h2>Sälj Corder<br>i din butik.</h2>
+    <div class="retail-card">
+      <p>Vi samarbetar med fysiska butiker runt om i södra Sverige. Låga marginaler hos oss betyder bra priser för dina kunder.</p>
+      <ul>
+        <li>Skal till de senaste iPhone-modellerna</li>
+        <li>Laddare och kablar</li>
+        <li>Svensk kontakt</li>
+      </ul>
+      <a href="mailto:sales@corder.se" class="btn">sales@corder.se</a>
+    </div>
+  </div>
+</section>
+
+<footer data-theme="dark">
+  <div class="wrap">
+    <div class="foot">
+      <a href="#" class="logo">corder</a>
+      <div><h4>Sortiment</h4><ul><li><a href="#sortiment">Mobilskal</a></li><li><a href="#sortiment">Laddare</a></li><li><a href="#sortiment">Kablar</a></li></ul></div>
+      <div><h4>Företag</h4><ul><li><a href="#butiker">Hitta butik</a></li><li><a href="#aterforsaljare">Bli återförsäljare</a></li><li><a href="mailto:sales@corder.se">sales@corder.se</a></li></ul></div>
+      <div><h4>Resurser</h4><ul><li><a href="#guider">Apple-guider</a></li><li><a href="https://www.instagram.com/corderofficial">Instagram</a></li><li><a href="https://www.tiktok.com/@corderofficial">TikTok</a></li><li><a href="https://www.facebook.com/cordergroup">Facebook</a></li></ul></div>
+    </div>
+    <div class="foot-base">© 2026 Corder Group AB · Org.nr 559227-0226 · Kungsbacka · Designed and developed in Sweden</div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const top = document.getElementById('top');
+  const hero = document.getElementById('hero');
+  const reveal = document.getElementById('reveal');
+
+  // Dela upp intro-texten i ord, men låt miniatyrbilderna vara kvar
+  const words = [];
+  [...reveal.childNodes].forEach(node => {
+    if (node.nodeType !== Node.TEXT_NODE) return;
+    const frag = document.createDocumentFragment();
+    node.textContent.split(/(\s+)/).forEach(part => {
+      if (!part.trim()) { frag.append(part); return; }
+      const s = document.createElement('span');
+      s.className = 'w'; s.textContent = part;
+      frag.append(s); words.push(s);
+    });
+    node.replaceWith(frag);
+  });
+
+  const themed = [...document.querySelectorAll('[data-theme]')];
+  const onScroll = () => {
+    const vh = innerHeight;
+    if (!reduce) {
+      const p = Math.min(1, Math.max(0, scrollY / (hero.offsetHeight - vh)));
+      hero.style.setProperty('--p', p.toFixed(3));
+      const r = reveal.getBoundingClientRect();
+      const prog = Math.min(1, Math.max(0, (vh * 0.85 - r.top) / (r.height + vh * 0.35)));
+      const n = Math.round(prog * words.length);
+      words.forEach((w, i) => w.classList.toggle('lit', i < n));
+    }
+    // Byt headerfärg efter sektionen under den
+    const under = themed.find(s => { const b = s.getBoundingClientRect(); return b.top <= 40 && b.bottom > 40; });
+    top.classList.toggle('on-light', !!under && under.dataset.theme === 'light');
+  };
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', onScroll);
+  onScroll();
+
+  // Färgväljare
+  const stage = document.getElementById('stage');
+  const label = document.getElementById('dot-name');
+  document.querySelectorAll('.dot').forEach(dot => dot.addEventListener('click', () => {
+    if (dot.getAttribute('aria-pressed') === 'true') return;
+    document.querySelectorAll('.dot').forEach(d => d.setAttribute('aria-pressed', d === dot));
+    const old = stage.querySelector('img:last-child');
+    const img = new Image();
+    img.src = `img/cut/${dot.dataset.img}.webp`;
+    img.alt = 'Corder TPU-skal i vald färg';
+    img.className = 'out';
+    stage.append(img);
+    img.decode().catch(() => {}).then(() => {
+      requestAnimationFrame(() => { img.classList.remove('out'); old.classList.add('out'); });
+      setTimeout(() => old.remove(), 700);
+    });
+    label.textContent = `${dot.dataset.name} · ${dot.dataset.model || 'iPhone 16 Pro'}`;
+  }));
+})();
+</script>
+</body>
+</html>

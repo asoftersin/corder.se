@@ -1,0 +1,3 @@
+/* Typsnitt som ligger på egen server, ingen trafik till Google Fonts. */
+@font-face { font-family: "Inter Tight"; font-style: normal; font-weight: 300 500; font-display: swap; src: url("/assets/fonts/inter-tight-var.woff2") format("woff2"); }
+@font-face { font-family: "Jost"; font-style: normal; font-weight: 400; font-display: swap; src: url("/assets/fonts/jost-400.woff") format("woff"); }
