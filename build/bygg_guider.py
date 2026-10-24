@@ -192,7 +192,6 @@ def sida(titel, beskr, kanonisk, innehall, schema=None, progress=False, skript="
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
 <title>{html.escape(titel)}</title>
 <meta name="description" content="{html.escape(beskr)}">
 <link rel="canonical" href="{kanonisk}">
