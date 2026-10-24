@@ -159,7 +159,9 @@
   .prod figcaption { display: flex; justify-content: space-between; gap: 12px; padding-top: 12px; font-size: .9rem; }
   .prod figcaption b { font-weight: 400; }
   .prod figcaption span { color: var(--night-muted); white-space: nowrap; }
-  @media (max-width: 900px) { .prod-grid { grid-template-columns: 1fr 1fr; } }
+  .prod-grid-5 { grid-template-columns: repeat(5, 1fr); }
+  @media (max-width: 1100px) { .prod-grid-5 { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 900px) { .prod-grid, .prod-grid-5 { grid-template-columns: 1fr 1fr; } }
   .spec-img { height: 150px; display: grid; place-items: center; }
   .spec-img img { max-height: 100%; width: auto; }
   @media (max-width: 900px) {
@@ -336,11 +338,12 @@
     </div>
 
     <div class="prod-head"><h3>Kablar</h3><span>Flätade laddkablar</span></div>
-    <div class="prod-grid">
-      <figure class="prod"><div class="prod-img"><img src="img/produkter/kabel-usb-c-usb-c-2m.webp" alt="Corder laddkabel USB-C till USB-C, 2 meter" loading="lazy" width="800" height="800"></div><figcaption><b>USB-C till USB-C</b><span>2 m</span></figcaption></figure>
-      <figure class="prod"><div class="prod-img"><img src="img/produkter/kabel-usb-a-usb-c-1-5m.webp" alt="Corder laddkabel USB-A till USB-C, 1,5 meter" loading="lazy" width="800" height="800"></div><figcaption><b>USB-A till USB-C</b><span>1,5 m</span></figcaption></figure>
-      <figure class="prod"><div class="prod-img"><img src="img/produkter/kabel-usb-a-lightning-2m.webp" alt="Corder laddkabel USB-A till Lightning, 2 meter" loading="lazy" width="800" height="800"></div><figcaption><b>USB-A till Lightning</b><span>2 m</span></figcaption></figure>
-      <figure class="prod"><div class="prod-img"><img src="img/produkter/kabel-usb-c-lightning.webp" alt="Corder laddkabel USB-C till Lightning" loading="lazy" width="800" height="800"></div><figcaption><b>USB-C till Lightning</b><span>För iPhone</span></figcaption></figure>
+    <div class="prod-grid prod-grid-5">
+      <figure class="prod"><div class="prod-img"><img src="img/produkter/kabel-usb-c-usb-c-2m.webp" alt="Corder laddkabel USB-C till USB-C, 2 meter, svart flätad" loading="lazy" width="800" height="800"></div><figcaption><b>USB-C till USB-C</b><span>2 m</span></figcaption></figure>
+      <figure class="prod"><div class="prod-img"><img src="img/produkter/kabel-usb-a-usb-c-1-5m.webp" alt="Corder laddkabel USB-A till USB-C, 1,5 meter, svart flätad" loading="lazy" width="800" height="800"></div><figcaption><b>USB-A till USB-C</b><span>1,5 m</span></figcaption></figure>
+      <figure class="prod"><div class="prod-img"><img src="img/produkter/kabel-usb-c-lightning-svart.webp" alt="Corder laddkabel USB-C till Lightning, svart flätad" loading="lazy" width="800" height="800"></div><figcaption><b>USB-C till Lightning</b><span>Svart</span></figcaption></figure>
+      <figure class="prod"><div class="prod-img"><img src="img/produkter/kabel-usb-c-lightning-vit.webp" alt="Corder laddkabel USB-C till Lightning, vit" loading="lazy" width="800" height="800"></div><figcaption><b>USB-C till Lightning</b><span>Vit</span></figcaption></figure>
+      <figure class="prod"><div class="prod-img"><img src="img/produkter/kabel-usb-a-lightning-2m.webp" alt="Corder laddkabel USB-A till Lightning, 2 meter, vit" loading="lazy" width="800" height="800"></div><figcaption><b>USB-A till Lightning</b><span>2 m</span></figcaption></figure>
     </div>
 
     <div class="prod-head"><h3>Laddare</h3><span>Snabbladdare för iPhone och andra USB-enheter</span></div>
