@@ -148,6 +148,18 @@
   .spec dl div { display: flex; justify-content: space-between; gap: 16px; padding: 9px 0; border-bottom: 1px solid var(--night-line); }
   .spec dt { color: var(--night-muted); }
   .spec dd { margin: 0; text-align: right; }
+  .prod-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin: 96px 0 24px; padding-top: 32px; border-top: 1px solid var(--night-line); }
+  .prod-head h3 { font-size: 1.6rem; font-weight: 300; }
+  .prod-head span { color: var(--night-muted); font-size: .9rem; }
+  .prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .prod { margin: 0; }
+  .prod-img { background: #f4f4f2; border-radius: 10px; aspect-ratio: 1; overflow: hidden; }
+  .prod-img img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+  .prod:hover .prod-img img { transform: scale(1.04); }
+  .prod figcaption { display: flex; justify-content: space-between; gap: 12px; padding-top: 12px; font-size: .9rem; }
+  .prod figcaption b { font-weight: 400; }
+  .prod figcaption span { color: var(--night-muted); white-space: nowrap; }
+  @media (max-width: 900px) { .prod-grid { grid-template-columns: 1fr 1fr; } }
   .spec-img { height: 150px; display: grid; place-items: center; }
   .spec-img img { max-height: 100%; width: auto; }
   @media (max-width: 900px) {
@@ -313,29 +325,6 @@
       </div>
       <div class="spec">
         <div>
-          <h3>Laddare</h3>
-          <dl>
-            <div><dt>Snabbladdare 20W</dt><dd>USB-C</dd></div>
-            <div><dt>Snabbladdare 20W Dual Port</dt><dd>USB-C</dd></div>
-            <div><dt>Snabbladdare 18W</dt><dd>USB-A</dd></div>
-          </dl>
-        </div>
-        <div class="spec-img"><img src="img/cut/laddare-20w.webp" alt="" loading="lazy"></div>
-      </div>
-      <div class="spec">
-        <div>
-          <h3>Kablar</h3>
-          <dl>
-            <div><dt>USB-C till USB-C</dt><dd>2 m</dd></div>
-            <div><dt>USB-A till USB-C</dt><dd>1,5 m</dd></div>
-            <div><dt>USB-A till Lightning</dt><dd>2 m</dd></div>
-            <div><dt>USB-C till Lightning</dt><dd>Laddkabel</dd></div>
-          </dl>
-        </div>
-        <div class="spec-img"><img src="img/cut/kabel-c-lightning.webp" alt="" loading="lazy"></div>
-      </div>
-      <div class="spec">
-        <div>
           <h3>Material</h3>
           <dl>
             <div><dt>Skal</dt><dd>TPU (termoplastisk polyuretan)</dd></div>
@@ -344,6 +333,21 @@
           </dl>
         </div>
       </div>
+    </div>
+
+    <div class="prod-head"><h3>Kablar</h3><span>Flätade laddkablar</span></div>
+    <div class="prod-grid">
+      <figure class="prod"><div class="prod-img"><img src="img/produkter/kabel-usb-c-usb-c-2m.webp" alt="Corder laddkabel USB-C till USB-C, 2 meter" loading="lazy" width="800" height="800"></div><figcaption><b>USB-C till USB-C</b><span>2 m</span></figcaption></figure>
+      <figure class="prod"><div class="prod-img"><img src="img/produkter/kabel-usb-a-usb-c-1-5m.webp" alt="Corder laddkabel USB-A till USB-C, 1,5 meter" loading="lazy" width="800" height="800"></div><figcaption><b>USB-A till USB-C</b><span>1,5 m</span></figcaption></figure>
+      <figure class="prod"><div class="prod-img"><img src="img/produkter/kabel-usb-a-lightning-2m.webp" alt="Corder laddkabel USB-A till Lightning, 2 meter" loading="lazy" width="800" height="800"></div><figcaption><b>USB-A till Lightning</b><span>2 m</span></figcaption></figure>
+      <figure class="prod"><div class="prod-img"><img src="img/produkter/kabel-usb-c-lightning.webp" alt="Corder laddkabel USB-C till Lightning" loading="lazy" width="800" height="800"></div><figcaption><b>USB-C till Lightning</b><span>För iPhone</span></figcaption></figure>
+    </div>
+
+    <div class="prod-head"><h3>Laddare</h3><span>Snabbladdare för iPhone och andra USB-enheter</span></div>
+    <div class="prod-grid">
+      <figure class="prod"><div class="prod-img"><img src="img/produkter/laddare-20w-usb-c.webp" alt="Corder snabbladdare 20W med USB-C" loading="lazy" width="800" height="800"></div><figcaption><b>Snabbladdare 20W</b><span>USB-C</span></figcaption></figure>
+      <figure class="prod"><div class="prod-img"><img src="img/produkter/laddare-20w-dual-port.webp" alt="Corder snabbladdare 20W med två portar" loading="lazy" width="800" height="800"></div><figcaption><b>Snabbladdare 20W Dual Port</b><span>Två portar</span></figcaption></figure>
+      <figure class="prod"><div class="prod-img"><img src="img/produkter/laddare-18w-usb-a.webp" alt="Corder snabbladdare 18W med USB-A" loading="lazy" width="800" height="800"></div><figcaption><b>Snabbladdare 18W</b><span>USB-A</span></figcaption></figure>
     </div>
   </div>
 </section>
