@@ -242,10 +242,11 @@ HEADER = """<header class="top">
   <div class="wrap">
     <a href="/" class="logo" aria-label="Corder startsida">corder</a>
     <ul>
-      <li><a href="/#sortiment">Sortiment</a></li>
+      <li><a href="/skal/">Skal</a></li>
+      <li><a href="/#laddning">Laddning</a></li>
       <li><a href="/#butiker">Butiker</a></li>
       <li><a href="/#aterforsaljare">Företag</a></li>
-      <li><a href="/blogs/nyheter/" aria-current="page">Apple-guider</a></li>
+      <li><a href="/blogs/nyheter/">Apple-guider</a></li>
     </ul>
   </div>
   {progress}
@@ -255,7 +256,7 @@ FOOTER = """<footer>
   <div class="wrap">
     <div class="foot">
       <a href="/" class="logo">corder</a>
-      <div><h4>Sortiment</h4><ul><li><a href="/#sortiment">TPU-skal</a></li><li><a href="/#sortiment">Laddare</a></li><li><a href="/#sortiment">Kablar</a></li></ul></div>
+      <div><h4>Sortiment</h4><ul><li><a href="/skal/">TPU-skal</a></li><li><a href="/#laddning">Laddare</a></li><li><a href="/#laddning">Kablar</a></li></ul></div>
       <div><h4>Företag</h4><ul><li><a href="/#butiker">Hitta butik</a></li><li><a href="/#aterforsaljare">Bli återförsäljare</a></li><li><a href="mailto:sales@corder.se">sales@corder.se</a></li></ul></div>
       <div><h4>Resurser</h4><ul><li><a href="/blogs/nyheter/">Apple-guider</a></li><li><a href="https://www.instagram.com/corderofficial">Instagram</a></li><li><a href="https://www.tiktok.com/@corderofficial">TikTok</a></li><li><a href="https://www.facebook.com/cordergroup">Facebook</a></li></ul></div>
     </div>
@@ -319,7 +320,7 @@ def sida(titel, beskr, kanonisk, innehall, schema=None, progress=False, skript="
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/inter-tight-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts.css">
-<link rel="stylesheet" href="/assets/sida.css?v=6">
+<link rel="stylesheet" href="/assets/sida.css?v=8">
 {ld}</head>
 <body>
 <a class="skip" href="#innehall">Hoppa till innehållet</a>
@@ -432,6 +433,195 @@ def bygg():
     print("skrev", ut.relative_to(ROT))
 
 
+
+# --- Modellsidor: ett TPU-skal per iPhone-modell -------------------------------------
+
+FARG = {"Svart": ("#1c1c1c", "black"), "Blå": ("#4a6684", "blue"), "Lila": ("#b9bdf0", "purple"),
+        "Persika": ("#f5a493", "pink"), "Skogsgrön": ("#3d5143", None)}
+GAMLA_FARGER = ["Svart", "Blå", "Lila", "Persika"]
+NYA_FARGER = ["Svart", "Skogsgrön"]
+
+MODELLER = [
+    {"slug": "iphone-18-pro", "namn": "iPhone 18 Pro", "bild": None, "gron": True, "farger": NYA_FARGER, "kontakt": "USB-C",
+     "kompat": [("Passar iPhone 17 Pro-skal till iPhone 18 Pro?", "Ofta, eftersom måtten är desamma. Kameraplatån på 18 Pro är dock ungefär en tiondels millimeter tjockare, så tighta skal kan vara för trånga."),
+                ("Passar skalet till iPhone 18 Pro Max?", "Nej. Pro Max har större skärm och större mått och behöver ett eget skal."),
+                ("Passar skalet till iPhone Duo?", "Nej. iPhone Duo är vikbar och behöver ett helt annat skal. Corder har inte skal till Duo.")],
+     "guider": ["passar-iphone-17-pro-skal-till-iphone-18-pro", "iphone-18-pro-vs-iphone-17-pro", "vilken-laddare-till-iphone-18-pro"]},
+    {"slug": "iphone-17-pro", "namn": "iPhone 17 Pro", "bild": None, "gron": True, "farger": NYA_FARGER, "kontakt": "USB-C",
+     "kompat": [("Passar skalet till iPhone 18 Pro?", "Ofta, eftersom måtten är desamma, men kameraplatån på 18 Pro är något tjockare. Apple anger att modellerna officiellt inte delar skal."),
+                ("Passar iPhone 16 Pro-skal till iPhone 17 Pro?", "Nej. iPhone 17 Pro har en helt ny design med en bred kameraplatå."),
+                ("Passar skalet till iPhone 17?", "Nej. iPhone 17 har en annan form och ett annat kameraparti än 17 Pro.")],
+     "guider": ["passar-iphone-17-pro-skal-till-iphone-18-pro", "iphone-18-pro-vs-iphone-17-pro", "vilken-usb-c-kabel-till-iphone"]},
+    {"slug": "iphone-17", "namn": "iPhone 17", "bild": None, "gron": False, "farger": NYA_FARGER, "kontakt": "USB-C",
+     "kompat": [("Passar iPhone 16-skal till iPhone 17?", "Nej. iPhone 17 är något större och har ett nytt kameraparti."),
+                ("Passar skalet till iPhone 17 Pro?", "Nej. Pro-modellen har en annan form och en bred kameraplatå."),
+                ("Finns det en vanlig iPhone 18?", "Apple väntas släppa vanliga iPhone 18 under våren 2027. Hur skalen passar vet vi först då.")],
+     "guider": ["vilken-usb-c-kabel-till-iphone", "silikon-vs-tpu-vilket-mobilskal-ger-bast-skydd", "har-iphone-13-och-14-samma-skal-en-utforlig-guide"]},
+    {"slug": "iphone-16-pro", "namn": "iPhone 16 Pro", "bild": "16p", "farger": GAMLA_FARGER, "kontakt": "USB-C",
+     "kompat": [("Passar skalet till iPhone 17 Pro?", "Nej. iPhone 17 Pro har en helt ny design med en bred kameraplatå."),
+                ("Passar iPhone 15 Pro-skal till iPhone 16 Pro?", "Nej. iPhone 16 Pro är större och har dessutom en kameraknapp på sidan."),
+                ("Passar skalet till iPhone 16?", "Nej. iPhone 16 har en annan storlek och ett annat kameraparti.")],
+     "guider": ["har-iphone-13-och-14-samma-skal-en-utforlig-guide", "silikon-vs-tpu-vilket-mobilskal-ger-bast-skydd", "vilken-usb-c-kabel-till-iphone"]},
+    {"slug": "iphone-16", "namn": "iPhone 16", "bild": "16", "farger": GAMLA_FARGER, "kontakt": "USB-C",
+     "kompat": [("Passar iPhone 15-skal till iPhone 16?", "Nej. iPhone 16 har en ny kameraplacering och en kameraknapp på sidan."),
+                ("Passar skalet till iPhone 17?", "Nej. iPhone 17 är något större och har ett nytt kameraparti."),
+                ("Passar skalet till iPhone 16e?", "Nej. iPhone 16e har en kamera och en egen form.")],
+     "guider": ["har-iphone-13-och-14-samma-skal-en-utforlig-guide", "silikon-vs-tpu-vilket-mobilskal-ger-bast-skydd", "vilken-usb-c-kabel-till-iphone"]},
+    {"slug": "iphone-16e", "namn": "iPhone 16e", "bild": "16e", "farger": GAMLA_FARGER, "kontakt": "USB-C",
+     "kompat": [("Passar iPhone 16-skal till iPhone 16e?", "Nej. iPhone 16e har bara en kamera och en egen form, så skalet behöver vara gjort för just 16e."),
+                ("Hur ser jag att jag har en iPhone 16e?", "16e har en enda kamera på baksidan. Du kan också se modellnamnet under Inställningar, Allmänt, Om."),
+                ("Vilken kabel behöver iPhone 16e?", "iPhone 16e har USB-C, så en USB-C till USB-C-kabel ger snabbladdning.")],
+     "guider": ["silikon-vs-tpu-vilket-mobilskal-ger-bast-skydd", "vilken-usb-c-kabel-till-iphone", "har-iphone-13-och-14-samma-skal-en-utforlig-guide"]},
+    {"slug": "iphone-15-pro", "namn": "iPhone 15 Pro", "bild": "15p", "farger": GAMLA_FARGER, "kontakt": "USB-C",
+     "kompat": [("Passar skalet till iPhone 16 Pro?", "Nej. iPhone 16 Pro är större och har en kameraknapp på sidan."),
+                ("Passar iPhone 14 Pro-skal till iPhone 15 Pro?", "Nej. iPhone 15 Pro har andra mått."),
+                ("Passar skalet till iPhone 15?", "Nej. iPhone 15 har ett annat kameraparti än Pro-modellen.")],
+     "guider": ["har-iphone-13-och-14-samma-skal-en-utforlig-guide", "silikon-vs-tpu-vilket-mobilskal-ger-bast-skydd", "vilken-usb-c-kabel-till-iphone"]},
+    {"slug": "iphone-15", "namn": "iPhone 15", "bild": "15", "farger": GAMLA_FARGER, "kontakt": "USB-C",
+     "kompat": [("Passar iPhone 14-skal till iPhone 15?", "Nej. iPhone 15 har andra mått."),
+                ("Passar skalet till iPhone 16?", "Nej. iPhone 16 har en ny kameraplacering och en kameraknapp på sidan."),
+                ("Passar skalet till iPhone 15 Pro?", "Nej. Pro-modellen har ett annat kameraparti.")],
+     "guider": ["har-iphone-13-och-14-samma-skal-en-utforlig-guide", "silikon-vs-tpu-vilket-mobilskal-ger-bast-skydd", "vilken-usb-c-kabel-till-iphone"]},
+    {"slug": "iphone-14-pro", "namn": "iPhone 14 Pro", "bild": "14p", "farger": GAMLA_FARGER, "kontakt": "Lightning",
+     "kompat": [("Passar iPhone 13 Pro-skal till iPhone 14 Pro?", "Nej. Kamerapartiet på iPhone 14 Pro är både bredare och högre."),
+                ("Passar skalet till iPhone 15 Pro?", "Nej. iPhone 15 Pro har andra mått."),
+                ("Passar skalet till iPhone 14?", "Nej. iPhone 14 har ett annat kameraparti än Pro-modellen.")],
+     "guider": ["har-iphone-13-och-14-samma-skal-en-utforlig-guide", "silikon-vs-tpu-vilket-mobilskal-ger-bast-skydd", "vilken-usb-c-kabel-till-iphone"]},
+    {"slug": "iphone-14", "namn": "iPhone 14", "bild": "14", "farger": GAMLA_FARGER, "kontakt": "Lightning",
+     "kompat": [("Passar iPhone 13-skal till iPhone 14?", "Nej. iPhone 14 är lite tjockare och har ett större kameraparti."),
+                ("Passar skalet till iPhone 15?", "Nej. iPhone 15 har andra mått."),
+                ("Passar skalet till iPhone 14 Pro?", "Nej. Pro-modellen har ett annat kameraparti.")],
+     "guider": ["har-iphone-13-och-14-samma-skal-en-utforlig-guide", "silikon-vs-tpu-vilket-mobilskal-ger-bast-skydd", "vilken-usb-c-kabel-till-iphone"]},
+]
+
+
+def modellbild(m, farg):
+    if m.get("bild") and FARG[farg][1]:
+        return f'/img/cut/{m["bild"]}-{FARG[farg][1]}.webp'
+    if m.get("gron") and farg == "Skogsgrön":
+        return "/img/cut/17p-skogsgron.webp"
+    return None
+
+
+def tumme(m):
+    for f in m["farger"]:
+        if modellbild(m, f):
+            return modellbild(m, f)
+    return None
+
+
+def modell_lank(m):
+    b = tumme(m)
+    bild = f'<img src="{b}" alt="" loading="lazy">' if b else '<span class="nopic"></span>'
+    return (f'<a class="model-link" href="/skal/{m["slug"]}/">{bild}<span><b>{m["namn"]}</b>'
+            f'<small>{", ".join(m["farger"])}</small></span></a>')
+
+
+def bygg_skal():
+    guide_per_slug = {g["slug"]: g for g in GUIDER}
+    for m in MODELLER:
+        url = f'{SITE}/skal/{m["slug"]}/'
+        farger = " och ".join([", ".join(m["farger"][:-1]), m["farger"][-1]]) if len(m["farger"]) > 1 else m["farger"][0]
+        titel = f'Skal till {m["namn"]} – TPU-skal i {farger.lower()} | Corder'
+        beskr = (f'Corders TPU-skal till {m["namn"]} finns i {farger.lower()}. Formstabilt och stötdämpande. '
+                 f'Se färgerna, vilka skal som passar och var du hittar Corder i butik.')
+        swatches = "".join(f'<span class="swatch"><i style="background:{FARG[f][0]}"></i>{f}</span>' for f in m["farger"])
+        shots = []
+        for f in m["farger"]:
+            b = modellbild(m, f)
+            if b:
+                shots.append(f'<figure class="model-shot"><div class="tile"><img src="{b}" alt="Corder TPU-skal till {m["namn"]} i {f.lower()}" loading="lazy"></div>'
+                             f'<figcaption><i style="background:{FARG[f][0]}"></i>{f}</figcaption></figure>')
+            else:
+                shots.append(f'<figure class="model-shot"><div class="tile empty"><div><b style="background:{FARG[f][0]}"></b>{f}</div></div>'
+                             f'<figcaption><i style="background:{FARG[f][0]}"></i>{f}</figcaption></figure>')
+        kabel = ("USB-C till Lightning eller USB-A till Lightning" if m["kontakt"] == "Lightning" else "USB-C till USB-C")
+        specs = [("Material", "TPU (termoplastisk polyuretan)"), ("Passar", f'{m["namn"]}'), ("Färger", ", ".join(m["farger"])),
+                 ("Egenskaper", "Stötdämpande, formstabilt, upphöjd kant runt kameran"), ("Laddning", f'Telefonen har {m["kontakt"]}. Rätt kabel: {kabel}, 2 m.'),
+                 ("Finns hos", "Go Banana i Jönköping och VIP Mullsjö")]
+        specs_html = "".join(f"<div><dt>{a}</dt><dd>{html.escape(b)}</dd></div>" for a, b in specs)
+        faq = [("Vilka färger finns skalet till " + m["namn"] + " i?", f"Skalet finns i {farger.lower()}."),
+               ("Vilket material är skalet gjort av?", "TPU, termoplastisk polyuretan. Det dämpar stötar och behåller formen utan att töja sig.")] + m["kompat"] + \
+              [("Var kan jag köpa skalet?", "Corders skal finns hos Go Banana i Jönköping och VIP Mullsjö. Butiker som vill sälja Corder kan kontakta sales@corder.se.")]
+        faq_html = "\n".join(f"<details><summary>{html.escape(q)}</summary><p>{html.escape(a)}</p></details>" for q, a in faq)
+        andra = "\n        ".join(modell_lank(o) for o in MODELLER if o is not m)
+        guidekort = "\n      ".join(kort(guide_per_slug[s]) for s in m["guider"] if s in guide_per_slug)
+        bilder = [SITE + modellbild(m, f) for f in m["farger"] if modellbild(m, f)]
+        schema = [
+            {"@context": "https://schema.org", "@type": "Product", "name": f'Corder TPU-skal till {m["namn"]}',
+             "brand": {"@type": "Brand", "name": "Corder"}, "material": "TPU", "color": ", ".join(m["farger"]),
+             "description": beskr, "url": url, **({"image": bilder} if bilder else {}),
+             "manufacturer": {"@type": "Organization", "name": "Corder Group AB"}},
+            {"@context": "https://schema.org", "@type": "FAQPage",
+             "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]},
+            {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Corder", "item": SITE + "/"},
+                {"@type": "ListItem", "position": 2, "name": "Skal", "item": SITE + "/skal/"},
+                {"@type": "ListItem", "position": 3, "name": m["namn"], "item": url}]},
+        ]
+        innehall = f"""<main id="innehall" tabindex="-1">
+  <div class="wrap">
+    <div class="model-head">
+      <div>
+        <nav class="crumbs" aria-label="Brödsmulor"><a href="/">Corder</a><span>/</span><a href="/skal/">Skal</a></nav>
+        <span class="tag">TPU-skal</span>
+        <h1>Skal till {m["namn"]}</h1>
+        <div class="swatches">{swatches}</div>
+      </div>
+      <p>Corders TPU-skal till {m["namn"]} finns i {farger.lower()}. Samma enkla form som alla våra skal: stötdämpande, formstabilt och med upphöjd kant runt kameran.</p>
+    </div>
+    <div class="model-gallery{" few" if len(m["farger"]) <= 2 else ""}" style="--n:{len(m["farger"])}">
+      {"".join(shots)}
+    </div>
+    <div class="post" style="grid-template-columns:minmax(0, 760px)">
+      <article class="prose">
+        <h2 id="om-skalet" style="margin-top:0">Om skalet</h2>
+        <dl class="specs-list">{specs_html}</dl>
+        <h2 id="vanliga-fragor">Vanliga frågor om skal till {m["namn"]}</h2>
+        <div class="faq">
+{faq_html}
+        </div>
+        {CTA}
+        <h2>Andra modeller</h2>
+        <div class="model-grid">
+        {andra}
+        </div>
+      </article>
+    </div>
+  </div>
+  <section class="related">
+    <div class="wrap">
+      <h2>Läs mer</h2>
+      <div class="cards">
+      {guidekort}
+      </div>
+    </div>
+  </section>
+</main>"""
+        ut = ROT / "skal" / m["slug"] / "index.html"
+        ut.parent.mkdir(parents=True, exist_ok=True)
+        ut.write_text(sida(titel, beskr, url, innehall, schema))
+        print("skrev", ut.relative_to(ROT))
+
+    lankar = "\n      ".join(modell_lank(m) for m in MODELLER)
+    index = f"""<main id="innehall" tabindex="-1">
+  <div class="wrap">
+    <div class="index-head">
+      <h1>Skal till iPhone.</h1>
+      <p>TPU-skal från iPhone 14 hela vägen till iPhone 18 Pro. Välj din modell för att se färger och vad som passar.</p>
+    </div>
+    <div class="model-grid" style="padding-bottom:clamp(48px,6vw,80px)">
+      {lankar}
+    </div>
+    <div style="padding-bottom:clamp(72px,9vw,128px)">{CTA}</div>
+  </div>
+</main>"""
+    ut = ROT / "skal" / "index.html"
+    ut.write_text(sida("Skal till iPhone 14–18 Pro | Corder", "Corders TPU-skal till iPhone 14, 15, 16, 17 och 18 Pro. Välj din modell och se färger, kompatibilitet och var du hittar skalen i butik.",
+                       f"{SITE}/skal/", index))
+    print("skrev skal/index.html")
+
+
 def bygg_404():
     innehall = """<main id="innehall" tabindex="-1">
   <div class="wrap">
@@ -494,8 +684,16 @@ def omdirigering(mal):
 
 def bygg_omdirigeringar():
     mal = dict(GAMLA_SIDOR)
-    mal.update({f"products/{p}": "/#sortiment" for p in GAMLA_PRODUKTER})
+    def produktmal(handle):
+        if handle.startswith("silikonskal-iphone-"):
+            return "/skal/iphone-" + handle.removeprefix("silikonskal-iphone-") + "/"
+        if handle.startswith(("laddkabel", "laddningskabel", "stromadapter")):
+            return "/#laddning"
+        return "/#sortiment"
+    mal.update({f"products/{p}": produktmal(p) for p in GAMLA_PRODUKTER})
     mal.update({f"collections/{k}": "/#sortiment" for k in GAMLA_KOLLEKTIONER})
+    mal.update({"collections/mobilskal": "/skal/", "collections/kablar": "/#laddning", "collections/laddare": "/#laddning",
+                "collections": "/skal/", "products": "/skal/"})
     mal.update({f"blogs/nyheter/{s}": "/blogs/nyheter/" for s in gamla_guider()})
     for vag, till in mal.items():
         ut = ROT / vag / "index.html"
@@ -506,5 +704,6 @@ def bygg_omdirigeringar():
 
 if __name__ == "__main__":
     bygg()
+    bygg_skal()
     bygg_404()
     bygg_omdirigeringar()
