@@ -40,6 +40,7 @@
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
+  html, body { overflow-x: clip; }
   body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 "Inter Tight", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
   a { color: inherit; text-decoration: none; }
   img { max-width: 100%; height: auto; display: block; }
@@ -75,11 +76,11 @@
   }
 
   /* Hero */
-  .hero { position: relative; height: 160vh; background: #2d2c2f; color: #fff; }
-  .hero-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; align-items: center; padding: 0 var(--gutter); }
+  .hero { position: relative; background: #2d2c2f; color: #fff; overflow: hidden; overflow: clip; }
+  .hero-stage { position: relative; height: 100vh; min-height: 560px; overflow: hidden; display: flex; align-items: center; padding: 0 var(--gutter); }
   .hero-photo { position: absolute; inset: 0; }
-  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%; transform: scale(calc(1.06 - var(--p, 0) * .06)) translateY(calc(var(--p, 0) * -2%)); transform-origin: 70% 40%; will-change: transform; }
-  .hero h1 { position: relative; font-size: clamp(2.4rem, 4.4vw, 4rem); max-width: 9.5em; transform: translateY(calc(var(--p, 0) * -40px)); opacity: calc(1 - var(--p, 0) * 1.6); }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%; transform-origin: 70% 40%; will-change: transform; }
+  .hero h1 { position: relative; font-size: clamp(2.4rem, 4.4vw, 4rem); max-width: 9.5em; }
   .hero-foot { position: absolute; left: var(--gutter); bottom: 32px; max-width: 360px; color: rgba(255,255,255,.62); }
   .hero-foot .caps { color: #fff; display: block; margin-bottom: 6px; }
   @media (min-width: 901px) and (max-width: 1400px) {
@@ -95,9 +96,10 @@
   @media (max-width: 900px) {
     .hero { height: auto; background: #3b3b3f; }
     .hero-stage { position: relative; height: auto; flex-direction: column; align-items: stretch; padding: 120px 0 0; }
-    .hero h1 { order: -1; padding: 0 var(--gutter); margin-bottom: 8px; transform: none; opacity: 1; }
-    .hero-photo { position: relative; }
-    .hero-photo img { height: auto; transform: none; }
+    .hero-stage { min-height: 0; overflow: visible; }
+    .hero h1 { order: -1; padding: 0 var(--gutter); margin-bottom: 8px; }
+    .hero-photo { position: relative; overflow: hidden; }
+    .hero-photo img { height: auto; }
     .hero-foot { display: none; }
   }
 
@@ -105,15 +107,13 @@
   .intro { padding: clamp(120px, 18vw, 240px) 0 clamp(100px, 14vw, 200px); }
   .intro .wrap { max-width: 1240px; }
   .reveal { font-size: clamp(2rem, 4.6vw, 4.3rem); font-weight: 300; letter-spacing: -.03em; line-height: 1.12; margin: 0; }
-  .reveal .w { color: var(--faint); transition: color .25s; }
-  .reveal .w.lit { color: var(--ink); }
   .thumb { position: relative; display: inline-block; width: 1.05em; height: .95em; vertical-align: -.14em; margin: 0 .08em; background: #f3f3f1; border: 1px solid var(--line); border-radius: .12em; box-shadow: 0 4px 16px rgba(0,0,0,.05); }
   .thumb img { position: absolute; inset: 12%; width: 76%; height: 76%; object-fit: contain; }
   .intro-sub { margin-top: 56px; font-size: clamp(1.15rem, 2vw, 1.8rem); font-weight: 300; color: var(--muted); }
   .intro-sub b { font-weight: 400; color: var(--ink); }
 
   /* Mörk sektion: design + färger */
-  .night { background: var(--night); color: #fff; }
+  .night { background: var(--night); color: #fff; overflow: hidden; overflow: clip; }
   .design { display: grid; grid-template-columns: minmax(260px, 1fr) 1.4fr; gap: var(--gutter); align-items: center; min-height: 100vh; padding: 120px 0 80px; position: relative; }
   .design h2 { font-size: clamp(2rem, 3vw, 2.6rem); margin-bottom: 26px; }
   .design p { color: var(--night-muted); max-width: 340px; }
@@ -148,20 +148,6 @@
   .spec dl div { display: flex; justify-content: space-between; gap: 16px; padding: 9px 0; border-bottom: 1px solid var(--night-line); }
   .spec dt { color: var(--night-muted); }
   .spec dd { margin: 0; text-align: right; }
-  .prod-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin: 96px 0 24px; padding-top: 32px; border-top: 1px solid var(--night-line); }
-  .prod-head h3 { font-size: 1.6rem; font-weight: 300; }
-  .prod-head span { color: var(--night-muted); font-size: .9rem; }
-  .prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-  .prod { margin: 0; }
-  .prod-img { background: #f4f4f2; border-radius: 10px; aspect-ratio: 1; overflow: hidden; }
-  .prod-img img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
-  .prod:hover .prod-img img { transform: scale(1.04); }
-  .prod figcaption { display: flex; justify-content: space-between; gap: 12px; padding-top: 12px; font-size: .9rem; }
-  .prod figcaption b { font-weight: 400; }
-  .prod figcaption span { color: var(--night-muted); white-space: nowrap; }
-  .prod-grid-5 { grid-template-columns: repeat(5, 1fr); }
-  @media (max-width: 1100px) { .prod-grid-5 { grid-template-columns: repeat(3, 1fr); } }
-  @media (max-width: 900px) { .prod-grid, .prod-grid-5 { grid-template-columns: 1fr 1fr; } }
   .spec-img { height: 150px; display: grid; place-items: center; }
   .spec-img img { max-height: 100%; width: auto; }
   @media (max-width: 900px) {
@@ -170,6 +156,39 @@
     .spec { grid-template-columns: 1fr 72px; }
     .spec-img { height: 96px; }
   }
+
+  /* Laddare och kablar: sidledes räls */
+  .gear { background: #ececea; overflow: hidden; }
+  .gear-pin { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; gap: clamp(22px, 4vh, 56px); padding: clamp(88px, 12vh, 140px) 0 clamp(40px, 7vh, 96px); }
+  .gear-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
+  .gear-head .caps { color: var(--muted); display: block; margin-bottom: 18px; }
+  .gear-head h2 { font-size: clamp(2.6rem, min(6vw, 9vh), 5.6rem); }
+  .gear-head p { color: var(--muted); max-width: 340px; margin: 0; }
+  .rail { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .rail::-webkit-scrollbar { display: none; }
+  .track { display: flex; gap: clamp(14px, 1.6vw, 22px); padding: 0 var(--gutter); width: max-content; }
+  .gear-card { margin: 0; width: min(clamp(240px, 24vw, 360px), calc((100vh - 470px) * .8)); min-width: 200px; scroll-snap-align: start; scroll-margin-left: var(--gutter); }
+  .gear-img { position: relative; aspect-ratio: 4 / 5; border-radius: 18px; background: linear-gradient(180deg, #ffffff 0%, #f6f6f4 100%); box-shadow: 0 1px 0 rgba(0,0,0,.04), 0 24px 48px -28px rgba(0,0,0,.25); overflow: hidden; }
+  .gear-img::after { content: ""; position: absolute; left: 22%; right: 22%; bottom: 10%; height: 5%; border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.14), transparent); }
+  .gear-img img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: contain; padding: 14% 12% 18%; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
+  .gear-card:hover .gear-img img { transform: translateY(-6px) scale(1.03); }
+  .gear-card figcaption { padding: 16px 4px 0; display: grid; gap: 2px; }
+  .gear-card figcaption .caps { color: var(--muted); }
+  .gear-card figcaption b { font-weight: 400; font-size: 1.1rem; }
+  .gear-card figcaption span:last-child { color: var(--muted); font-size: .9rem; }
+  .rail-foot { display: flex; align-items: center; gap: 20px; }
+  .rail-progress { flex: 1; height: 2px; background: rgba(0,0,0,.1); border-radius: 2px; overflow: hidden; }
+  .rail-progress span { display: block; height: 100%; width: 100%; background: var(--ink); transform-origin: 0 50%; transform: scaleX(.12); }
+  .rail-foot .caps { color: var(--muted); white-space: nowrap; }
+  .is-pinned .rail { overflow: visible; scroll-snap-type: none; }
+  @media (max-width: 900px) { .gear-pin { min-height: 0; } .gear-card { width: 72vw; } .gear-img { aspect-ratio: 1; } }
+
+  /* Rubriker som maskas fram rad för rad */
+  .line { display: block; overflow: hidden; padding-bottom: .08em; margin-bottom: -.08em; }
+  .line > span { display: block; }
+
+  /* Stort ordmärke i sidfoten */
+  .foot-mark { font: 400 clamp(5rem, 24vw, 22rem)/.8 Jost, sans-serif; letter-spacing: -.02em; color: rgba(255,255,255,.07); margin: 72px 0 -0.12em; white-space: nowrap; user-select: none; }
 
   /* Guider */
   .guides { padding: clamp(100px, 12vw, 180px) 0; }
@@ -196,20 +215,18 @@
   @media (max-width: 900px) { .retail .wrap { grid-template-columns: 1fr; } }
 
   /* Footer */
-  footer { background: var(--stone); color: #fff; padding: 72px 0 120px; }
+  footer { background: var(--stone); color: #fff; padding: 72px 0 40px; overflow: hidden; }
   .foot { display: grid; grid-template-columns: 1.2fr repeat(3, 1fr); gap: 32px; }
   .foot h4 { font-size: .85rem; font-weight: 500; margin: 0 0 14px; }
   .foot ul { list-style: none; margin: 0; padding: 0; font-size: .85rem; }
   .foot li { padding: 4px 0; color: rgba(255,255,255,.6); }
   .foot li a:hover { color: #fff; }
-  .foot-base { margin-top: 72px; font-size: .78rem; color: rgba(255,255,255,.5); }
+  .foot-base { margin-top: 0; font-size: .78rem; color: rgba(255,255,255,.5); }
   @media (max-width: 700px) { .foot { grid-template-columns: 1fr 1fr; } }
 
+  .motion .reveal .w { color: var(--faint); }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .hero { height: 100vh; }
-    .hero h1, .hero-photo img { transform: none !important; opacity: 1 !important; }
-    .reveal .w { color: var(--ink); }
   }
   /* Tillgänglighet och sidbyten */
   @view-transition { navigation: auto; }
@@ -242,6 +259,7 @@
     <a href="#" class="logo" aria-label="Corder startsida">corder</a>
     <ul>
       <li><a href="#sortiment">Sortiment</a></li>
+      <li><a href="#laddning">Laddning</a></li>
       <li><a href="#butiker">Butiker</a></li>
       <li><a href="#aterforsaljare">Företag</a></li>
       <li><a href="#guider">Resurser</a></li>
@@ -267,7 +285,7 @@
       <source media="(max-width: 900px)" srcset="img/hero-18pro-mobil.webp" width="900" height="1022">
       <img src="img/hero-18pro.webp" alt="En hand håller en iPhone 18 Pro i Corders skogsgröna TPU-skal" width="2400" height="1340">
     </picture>
-    <h1>Bra mobiltillbehör. Ännu bättre priser.</h1>
+    <h1 data-split>Bra mobiltillbehör.<br>Ännu bättre priser.</h1>
     <div class="hero-foot"><span class="caps">Designat i Sverige.</span>Skal, laddare och kablar för iPhone sedan 2019.</div>
   </div>
 </section>
@@ -282,7 +300,7 @@
 <section class="night" id="design" data-theme="dark">
   <div class="wrap design">
     <div>
-      <h2>Ett skal.<br>Fem färger.</h2>
+      <h2 data-split>Ett skal.<br>Fem färger.</h2>
       <p>TPU-skal till allt från iPhone 14 till iPhone 18 Pro. Samma enkla form till varje modell.</p>
       <div class="dots" role="group" aria-label="Välj färg">
         <button class="dot" style="background:#3d5143" data-img="17p-skogsgron" data-name="Skogsgrön" data-model="iPhone 17 Pro" aria-pressed="true" aria-label="Skogsgrön"></button>
@@ -301,11 +319,11 @@
 
   <div class="wrap specs" id="sortiment">
     <div class="specs-head">
-      <h2>Sortiment.</h2>
+      <h2 data-split>Sortiment.</h2>
       <div class="stats">
         <div class="stat"><b>2019</b><span>grundat</span></div>
-        <div class="stat"><b>3</b><span>kategorier</span></div>
-        <div class="stat"><b>10</b><span>iPhone-modeller</span></div>
+        <div class="stat"><b data-count="3">3</b><span>kategorier</span></div>
+        <div class="stat"><b data-count="10">10</b><span>iPhone-modeller</span></div>
       </div>
     </div>
     <div class="spec-grid">
@@ -336,29 +354,38 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="prod-head"><h3>Kablar</h3><span>Flätade laddkablar, alla 2 m</span></div>
-    <div class="prod-grid prod-grid-5">
-      <figure class="prod"><div class="prod-img"><img src="img/produkter/kabel-usb-c-usb-c-2m.webp" alt="Corder laddkabel USB-C till USB-C, 2 meter, svart flätad" loading="lazy" width="800" height="800"></div><figcaption><b>USB-C till USB-C</b><span>Svart</span></figcaption></figure>
-      <figure class="prod"><div class="prod-img"><img src="img/produkter/kabel-usb-a-usb-c-2m.webp" alt="Corder laddkabel USB-A till USB-C, 2 meter, svart flätad" loading="lazy" width="800" height="800"></div><figcaption><b>USB-A till USB-C</b><span>Svart</span></figcaption></figure>
-      <figure class="prod"><div class="prod-img"><img src="img/produkter/kabel-usb-c-lightning-svart.webp" alt="Corder laddkabel USB-C till Lightning, 2 meter, svart flätad" loading="lazy" width="800" height="800"></div><figcaption><b>USB-C till Lightning</b><span>Svart</span></figcaption></figure>
-      <figure class="prod"><div class="prod-img"><img src="img/produkter/kabel-usb-c-lightning-vit.webp" alt="Corder laddkabel USB-C till Lightning, 2 meter, vit" loading="lazy" width="800" height="800"></div><figcaption><b>USB-C till Lightning</b><span>Vit</span></figcaption></figure>
-      <figure class="prod"><div class="prod-img"><img src="img/produkter/kabel-usb-a-lightning-2m.webp" alt="Corder laddkabel USB-A till Lightning, 2 meter, vit" loading="lazy" width="800" height="800"></div><figcaption><b>USB-A till Lightning</b><span>Vit</span></figcaption></figure>
+<section class="gear" id="laddning" data-theme="light">
+  <div class="gear-pin">
+    <div class="wrap gear-head">
+      <div>
+        <span class="caps">Laddare och kablar</span>
+        <h2 data-split>Laddat<br>och kopplat.</h2>
+      </div>
+      <p>Flätade laddkablar, alla 2 meter, och snabbladdare för iPhone och andra USB-enheter.</p>
     </div>
-
-    <div class="prod-head"><h3>Laddare</h3><span>Snabbladdare för iPhone och andra USB-enheter</span></div>
-    <div class="prod-grid">
-      <figure class="prod"><div class="prod-img"><img src="img/produkter/laddare-20w-usb-c.webp" alt="Corder snabbladdare 20W med USB-C" loading="lazy" width="800" height="800"></div><figcaption><b>Snabbladdare 20W</b><span>USB-C</span></figcaption></figure>
-      <figure class="prod"><div class="prod-img"><img src="img/produkter/laddare-20w-dual-port.webp" alt="Corder snabbladdare 20W med två portar" loading="lazy" width="800" height="800"></div><figcaption><b>Snabbladdare 20W Dual Port</b><span>Två portar</span></figcaption></figure>
-      <figure class="prod"><div class="prod-img"><img src="img/produkter/laddare-18w-usb-a.webp" alt="Corder snabbladdare 18W med USB-A" loading="lazy" width="800" height="800"></div><figcaption><b>Snabbladdare 18W</b><span>USB-A</span></figcaption></figure>
+    <div class="rail" id="rail">
+      <div class="track" id="track">
+        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/kabel-usb-c-usb-c-2m.webp" alt="Corder laddkabel USB-C till USB-C, 2 meter, svart flätad" loading="lazy"></div><figcaption><span class="caps">Kabel</span><b>USB-C till USB-C</b><span>2 m · Svart</span></figcaption></figure>
+        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/kabel-usb-a-usb-c-2m.webp" alt="Corder laddkabel USB-A till USB-C, 2 meter, svart flätad" loading="lazy"></div><figcaption><span class="caps">Kabel</span><b>USB-A till USB-C</b><span>2 m · Svart</span></figcaption></figure>
+        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/kabel-usb-c-lightning-svart.webp" alt="Corder laddkabel USB-C till Lightning, 2 meter, svart flätad" loading="lazy"></div><figcaption><span class="caps">Kabel</span><b>USB-C till Lightning</b><span>2 m · Svart</span></figcaption></figure>
+        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/kabel-usb-c-lightning-vit.webp" alt="Corder laddkabel USB-C till Lightning, 2 meter, vit" loading="lazy"></div><figcaption><span class="caps">Kabel</span><b>USB-C till Lightning</b><span>2 m · Vit</span></figcaption></figure>
+        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/kabel-usb-a-lightning-2m.webp" alt="Corder laddkabel USB-A till Lightning, 2 meter, vit" loading="lazy"></div><figcaption><span class="caps">Kabel</span><b>USB-A till Lightning</b><span>2 m · Vit</span></figcaption></figure>
+        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/laddare-20w-usb-c.webp" alt="Corder snabbladdare 20W med USB-C" loading="lazy"></div><figcaption><span class="caps">Laddare</span><b>Snabbladdare 20W</b><span>USB-C</span></figcaption></figure>
+        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/laddare-20w-dual-port.webp" alt="Corder snabbladdare 20W med två portar" loading="lazy"></div><figcaption><span class="caps">Laddare</span><b>Snabbladdare 20W Dual Port</b><span>Två portar</span></figcaption></figure>
+        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/laddare-18w-usb-a.webp" alt="Corder snabbladdare 18W med USB-A" loading="lazy"></div><figcaption><span class="caps">Laddare</span><b>Snabbladdare 18W</b><span>USB-A</span></figcaption></figure>
+      </div>
     </div>
+    <div class="wrap rail-foot"><div class="rail-progress"><span id="rail-bar"></span></div><span class="caps" id="rail-hint">Svep för fler</span></div>
   </div>
 </section>
 
 <section class="guides" id="guider" data-theme="light">
   <div class="wrap">
     <div class="guides-head">
-      <h2>Apple-guider.</h2>
+      <h2 data-split>Apple-guider.</h2>
       <p>Raka svar om skal, material och kompatibilitet. Skrivna av oss som jobbar med tillbehören varje dag.</p>
     </div>
     <a class="guide" href="/blogs/nyheter/silikon-vs-tpu-vilket-mobilskal-ger-bast-skydd/"><span class="caps">Mobilskal</span><h3>Vad är ett TPU-skal? TPU vs silikon</h3><span class="arrow">→</span></a>
@@ -370,7 +397,7 @@
 <section class="stores" id="butiker" data-theme="light">
   <div class="wrap">
     <div class="stores-head">
-      <h2>Hitta Corder<br>i butik.</h2>
+      <h2 data-split>Hitta Corder<br>i butik.</h2>
       <p>Här finns Corders skal, laddare och kablar. Fråga i butiken efter just din modell.</p>
     </div>
     <div class="store-grid">
@@ -383,7 +410,7 @@
 
 <section class="retail" id="aterforsaljare" data-theme="light">
   <div class="wrap">
-    <h2>Sälj Corder<br>i din butik.</h2>
+    <h2 data-split>Sälj Corder<br>i din butik.</h2>
     <div class="retail-card">
       <p>Vi samarbetar med fysiska butiker runt om i södra Sverige. Låga marginaler hos oss betyder bra priser för dina kunder.</p>
       <ul>
@@ -400,55 +427,23 @@
   <div class="wrap">
     <div class="foot">
       <a href="#" class="logo">corder</a>
-      <div><h4>Sortiment</h4><ul><li><a href="#sortiment">Mobilskal</a></li><li><a href="#sortiment">Laddare</a></li><li><a href="#sortiment">Kablar</a></li></ul></div>
+      <div><h4>Sortiment</h4><ul><li><a href="#sortiment">Mobilskal</a></li><li><a href="#laddning">Laddare</a></li><li><a href="#laddning">Kablar</a></li></ul></div>
       <div><h4>Företag</h4><ul><li><a href="#butiker">Hitta butik</a></li><li><a href="#aterforsaljare">Bli återförsäljare</a></li><li><a href="mailto:sales@corder.se">sales@corder.se</a></li></ul></div>
       <div><h4>Resurser</h4><ul><li><a href="#guider">Apple-guider</a></li><li><a href="https://www.instagram.com/corderofficial">Instagram</a></li><li><a href="https://www.tiktok.com/@corderofficial">TikTok</a></li><li><a href="https://www.facebook.com/cordergroup">Facebook</a></li></ul></div>
     </div>
+    <div class="foot-mark" aria-hidden="true">corder</div>
     <div class="foot-base">© 2026 Corder Group AB · Org.nr 559227-0226 · Kungsbacka · Designed and developed in Sweden</div>
   </div>
 </footer>
 
+<script src="/assets/vendor/gsap.min.js" defer></script>
+<script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
 <script>
-(() => {
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+addEventListener('DOMContentLoaded', () => {
   const top = document.getElementById('top');
-  const hero = document.getElementById('hero');
   const reveal = document.getElementById('reveal');
 
-  // Dela upp intro-texten i ord, men låt miniatyrbilderna vara kvar
-  const words = [];
-  [...reveal.childNodes].forEach(node => {
-    if (node.nodeType !== Node.TEXT_NODE) return;
-    const frag = document.createDocumentFragment();
-    node.textContent.split(/(\s+)/).forEach(part => {
-      if (!part.trim()) { frag.append(part); return; }
-      const s = document.createElement('span');
-      s.className = 'w'; s.textContent = part;
-      frag.append(s); words.push(s);
-    });
-    node.replaceWith(frag);
-  });
-
-  const themed = [...document.querySelectorAll('[data-theme]')];
-  const onScroll = () => {
-    const vh = innerHeight;
-    if (!reduce) {
-      const p = Math.min(1, Math.max(0, scrollY / (hero.offsetHeight - vh)));
-      hero.style.setProperty('--p', p.toFixed(3));
-      const r = reveal.getBoundingClientRect();
-      const prog = Math.min(1, Math.max(0, (vh * 0.85 - r.top) / (r.height + vh * 0.35)));
-      const n = Math.round(prog * words.length);
-      words.forEach((w, i) => w.classList.toggle('lit', i < n));
-    }
-    // Byt headerfärg efter sektionen under den
-    const under = themed.find(s => { const b = s.getBoundingClientRect(); return b.top <= 40 && b.bottom > 40; });
-    top.classList.toggle('on-light', !!under && under.dataset.theme === 'light');
-  };
-  addEventListener('scroll', onScroll, { passive: true });
-  addEventListener('resize', onScroll);
-  onScroll();
-
-  // Färgväljare
+  // Färgväljare (fungerar även utan GSAP)
   const stage = document.getElementById('stage');
   const label = document.getElementById('dot-name');
   document.querySelectorAll('.dot').forEach(dot => dot.addEventListener('click', () => {
@@ -466,7 +461,124 @@
     });
     label.textContent = `${dot.dataset.name} · ${dot.dataset.model || 'iPhone 16 Pro'}`;
   }));
-})();
+
+  if (!window.gsap || !window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Headerns färg följer sektionen under den
+  document.querySelectorAll('[data-theme]').forEach(sec => ScrollTrigger.create({
+    trigger: sec, start: 'top 40px', end: 'bottom 40px',
+    onToggle: self => { if (self.isActive) top.classList.toggle('on-light', sec.dataset.theme === 'light'); }
+  }));
+
+  const mm = gsap.matchMedia();
+
+  mm.add({
+    desktop: '(min-width: 901px) and (prefers-reduced-motion: no-preference)',
+    mobile: '(max-width: 900px) and (prefers-reduced-motion: no-preference)',
+  }, ctx => {
+    const { desktop } = ctx.conditions;
+    document.documentElement.classList.add('motion');
+
+    // Rubriker: dela vid <br> och maska fram rad för rad
+    const lines = el => {
+      if (!el.dataset.splitDone) {
+        el.innerHTML = el.innerHTML.split(/<br\s*\/?>/i).map(s => `<span class="line"><span>${s.trim()}</span></span>`).join('');
+        el.dataset.splitDone = '1';
+      }
+      return el.querySelectorAll('.line > span');
+    };
+
+    // Hjälten: rubriken glider upp när sidan laddas
+    const heroLines = lines(document.querySelector('.hero h1'));
+    gsap.from(heroLines, { yPercent: 110, duration: 1.2, ease: 'power4.out', stagger: .12, delay: .15 });
+    gsap.from('.hero-photo', { scale: 1.12, autoAlpha: 0, duration: 1.8, ease: 'power3.out' });
+    gsap.from('.hero-foot', { autoAlpha: 0, y: 16, duration: 1, delay: .7, ease: 'power2.out' });
+
+    if (desktop) {
+      // Hjälten fästs medan bilden zoomar ut och rubriken lyfter bort
+      gsap.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=70%', scrub: .6, pin: '.hero-stage' } })
+        .fromTo('.hero-photo img', { scale: 1.06 }, { scale: 1, yPercent: -3, ease: 'none' }, 0)
+        .to('.hero h1', { yPercent: -60, autoAlpha: 0, ease: 'none' }, 0)
+        .to('.hero-foot', { autoAlpha: 0, ease: 'none' }, 0);
+    } else {
+      gsap.to('.hero-photo img', { yPercent: 8, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+    }
+
+    // Övriga rubriker
+    document.querySelectorAll('[data-split]').forEach(el => {
+      if (el.closest('.hero')) return;
+      gsap.from(lines(el), { yPercent: 110, duration: 1.1, ease: 'power4.out', stagger: .1,
+        scrollTrigger: { trigger: el, start: 'top 85%' } });
+    });
+
+    // Introt: orden tänds i takt med scrollen och miniatyrerna poppar fram
+    if (!reveal.dataset.splitDone) {
+      [...reveal.childNodes].forEach(node => {
+        if (node.nodeType !== Node.TEXT_NODE) return;
+        const frag = document.createDocumentFragment();
+        node.textContent.split(/(\s+)/).forEach(part => {
+          if (!part.trim()) { frag.append(part); return; }
+          const s = document.createElement('span'); s.className = 'w'; s.textContent = part; frag.append(s);
+        });
+        node.replaceWith(frag);
+      });
+      reveal.dataset.splitDone = '1';
+    }
+    const introTl = gsap.timeline({ scrollTrigger: { trigger: reveal, start: 'top 80%', end: 'bottom 45%', scrub: .5 } });
+    [...reveal.children].forEach((el, i) => {
+      if (el.classList.contains('w')) introTl.to(el, { color: '#111', duration: .1, ease: 'none' }, i * .1);
+      else introTl.from(el, { scale: .4, rotate: -12, autoAlpha: 0, duration: .25, ease: 'back.out(2)' }, i * .1);
+    });
+    gsap.from('.intro-sub', { autoAlpha: 0, y: 24, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: '.intro-sub', start: 'top 90%' } });
+
+    // Färgsektionen: punkterna kommer in i tur och ordning, skalet svävar med scrollen
+    gsap.from('.design p, .dot-name', { autoAlpha: 0, y: 20, duration: .9, stagger: .1, ease: 'power3.out', scrollTrigger: { trigger: '.design', start: 'top 70%' } });
+    gsap.from('.dot', { scale: 0, duration: .6, stagger: .07, ease: 'back.out(2.2)', scrollTrigger: { trigger: '.dots', start: 'top 88%' } });
+    gsap.fromTo('#stage', { yPercent: 8, rotate: -5 }, { yPercent: -6, rotate: 2, ease: 'none',
+      scrollTrigger: { trigger: '.design', start: 'top bottom', end: 'bottom top', scrub: true } });
+
+    // Sortiment: rader glider in, siffror räknas upp
+    gsap.utils.toArray('.spec').forEach(spec => {
+      gsap.from(spec.querySelectorAll('h3, dl > div'), { autoAlpha: 0, y: 18, duration: .7, stagger: .05, ease: 'power3.out',
+        scrollTrigger: { trigger: spec, start: 'top 82%' } });
+    });
+    gsap.utils.toArray('[data-count]').forEach(el => {
+      const n = { v: 0 }, slut = +el.dataset.count;
+      gsap.to(n, { v: slut, duration: 1.4, ease: 'power2.out', snap: { v: 1 },
+        onUpdate: () => { el.textContent = n.v; }, scrollTrigger: { trigger: el, start: 'top 90%' } });
+    });
+
+    // Laddare och kablar: sidledes räls på dator, svep på mobil
+    const rail = document.getElementById('rail'), track = document.getElementById('track'), bar = document.getElementById('rail-bar');
+    if (desktop) {
+      document.querySelector('.gear').classList.add('is-pinned');
+      document.getElementById('rail-hint').textContent = 'Scrolla för fler';
+      const distans = () => Math.max(0, track.scrollWidth - innerWidth);
+      gsap.to(track, { x: () => -distans(), ease: 'none',
+        scrollTrigger: { trigger: '.gear', pin: '.gear-pin', start: 'top top', end: () => '+=' + distans(), scrub: .8, invalidateOnRefresh: true,
+          onUpdate: self => gsap.set(bar, { scaleX: .12 + self.progress * .88 }) } });
+      ctx.add(() => () => document.querySelector('.gear').classList.remove('is-pinned'));
+    } else {
+      const upd = () => gsap.set(bar, { scaleX: .12 + .88 * (rail.scrollLeft / Math.max(1, rail.scrollWidth - rail.clientWidth)) });
+      rail.addEventListener('scroll', upd, { passive: true });
+    }
+    gsap.from('.gear-card', { autoAlpha: 0, y: 60, duration: 1, stagger: .08, ease: 'power3.out', scrollTrigger: { trigger: '.gear', start: 'top 70%' } });
+
+    // Guider, butiker och återförsäljare
+    gsap.from('.guide', { autoAlpha: 0, y: 30, duration: .8, stagger: .1, ease: 'power3.out', scrollTrigger: { trigger: '.guides', start: 'top 70%' } });
+    gsap.from('.store', { autoAlpha: 0, y: 40, duration: .9, stagger: .1, ease: 'power3.out', scrollTrigger: { trigger: '.store-grid', start: 'top 85%' } });
+    gsap.from('.retail-card', { autoAlpha: 0, y: 40, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '.retail', start: 'top 70%' } });
+
+    // Ordmärket i sidfoten reser sig
+    gsap.from('.foot-mark', { yPercent: 40, autoAlpha: 0, duration: 1.4, ease: 'power3.out', scrollTrigger: { trigger: 'footer', start: 'top 80%' } });
+
+    return () => document.documentElement.classList.remove('motion');
+  });
+
+  // Bilder som laddas sent ändrar höjder, så räkna om när allt är klart
+  addEventListener('load', () => ScrollTrigger.refresh());
+});
 </script>
 </body>
 </html>
