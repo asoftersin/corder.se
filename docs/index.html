@@ -124,6 +124,40 @@
   .intro-sub { margin-top: 56px; font-size: clamp(1.15rem, 2vw, 1.8rem); font-weight: 300; color: var(--muted); }
   .intro-sub b { font-weight: 400; color: var(--ink); }
 
+  /* Verktyg: vilket skal passar din iPhone? */
+  .finder { background: #f4f4f2; padding: clamp(96px, 11vw, 160px) 0; }
+  .finder-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+  .finder .caps { color: #5c5c5c; display: block; margin-bottom: 18px; }
+  .finder h2 { font-size: clamp(2.4rem, 4.6vw, 4rem); }
+  .finder-intro p { color: #5c5c5c; margin-top: 22px; max-width: 360px; }
+  .finder-row { display: grid; grid-template-columns: 96px 1fr; gap: 16px; align-items: center; padding: 12px 0; border-bottom: 1px solid #e2e2df; }
+  .finder-row:first-child { border-top: 1px solid #e2e2df; }
+  .finder-row .caps { margin: 0; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { display: inline-flex; align-items: center; padding: 10px 18px; border-radius: 999px; border: 1px solid #d6d6d2; background: #fff; color: var(--ink); font: 500 .92rem "Inter Tight", sans-serif; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+  .chip:hover { border-color: var(--ink); }
+  .chip[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .finder-result { margin-top: clamp(32px, 4vw, 56px); }
+  .fr-card { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(24px, 4vw, 56px); background: #fff; border-radius: 18px; padding: clamp(20px, 3vw, 40px); box-shadow: 0 24px 48px -32px rgba(0,0,0,.25); }
+  .fr-shots { display: flex; gap: 10px; align-items: flex-end; justify-content: center; min-height: 260px; }
+  .fr-shots img { height: clamp(180px, 22vw, 300px); width: auto; filter: drop-shadow(0 16px 18px rgba(0,0,0,.18)); }
+  .fr-shots .nopic { width: 90px; height: 180px; border-radius: 22px; }
+  .fr-info h3 { font-size: clamp(1.8rem, 3vw, 2.6rem); margin: 4px 0 16px; }
+  .fr-info .caps { margin: 0; }
+  .fr-sw { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .fr-sw span { display: inline-flex; align-items: center; gap: 7px; font-size: .85rem; padding: 5px 11px 5px 5px; border: 1px solid var(--line); border-radius: 999px; }
+  .fr-sw i { width: 16px; height: 16px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); }
+  .fr-info dl { margin: 0 0 24px; font-size: .92rem; }
+  .fr-info dl div { padding: 10px 0; border-top: 1px solid var(--line); }
+  .fr-info dt { color: var(--muted); font-size: .78rem; margin-bottom: 2px; }
+  .fr-info dd { margin: 0; }
+  .fr-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+  .fr-none { background: #fff; border-radius: 18px; padding: clamp(24px, 3vw, 40px); max-width: 720px; }
+  .fr-none h3 { font-size: clamp(1.6rem, 2.6vw, 2.2rem); margin-bottom: 12px; }
+  .fr-none p { color: var(--muted); }
+  @media (max-width: 900px) { .finder-grid, .fr-card { grid-template-columns: 1fr; } .finder-row { grid-template-columns: 1fr; gap: 8px; } .fr-shots { min-height: 0; } }
+
   /* Mörk sektion: design + färger */
   .night { background: var(--night); color: #fff; overflow: hidden; overflow: clip; }
   .design { display: grid; grid-template-columns: minmax(260px, 1fr) 1.4fr; gap: var(--gutter); align-items: center; min-height: 100vh; padding: 120px 0 80px; position: relative; }
@@ -298,7 +332,7 @@
   <div class="brand-nav">
     <a href="#" class="logo" aria-label="Corder startsida">corder</a>
     <ul id="meny">
-      <li><a href="/skal/">Skal</a></li>
+      <li><a href="#hitta-skal">Hitta skal</a></li>
       <li><a href="#sortiment">Sortiment</a></li>
       <li><a href="#laddning">Laddning</a></li>
       <li><a href="#butiker">Butiker</a></li>
@@ -337,6 +371,26 @@
     <p class="reveal" id="reveal">Corder gör skal&nbsp;<span class="thumb"><img loading="lazy" src="img/cut/xs/16p-pink.webp" alt="" width="80" height="160"></span>, laddare&nbsp;<span class="thumb"><img loading="lazy" src="img/cut/xs/laddare-20w.webp" alt="" width="184" height="160"></span> och kablar&nbsp;<span class="thumb"><img loading="lazy" src="img/cut/xs/kabel-c-lightning.webp" alt="" width="71" height="160"></span> för iPhone. Med låga marginaler, så att bra tillbehör blir tillgängliga för fler.</p>
     <p class="intro-sub">Och de finns i <b>butiker runt om i södra Sverige.</b></p>
   </div>
+</section>
+
+<section class="finder" id="hitta-skal" data-theme="light">
+  <div class="wrap finder-grid">
+    <div class="finder-intro">
+      <span class="caps">Hitta rätt skal</span>
+      <h2 data-split>Vilket skal passar<br>din iPhone?</h2>
+      <p>Välj din modell för att se färgerna och vad som gäller. Osäker på vilken du har? Öppna Inställningar, Allmänt, Om.</p>
+    </div>
+    <div class="finder-pick" role="group" aria-label="Välj iPhone-modell">
+      <div class="finder-row"><span class="caps">iPhone 18</span><div class="chips"><a class="chip" href="/skal/iphone-18-pro/" data-slug="iphone-18-pro" aria-pressed="false">18 Pro</a></div></div>
+      <div class="finder-row"><span class="caps">iPhone 17</span><div class="chips"><a class="chip" href="/skal/iphone-17/" data-slug="iphone-17" aria-pressed="false">17</a><a class="chip" href="/skal/iphone-17-pro/" data-slug="iphone-17-pro" aria-pressed="false">17 Pro</a></div></div>
+      <div class="finder-row"><span class="caps">iPhone 16</span><div class="chips"><a class="chip" href="/skal/iphone-16e/" data-slug="iphone-16e" aria-pressed="false">16e</a><a class="chip" href="/skal/iphone-16/" data-slug="iphone-16" aria-pressed="false">16</a><a class="chip" href="/skal/iphone-16-pro/" data-slug="iphone-16-pro" aria-pressed="false">16 Pro</a></div></div>
+      <div class="finder-row"><span class="caps">iPhone 15</span><div class="chips"><a class="chip" href="/skal/iphone-15/" data-slug="iphone-15" aria-pressed="false">15</a><a class="chip" href="/skal/iphone-15-pro/" data-slug="iphone-15-pro" aria-pressed="false">15 Pro</a></div></div>
+      <div class="finder-row"><span class="caps">iPhone 14</span><div class="chips"><a class="chip" href="/skal/iphone-14/" data-slug="iphone-14" aria-pressed="false">14</a><a class="chip" href="/skal/iphone-14-pro/" data-slug="iphone-14-pro" aria-pressed="false">14 Pro</a></div></div>
+      <div class="finder-row"><span class="caps">Andra</span><div class="chips"><button class="chip" type="button" data-other="aldre" aria-pressed="false">13 eller äldre</button><button class="chip" type="button" data-other="max" aria-pressed="false">Plus / Pro Max</button><button class="chip" type="button" data-other="duo" aria-pressed="false">iPhone Duo</button></div></div>
+    </div>
+  </div>
+  <div class="wrap"><div class="finder-result" id="finder-result" aria-live="polite"></div></div>
+  <script id="modeller" type="application/json">[{"slug": "iphone-18-pro", "namn": "iPhone 18 Pro", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/17p-black.webp"}, {"namn": "Skogsgrön", "hex": "#3d5143", "bild": "/img/cut/s/17p-skogsgron.webp"}], "tips": {"q": "Passar iPhone 17 Pro-skal till iPhone 18 Pro?", "a": "Ofta, eftersom måtten är desamma. Kameraplatån på 18 Pro är dock ungefär en tiondels millimeter tjockare, så tighta skal kan vara för trånga."}}, {"slug": "iphone-17-pro", "namn": "iPhone 17 Pro", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/17p-black.webp"}, {"namn": "Skogsgrön", "hex": "#3d5143", "bild": "/img/cut/s/17p-skogsgron.webp"}], "tips": {"q": "Passar skalet till iPhone 18 Pro?", "a": "Ofta, eftersom måtten är desamma, men kameraplatån på 18 Pro är något tjockare. Apple anger att modellerna officiellt inte delar skal."}}, {"slug": "iphone-17", "namn": "iPhone 17", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/17-black.webp"}, {"namn": "Skogsgrön", "hex": "#3d5143", "bild": "/img/cut/s/17-skogsgron.webp"}], "tips": {"q": "Passar iPhone 16-skal till iPhone 17?", "a": "Nej. iPhone 17 är något större och har ett nytt kameraparti."}}, {"slug": "iphone-16-pro", "namn": "iPhone 16 Pro", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/16p-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/16p-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/16p-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/16p-pink.webp"}], "tips": {"q": "Passar skalet till iPhone 17 Pro?", "a": "Nej. iPhone 17 Pro har en helt ny design med en bred kameraplatå."}}, {"slug": "iphone-16", "namn": "iPhone 16", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/16-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/16-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/16-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/16-pink.webp"}], "tips": {"q": "Passar iPhone 15-skal till iPhone 16?", "a": "Nej. iPhone 16 har en ny kameraplacering och en kameraknapp på sidan."}}, {"slug": "iphone-16e", "namn": "iPhone 16e", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/16e-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/16e-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/16e-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/16e-pink.webp"}], "tips": {"q": "Passar iPhone 16-skal till iPhone 16e?", "a": "Nej. iPhone 16e har bara en kamera och en egen form, så skalet behöver vara gjort för just 16e."}}, {"slug": "iphone-15-pro", "namn": "iPhone 15 Pro", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/15p-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/15p-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/15p-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/15p-pink.webp"}], "tips": {"q": "Passar skalet till iPhone 16 Pro?", "a": "Nej. iPhone 16 Pro är större och har en kameraknapp på sidan."}}, {"slug": "iphone-15", "namn": "iPhone 15", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/15-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/15-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/15-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/15-pink.webp"}], "tips": {"q": "Passar iPhone 14-skal till iPhone 15?", "a": "Nej. iPhone 15 har andra mått."}}, {"slug": "iphone-14-pro", "namn": "iPhone 14 Pro", "kontakt": "Lightning", "kabel": "USB-C till Lightning eller USB-A till Lightning", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/14p-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/14p-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/14p-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/14p-pink.webp"}], "tips": {"q": "Passar iPhone 13 Pro-skal till iPhone 14 Pro?", "a": "Nej. Kamerapartiet på iPhone 14 Pro är både bredare och högre."}}, {"slug": "iphone-14", "namn": "iPhone 14", "kontakt": "Lightning", "kabel": "USB-C till Lightning eller USB-A till Lightning", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/14-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/14-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/14-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/14-pink.webp"}], "tips": {"q": "Passar iPhone 13-skal till iPhone 14?", "a": "Nej. iPhone 14 är lite tjockare och har ett större kameraparti."}}]</script>
 </section>
 
 <section class="night" id="design" data-theme="dark">
@@ -524,6 +578,43 @@ addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('#meny a').forEach(a => a.addEventListener('click', () => setMenu(false)));
   addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
 
+  // Verktyg: vilket skal passar din iPhone?
+  const modeller = JSON.parse(document.getElementById('modeller').textContent || '[]');
+  const resultat = document.getElementById('finder-result');
+  const chips = [...document.querySelectorAll('.finder .chip')];
+  const ovriga = {
+    aldre: { h: 'Till iPhone 13 och äldre har vi tyvärr inga skal', p: 'Corders skal finns från iPhone 14 och framåt. Undrar du om ett skal från en annan modell passar?', l: ['/blogs/nyheter/har-iphone-13-och-14-samma-skal-en-utforlig-guide/', 'Har iPhone 13 och 14 samma skal?'] },
+    max: { h: 'Plus och Pro Max har vi inte skal till', p: 'Våra skal är gjorda för de vanliga storlekarna, från iPhone 14 till iPhone 18 Pro.', l: ['/skal/', 'Se alla modeller'] },
+    duo: { h: 'Skal till iPhone Duo har vi inte', p: 'iPhone Duo är vikbar och behöver ett helt annat skal än en vanlig iPhone.', l: ['/blogs/nyheter/iphone-duo-allt-du-behover-veta/', 'iPhone Duo: allt du behöver veta'] },
+  };
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const visa = chip => {
+    chips.forEach(c => c.setAttribute('aria-pressed', c === chip));
+    let html;
+    if (chip.dataset.slug) {
+      const m = modeller.find(x => x.slug === chip.dataset.slug);
+      if (!m) { location.href = chip.href; return; }
+      const bilder = m.farger.map(f => f.bild ? `<img src="${f.bild}" alt="Corder TPU-skal till ${esc(m.namn)} i ${esc(f.namn.toLowerCase())}" width="246" height="480">` : '').join('');
+      const farger = m.farger.map(f => `<span><i style="background:${f.hex}"></i>${esc(f.namn)}</span>`).join('');
+      html = `<div class="fr-card"><div class="fr-shots">${bilder}</div><div class="fr-info">
+        <span class="caps">Corder har skal till</span><h3>${esc(m.namn)}</h3><div class="fr-sw">${farger}</div>
+        <dl><div><dt>Material</dt><dd>TPU, stötdämpande och formstabilt</dd></div>
+        <div><dt>Laddning</dt><dd>${esc(m.namn)} har ${esc(m.kontakt)}. Rätt kabel: ${esc(m.kabel)}, 2 m.</dd></div>
+        <div><dt>${esc(m.tips.q)}</dt><dd>${esc(m.tips.a)}</dd></div></dl>
+        <div class="fr-actions"><a class="btn" href="/skal/${m.slug}/">Se skalen till ${esc(m.namn)}</a><a class="btn ghost" href="#butiker">Hitta butik</a></div></div></div>`;
+    } else {
+      const o = ovriga[chip.dataset.other];
+      html = `<div class="fr-none"><h3>${o.h}</h3><p>${o.p}</p><a class="btn ghost" href="${o.l[0]}">${o.l[1]}</a></div>`;
+    }
+    resultat.innerHTML = html;
+    if (window.gsap && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      gsap.fromTo(resultat.firstElementChild, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: .6, ease: 'power3.out' });
+      gsap.fromTo(resultat.querySelectorAll('.fr-shots img'), { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: .7, stagger: .06, ease: 'power3.out', delay: .1 });
+    }
+    if (innerWidth < 900) resultat.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  };
+  chips.forEach(c => c.addEventListener('click', e => { if (modeller.length || c.dataset.other) { e.preventDefault(); visa(c); } }));
+
   // Färgväljare: alla bilder ligger förladdade och tonas mellan (fungerar även utan GSAP)
   const dots = [...document.querySelectorAll('.dot')];
   const shots = [...document.querySelectorAll('#stage img')];
@@ -619,6 +710,7 @@ addEventListener('DOMContentLoaded', () => {
       if (el.classList.contains('w')) introTl.to(el, { color: '#111', duration: .1, ease: 'none' }, i * .1);
       else introTl.from(el, { scale: .4, rotate: -12, autoAlpha: 0, duration: .25, ease: 'back.out(2)' }, i * .1);
     });
+    gsap.from('.finder-row', { autoAlpha: 0, x: 24, duration: .7, stagger: .06, ease: 'power3.out', scrollTrigger: { trigger: '.finder-pick', start: 'top 80%' } });
     gsap.from('.intro-sub', { autoAlpha: 0, y: 24, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: '.intro-sub', start: 'top 90%' } });
 
     // Färgsektionen: text och punkter kommer in en gång, skalet tonar upp

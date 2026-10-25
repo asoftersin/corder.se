@@ -650,6 +650,24 @@ def bygg_skal():
     print("skrev skal/index.html")
 
 
+
+def bygg_valjare():
+    """Skriver modelldata till startsidans verktyg 'Vilket skal passar din iPhone?'."""
+    data = []
+    for m in MODELLER:
+        data.append({
+            "slug": m["slug"], "namn": m["namn"], "kontakt": m["kontakt"],
+            "kabel": "USB-C till Lightning eller USB-A till Lightning" if m["kontakt"] == "Lightning" else "USB-C till USB-C",
+            "farger": [{"namn": f, "hex": FARG[f][0], "bild": liten(modellbild(m, f)) if modellbild(m, f) else None} for f in m["farger"]],
+            "tips": {"q": m["kompat"][0][0], "a": m["kompat"][0][1]},
+        })
+    sida_ = ROT / "index.html"
+    t = sida_.read_text()
+    start = t.index('<script id="modeller" type="application/json">') + len('<script id="modeller" type="application/json">')
+    slut = t.index("</script>", start)
+    sida_.write_text(t[:start] + json.dumps(data, ensure_ascii=False) + t[slut:])
+    print("skrev modelldata till index.html")
+
 def bygg_404():
     innehall = """<main id="innehall" tabindex="-1">
   <div class="wrap">
@@ -733,5 +751,6 @@ def bygg_omdirigeringar():
 if __name__ == "__main__":
     bygg()
     bygg_skal()
+    bygg_valjare()
     bygg_404()
     bygg_omdirigeringar()
