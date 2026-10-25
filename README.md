@@ -23,3 +23,13 @@ Startsidan (`docs/index.html`) redigeras direkt.
 ```bash
 python3 -m http.server 5151 --directory docs
 ```
+
+## Efter publicering
+
+Meddela Bing och andra sökmotorer via IndexNow (nyckelfilen ligger i `docs/`):
+
+```bash
+python3 build/indexnow.py
+```
+
+`docs/llms.txt` sammanfattar Corder för AI-tjänster. Uppdatera den när sortiment, butiker eller guider ändras.
