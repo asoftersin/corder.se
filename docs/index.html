@@ -121,15 +121,27 @@
   .dot { width: 38px; height: 38px; border-radius: 50%; border: 0; cursor: pointer; outline: 1.5px solid transparent; outline-offset: 4px; transition: outline-color .2s; }
   .dot[aria-pressed="true"] { outline-color: rgba(255,255,255,.75); }
   .dot-name { margin-top: 16px; font-size: .85rem; color: var(--night-muted); }
-  .design-stage { position: relative; height: min(84vh, 820px); display: grid; place-items: center; }
-  .design-stage img { position: absolute; height: 100%; width: auto; transition: opacity .5s, transform .7s cubic-bezier(.2,.7,.2,1); filter: drop-shadow(0 50px 70px rgba(0,0,0,.7)); }
-  .design-stage img.out { opacity: 0; transform: translateY(18px) rotate(-2deg); }
+  .design-stage { position: relative; height: min(80vh, 780px); }
+  .design-stage::after { content: ""; position: absolute; left: 50%; bottom: -2%; width: 46%; height: 7%; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.85), transparent); filter: blur(6px); }
+  .design-stage img { position: absolute; left: 0; right: 0; top: 0; margin: 0 auto; height: 100%; width: auto; max-width: none; opacity: 0; visibility: hidden; z-index: 1; will-change: transform, opacity; transition: opacity .45s ease, visibility .45s; }
+  .design-stage img.on { opacity: 1; visibility: visible; }
+  .design-count { margin-top: 28px; font-size: .78rem; letter-spacing: .12em; color: var(--night-muted); font-variant-numeric: tabular-nums; }
+  .design-count b { color: #fff; font-weight: 500; }
+  .design-bar { margin-top: 10px; width: 120px; height: 2px; background: var(--night-line); border-radius: 2px; overflow: hidden; }
+  .design-bar span { display: block; height: 100%; width: 100%; background: #fff; transform-origin: 0 50%; transform: scaleX(.2); transition: transform .45s cubic-bezier(.2,.7,.2,1); }
   .design-cap { position: absolute; left: 22%; bottom: 0; max-width: 380px; color: var(--night-muted); }
   .design-cap .caps { color: #fff; display: block; margin-bottom: 6px; }
   @media (max-width: 900px) {
-    .design { grid-template-columns: 1fr; min-height: 0; }
-    .design-stage { height: 60vh; }
-    .design-cap { position: static; margin-top: 24px; }
+    .design { grid-template-columns: 1fr; min-height: 0; padding: 96px 0 120px; }
+    .design-stage { height: 58vh; margin-top: 8px; }
+    .design-cap { position: static; margin-top: 32px; }
+    .design-count, .design-bar { display: none; }
+    /* Mobilmenyn får bakgrund när man scrollat, så loggan inte krockar med text */
+    .top { padding-top: 14px; padding-bottom: 14px; }
+    /* Bakgrunden ligger i ett eget lager: backdrop-filter direkt på .top skulle flytta det fasta kortet */
+    .top::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 100%; z-index: -1; background: rgba(11,11,11,.78); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); opacity: 0; transition: opacity .3s, background-color .3s; pointer-events: none; }
+    .top.solid::before { opacity: 1; }
+    .top.on-light::before { background: rgba(255,255,255,.85); }
   }
 
   /* Spec-blad */
@@ -309,10 +321,16 @@
         <button class="dot" style="background:#f5a493" data-img="16p-pink" data-name="Rosa" aria-pressed="false" aria-label="Rosa"></button>
         <button class="dot" style="background:#b9bdf0" data-img="16p-purple" data-name="Lila" aria-pressed="false" aria-label="Lila"></button>
       </div>
-      <div class="dot-name" id="dot-name">Skogsgrön · iPhone 17 Pro</div>
+      <div class="dot-name" id="dot-name" aria-live="polite">Skogsgrön · iPhone 17 Pro</div>
+      <div class="design-count" aria-hidden="true"><b id="design-n">01</b> / 05</div>
+      <div class="design-bar" aria-hidden="true"><span id="design-bar"></span></div>
     </div>
     <div class="design-stage" id="stage">
-      <img src="img/cut/17p-skogsgron.webp" alt="Corder TPU-skal i vald färg" width="511" height="1020">
+      <img class="on" src="img/cut/17p-skogsgron.webp" alt="Corder TPU-skal i skogsgrönt till iPhone 17 Pro" width="511" height="1020">
+      <img src="img/cut/16p-blue.webp" alt="Corder TPU-skal i blått till iPhone 16 Pro" width="513" height="1020">
+      <img src="img/cut/16p-black.webp" alt="Corder TPU-skal i svart till iPhone 16 Pro" width="513" height="1020">
+      <img src="img/cut/16p-pink.webp" alt="Corder TPU-skal i rosa till iPhone 16 Pro" width="513" height="1020">
+      <img src="img/cut/16p-purple.webp" alt="Corder TPU-skal i lila till iPhone 16 Pro" width="513" height="1020">
     </div>
     <div class="design-cap"><span class="caps">Est. 2019.</span>Designed and developed in Sweden, präglat på baksidan av varje skal.</div>
   </div>
@@ -443,24 +461,30 @@ addEventListener('DOMContentLoaded', () => {
   const top = document.getElementById('top');
   const reveal = document.getElementById('reveal');
 
-  // Färgväljare (fungerar även utan GSAP)
-  const stage = document.getElementById('stage');
+  // Färgväljare: alla bilder ligger förladdade och tonas mellan (fungerar även utan GSAP)
+  const dots = [...document.querySelectorAll('.dot')];
+  const shots = [...document.querySelectorAll('#stage img')];
   const label = document.getElementById('dot-name');
-  document.querySelectorAll('.dot').forEach(dot => dot.addEventListener('click', () => {
-    if (dot.getAttribute('aria-pressed') === 'true') return;
-    document.querySelectorAll('.dot').forEach(d => d.setAttribute('aria-pressed', d === dot));
-    const old = stage.querySelector('img:last-child');
-    const img = new Image();
-    img.src = `img/cut/${dot.dataset.img}.webp`;
-    img.alt = 'Corder TPU-skal i vald färg';
-    img.className = 'out';
-    stage.append(img);
-    img.decode().catch(() => {}).then(() => {
-      requestAnimationFrame(() => { img.classList.remove('out'); old.classList.add('out'); });
-      setTimeout(() => old.remove(), 700);
-    });
-    label.textContent = `${dot.dataset.name} · ${dot.dataset.model || 'iPhone 16 Pro'}`;
-  }));
+  const counter = document.getElementById('design-n');
+  const designBar = document.getElementById('design-bar');
+  let current = 0;
+  const showColor = (i, dir = 1) => {
+    if (i === current) return;
+    const prev = current; current = i;
+    dots.forEach((d, j) => d.setAttribute('aria-pressed', j === i));
+    label.textContent = `${dots[i].dataset.name} · ${dots[i].dataset.model || 'iPhone 16 Pro'}`;
+    counter.textContent = String(i + 1).padStart(2, '0');
+    designBar.style.transform = `scaleX(${(i + 1) / shots.length})`;
+    shots[prev].classList.remove('on'); shots[i].classList.add('on');
+    if (window.gsap && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      gsap.killTweensOf([shots[prev], shots[i]]);
+      gsap.fromTo(shots[i], { autoAlpha: 0, yPercent: 4 * dir, rotate: -3 * dir }, { autoAlpha: 1, yPercent: 0, rotate: 0, duration: .7, ease: 'power3.out' });
+      gsap.to(shots[prev], { autoAlpha: 0, yPercent: -3 * dir, rotate: 2 * dir, duration: .5, ease: 'power2.in' });
+    }
+  };
+  designBar.style.transform = `scaleX(${1 / shots.length})`;
+  let jumpTo = null;
+  dots.forEach((dot, i) => dot.addEventListener('click', () => jumpTo ? jumpTo(i) : showColor(i, i > current ? 1 : -1)));
 
   if (!window.gsap || !window.ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
@@ -470,6 +494,8 @@ addEventListener('DOMContentLoaded', () => {
     trigger: sec, start: 'top 40px', end: 'bottom 40px',
     onToggle: self => { if (self.isActive) top.classList.toggle('on-light', sec.dataset.theme === 'light'); }
   }));
+
+  ScrollTrigger.create({ start: 80, onToggle: self => top.classList.toggle('solid', self.isActive) });
 
   const mm = gsap.matchMedia();
 
@@ -532,11 +558,22 @@ addEventListener('DOMContentLoaded', () => {
     });
     gsap.from('.intro-sub', { autoAlpha: 0, y: 24, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: '.intro-sub', start: 'top 90%' } });
 
-    // Färgsektionen: punkterna kommer in i tur och ordning, skalet svävar med scrollen
-    gsap.from('.design p, .dot-name', { autoAlpha: 0, y: 20, duration: .9, stagger: .1, ease: 'power3.out', scrollTrigger: { trigger: '.design', start: 'top 70%' } });
+    // Färgsektionen: text och punkter kommer in en gång, skalet tonar upp
+    gsap.from('.design p, .dot-name, .design-count, .design-bar', { autoAlpha: 0, y: 20, duration: .9, stagger: .08, ease: 'power3.out', scrollTrigger: { trigger: '.design', start: 'top 70%' } });
     gsap.from('.dot', { scale: 0, duration: .6, stagger: .07, ease: 'back.out(2.2)', scrollTrigger: { trigger: '.dots', start: 'top 88%' } });
-    gsap.fromTo('#stage', { yPercent: 8, rotate: -5 }, { yPercent: -6, rotate: 2, ease: 'none',
-      scrollTrigger: { trigger: '.design', start: 'top bottom', end: 'bottom top', scrub: true } });
+    gsap.from('#stage', { autoAlpha: 0, yPercent: 6, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '#stage', start: 'top 80%' } });
+
+    if (desktop) {
+      // Sektionen står still medan skalet går igenom alla fem färger, med stopp vid varje
+      const steps = shots.length - 1;
+      const story = ScrollTrigger.create({
+        trigger: '.design', pin: true, start: 'top top', end: () => '+=' + innerHeight * 0.55 * steps,
+        snap: { snapTo: 1 / steps, duration: { min: .25, max: .6 }, delay: .08, ease: 'power2.inOut' },
+        onUpdate: self => { const i = Math.round(self.progress * steps); if (i !== current) showColor(i, i > current ? 1 : -1); }
+      });
+      jumpTo = i => window.scrollTo({ top: story.start + (story.end - story.start) * (i / steps) + 1, behavior: 'smooth' });
+      ctx.add(() => () => { jumpTo = null; });
+    }
 
     // Sortiment: rader glider in, siffror räknas upp
     gsap.utils.toArray('.spec').forEach(spec => {
