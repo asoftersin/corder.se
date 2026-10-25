@@ -28,7 +28,7 @@
   :root {
     --ink: #111111;
     --muted: #6e6e6e;
-    --faint: #c9c9c9;
+    --faint: #8c8c8c;
     --line: #e7e7e7;
     --paper: #ffffff;
     --stone: #3b3c40;
@@ -68,8 +68,20 @@
   .card-sub b { font-weight: 400; font-size: 1.15rem; }
   .card-sub nav { display: flex; gap: 40px; font-size: .82rem; }
   .card-sub nav a:hover { color: var(--muted); }
+  .menu-btn { display: none; }
   @media (max-width: 900px) {
     .brand-nav ul { display: none; }
+    .menu-btn { display: inline-flex; align-items: center; gap: 10px; margin-left: auto; background: none; border: 0; color: inherit; font: 500 .9rem "Inter Tight", sans-serif; padding: 6px 0; cursor: pointer; position: relative; z-index: 2; }
+    .menu-btn span, .menu-btn span::before { display: block; width: 18px; height: 1.5px; background: currentColor; position: relative; transition: transform .3s; }
+    .menu-btn span::before { content: ""; position: absolute; top: 5px; }
+    .menu-btn span { top: -2.5px; }
+    .menu-btn b { font-weight: 500; }
+    .top.open .menu-btn span { opacity: 0; }
+    .top.open .logo { position: relative; z-index: 2; }
+    .top.open .brand-nav ul { display: flex; position: fixed; inset: 0; z-index: 1; flex-direction: column; justify-content: center; gap: 6px; padding: 0 var(--gutter); background: var(--night); }
+    .top.open .brand-nav ul a { font-size: 2.2rem; font-weight: 300; letter-spacing: -.02em; color: #fff; opacity: 1; }
+    .top.open .logo, .top.open .menu-btn { color: #fff; }
+    .top.open .card { display: none; }
     .card { position: fixed; left: 12px; right: 12px; bottom: 12px; width: auto; padding: 10px; }
     .card-row { grid-template-columns: 30px 1fr auto; border: 0; padding: 0; }
     .card-row .card-meta:nth-of-type(3), .card-sub { display: none; }
@@ -245,11 +257,11 @@
   /* Footer */
   footer { background: var(--stone); color: #fff; padding: 72px 0 40px; overflow: hidden; }
   .foot { display: grid; grid-template-columns: 1.2fr repeat(3, 1fr); gap: 32px; }
-  .foot h4 { font-size: .85rem; font-weight: 500; margin: 0 0 14px; }
+  .foot .foot-h { font-size: .85rem; font-weight: 500; margin: 0 0 14px; }
   .foot ul { list-style: none; margin: 0; padding: 0; font-size: .85rem; }
   .foot li { padding: 4px 0; color: rgba(255,255,255,.6); }
   .foot li a:hover { color: #fff; }
-  .foot-base { margin-top: 0; font-size: .78rem; color: rgba(255,255,255,.5); }
+  .foot-base { margin-top: 0; font-size: .78rem; color: rgba(255,255,255,.66); }
   @media (max-width: 700px) { .foot { grid-template-columns: 1fr 1fr; } }
 
   .motion .reveal .w { color: var(--faint); }
@@ -285,14 +297,16 @@
 <div class="top" id="top">
   <div class="brand-nav">
     <a href="#" class="logo" aria-label="Corder startsida">corder</a>
-    <ul>
+    <ul id="meny">
+      <li><a href="/skal/">Skal</a></li>
       <li><a href="#sortiment">Sortiment</a></li>
       <li><a href="#laddning">Laddning</a></li>
       <li><a href="#butiker">Butiker</a></li>
       <li><a href="#aterforsaljare">Företag</a></li>
-      <li><a href="#guider">Resurser</a></li>
+      <li><a href="#guider">Apple-guider</a></li>
     </ul>
   </div>
+  <button class="menu-btn" aria-expanded="false" aria-controls="meny"><span></span><b>Meny</b></button>
   <div class="card">
     <div class="card-row">
       <span class="card-mark">c</span>
@@ -320,7 +334,7 @@
 
 <section class="intro" id="innehall" tabindex="-1" data-theme="light">
   <div class="wrap">
-    <p class="reveal" id="reveal">Corder gör skal&nbsp;<span class="thumb"><img src="img/cut/16p-pink.webp" alt=""></span>, laddare&nbsp;<span class="thumb"><img src="img/cut/laddare-20w.webp" alt=""></span> och kablar&nbsp;<span class="thumb"><img src="img/cut/kabel-c-lightning.webp" alt=""></span> för iPhone. Med låga marginaler, så att bra tillbehör blir tillgängliga för fler.</p>
+    <p class="reveal" id="reveal">Corder gör skal&nbsp;<span class="thumb"><img loading="lazy" src="img/cut/xs/16p-pink.webp" alt="" width="80" height="160"></span>, laddare&nbsp;<span class="thumb"><img loading="lazy" src="img/cut/xs/laddare-20w.webp" alt="" width="184" height="160"></span> och kablar&nbsp;<span class="thumb"><img loading="lazy" src="img/cut/xs/kabel-c-lightning.webp" alt="" width="71" height="160"></span> för iPhone. Med låga marginaler, så att bra tillbehör blir tillgängliga för fler.</p>
     <p class="intro-sub">Och de finns i <b>butiker runt om i södra Sverige.</b></p>
   </div>
 </section>
@@ -376,7 +390,7 @@
             <div><dt>Alla modeller</dt><dd><a href="/skal/">Se skal per modell →</a></dd></div>
           </dl>
         </div>
-        <div class="spec-img"><img src="img/cut/16-black.webp" alt="" loading="lazy"></div>
+        <div class="spec-img"><img src="img/cut/s/16-black.webp" alt="" loading="lazy" width="246" height="480"></div>
       </div>
       <div class="spec">
         <div>
@@ -403,14 +417,14 @@
     </div>
     <div class="rail" id="rail">
       <div class="track" id="track">
-        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/kabel-usb-c-usb-c-2m.webp" alt="Corder laddkabel USB-C till USB-C, 2 meter, svart flätad" loading="lazy"></div><figcaption><span class="caps">Kabel</span><b>USB-C till USB-C</b><span>2 m · Svart</span></figcaption></figure>
-        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/kabel-usb-a-usb-c-2m.webp" alt="Corder laddkabel USB-A till USB-C, 2 meter, svart flätad" loading="lazy"></div><figcaption><span class="caps">Kabel</span><b>USB-A till USB-C</b><span>2 m · Svart</span></figcaption></figure>
-        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/kabel-usb-c-lightning-svart.webp" alt="Corder laddkabel USB-C till Lightning, 2 meter, svart flätad" loading="lazy"></div><figcaption><span class="caps">Kabel</span><b>USB-C till Lightning</b><span>2 m · Svart</span></figcaption></figure>
-        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/kabel-usb-c-lightning-vit.webp" alt="Corder laddkabel USB-C till Lightning, 2 meter, vit" loading="lazy"></div><figcaption><span class="caps">Kabel</span><b>USB-C till Lightning</b><span>2 m · Vit</span></figcaption></figure>
-        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/kabel-usb-a-lightning-2m.webp" alt="Corder laddkabel USB-A till Lightning, 2 meter, vit" loading="lazy"></div><figcaption><span class="caps">Kabel</span><b>USB-A till Lightning</b><span>2 m · Vit</span></figcaption></figure>
-        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/laddare-20w-usb-c.webp" alt="Corder snabbladdare 20W med USB-C" loading="lazy"></div><figcaption><span class="caps">Laddare</span><b>Snabbladdare 20W</b><span>USB-C</span></figcaption></figure>
-        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/laddare-20w-dual-port.webp" alt="Corder snabbladdare 20W med två portar" loading="lazy"></div><figcaption><span class="caps">Laddare</span><b>Snabbladdare 20W Dual Port</b><span>Två portar</span></figcaption></figure>
-        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/laddare-18w-usb-a.webp" alt="Corder snabbladdare 18W med USB-A" loading="lazy"></div><figcaption><span class="caps">Laddare</span><b>Snabbladdare 18W</b><span>USB-A</span></figcaption></figure>
+        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/s/kabel-usb-c-usb-c-2m.webp" alt="Corder laddkabel USB-C till USB-C, 2 meter, svart flätad" loading="lazy" width="600" height="544"></div><figcaption><span class="caps">Kabel</span><b>USB-C till USB-C</b><span>2 m · Svart</span></figcaption></figure>
+        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/s/kabel-usb-a-usb-c-2m.webp" alt="Corder laddkabel USB-A till USB-C, 2 meter, svart flätad" loading="lazy" width="258" height="600"></div><figcaption><span class="caps">Kabel</span><b>USB-A till USB-C</b><span>2 m · Svart</span></figcaption></figure>
+        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/s/kabel-usb-c-lightning-svart.webp" alt="Corder laddkabel USB-C till Lightning, 2 meter, svart flätad" loading="lazy" width="600" height="534"></div><figcaption><span class="caps">Kabel</span><b>USB-C till Lightning</b><span>2 m · Svart</span></figcaption></figure>
+        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/s/kabel-usb-c-lightning-vit.webp" alt="Corder laddkabel USB-C till Lightning, 2 meter, vit" loading="lazy" width="265" height="600"></div><figcaption><span class="caps">Kabel</span><b>USB-C till Lightning</b><span>2 m · Vit</span></figcaption></figure>
+        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/s/kabel-usb-a-lightning-2m.webp" alt="Corder laddkabel USB-A till Lightning, 2 meter, vit" loading="lazy" width="282" height="600"></div><figcaption><span class="caps">Kabel</span><b>USB-A till Lightning</b><span>2 m · Vit</span></figcaption></figure>
+        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/s/laddare-20w-usb-c.webp" alt="Corder snabbladdare 20W med USB-C" loading="lazy" width="600" height="525"></div><figcaption><span class="caps">Laddare</span><b>Snabbladdare 20W</b><span>USB-C</span></figcaption></figure>
+        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/s/laddare-20w-dual-port.webp" alt="Corder snabbladdare 20W med två portar" loading="lazy" width="600" height="522"></div><figcaption><span class="caps">Laddare</span><b>Snabbladdare 20W Dual Port</b><span>Två portar</span></figcaption></figure>
+        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/s/laddare-18w-usb-a.webp" alt="Corder snabbladdare 18W med USB-A" loading="lazy" width="600" height="523"></div><figcaption><span class="caps">Laddare</span><b>Snabbladdare 18W</b><span>USB-A</span></figcaption></figure>
       </div>
     </div>
     <div class="wrap rail-foot"><div class="rail-progress"><span id="rail-bar"></span></div><span class="caps" id="rail-hint">Svep för fler</span></div>
@@ -487,9 +501,9 @@
   <div class="wrap">
     <div class="foot">
       <a href="#" class="logo">corder</a>
-      <div><h4>Sortiment</h4><ul><li><a href="/skal/">Mobilskal</a></li><li><a href="#laddning">Laddare</a></li><li><a href="#laddning">Kablar</a></li></ul></div>
-      <div><h4>Företag</h4><ul><li><a href="#om-oss">Om oss</a></li><li><a href="#butiker">Hitta butik</a></li><li><a href="#aterforsaljare">Bli återförsäljare</a></li><li><a href="mailto:sales@corder.se">sales@corder.se</a></li></ul></div>
-      <div><h4>Resurser</h4><ul><li><a href="#guider">Apple-guider</a></li><li><a href="https://www.instagram.com/corderofficial">Instagram</a></li><li><a href="https://www.tiktok.com/@corderofficial">TikTok</a></li><li><a href="https://www.facebook.com/cordergroup">Facebook</a></li></ul></div>
+      <div><p class="foot-h">Sortiment</p><ul><li><a href="/skal/">Mobilskal</a></li><li><a href="#laddning">Laddare</a></li><li><a href="#laddning">Kablar</a></li></ul></div>
+      <div><p class="foot-h">Företag</p><ul><li><a href="#om-oss">Om oss</a></li><li><a href="#butiker">Hitta butik</a></li><li><a href="#aterforsaljare">Bli återförsäljare</a></li><li><a href="mailto:sales@corder.se">sales@corder.se</a></li></ul></div>
+      <div><p class="foot-h">Resurser</p><ul><li><a href="#guider">Apple-guider</a></li><li><a href="https://www.instagram.com/corderofficial">Instagram</a></li><li><a href="https://www.tiktok.com/@corderofficial">TikTok</a></li><li><a href="https://www.facebook.com/cordergroup">Facebook</a></li></ul></div>
     </div>
     <div class="foot-mark" aria-hidden="true">corder</div>
     <div class="foot-base">© 2026 Corder Group AB · Org.nr 559227-0226 · Kungsbacka · Designed and developed in Sweden</div>
@@ -502,6 +516,13 @@
 addEventListener('DOMContentLoaded', () => {
   const top = document.getElementById('top');
   const reveal = document.getElementById('reveal');
+
+  // Mobilmeny
+  const menuBtn = document.querySelector('.menu-btn');
+  const setMenu = open => { top.classList.toggle('open', open); menuBtn.setAttribute('aria-expanded', open); menuBtn.querySelector('b').textContent = open ? 'Stäng' : 'Meny'; document.body.style.overflow = open ? 'hidden' : ''; };
+  menuBtn.addEventListener('click', () => setMenu(!top.classList.contains('open')));
+  document.querySelectorAll('#meny a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
 
   // Färgväljare: alla bilder ligger förladdade och tonas mellan (fungerar även utan GSAP)
   const dots = [...document.querySelectorAll('.dot')];

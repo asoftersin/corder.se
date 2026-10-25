@@ -19,7 +19,7 @@
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/inter-tight-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts.css">
-<link rel="stylesheet" href="/assets/sida.css?v=8">
+<link rel="stylesheet" href="/assets/sida.css?v=11">
 </head>
 <body>
 <a class="skip" href="#innehall">Hoppa till innehållet</a>
@@ -27,7 +27,8 @@
 <header class="top">
   <div class="wrap">
     <a href="/" class="logo" aria-label="Corder startsida">corder</a>
-    <ul>
+    <button class="menu-btn" aria-expanded="false" aria-controls="meny" onclick="const o=this.closest('.top').classList.toggle('open');this.setAttribute('aria-expanded',o);this.querySelector('b').textContent=o?'Stäng':'Meny';document.body.style.overflow=o?'hidden':''"><span></span><b>Meny</b></button>
+    <ul id="meny">
       <li><a href="/skal/">Skal</a></li>
       <li><a href="/#laddning">Laddning</a></li>
       <li><a href="/#butiker">Butiker</a></li>
@@ -56,9 +57,9 @@
   <div class="wrap">
     <div class="foot">
       <a href="/" class="logo">corder</a>
-      <div><h4>Sortiment</h4><ul><li><a href="/skal/">TPU-skal</a></li><li><a href="/#laddning">Laddare</a></li><li><a href="/#laddning">Kablar</a></li></ul></div>
-      <div><h4>Företag</h4><ul><li><a href="/#butiker">Hitta butik</a></li><li><a href="/#aterforsaljare">Bli återförsäljare</a></li><li><a href="mailto:sales@corder.se">sales@corder.se</a></li></ul></div>
-      <div><h4>Resurser</h4><ul><li><a href="/blogs/nyheter/">Apple-guider</a></li><li><a href="https://www.instagram.com/corderofficial">Instagram</a></li><li><a href="https://www.tiktok.com/@corderofficial">TikTok</a></li><li><a href="https://www.facebook.com/cordergroup">Facebook</a></li></ul></div>
+      <div><p class="foot-h">Sortiment</p><ul><li><a href="/skal/">TPU-skal</a></li><li><a href="/#laddning">Laddare</a></li><li><a href="/#laddning">Kablar</a></li></ul></div>
+      <div><p class="foot-h">Företag</p><ul><li><a href="/#butiker">Hitta butik</a></li><li><a href="/#aterforsaljare">Bli återförsäljare</a></li><li><a href="mailto:sales@corder.se">sales@corder.se</a></li></ul></div>
+      <div><p class="foot-h">Resurser</p><ul><li><a href="/blogs/nyheter/">Apple-guider</a></li><li><a href="https://www.instagram.com/corderofficial">Instagram</a></li><li><a href="https://www.tiktok.com/@corderofficial">TikTok</a></li><li><a href="https://www.facebook.com/cordergroup">Facebook</a></li></ul></div>
     </div>
     <div class="foot-base">© 2026 Corder Group AB · Org.nr 559227-0226 · Kungsbacka · Designed and developed in Sweden</div>
   </div>

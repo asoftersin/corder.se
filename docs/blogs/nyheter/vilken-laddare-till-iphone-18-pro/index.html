@@ -20,7 +20,7 @@
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/inter-tight-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts.css">
-<link rel="stylesheet" href="/assets/sida.css?v=8">
+<link rel="stylesheet" href="/assets/sida.css?v=11">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Vilken laddare till iPhone 18 Pro? Watt, kabel och MagSafe förklarat", "description": "Räcker en 20 W-laddare till iPhone 18 Pro? Så snabbt laddar den med kabel och MagSafe, vad watt betyder och när en kraftigare laddare lönar sig.", "datePublished": "2026-10-25", "dateModified": "2026-10-25", "inLanguage": "sv", "mainEntityOfPage": "https://corder.se/blogs/nyheter/vilken-laddare-till-iphone-18-pro/", "author": {"@type": "Organization", "name": "Corder"}, "publisher": {"@type": "Organization", "name": "Corder"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Räcker en 20 W-laddare till iPhone 18 Pro?", "acceptedAnswer": {"@type": "Answer", "text": "Ja, för de flesta. Den snabbladdar telefonen, men når inte Apples allra snabbaste siffror som kräver en kraftigare laddare."}}, {"@type": "Question", "name": "Hur snabbt laddar iPhone 18 Pro trådlöst?", "acceptedAnswer": {"@type": "Answer", "text": "Upp till 25 W med MagSafe eller en Qi2-laddare som stöder 25 W."}}, {"@type": "Question", "name": "Kan en kraftigare laddare skada batteriet?", "acceptedAnswer": {"@type": "Answer", "text": "Nej. Telefonen tar bara emot så mycket ström som den klarar."}}, {"@type": "Question", "name": "Vilken kabel behöver jag?", "acceptedAnswer": {"@type": "Answer", "text": "En USB-C till USB-C-kabel tillsammans med en USB-C-laddare ger snabbladdning."}}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Corder", "item": "https://corder.se/"}, {"@type": "ListItem", "position": 2, "name": "Apple-guider", "item": "https://corder.se/blogs/nyheter/"}, {"@type": "ListItem", "position": 3, "name": "Vilken laddare till iPhone 18 Pro?", "item": "https://corder.se/blogs/nyheter/vilken-laddare-till-iphone-18-pro/"}]}</script>
@@ -31,7 +31,8 @@
 <header class="top">
   <div class="wrap">
     <a href="/" class="logo" aria-label="Corder startsida">corder</a>
-    <ul>
+    <button class="menu-btn" aria-expanded="false" aria-controls="meny" onclick="const o=this.closest('.top').classList.toggle('open');this.setAttribute('aria-expanded',o);this.querySelector('b').textContent=o?'Stäng':'Meny';document.body.style.overflow=o?'hidden':''"><span></span><b>Meny</b></button>
+    <ul id="meny">
       <li><a href="/skal/">Skal</a></li>
       <li><a href="/#laddning">Laddning</a></li>
       <li><a href="/#butiker">Butiker</a></li>
@@ -50,7 +51,7 @@
       <h1>Vilken laddare till iPhone 18 Pro? Watt, kabel och MagSafe förklarat</h1>
       <div class="post-meta"><span>Corder</span><span>3 min läsning</span><span>Uppdaterad 25 oktober 2026</span></div>
     </div>
-    <div class="cover post-cover" style="--cover-bg:#e8e8e5"><img src="/img/produkter/laddare-20w-usb-c.webp" alt="" loading="lazy"></div>
+    <div class="cover post-cover" style="--cover-bg:#e8e8e5"><img src="/img/produkter/s/laddare-20w-usb-c.webp" alt="" width="600" height="525" loading="lazy"></div>
     <div class="post">
       <nav class="toc" aria-label="Innehåll"><span class="caps">Innehåll</span><ol><li><a href="#hur-snabbt-kan-iphone-18-pro-laddas">Hur snabbt kan iPhone 18 Pro laddas?</a></li><li><a href="#racker-en-20-w-laddare">Räcker en 20 W-laddare?</a></li><li><a href="#nar-lonar-sig-en-kraftigare-laddare">När lönar sig en kraftigare laddare?</a></li><li><a href="#kabeln-spelar-roll">Kabeln spelar roll</a></li><li><a href="#magsafe-eller-kabel">MagSafe eller kabel?</a></li><li><a href="#laddar-skalet-samre">Laddar skalet sämre?</a></li><li><a href="#vanliga-fragor">Vanliga frågor</a></li></ol></nav>
       <article class="prose">
@@ -90,6 +91,8 @@
 
 <h2 id="laddar-skalet-samre">Laddar skalet sämre?</h2>
 <p>Med kabel påverkar skalet inte laddningen alls. Trådlöst fungerar laddning genom ett tunt TPU-skal, men magneterna i MagSafe fäster sämre om skalet saknar egna magneter. Ladda med kabel om du vill vara säker på full fart.</p>
+
+<p>Corder har snabbladdare på 20 W och 18 W och flätade kablar på 2 meter. Se <a href="/#laddning">laddare och kablar</a>, och glöm inte <a href="/skal/iphone-18-pro/">skalet till iPhone 18 Pro</a>.</p>
         <h2 id="vanliga-fragor">Vanliga frågor</h2>
         <div class="faq">
 <details><summary>Räcker en 20 W-laddare till iPhone 18 Pro?</summary><p>Ja, för de flesta. Den snabbladdar telefonen, men når inte Apples allra snabbaste siffror som kräver en kraftigare laddare.</p></details>
@@ -111,8 +114,8 @@
     <div class="wrap">
       <h2>Fler guider</h2>
       <div class="cards">
-      <a class="card" href="/blogs/nyheter/vilken-usb-c-kabel-till-iphone/"><div class="cover " style="--cover-bg:#e3e6ea"><img src="/img/produkter/kabel-usb-c-usb-c-2m.webp" alt="" loading="lazy"></div><div><div class="post-meta"><span>Laddning</span><span>3 min läsning</span><span>Uppdaterad 25 oktober 2026</span></div><h3 style="margin-top:12px">Vilken USB-C-kabel till iPhone?</h3><p style="margin-top:10px">Vilken kabel passar din iPhone? USB-C eller Lightning, USB-A eller USB-C, och vad som skiljer en bra kabel från en dålig. Enkel guide för alla modeller.</p></div></a>
-      <a class="card" href="/blogs/nyheter/passar-iphone-17-pro-skal-till-iphone-18-pro/"><div class="cover " style="--cover-bg:#e9ece4"><img src="/img/cut/17p-skogsgron.webp" alt="" loading="lazy"></div><div><div class="post-meta"><span>Mobilskal</span><span>3 min läsning</span><span>Uppdaterad 25 oktober 2026</span></div><h3 style="margin-top:12px">Passar iPhone 17 Pro-skal till iPhone 18 Pro?</h3><p style="margin-top:10px">Ofta, men inte alltid. iPhone 18 Pro har samma mått som 17 Pro men en lite tjockare kameraplatå. Här är vilka skal som passar och hur du testar.</p></div></a>
+      <a class="card" href="/blogs/nyheter/vilken-usb-c-kabel-till-iphone/"><div class="cover " style="--cover-bg:#e3e6ea"><img src="/img/produkter/s/kabel-usb-c-usb-c-2m.webp" alt="" width="600" height="544" loading="lazy"></div><div><div class="post-meta"><span>Laddning</span><span>3 min läsning</span><span>Uppdaterad 25 oktober 2026</span></div><h3 style="margin-top:12px">Vilken USB-C-kabel till iPhone?</h3><p style="margin-top:10px">Vilken kabel passar din iPhone? USB-C eller Lightning, USB-A eller USB-C, och vad som skiljer en bra kabel från en dålig. Enkel guide för alla modeller.</p></div></a>
+      <a class="card" href="/blogs/nyheter/passar-iphone-17-pro-skal-till-iphone-18-pro/"><div class="cover " style="--cover-bg:#e9ece4"><img src="/img/cut/s/17p-skogsgron.webp" alt="" width="240" height="480" loading="lazy"></div><div><div class="post-meta"><span>Mobilskal</span><span>3 min läsning</span><span>Uppdaterad 25 oktober 2026</span></div><h3 style="margin-top:12px">Passar iPhone 17 Pro-skal till iPhone 18 Pro?</h3><p style="margin-top:10px">Ofta, men inte alltid. iPhone 18 Pro har samma mått som 17 Pro men en lite tjockare kameraplatå. Här är vilka skal som passar och hur du testar.</p></div></a>
       <a class="card" href="/blogs/nyheter/iphone-18-pro-vs-iphone-17-pro/"><div class="cover " style="--cover-bg:#2f3b33"><div class="cover-text">18 Pro<small>vs 17 Pro</small></div></div><div><div class="post-meta"><span>iPhone</span><span>3 min läsning</span><span>Uppdaterad 25 oktober 2026</span></div><h3 style="margin-top:12px">iPhone 18 Pro vs iPhone 17 Pro</h3><p style="margin-top:10px">Kameran, chippet och laddningen är nya, utsidan är densamma. Här är skillnaderna mellan iPhone 18 Pro och 17 Pro och vem som har nytta av att uppgradera.</p></div></a>
       </div>
     </div>
@@ -123,9 +126,9 @@
   <div class="wrap">
     <div class="foot">
       <a href="/" class="logo">corder</a>
-      <div><h4>Sortiment</h4><ul><li><a href="/skal/">TPU-skal</a></li><li><a href="/#laddning">Laddare</a></li><li><a href="/#laddning">Kablar</a></li></ul></div>
-      <div><h4>Företag</h4><ul><li><a href="/#butiker">Hitta butik</a></li><li><a href="/#aterforsaljare">Bli återförsäljare</a></li><li><a href="mailto:sales@corder.se">sales@corder.se</a></li></ul></div>
-      <div><h4>Resurser</h4><ul><li><a href="/blogs/nyheter/">Apple-guider</a></li><li><a href="https://www.instagram.com/corderofficial">Instagram</a></li><li><a href="https://www.tiktok.com/@corderofficial">TikTok</a></li><li><a href="https://www.facebook.com/cordergroup">Facebook</a></li></ul></div>
+      <div><p class="foot-h">Sortiment</p><ul><li><a href="/skal/">TPU-skal</a></li><li><a href="/#laddning">Laddare</a></li><li><a href="/#laddning">Kablar</a></li></ul></div>
+      <div><p class="foot-h">Företag</p><ul><li><a href="/#butiker">Hitta butik</a></li><li><a href="/#aterforsaljare">Bli återförsäljare</a></li><li><a href="mailto:sales@corder.se">sales@corder.se</a></li></ul></div>
+      <div><p class="foot-h">Resurser</p><ul><li><a href="/blogs/nyheter/">Apple-guider</a></li><li><a href="https://www.instagram.com/corderofficial">Instagram</a></li><li><a href="https://www.tiktok.com/@corderofficial">TikTok</a></li><li><a href="https://www.facebook.com/cordergroup">Facebook</a></li></ul></div>
     </div>
     <div class="foot-base">© 2026 Corder Group AB · Org.nr 559227-0226 · Kungsbacka · Designed and developed in Sweden</div>
   </div>

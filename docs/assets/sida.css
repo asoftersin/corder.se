@@ -29,7 +29,19 @@ h1, h2, h3 { font-weight: 400; letter-spacing: -.02em; line-height: 1.15; margin
 .top ul a { text-decoration: none; }
 .top ul a:hover, .top ul a[aria-current] { color: var(--muted); }
 .progress { position: absolute; left: 0; bottom: -1px; height: 2px; width: 100%; background: var(--ink); transform-origin: 0 50%; transform: scaleX(var(--read-p, 0)); }
-@media (max-width: 640px) { .top ul li:not(:last-child) { display: none; } }
+.menu-btn { display: none; }
+@media (max-width: 760px) {
+  .top ul { display: none; }
+  .menu-btn { display: inline-flex; align-items: center; gap: 10px; background: none; border: 0; color: inherit; font: 500 .9rem "Inter Tight", sans-serif; padding: 6px 0; cursor: pointer; position: relative; z-index: 2; }
+  .menu-btn span, .menu-btn span::before { display: block; width: 18px; height: 1.5px; background: currentColor; position: relative; transition: transform .3s; }
+  .menu-btn span::before { content: ""; position: absolute; top: 5px; }
+  .menu-btn span { top: -2.5px; }
+  .menu-btn b { font-weight: 500; }
+  .top.open .menu-btn span { opacity: 0; }
+  .top.open { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--ink); color: #fff; }
+  .top.open ul { display: flex; position: fixed; left: 0; right: 0; top: 64px; bottom: 0; flex-direction: column; justify-content: center; gap: 6px; padding: 0 var(--gutter); background: var(--ink); }
+  .top.open ul a { font-size: 2.2rem; font-weight: 300; letter-spacing: -.02em; color: #fff; }
+}
 
 /* Omslag */
 .cover { position: relative; border-radius: var(--radius); overflow: hidden; display: grid; place-items: center; background: var(--cover-bg, var(--soft)); }
@@ -140,12 +152,12 @@ h1, h2, h3 { font-weight: 400; letter-spacing: -.02em; line-height: 1.15; margin
 /* Footer */
 footer { background: var(--stone); color: #fff; padding: 64px 0 72px; }
 .foot { display: grid; grid-template-columns: 1.2fr repeat(3, 1fr); gap: 32px; }
-.foot h4 { font-size: .85rem; font-weight: 500; margin: 0 0 14px; }
+.foot .foot-h { font-size: .85rem; font-weight: 500; margin: 0 0 14px; }
 .foot ul { list-style: none; margin: 0; padding: 0; font-size: .85rem; }
 .foot li { padding: 4px 0; color: rgba(255,255,255,.6); }
 .foot a { text-decoration: none; }
 .foot li a:hover { color: #fff; }
-.foot-base { margin-top: 56px; font-size: .78rem; color: rgba(255,255,255,.5); }
+.foot-base { margin-top: 56px; font-size: .78rem; color: rgba(255,255,255,.66); }
 @media (max-width: 700px) { .foot { grid-template-columns: 1fr 1fr; } }
 
 @media (prefers-reduced-motion: reduce) {

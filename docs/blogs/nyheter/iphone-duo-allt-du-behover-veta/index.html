@@ -20,7 +20,7 @@
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/inter-tight-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts.css">
-<link rel="stylesheet" href="/assets/sida.css?v=8">
+<link rel="stylesheet" href="/assets/sida.css?v=11">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "iPhone Duo: Apples första vikbara iPhone – allt du behöver veta", "description": "iPhone Duo är Apples första vikbara iPhone. Skärmar, kamera, chip, pris, laddning och vad du ska tänka på när det gäller skal till en vikbar telefon.", "datePublished": "2026-10-25", "dateModified": "2026-10-25", "inLanguage": "sv", "mainEntityOfPage": "https://corder.se/blogs/nyheter/iphone-duo-allt-du-behover-veta/", "author": {"@type": "Organization", "name": "Corder"}, "publisher": {"@type": "Organization", "name": "Corder"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Vad är iPhone Duo?", "acceptedAnswer": {"@type": "Answer", "text": "Apples första vikbara iPhone. Hopfälld har den en 5,4 tums skärm och utfälld en 7,6 tums skärm."}}, {"@type": "Question", "name": "När släpptes iPhone Duo?", "acceptedAnswer": {"@type": "Answer", "text": "Den presenterades i september 2026 och började säljas den 23 oktober 2026."}}, {"@type": "Question", "name": "Vad kostar iPhone Duo?", "acceptedAnswer": {"@type": "Answer", "text": "Startpriset i USA är 1 999 dollar för 256 GB."}}, {"@type": "Question", "name": "Vilket chip har iPhone Duo?", "acceptedAnswer": {"@type": "Answer", "text": "A20 Pro, samma chip som iPhone 18 Pro."}}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Corder", "item": "https://corder.se/"}, {"@type": "ListItem", "position": 2, "name": "Apple-guider", "item": "https://corder.se/blogs/nyheter/"}, {"@type": "ListItem", "position": 3, "name": "iPhone Duo: allt du behöver veta", "item": "https://corder.se/blogs/nyheter/iphone-duo-allt-du-behover-veta/"}]}</script>
@@ -31,7 +31,8 @@
 <header class="top">
   <div class="wrap">
     <a href="/" class="logo" aria-label="Corder startsida">corder</a>
-    <ul>
+    <button class="menu-btn" aria-expanded="false" aria-controls="meny" onclick="const o=this.closest('.top').classList.toggle('open');this.setAttribute('aria-expanded',o);this.querySelector('b').textContent=o?'Stäng':'Meny';document.body.style.overflow=o?'hidden':''"><span></span><b>Meny</b></button>
+    <ul id="meny">
       <li><a href="/skal/">Skal</a></li>
       <li><a href="/#laddning">Laddning</a></li>
       <li><a href="/#butiker">Butiker</a></li>
@@ -95,6 +96,8 @@
 
 <h2 id="iphone-duo-eller-iphone-18-pro">iPhone Duo eller iPhone 18 Pro?</h2>
 <p>Duo passar dig som vill ha en stor skärm för läsning, film och arbete i fickformat, och som är beredd att betala för det. iPhone 18 Pro har samma chip, en mer komplett kamerauppsättning och kostar betydligt mindre. Läs vår jämförelse <a href="/blogs/nyheter/iphone-18-pro-vs-iphone-17-pro/">iPhone 18 Pro vs iPhone 17 Pro</a> för mer om Pro-modellen.</p>
+
+<p>Har du en vanlig iPhone? Se <a href="/skal/">Corders skal till iPhone 14–18 Pro</a>.</p>
         <h2 id="vanliga-fragor">Vanliga frågor</h2>
         <div class="faq">
 <details><summary>Vad är iPhone Duo?</summary><p>Apples första vikbara iPhone. Hopfälld har den en 5,4 tums skärm och utfälld en 7,6 tums skärm.</p></details>
@@ -117,8 +120,8 @@
       <h2>Fler guider</h2>
       <div class="cards">
       <a class="card" href="/blogs/nyheter/iphone-18-pro-vs-iphone-17-pro/"><div class="cover " style="--cover-bg:#2f3b33"><div class="cover-text">18 Pro<small>vs 17 Pro</small></div></div><div><div class="post-meta"><span>iPhone</span><span>3 min läsning</span><span>Uppdaterad 25 oktober 2026</span></div><h3 style="margin-top:12px">iPhone 18 Pro vs iPhone 17 Pro</h3><p style="margin-top:10px">Kameran, chippet och laddningen är nya, utsidan är densamma. Här är skillnaderna mellan iPhone 18 Pro och 17 Pro och vem som har nytta av att uppgradera.</p></div></a>
-      <a class="card" href="/blogs/nyheter/passar-iphone-17-pro-skal-till-iphone-18-pro/"><div class="cover " style="--cover-bg:#e9ece4"><img src="/img/cut/17p-skogsgron.webp" alt="" loading="lazy"></div><div><div class="post-meta"><span>Mobilskal</span><span>3 min läsning</span><span>Uppdaterad 25 oktober 2026</span></div><h3 style="margin-top:12px">Passar iPhone 17 Pro-skal till iPhone 18 Pro?</h3><p style="margin-top:10px">Ofta, men inte alltid. iPhone 18 Pro har samma mått som 17 Pro men en lite tjockare kameraplatå. Här är vilka skal som passar och hur du testar.</p></div></a>
-      <a class="card" href="/blogs/nyheter/vilken-laddare-till-iphone-18-pro/"><div class="cover " style="--cover-bg:#e8e8e5"><img src="/img/produkter/laddare-20w-usb-c.webp" alt="" loading="lazy"></div><div><div class="post-meta"><span>Laddning</span><span>3 min läsning</span><span>Uppdaterad 25 oktober 2026</span></div><h3 style="margin-top:12px">Vilken laddare till iPhone 18 Pro?</h3><p style="margin-top:10px">Räcker en 20 W-laddare till iPhone 18 Pro? Så snabbt laddar den med kabel och MagSafe, vad watt betyder och när en kraftigare laddare lönar sig.</p></div></a>
+      <a class="card" href="/blogs/nyheter/passar-iphone-17-pro-skal-till-iphone-18-pro/"><div class="cover " style="--cover-bg:#e9ece4"><img src="/img/cut/s/17p-skogsgron.webp" alt="" width="240" height="480" loading="lazy"></div><div><div class="post-meta"><span>Mobilskal</span><span>3 min läsning</span><span>Uppdaterad 25 oktober 2026</span></div><h3 style="margin-top:12px">Passar iPhone 17 Pro-skal till iPhone 18 Pro?</h3><p style="margin-top:10px">Ofta, men inte alltid. iPhone 18 Pro har samma mått som 17 Pro men en lite tjockare kameraplatå. Här är vilka skal som passar och hur du testar.</p></div></a>
+      <a class="card" href="/blogs/nyheter/vilken-laddare-till-iphone-18-pro/"><div class="cover " style="--cover-bg:#e8e8e5"><img src="/img/produkter/s/laddare-20w-usb-c.webp" alt="" width="600" height="525" loading="lazy"></div><div><div class="post-meta"><span>Laddning</span><span>3 min läsning</span><span>Uppdaterad 25 oktober 2026</span></div><h3 style="margin-top:12px">Vilken laddare till iPhone 18 Pro?</h3><p style="margin-top:10px">Räcker en 20 W-laddare till iPhone 18 Pro? Så snabbt laddar den med kabel och MagSafe, vad watt betyder och när en kraftigare laddare lönar sig.</p></div></a>
       </div>
     </div>
   </section>
@@ -128,9 +131,9 @@
   <div class="wrap">
     <div class="foot">
       <a href="/" class="logo">corder</a>
-      <div><h4>Sortiment</h4><ul><li><a href="/skal/">TPU-skal</a></li><li><a href="/#laddning">Laddare</a></li><li><a href="/#laddning">Kablar</a></li></ul></div>
-      <div><h4>Företag</h4><ul><li><a href="/#butiker">Hitta butik</a></li><li><a href="/#aterforsaljare">Bli återförsäljare</a></li><li><a href="mailto:sales@corder.se">sales@corder.se</a></li></ul></div>
-      <div><h4>Resurser</h4><ul><li><a href="/blogs/nyheter/">Apple-guider</a></li><li><a href="https://www.instagram.com/corderofficial">Instagram</a></li><li><a href="https://www.tiktok.com/@corderofficial">TikTok</a></li><li><a href="https://www.facebook.com/cordergroup">Facebook</a></li></ul></div>
+      <div><p class="foot-h">Sortiment</p><ul><li><a href="/skal/">TPU-skal</a></li><li><a href="/#laddning">Laddare</a></li><li><a href="/#laddning">Kablar</a></li></ul></div>
+      <div><p class="foot-h">Företag</p><ul><li><a href="/#butiker">Hitta butik</a></li><li><a href="/#aterforsaljare">Bli återförsäljare</a></li><li><a href="mailto:sales@corder.se">sales@corder.se</a></li></ul></div>
+      <div><p class="foot-h">Resurser</p><ul><li><a href="/blogs/nyheter/">Apple-guider</a></li><li><a href="https://www.instagram.com/corderofficial">Instagram</a></li><li><a href="https://www.tiktok.com/@corderofficial">TikTok</a></li><li><a href="https://www.facebook.com/cordergroup">Facebook</a></li></ul></div>
     </div>
     <div class="foot-base">© 2026 Corder Group AB · Org.nr 559227-0226 · Kungsbacka · Designed and developed in Sweden</div>
   </div>

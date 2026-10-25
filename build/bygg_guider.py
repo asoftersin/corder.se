@@ -10,7 +10,10 @@ import html
 import json
 import math
 import re
+from functools import lru_cache
 from pathlib import Path
+
+from PIL import Image
 
 BYGG = Path(__file__).resolve().parent
 ROT = BYGG.parent / "docs"
@@ -216,13 +219,34 @@ def lasminuter(*delar):
     return max(1, math.ceil(ord_ / 200))
 
 
+@lru_cache(maxsize=None)
+def matt(src):
+    """Bredd och höjd för en bild under docs/, så att webbläsaren kan reservera plats."""
+    with Image.open(ROT / src.lstrip("/")) as im:
+        return im.size
+
+
+def liten(src, storlek="s"):
+    """Mindre version av en produktbild (img/cut/s, img/cut/xs eller img/produkter/s)."""
+    for mapp in ("/img/cut/", "/img/produkter/"):
+        if src.startswith(mapp):
+            return src.replace(mapp, f"{mapp}{'s' if mapp == '/img/produkter/' else storlek}/")
+    return src
+
+
+def bild(src, alt="", storlek="s", extra='loading="lazy"'):
+    s = liten(src, storlek)
+    w, h = matt(s)
+    return f'<img src="{s}" alt="{html.escape(alt)}" width="{w}" height="{h}" {extra}>'
+
+
 def omslag(o, klass=""):
     if "text" in o:
         inne = f'<div class="cover-text">{o["text"]}<small>{o["undertext"]}</small></div>'
     elif len(o["bilder"]) > 1:
-        inne = '<div class="cover-pair">' + "".join(f'<img src="{b}" alt="" loading="lazy">' for b in o["bilder"]) + "</div>"
+        inne = '<div class="cover-pair">' + "".join(bild(b) for b in o["bilder"]) + "</div>"
     else:
-        inne = f'<img src="{o["bilder"][0]}" alt="" loading="lazy">'
+        inne = bild(o["bilder"][0])
     return f'<div class="cover {klass}" style="--cover-bg:{o["bg"]}">{inne}</div>'
 
 
@@ -241,7 +265,8 @@ def kort(g, featured=False):
 HEADER = """<header class="top">
   <div class="wrap">
     <a href="/" class="logo" aria-label="Corder startsida">corder</a>
-    <ul>
+    <button class="menu-btn" aria-expanded="false" aria-controls="meny" onclick="const o=this.closest('.top').classList.toggle('open');this.setAttribute('aria-expanded',o);this.querySelector('b').textContent=o?'Stäng':'Meny';document.body.style.overflow=o?'hidden':''"><span></span><b>Meny</b></button>
+    <ul id="meny">
       <li><a href="/skal/">Skal</a></li>
       <li><a href="/#laddning">Laddning</a></li>
       <li><a href="/#butiker">Butiker</a></li>
@@ -256,9 +281,9 @@ FOOTER = """<footer>
   <div class="wrap">
     <div class="foot">
       <a href="/" class="logo">corder</a>
-      <div><h4>Sortiment</h4><ul><li><a href="/skal/">TPU-skal</a></li><li><a href="/#laddning">Laddare</a></li><li><a href="/#laddning">Kablar</a></li></ul></div>
-      <div><h4>Företag</h4><ul><li><a href="/#butiker">Hitta butik</a></li><li><a href="/#aterforsaljare">Bli återförsäljare</a></li><li><a href="mailto:sales@corder.se">sales@corder.se</a></li></ul></div>
-      <div><h4>Resurser</h4><ul><li><a href="/blogs/nyheter/">Apple-guider</a></li><li><a href="https://www.instagram.com/corderofficial">Instagram</a></li><li><a href="https://www.tiktok.com/@corderofficial">TikTok</a></li><li><a href="https://www.facebook.com/cordergroup">Facebook</a></li></ul></div>
+      <div><p class="foot-h">Sortiment</p><ul><li><a href="/skal/">TPU-skal</a></li><li><a href="/#laddning">Laddare</a></li><li><a href="/#laddning">Kablar</a></li></ul></div>
+      <div><p class="foot-h">Företag</p><ul><li><a href="/#butiker">Hitta butik</a></li><li><a href="/#aterforsaljare">Bli återförsäljare</a></li><li><a href="mailto:sales@corder.se">sales@corder.se</a></li></ul></div>
+      <div><p class="foot-h">Resurser</p><ul><li><a href="/blogs/nyheter/">Apple-guider</a></li><li><a href="https://www.instagram.com/corderofficial">Instagram</a></li><li><a href="https://www.tiktok.com/@corderofficial">TikTok</a></li><li><a href="https://www.facebook.com/cordergroup">Facebook</a></li></ul></div>
     </div>
     <div class="foot-base">© 2026 Corder Group AB · Org.nr 559227-0226 · Kungsbacka · Designed and developed in Sweden</div>
   </div>
@@ -320,7 +345,7 @@ def sida(titel, beskr, kanonisk, innehall, schema=None, progress=False, skript="
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/inter-tight-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts.css">
-<link rel="stylesheet" href="/assets/sida.css?v=8">
+<link rel="stylesheet" href="/assets/sida.css?v=11">
 {ld}</head>
 <body>
 <a class="skip" href="#innehall">Hoppa till innehållet</a>
@@ -514,8 +539,8 @@ def tumme(m):
 
 def modell_lank(m):
     b = tumme(m)
-    bild = f'<img src="{b}" alt="" loading="lazy">' if b else '<span class="nopic"></span>'
-    return (f'<a class="model-link" href="/skal/{m["slug"]}/">{bild}<span><b>{m["namn"]}</b>'
+    tum = bild(b, storlek="xs") if b else '<span class="nopic"></span>'
+    return (f'<a class="model-link" href="/skal/{m["slug"]}/">{tum}<span><b>{m["namn"]}</b>'
             f'<small>{", ".join(m["farger"])}</small></span></a>')
 
 
@@ -532,7 +557,8 @@ def bygg_skal():
         for f in m["farger"]:
             b = modellbild(m, f)
             if b:
-                shots.append(f'<figure class="model-shot"><div class="tile"><img src="{b}" alt="Corder TPU-skal till {m["namn"]} i {f.lower()}" loading="lazy"></div>'
+                alt = f'Corder TPU-skal till {m["namn"]} i {f.lower()}'
+                shots.append(f'<figure class="model-shot"><div class="tile">{bild(b, alt)}</div>'
                              f'<figcaption><i style="background:{FARG[f][0]}"></i>{f}</figcaption></figure>')
             else:
                 shots.append(f'<figure class="model-shot"><div class="tile empty"><div><b style="background:{FARG[f][0]}"></b>{f}</div></div>'
