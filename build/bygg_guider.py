@@ -442,17 +442,17 @@ GAMLA_FARGER = ["Svart", "Blå", "Lila", "Persika"]
 NYA_FARGER = ["Svart", "Skogsgrön"]
 
 MODELLER = [
-    {"slug": "iphone-18-pro", "namn": "iPhone 18 Pro", "bild": None, "gron": True, "farger": NYA_FARGER, "kontakt": "USB-C",
+    {"slug": "iphone-18-pro", "namn": "iPhone 18 Pro", "bild": None, "gron": True, "extra": {"Svart": "/img/cut/17p-black.webp"}, "farger": NYA_FARGER, "kontakt": "USB-C",
      "kompat": [("Passar iPhone 17 Pro-skal till iPhone 18 Pro?", "Ofta, eftersom måtten är desamma. Kameraplatån på 18 Pro är dock ungefär en tiondels millimeter tjockare, så tighta skal kan vara för trånga."),
                 ("Passar skalet till iPhone 18 Pro Max?", "Nej. Pro Max har större skärm och större mått och behöver ett eget skal."),
                 ("Passar skalet till iPhone Duo?", "Nej. iPhone Duo är vikbar och behöver ett helt annat skal. Corder har inte skal till Duo.")],
      "guider": ["passar-iphone-17-pro-skal-till-iphone-18-pro", "iphone-18-pro-vs-iphone-17-pro", "vilken-laddare-till-iphone-18-pro"]},
-    {"slug": "iphone-17-pro", "namn": "iPhone 17 Pro", "bild": None, "gron": True, "farger": NYA_FARGER, "kontakt": "USB-C",
+    {"slug": "iphone-17-pro", "namn": "iPhone 17 Pro", "bild": None, "gron": True, "extra": {"Svart": "/img/cut/17p-black.webp"}, "farger": NYA_FARGER, "kontakt": "USB-C",
      "kompat": [("Passar skalet till iPhone 18 Pro?", "Ofta, eftersom måtten är desamma, men kameraplatån på 18 Pro är något tjockare. Apple anger att modellerna officiellt inte delar skal."),
                 ("Passar iPhone 16 Pro-skal till iPhone 17 Pro?", "Nej. iPhone 17 Pro har en helt ny design med en bred kameraplatå."),
                 ("Passar skalet till iPhone 17?", "Nej. iPhone 17 har en annan form och ett annat kameraparti än 17 Pro.")],
      "guider": ["passar-iphone-17-pro-skal-till-iphone-18-pro", "iphone-18-pro-vs-iphone-17-pro", "vilken-usb-c-kabel-till-iphone"]},
-    {"slug": "iphone-17", "namn": "iPhone 17", "bild": None, "gron": False, "farger": NYA_FARGER, "kontakt": "USB-C",
+    {"slug": "iphone-17", "namn": "iPhone 17", "bild": None, "gron": False, "extra": {"Svart": "/img/cut/17-black.webp", "Skogsgrön": "/img/cut/17-skogsgron.webp"}, "farger": NYA_FARGER, "kontakt": "USB-C",
      "kompat": [("Passar iPhone 16-skal till iPhone 17?", "Nej. iPhone 17 är något större och har ett nytt kameraparti."),
                 ("Passar skalet till iPhone 17 Pro?", "Nej. Pro-modellen har en annan form och en bred kameraplatå."),
                 ("Finns det en vanlig iPhone 18?", "Apple väntas släppa vanliga iPhone 18 under våren 2027. Hur skalen passar vet vi först då.")],
@@ -496,6 +496,8 @@ MODELLER = [
 
 
 def modellbild(m, farg):
+    if farg in m.get("extra", {}):
+        return m["extra"][farg]
     if m.get("bild") and FARG[farg][1]:
         return f'/img/cut/{m["bild"]}-{FARG[farg][1]}.webp'
     if m.get("gron") and farg == "Skogsgrön":
