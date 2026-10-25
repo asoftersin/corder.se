@@ -64,6 +64,7 @@
   .card-meta { font-size: .8rem; color: var(--muted); line-height: 1.35; }
   .btn { display: inline-flex; align-items: center; justify-content: center; background: var(--ink); color: #fff; border-radius: 4px; padding: 11px 22px; font-size: .85rem; font-weight: 500; transition: opacity .2s; white-space: nowrap; }
   .btn:hover { opacity: .8; }
+  .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
   .card-sub { display: flex; justify-content: space-between; align-items: center; padding: 12px 6px 14px; }
   .card-sub b { font-weight: 400; font-size: 1.15rem; }
   .card-sub nav { display: flex; gap: 40px; font-size: .82rem; }
@@ -126,37 +127,79 @@
 
   /* Verktyg: vilket skal passar din iPhone? */
   .finder { background: #f4f4f2; padding: clamp(96px, 11vw, 160px) 0; }
-  .finder-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+  .finder-grid { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); grid-template-areas: "intro stage" "pick stage" "other stage"; grid-template-rows: auto auto 1fr; column-gap: clamp(32px, 6vw, 96px); align-items: start; }
+  .finder-intro { grid-area: intro; }
   .finder .caps { color: #5c5c5c; display: block; margin-bottom: 18px; }
   .finder h2 { font-size: clamp(2.4rem, 4.6vw, 4rem); }
-  .finder-intro p { color: #5c5c5c; margin-top: 22px; max-width: 360px; }
-  .finder-row { display: grid; grid-template-columns: 96px 1fr; gap: 16px; align-items: center; padding: 12px 0; border-bottom: 1px solid #e2e2df; }
-  .finder-row:first-child { border-top: 1px solid #e2e2df; }
-  .finder-row .caps { margin: 0; }
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-  .chip { display: inline-flex; align-items: center; padding: 10px 18px; border-radius: 999px; border: 1px solid #d6d6d2; background: #fff; color: var(--ink); font: 500 .92rem "Inter Tight", sans-serif; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
-  .chip:hover { border-color: var(--ink); }
-  .chip[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
-  .finder-result { margin-top: clamp(32px, 4vw, 56px); }
-  .fr-card { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(24px, 4vw, 56px); background: #fff; border-radius: 18px; padding: clamp(20px, 3vw, 40px); box-shadow: 0 24px 48px -32px rgba(0,0,0,.25); }
-  .fr-shots { display: flex; gap: 10px; align-items: flex-end; justify-content: center; min-height: 260px; }
-  .fr-shots img { height: clamp(180px, 22vw, 300px); width: auto; filter: drop-shadow(0 16px 18px rgba(0,0,0,.18)); }
-  .fr-shots .nopic { width: 90px; height: 180px; border-radius: 22px; }
-  .fr-info h3 { font-size: clamp(1.8rem, 3vw, 2.6rem); margin: 4px 0 16px; }
-  .fr-info .caps { margin: 0; }
-  .fr-sw { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-  .fr-sw span { display: inline-flex; align-items: center; gap: 7px; font-size: .85rem; padding: 5px 11px 5px 5px; border: 1px solid var(--line); border-radius: 999px; }
-  .fr-sw i { width: 16px; height: 16px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); }
-  .fr-info dl { margin: 0 0 24px; font-size: .92rem; }
-  .fr-info dl div { padding: 10px 0; border-top: 1px solid var(--line); }
-  .fr-info dt { color: var(--muted); font-size: .78rem; margin-bottom: 2px; }
-  .fr-info dd { margin: 0; }
-  .fr-actions { display: flex; flex-wrap: wrap; gap: 10px; }
-  .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
-  .fr-none { background: #fff; border-radius: 18px; padding: clamp(24px, 3vw, 40px); max-width: 720px; }
-  .fr-none h3 { font-size: clamp(1.6rem, 2.6vw, 2.2rem); margin-bottom: 12px; }
-  .fr-none p { color: var(--muted); }
-  @media (max-width: 900px) { .finder-grid, .fr-card { grid-template-columns: 1fr; } .finder-row { grid-template-columns: 1fr; gap: 8px; } .fr-shots { min-height: 0; } }
+  .finder-intro p { color: #5c5c5c; margin-top: 22px; max-width: 380px; }
+  .finder-pick { grid-area: pick; margin-top: clamp(40px, 4.6vw, 64px); }
+  .finder .step { display: flex; gap: 12px; color: #8a8a86; margin-bottom: 12px; }
+  .finder .step em { font-style: normal; color: var(--ink); }
+  .gens { position: relative; display: flex; justify-content: space-between; max-width: 460px; border-bottom: 1px solid #d9d9d5; margin-bottom: 36px; }
+  .gen { appearance: none; background: none; border: 0; padding: 0 2px 12px; font: 200 clamp(2.8rem, 4.8vw, 4.6rem)/1 "Inter Tight", sans-serif; letter-spacing: -.045em; color: #bdbdb8; cursor: pointer; transition: color .3s; font-variant-numeric: tabular-nums; }
+  .gen:hover { color: #77776f; }
+  .gen[aria-pressed="true"] { color: var(--ink); }
+  .gen:focus-visible, .vchip:focus-visible, .sw:focus-visible, .olink:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  .gen-bar { position: absolute; left: 0; bottom: -1px; height: 2px; width: 0; background: var(--ink); transition: transform .5s cubic-bezier(.2, .8, .2, 1), width .5s cubic-bezier(.2, .8, .2, 1), opacity .3s; }
+  .variants { min-height: 52px; }
+  .variants { transition: opacity .3s; }
+  .finder.ovrig .variants { opacity: .35; }
+  .vgroup { display: inline-flex; gap: 4px; padding: 4px; background: #e6e6e2; border-radius: 999px; }
+  .js .vgroup:not(.on) { display: none; }
+  .vchip { padding: 11px 24px; border-radius: 999px; font: 500 .95rem "Inter Tight", sans-serif; color: #66665f; white-space: nowrap; transition: background .3s, color .3s, box-shadow .3s; }
+  .vchip:hover { color: var(--ink); }
+  .vchip[aria-pressed="true"] { background: #fff; color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 8px 18px -10px rgba(0,0,0,.28); }
+  html:not(.js) .gens, html:not(.js) .finder .step, html:not(.js) .finder-stage { display: none; }
+  html:not(.js) .variants { display: flex; flex-wrap: wrap; gap: 8px; }
+  .finder-other { grid-area: other; margin-top: 36px; padding-top: 24px; border-top: 1px solid #e0e0dc; max-width: 460px; }
+  .finder-other p { color: #77776f; font-size: .88rem; margin: 0 0 12px; }
+  .olinks { display: flex; flex-wrap: wrap; gap: 8px; }
+  .olink { appearance: none; background: none; border: 1px solid #d3d3ce; border-radius: 999px; padding: 8px 15px; font: 500 .82rem "Inter Tight", sans-serif; color: #55554f; cursor: pointer; transition: border-color .2s, background .2s, color .2s; }
+  .olink:hover { border-color: var(--ink); color: var(--ink); }
+  .olink[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .finder-stage { --tint: #3d5143; grid-area: stage; position: sticky; top: 96px; isolation: isolate; overflow: hidden; display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); min-height: clamp(520px, 44vw, 620px); border-radius: 28px; background-color: color-mix(in srgb, var(--tint) 24%, #fafaf8); transition: background-color .8s ease; }
+  .st-num { position: absolute; left: -.05em; bottom: -.2em; z-index: -1; font: 200 clamp(13rem, 26vw, 25rem)/1 "Inter Tight", sans-serif; letter-spacing: -.07em; color: color-mix(in srgb, var(--tint) 22%, transparent); pointer-events: none; white-space: nowrap; transition: color .8s ease; }
+  .st-visual { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 36px 16px 28px; }
+  .st-phone { position: relative; width: 100%; height: clamp(300px, 29vw, 430px); }
+  .st-phone img { position: absolute; inset: 0; margin: auto; height: 100%; width: auto; max-width: none; opacity: 0; transform: translateY(14px) scale(.97); filter: drop-shadow(0 34px 28px rgba(0,0,0,.24)); transition: opacity .55s ease, transform .7s cubic-bezier(.2, .8, .2, 1); }
+  .st-phone img.on { opacity: 1; transform: none; }
+  .st-sw { display: flex; gap: 14px; margin-top: 26px; }
+  .sw { position: relative; width: 26px; height: 26px; padding: 0; border: 0; border-radius: 50%; background: var(--c); box-shadow: inset 0 0 0 1px rgba(0,0,0,.14); cursor: pointer; }
+  .sw::after { content: ""; position: absolute; inset: -6px; border-radius: 50%; border: 1.5px solid var(--ink); opacity: 0; transform: scale(.7); transition: opacity .3s, transform .35s cubic-bezier(.2, .8, .2, 1); }
+  .sw[aria-pressed="true"]::after { opacity: 1; transform: none; }
+  .st-swname { margin-top: 12px; font-size: .8rem; color: #4d4d48; min-height: 1.2em; }
+  .st-info { align-self: stretch; display: flex; flex-direction: column; justify-content: center; margin: 12px; padding: clamp(24px, 3vw, 44px); background: #fff; border-radius: 20px; box-shadow: 0 30px 60px -40px rgba(0,0,0,.35); }
+  .st-info .caps { margin: 0; color: #77776f; }
+  .st-info h3 { font-size: clamp(2rem, 3.2vw, 3rem); margin: 8px 0 22px; }
+  .st-info dl { margin: 0 0 20px; font-size: .9rem; }
+  .st-info dl div { display: grid; grid-template-columns: 76px 1fr; gap: 12px; padding: 11px 0; border-top: 1px solid var(--line); }
+  .st-info dt { color: var(--muted); }
+  .st-info dd { margin: 0; }
+  .st-tip { background: #f5f5f3; border-radius: 14px; padding: 14px 16px; font-size: .86rem; color: #4d4d48; margin-bottom: 24px; }
+  .st-tip b { display: block; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+  .st-info > p { color: #5c5c5c; margin-bottom: 24px; }
+  .st-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+  @media (min-width: 901px) and (max-width: 1240px) {
+    .finder-stage { grid-template-columns: 1fr; }
+    .st-phone { height: 340px; }
+    .st-num { bottom: auto; top: -.12em; }
+    .st-info { margin: 0 12px 12px; }
+  }
+  .finder-stage.none { grid-template-columns: 1fr; }
+  .finder-stage.none .st-visual { display: none; }
+  .finder-stage.none .st-info { align-self: center; max-width: 460px; margin: clamp(24px, 4vw, 56px); }
+  @media (max-width: 900px) {
+    .finder-grid { grid-template-columns: 1fr; grid-template-areas: "intro" "pick" "stage" "other"; }
+    .gens { max-width: none; margin-bottom: 28px; }
+    .finder-stage { position: relative; top: 0; margin-top: 32px; grid-template-columns: 1fr; min-height: 0; border-radius: 24px; }
+    .st-visual { padding-top: 32px; }
+    .st-phone { height: 300px; }
+    .st-num { font-size: 15rem; bottom: auto; top: -.1em; }
+    .st-info { margin: 0 10px 10px; padding: 24px 20px; }
+    .finder-stage.none .st-info { margin: 10px; }
+    .finder-other { max-width: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { .gen-bar, .st-phone img, .finder-stage, .st-num { transition: none; } }
 
   /* Mörk sektion: design + färger */
   .night { background: var(--night); color: #fff; overflow: hidden; overflow: clip; }
@@ -324,6 +367,7 @@
   .store.tip { background: #f4f4f2; border-color: transparent; }
 
 </style>
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <a class="skip" href="#innehall">Hoppa till innehållet</a>
@@ -380,16 +424,28 @@
       <h2 data-split>Vilket skal passar<br>din iPhone?</h2>
       <p>Välj din modell för att se färgerna och vad som gäller. Osäker på vilken du har? Öppna Inställningar, Allmänt, Om.</p>
     </div>
-    <div class="finder-pick" role="group" aria-label="Välj iPhone-modell">
-      <div class="finder-row"><span class="caps">iPhone 18</span><div class="chips"><a class="chip" href="/skal/iphone-18-pro/" data-slug="iphone-18-pro" aria-pressed="false">18 Pro</a></div></div>
-      <div class="finder-row"><span class="caps">iPhone 17</span><div class="chips"><a class="chip" href="/skal/iphone-17/" data-slug="iphone-17" aria-pressed="false">17</a><a class="chip" href="/skal/iphone-17-pro/" data-slug="iphone-17-pro" aria-pressed="false">17 Pro</a></div></div>
-      <div class="finder-row"><span class="caps">iPhone 16</span><div class="chips"><a class="chip" href="/skal/iphone-16e/" data-slug="iphone-16e" aria-pressed="false">16e</a><a class="chip" href="/skal/iphone-16/" data-slug="iphone-16" aria-pressed="false">16</a><a class="chip" href="/skal/iphone-16-pro/" data-slug="iphone-16-pro" aria-pressed="false">16 Pro</a></div></div>
-      <div class="finder-row"><span class="caps">iPhone 15</span><div class="chips"><a class="chip" href="/skal/iphone-15/" data-slug="iphone-15" aria-pressed="false">15</a><a class="chip" href="/skal/iphone-15-pro/" data-slug="iphone-15-pro" aria-pressed="false">15 Pro</a></div></div>
-      <div class="finder-row"><span class="caps">iPhone 14</span><div class="chips"><a class="chip" href="/skal/iphone-14/" data-slug="iphone-14" aria-pressed="false">14</a><a class="chip" href="/skal/iphone-14-pro/" data-slug="iphone-14-pro" aria-pressed="false">14 Pro</a></div></div>
-      <div class="finder-row"><span class="caps">Andra</span><div class="chips"><button class="chip" type="button" data-other="aldre" aria-pressed="false">13 eller äldre</button><button class="chip" type="button" data-other="max" aria-pressed="false">Plus / Pro Max</button><button class="chip" type="button" data-other="duo" aria-pressed="false">iPhone Duo</button></div></div>
+    <div class="finder-pick">
+      <span class="caps step"><em>01</em> Generation</span>
+      <div class="gens" role="group" aria-label="Välj iPhone-generation"><button class="gen" type="button" data-gen="18" aria-pressed="false" aria-label="iPhone 18">18</button><button class="gen" type="button" data-gen="17" aria-pressed="false" aria-label="iPhone 17">17</button><button class="gen" type="button" data-gen="16" aria-pressed="false" aria-label="iPhone 16">16</button><button class="gen" type="button" data-gen="15" aria-pressed="false" aria-label="iPhone 15">15</button><button class="gen" type="button" data-gen="14" aria-pressed="false" aria-label="iPhone 14">14</button><span class="gen-bar" aria-hidden="true"></span></div>
+      <span class="caps step"><em>02</em> Modell</span>
+      <div class="variants" role="group" aria-label="Välj modell">
+        <div class="vgroup" data-gen="18"><a class="vchip" href="/skal/iphone-18-pro/" data-slug="iphone-18-pro" aria-pressed="false">18 Pro</a></div>
+        <div class="vgroup" data-gen="17"><a class="vchip" href="/skal/iphone-17/" data-slug="iphone-17" aria-pressed="false">17</a><a class="vchip" href="/skal/iphone-17-pro/" data-slug="iphone-17-pro" aria-pressed="false">17 Pro</a></div>
+        <div class="vgroup" data-gen="16"><a class="vchip" href="/skal/iphone-16e/" data-slug="iphone-16e" aria-pressed="false">16e</a><a class="vchip" href="/skal/iphone-16/" data-slug="iphone-16" aria-pressed="false">16</a><a class="vchip" href="/skal/iphone-16-pro/" data-slug="iphone-16-pro" aria-pressed="false">16 Pro</a></div>
+        <div class="vgroup" data-gen="15"><a class="vchip" href="/skal/iphone-15/" data-slug="iphone-15" aria-pressed="false">15</a><a class="vchip" href="/skal/iphone-15-pro/" data-slug="iphone-15-pro" aria-pressed="false">15 Pro</a></div>
+        <div class="vgroup" data-gen="14"><a class="vchip" href="/skal/iphone-14/" data-slug="iphone-14" aria-pressed="false">14</a><a class="vchip" href="/skal/iphone-14-pro/" data-slug="iphone-14-pro" aria-pressed="false">14 Pro</a></div>
+      </div>
+    </div>
+    <div class="finder-other">
+      <p>Har du en annan iPhone?</p>
+      <div class="olinks"><button class="olink" type="button" data-other="aldre" aria-pressed="false">13 eller äldre</button><button class="olink" type="button" data-other="max" aria-pressed="false">Plus / Pro Max</button><button class="olink" type="button" data-other="duo" aria-pressed="false">iPhone Duo</button></div>
+    </div>
+    <div class="finder-stage" id="finder-result" aria-live="polite">
+      <span class="st-num" aria-hidden="true"></span>
+      <div class="st-visual"><div class="st-phone"></div><div class="st-sw" role="group" aria-label="Välj färg"></div><span class="st-swname"></span></div>
+      <div class="st-info"></div>
     </div>
   </div>
-  <div class="wrap"><div class="finder-result" id="finder-result" aria-live="polite"></div></div>
   <script id="modeller" type="application/json">[{"slug": "iphone-18-pro", "namn": "iPhone 18 Pro", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/17p-black.webp"}, {"namn": "Skogsgrön", "hex": "#3d5143", "bild": "/img/cut/s/17p-skogsgron.webp"}], "tips": {"q": "Passar iPhone 17 Pro-skal till iPhone 18 Pro?", "a": "Ofta, eftersom måtten är desamma. Kameraplatån på 18 Pro är dock ungefär en tiondels millimeter tjockare, så tighta skal kan vara för trånga."}}, {"slug": "iphone-17-pro", "namn": "iPhone 17 Pro", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/17p-black.webp"}, {"namn": "Skogsgrön", "hex": "#3d5143", "bild": "/img/cut/s/17p-skogsgron.webp"}], "tips": {"q": "Passar skalet till iPhone 18 Pro?", "a": "Ofta, eftersom måtten är desamma, men kameraplatån på 18 Pro är något tjockare. Apple anger att modellerna officiellt inte delar skal."}}, {"slug": "iphone-17", "namn": "iPhone 17", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/17-black.webp"}, {"namn": "Skogsgrön", "hex": "#3d5143", "bild": "/img/cut/s/17-skogsgron.webp"}], "tips": {"q": "Passar iPhone 16-skal till iPhone 17?", "a": "Nej. iPhone 17 är något större och har ett nytt kameraparti."}}, {"slug": "iphone-16-pro", "namn": "iPhone 16 Pro", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/16p-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/16p-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/16p-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/16p-pink.webp"}], "tips": {"q": "Passar skalet till iPhone 17 Pro?", "a": "Nej. iPhone 17 Pro har en helt ny design med en bred kameraplatå."}}, {"slug": "iphone-16", "namn": "iPhone 16", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/16-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/16-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/16-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/16-pink.webp"}], "tips": {"q": "Passar iPhone 15-skal till iPhone 16?", "a": "Nej. iPhone 16 har en ny kameraplacering och en kameraknapp på sidan."}}, {"slug": "iphone-16e", "namn": "iPhone 16e", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/16e-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/16e-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/16e-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/16e-pink.webp"}], "tips": {"q": "Passar iPhone 16-skal till iPhone 16e?", "a": "Nej. iPhone 16e har bara en kamera och en egen form, så skalet behöver vara gjort för just 16e."}}, {"slug": "iphone-15-pro", "namn": "iPhone 15 Pro", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/15p-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/15p-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/15p-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/15p-pink.webp"}], "tips": {"q": "Passar skalet till iPhone 16 Pro?", "a": "Nej. iPhone 16 Pro är större och har en kameraknapp på sidan."}}, {"slug": "iphone-15", "namn": "iPhone 15", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/15-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/15-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/15-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/15-pink.webp"}], "tips": {"q": "Passar iPhone 14-skal till iPhone 15?", "a": "Nej. iPhone 15 har andra mått."}}, {"slug": "iphone-14-pro", "namn": "iPhone 14 Pro", "kontakt": "Lightning", "kabel": "USB-C till Lightning eller USB-A till Lightning", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/14p-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/14p-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/14p-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/14p-pink.webp"}], "tips": {"q": "Passar iPhone 13 Pro-skal till iPhone 14 Pro?", "a": "Nej. Kamerapartiet på iPhone 14 Pro är både bredare och högre."}}, {"slug": "iphone-14", "namn": "iPhone 14", "kontakt": "Lightning", "kabel": "USB-C till Lightning eller USB-A till Lightning", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/14-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/14-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/14-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/14-pink.webp"}], "tips": {"q": "Passar iPhone 13-skal till iPhone 14?", "a": "Nej. iPhone 14 är lite tjockare och har ett större kameraparti."}}]</script>
 </section>
 
@@ -580,40 +636,100 @@ addEventListener('DOMContentLoaded', () => {
 
   // Verktyg: vilket skal passar din iPhone?
   const modeller = JSON.parse(document.getElementById('modeller').textContent || '[]');
-  const resultat = document.getElementById('finder-result');
-  const chips = [...document.querySelectorAll('.finder .chip')];
+  const stage = document.getElementById('finder-result');
+  const [stNum, stPhone, stSw, stSwName, stInfo] = ['.st-num', '.st-phone', '.st-sw', '.st-swname', '.st-info'].map(q => stage.querySelector(q));
+  const gens = [...document.querySelectorAll('.gen')];
+  const grupper = [...document.querySelectorAll('.vgroup')];
+  const vchips = [...document.querySelectorAll('.vchip')];
+  const olinks = [...document.querySelectorAll('.olink')];
+  const genBar = document.querySelector('.gen-bar');
   const ovriga = {
-    aldre: { h: 'Till iPhone 13 och äldre har vi tyvärr inga skal', p: 'Corders skal finns från iPhone 14 och framåt. Undrar du om ett skal från en annan modell passar?', l: ['/blogs/nyheter/har-iphone-13-och-14-samma-skal-en-utforlig-guide/', 'Har iPhone 13 och 14 samma skal?'] },
-    max: { h: 'Plus och Pro Max har vi inte skal till', p: 'Våra skal är gjorda för de vanliga storlekarna, från iPhone 14 till iPhone 18 Pro.', l: ['/skal/', 'Se alla modeller'] },
-    duo: { h: 'Skal till iPhone Duo har vi inte', p: 'iPhone Duo är vikbar och behöver ett helt annat skal än en vanlig iPhone.', l: ['/blogs/nyheter/iphone-duo-allt-du-behover-veta/', 'iPhone Duo: allt du behöver veta'] },
+    aldre: { n: '13', h: 'Till iPhone 13 och äldre har vi tyvärr inga skal', p: 'Corders skal finns från iPhone 14 och framåt. Undrar du om ett skal från en annan modell passar?', l: ['/blogs/nyheter/har-iphone-13-och-14-samma-skal-en-utforlig-guide/', 'Har iPhone 13 och 14 samma skal?'] },
+    max: { n: 'Max', h: 'Plus och Pro Max har vi inte skal till', p: 'Våra skal är gjorda för de vanliga storlekarna, från iPhone 14 till iPhone 18 Pro.', l: ['/skal/', 'Se alla modeller'] },
+    duo: { n: 'Duo', h: 'Skal till iPhone Duo har vi inte', p: 'iPhone Duo är vikbar och behöver ett helt annat skal än en vanlig iPhone.', l: ['/blogs/nyheter/iphone-duo-allt-du-behover-veta/', 'iPhone Duo: allt du behöver veta'] },
   };
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  const visa = chip => {
-    chips.forEach(c => c.setAttribute('aria-pressed', c === chip));
-    let html;
-    if (chip.dataset.slug) {
-      const m = modeller.find(x => x.slug === chip.dataset.slug);
-      if (!m) { location.href = chip.href; return; }
-      const bilder = m.farger.map(f => f.bild ? `<img src="${f.bild}" alt="Corder TPU-skal till ${esc(m.namn)} i ${esc(f.namn.toLowerCase())}" width="246" height="480">` : '').join('');
-      const farger = m.farger.map(f => `<span><i style="background:${f.hex}"></i>${esc(f.namn)}</span>`).join('');
-      html = `<div class="fr-card"><div class="fr-shots">${bilder}</div><div class="fr-info">
-        <span class="caps">Corder har skal till</span><h3>${esc(m.namn)}</h3><div class="fr-sw">${farger}</div>
-        <dl><div><dt>Material</dt><dd>TPU, stötdämpande och formstabilt</dd></div>
-        <div><dt>Laddning</dt><dd>${esc(m.namn)} har ${esc(m.kontakt)}. Rätt kabel: ${esc(m.kabel)}, 2 m.</dd></div>
-        <div><dt>${esc(m.tips.q)}</dt><dd>${esc(m.tips.a)}</dd></div></dl>
-        <div class="fr-actions"><a class="btn" href="/skal/${m.slug}/">Se skalen till ${esc(m.namn)}</a><a class="btn ghost" href="#butiker">Hitta butik</a></div></div></div>`;
-    } else {
-      const o = ovriga[chip.dataset.other];
-      html = `<div class="fr-none"><h3>${o.h}</h3><p>${o.p}</p><a class="btn ghost" href="${o.l[0]}">${o.l[1]}</a></div>`;
-    }
-    resultat.innerHTML = html;
-    if (window.gsap && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      gsap.fromTo(resultat.firstElementChild, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: .6, ease: 'power3.out' });
-      gsap.fromTo(resultat.querySelectorAll('.fr-shots img'), { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: .7, stagger: .06, ease: 'power3.out', delay: .1 });
-    }
-    if (innerWidth < 900) resultat.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  const rorelse = () => window.gsap && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let aktiv = null, aktivGen = null, farg = 'Skogsgrön';
+  const flyttaBar = () => {
+    const g = gens.find(x => x.dataset.gen === aktivGen);
+    genBar.style.opacity = g ? 1 : 0;
+    if (g) { genBar.style.width = g.offsetWidth + 'px'; genBar.style.transform = `translateX(${g.offsetLeft}px)`; }
   };
-  chips.forEach(c => c.addEventListener('click', e => { if (modeller.length || c.dataset.other) { e.preventDefault(); visa(c); } }));
+  const valjFarg = i => {
+    const f = aktiv.farger[i];
+    farg = f.namn;
+    stage.style.setProperty('--tint', f.hex);
+    stPhone.querySelectorAll('img').forEach((im, j) => im.classList.toggle('on', j === i));
+    stSw.querySelectorAll('.sw').forEach((b, j) => b.setAttribute('aria-pressed', j === i));
+    stSwName.textContent = f.namn;
+  };
+  const intrada = () => {
+    if (!rorelse()) return;
+    gsap.fromTo(stNum, { yPercent: 14, autoAlpha: 0 }, { yPercent: 0, autoAlpha: 1, duration: 1.1, ease: 'expo.out' });
+    gsap.fromTo(stPhone, { y: 46, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .9, ease: 'expo.out' });
+    gsap.fromTo(stInfo.children, { y: 18, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .7, stagger: .05, ease: 'power3.out' });
+  };
+  const visaIMobil = () => {
+    if (innerWidth >= 900) return;
+    const r = stage.getBoundingClientRect();
+    if (r.top > innerHeight * .55) scrollTo({ top: r.top + scrollY - 80, behavior: 'smooth' });
+  };
+  const visaModell = (slug, anim = true) => {
+    const m = modeller.find(x => x.slug === slug);
+    if (!m) return false;
+    aktiv = m;
+    stage.classList.remove('none');
+    stage.closest('.finder').classList.remove('ovrig');
+    vchips.forEach(c => c.setAttribute('aria-pressed', c.dataset.slug === slug));
+    olinks.forEach(o => o.setAttribute('aria-pressed', false));
+    stNum.textContent = slug.match(/\d+/)[0];
+    stPhone.innerHTML = m.farger.map(f => f.bild ? `<img src="${f.bild}" srcset="${f.bild} 1x, ${f.bild.replace('/cut/s/', '/cut/')} 2x" width="241" height="480" decoding="async" alt="Corder TPU-skal till ${esc(m.namn)} i ${esc(f.namn.toLowerCase())}">` : '<i></i>').join('');
+    stSw.innerHTML = m.farger.map(f => `<button class="sw" type="button" style="--c:${f.hex}" aria-label="${esc(f.namn)}" aria-pressed="false"></button>`).join('');
+    stSw.querySelectorAll('.sw').forEach((b, i) => b.addEventListener('click', () => valjFarg(i)));
+    stInfo.innerHTML = `<span class="caps">Corder TPU-skal till</span><h3>${esc(m.namn)}</h3>
+      <dl><div><dt>Färger</dt><dd>${m.farger.map(f => esc(f.namn)).join(', ')}</dd></div>
+      <div><dt>Material</dt><dd>TPU, stötdämpande och formstabilt</dd></div>
+      <div><dt>Laddning</dt><dd>${esc(m.kontakt)}. Rätt kabel: ${esc(m.kabel)}, 2 m.</dd></div></dl>
+      <div class="st-tip"><b>${esc(m.tips.q)}</b>${esc(m.tips.a)}</div>
+      <div class="st-actions"><a class="btn" href="/skal/${m.slug}/">Se skalen till ${esc(m.namn)}</a><a class="btn ghost" href="#butiker">Hitta butik</a></div>`;
+    valjFarg(Math.max(0, m.farger.findIndex(f => f.namn === farg)));
+    if (anim) intrada();
+    return true;
+  };
+  const valjGen = (gen, anim = true) => {
+    aktivGen = gen;
+    gens.forEach(g => g.setAttribute('aria-pressed', g.dataset.gen === gen));
+    grupper.forEach(g => g.classList.toggle('on', g.dataset.gen === gen));
+    flyttaBar();
+    const val = [...grupper.find(g => g.dataset.gen === gen).querySelectorAll('.vchip')];
+    const pro = !!aktiv && /pro$/.test(aktiv.slug);
+    const c = val.find(x => /pro$/.test(x.dataset.slug) === pro && !/\de$/.test(x.dataset.slug)) || val[0];
+    visaModell(c.dataset.slug, anim);
+  };
+  const visaOvrig = key => {
+    const o = ovriga[key];
+    aktivGen = null;
+    gens.forEach(g => g.setAttribute('aria-pressed', false));
+    flyttaBar();
+    vchips.forEach(c => c.setAttribute('aria-pressed', false));
+    olinks.forEach(x => x.setAttribute('aria-pressed', x.dataset.other === key));
+    stage.classList.add('none');
+    stage.closest('.finder').classList.add('ovrig');
+    stage.style.setProperty('--tint', '#8c8c86');
+    stNum.textContent = o.n;
+    stInfo.innerHTML = `<span class="caps">Tyvärr</span><h3>${o.h}</h3><p>${o.p}</p><div class="st-actions"><a class="btn ghost" href="${o.l[0]}">${o.l[1]}</a></div>`;
+    intrada();
+    visaIMobil();
+  };
+  if (modeller.length && stage) {
+    gens.forEach(g => g.addEventListener('click', () => valjGen(g.dataset.gen)));
+    vchips.forEach(c => c.addEventListener('click', e => { if (visaModell(c.dataset.slug)) { e.preventDefault(); visaIMobil(); } }));
+    olinks.forEach(o => o.addEventListener('click', () => visaOvrig(o.dataset.other)));
+    valjGen(gens[0].dataset.gen, false);
+    addEventListener('resize', flyttaBar);
+    document.fonts && document.fonts.ready.then(flyttaBar);
+  }
 
   // Färgväljare: alla bilder ligger förladdade och tonas mellan (fungerar även utan GSAP)
   const dots = [...document.querySelectorAll('.dot')];
@@ -710,7 +826,8 @@ addEventListener('DOMContentLoaded', () => {
       if (el.classList.contains('w')) introTl.to(el, { color: '#111', duration: .1, ease: 'none' }, i * .1);
       else introTl.from(el, { scale: .4, rotate: -12, autoAlpha: 0, duration: .25, ease: 'back.out(2)' }, i * .1);
     });
-    gsap.from('.finder-row', { autoAlpha: 0, x: 24, duration: .7, stagger: .06, ease: 'power3.out', scrollTrigger: { trigger: '.finder-pick', start: 'top 80%' } });
+    gsap.from('.gen', { autoAlpha: 0, yPercent: 60, duration: .9, stagger: .06, ease: 'expo.out', scrollTrigger: { trigger: '.finder-pick', start: 'top 85%' } });
+    gsap.from('.finder-stage', { autoAlpha: 0, y: 60, scale: .96, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: '.finder-stage', start: 'top 85%' } });
     gsap.from('.intro-sub', { autoAlpha: 0, y: 24, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: '.intro-sub', start: 'top 90%' } });
 
     // Färgsektionen: text och punkter kommer in en gång, skalet tonar upp
