@@ -7,8 +7,8 @@ Kör efter att en ändring har publicerats på GitHub Pages:
 """
 import json
 import re
+import subprocess
 import sys
-import urllib.request
 from pathlib import Path
 
 DOCS = Path(__file__).resolve().parent.parent / "docs"
@@ -30,10 +30,11 @@ def adresser(args):
 def skicka(urls):
     key = nyckel()
     data = json.dumps({"host": "corder.se", "key": key, "keyLocation": f"{SITE}/{key}.txt", "urlList": urls}).encode()
-    req = urllib.request.Request("https://api.indexnow.org/indexnow", data=data,
-                                 headers={"Content-Type": "application/json; charset=utf-8"})
-    with urllib.request.urlopen(req, timeout=30) as svar:
-        print(f"IndexNow svarade {svar.status} för {len(urls)} adresser")
+    # curl i stället för urllib: python.org-Python på macOS saknar ofta rotcertifikat
+    svar = subprocess.run(["curl", "-s", "-o", "/dev/null", "-w", "%{http_code}", "-X", "POST",
+                           "-H", "Content-Type: application/json; charset=utf-8", "--data-binary", "@-",
+                           "https://api.indexnow.org/indexnow"], input=data, capture_output=True, check=True)
+    print(f"IndexNow svarade {svar.stdout.decode()} för {len(urls)} adresser")
 
 
 if __name__ == "__main__":
