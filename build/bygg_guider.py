@@ -19,6 +19,116 @@ SITE = "https://corder.se"
 
 GUIDER = [
     {
+        "slug": "passar-iphone-17-pro-skal-till-iphone-18-pro",
+        "omslag": {"bg": "#e9ece4", "bilder": ["/img/cut/17p-skogsgron.webp"]},
+        "nyckel": [
+            "iPhone 18 Pro har samma yttermått som 17 Pro.",
+            "Kameraplatån är ungefär 0,1 mm tjockare.",
+            "Skal med öppet kamerahål brukar passa.",
+            "Tighta skal kan vara för trånga runt kameran.",
+        ],
+        "titel": "Passar iPhone 17 Pro-skal till iPhone 18 Pro? Så vet du",
+        "kort": "Passar iPhone 17 Pro-skal till iPhone 18 Pro?",
+        "kategori": "Mobilskal",
+        "beskrivning": "Ofta, men inte alltid. iPhone 18 Pro har samma mått som 17 Pro men en lite tjockare kameraplatå. Här är vilka skal som passar och hur du testar.",
+        "publicerad": "2026-10-25",
+        "uppdaterad": "2026-10-25",
+        "faq": [
+            ("Passar iPhone 17 Pro-skal till iPhone 18 Pro?", "Ofta. Måtten är desamma, men kameraplatån på 18 Pro är ungefär en tiondels millimeter tjockare, så skal med tight passform runt kameran kan vara för trånga."),
+            ("Säger Apple att skalen passar?", "Nej. Apple anger att iPhone 17 Pro och 18 Pro officiellt inte delar skal på grund av den tjockare kameraplatån."),
+            ("Passar iPhone 18 Pro-skal på iPhone 17 Pro?", "Oftast ja. Skalet har lite mer utrymme runt kameran och sitter därför bra på 17 Pro."),
+            ("Gäller samma sak för Pro Max?", "Ja. iPhone 18 Pro Max har samma mått som 17 Pro Max och samma lilla skillnad i kameraplatån."),
+        ],
+    },
+    {
+        "slug": "iphone-18-pro-vs-iphone-17-pro",
+        "omslag": {"bg": "#2f3b33", "text": "18 Pro", "undertext": "vs 17 Pro"},
+        "nyckel": [
+            "Samma mått och skärmstorlek som 17 Pro.",
+            "Ny huvudkamera med variabel bländare.",
+            "A20 Pro-chip och snabbare laddning.",
+            "Störst uppgradering för dig med 15 Pro eller äldre.",
+        ],
+        "titel": "iPhone 18 Pro vs iPhone 17 Pro: alla skillnader och ska du uppgradera?",
+        "kort": "iPhone 18 Pro vs iPhone 17 Pro",
+        "kategori": "iPhone",
+        "beskrivning": "Kameran, chippet och laddningen är nya, utsidan är densamma. Här är skillnaderna mellan iPhone 18 Pro och 17 Pro och vem som har nytta av att uppgradera.",
+        "publicerad": "2026-10-25",
+        "uppdaterad": "2026-10-25",
+        "faq": [
+            ("Vad är skillnaden mellan iPhone 18 Pro och 17 Pro?", "iPhone 18 Pro har en huvudkamera med variabel bländare, det nya A20 Pro-chippet och snabbare laddning. Mått och skärmstorlek är desamma."),
+            ("Lönar det sig att byta från iPhone 17 Pro?", "För de flesta inte efter bara ett år, om du inte fotograferar mycket. Från 15 Pro eller äldre är skillnaden tydlig."),
+            ("Hur snabbt laddar iPhone 18 Pro?", "Enligt Apple når den 50 procent på cirka 15 minuter med kabel och en kraftfull USB-C-laddare."),
+            ("Passar mitt gamla skal?", "Ofta, eftersom måtten är desamma, men kameraplatån är lite tjockare så tighta skal kan vara för trånga."),
+        ],
+    },
+    {
+        "slug": "iphone-duo-allt-du-behover-veta",
+        "omslag": {"bg": "#1d1d1f", "text": "Duo", "undertext": "Vikbar iPhone"},
+        "nyckel": [
+            "Apples första vikbara iPhone, säljs sedan 23 oktober 2026.",
+            "5,4 tums yttre och 7,6 tums inre skärm.",
+            "Samma A20 Pro-chip som iPhone 18 Pro.",
+            "Från 1 999 dollar i USA.",
+        ],
+        "titel": "iPhone Duo: Apples första vikbara iPhone – allt du behöver veta",
+        "kort": "iPhone Duo: allt du behöver veta",
+        "kategori": "iPhone",
+        "beskrivning": "iPhone Duo är Apples första vikbara iPhone. Skärmar, kamera, chip, pris, laddning och vad du ska tänka på när det gäller skal till en vikbar telefon.",
+        "publicerad": "2026-10-25",
+        "uppdaterad": "2026-10-25",
+        "faq": [
+            ("Vad är iPhone Duo?", "Apples första vikbara iPhone. Hopfälld har den en 5,4 tums skärm och utfälld en 7,6 tums skärm."),
+            ("När släpptes iPhone Duo?", "Den presenterades i september 2026 och började säljas den 23 oktober 2026."),
+            ("Vad kostar iPhone Duo?", "Startpriset i USA är 1 999 dollar för 256 GB."),
+            ("Vilket chip har iPhone Duo?", "A20 Pro, samma chip som iPhone 18 Pro."),
+        ],
+    },
+    {
+        "slug": "vilken-laddare-till-iphone-18-pro",
+        "omslag": {"bg": "#e8e8e5", "bilder": ["/img/produkter/laddare-20w-usb-c.webp"]},
+        "nyckel": [
+            "Snabbast med USB-C-kabel och kraftfull laddare.",
+            "MagSafe ger upp till 25 W trådlöst.",
+            "En 20 W-laddare räcker för de flesta i vardagen.",
+            "En kraftigare laddare skadar inte batteriet.",
+        ],
+        "titel": "Vilken laddare till iPhone 18 Pro? Watt, kabel och MagSafe förklarat",
+        "kort": "Vilken laddare till iPhone 18 Pro?",
+        "kategori": "Laddning",
+        "beskrivning": "Räcker en 20 W-laddare till iPhone 18 Pro? Så snabbt laddar den med kabel och MagSafe, vad watt betyder och när en kraftigare laddare lönar sig.",
+        "publicerad": "2026-10-25",
+        "uppdaterad": "2026-10-25",
+        "faq": [
+            ("Räcker en 20 W-laddare till iPhone 18 Pro?", "Ja, för de flesta. Den snabbladdar telefonen, men når inte Apples allra snabbaste siffror som kräver en kraftigare laddare."),
+            ("Hur snabbt laddar iPhone 18 Pro trådlöst?", "Upp till 25 W med MagSafe eller en Qi2-laddare som stöder 25 W."),
+            ("Kan en kraftigare laddare skada batteriet?", "Nej. Telefonen tar bara emot så mycket ström som den klarar."),
+            ("Vilken kabel behöver jag?", "En USB-C till USB-C-kabel tillsammans med en USB-C-laddare ger snabbladdning."),
+        ],
+    },
+    {
+        "slug": "vilken-usb-c-kabel-till-iphone",
+        "omslag": {"bg": "#e3e6ea", "bilder": ["/img/produkter/kabel-usb-c-usb-c-2m.webp"]},
+        "nyckel": [
+            "iPhone 15 och senare har USB-C.",
+            "iPhone 14 och äldre har Lightning.",
+            "USB-C till USB-C ger snabbladdning på nya iPhones.",
+            "Flätad kabel och 2 meter är bekvämt i vardagen.",
+        ],
+        "titel": "Vilken USB-C-kabel till iPhone? Så väljer du rätt kabel",
+        "kort": "Vilken USB-C-kabel till iPhone?",
+        "kategori": "Laddning",
+        "beskrivning": "Vilken kabel passar din iPhone? USB-C eller Lightning, USB-A eller USB-C, och vad som skiljer en bra kabel från en dålig. Enkel guide för alla modeller.",
+        "publicerad": "2026-10-25",
+        "uppdaterad": "2026-10-25",
+        "faq": [
+            ("Vilka iPhones har USB-C?", "iPhone 15 och alla senare modeller, inklusive iPhone 18 Pro och iPhone Duo."),
+            ("Vilken kabel ska jag ha till iPhone 14?", "iPhone 14 har Lightning, så du behöver en USB-C till Lightning- eller USB-A till Lightning-kabel."),
+            ("Fungerar en Android-kabel till iPhone?", "Ja, om din iPhone har USB-C. USB-C är en gemensam standard."),
+            ("Hur lång kabel ska jag välja?", "1 meter räcker vid skrivbordet. 2 meter gör att du når från väggen till sängen eller soffan."),
+        ],
+    },
+    {
         "slug": "silikon-vs-tpu-vilket-mobilskal-ger-bast-skydd",
         "omslag": {"bg": "#e5eae6", "bilder": ["/img/cut/17p-skogsgron.webp"]},
         "nyckel": [
@@ -209,7 +319,7 @@ def sida(titel, beskr, kanonisk, innehall, schema=None, progress=False, skript="
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/inter-tight-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts.css">
-<link rel="stylesheet" href="/assets/sida.css?v=5">
+<link rel="stylesheet" href="/assets/sida.css?v=6">
 {ld}</head>
 <body>
 <a class="skip" href="#innehall">Hoppa till innehållet</a>
@@ -260,7 +370,8 @@ def bygg():
         ]
         toc = "".join(f'<li><a href="#{a}">{t}</a></li>' for a, t in g["_avsnitt"])
         nyckel = "".join(f"<li>{html.escape(k)}</li>" for k in g["nyckel"])
-        ovriga = "\n      ".join(kort(o) for o in GUIDER if o is not g)
+        andra = sorted((o for o in GUIDER if o is not g), key=lambda o: o["kategori"] != g["kategori"])[:3]
+        ovriga = "\n      ".join(kort(o) for o in andra)
         ingress, resten = g["_body"].split("</p>", 1)
         ingress += "</p>"
         innehall = f"""<main id="innehall" tabindex="-1">

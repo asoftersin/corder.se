@@ -38,7 +38,8 @@ h1, h2, h3 { font-weight: 400; letter-spacing: -.02em; line-height: 1.15; margin
 .cover-pair img { height: 100%; width: auto; max-width: none; filter: drop-shadow(0 30px 40px rgba(0,0,0,.18)); }
 .cover-pair img:first-child { transform: rotate(-7deg); }
 .cover-pair img + img { margin-left: -6%; transform: rotate(7deg) translateY(3%); }
-.cover-text { font: 300 clamp(4rem, 14vw, 11rem)/1 "Inter Tight", sans-serif; letter-spacing: -.05em; color: rgba(255,255,255,.92); }
+.cover { container-type: inline-size; }
+.cover-text { white-space: nowrap; font: 300 clamp(3rem, 24cqw, 11rem)/1 "Inter Tight", sans-serif; letter-spacing: -.05em; color: rgba(255,255,255,.92); }
 .cover-text small { display: block; font-size: .14em; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.55); margin-top: .6em; text-align: center; }
 
 /* Guide: rubrikdel */
