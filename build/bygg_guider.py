@@ -467,8 +467,6 @@ FARG = {"Svart": ("#1c1c1c", "black"), "Blå": ("#4a6684", "blue"), "Lila": ("#b
 # Bilderna visar färgen, inte alltid samma iPhone-modell som sidan gäller.
 LIVSSTIL = {
     "Skogsgrön": ("/img/lifestyle/s/corder-natt-skogsgron-v3.webp", "50% 40%", "Kvinna på en nattmarknad håller upp en iPhone i skogsgrönt Corder-skal"),
-    "Svart": ("/img/lifestyle/s/corder-hemma-svart-bord.webp", "50% 50%", "iPhone i svart Corder-skal på ett marmorbord"),
-    "Blå": ("/img/lifestyle/s/corder-hemma-bla-svart.webp", "25% 40%", "Kvinna vid köksbordet med en iPhone i blått Corder-skal"),
     "Lila": ("/img/lifestyle/s/corder-portratt-lila.webp", "35% 40%", "Kvinna håller upp en iPhone i lila Corder-skal"),
     "Persika": ("/img/lifestyle/s/corder-uteservering-persika.webp", "30% 40%", "Kvinna på en uteservering håller upp en iPhone i persikofärgat Corder-skal"),
 }
@@ -597,7 +595,8 @@ def bygg_skal():
         faq_html = "\n".join(f"<details><summary>{html.escape(q)}</summary><p>{html.escape(a)}</p></details>" for q, a in faq)
         andra = "\n        ".join(modell_lank(o) for o in MODELLER if o is not m)
         guidekort = "\n      ".join(kort(guide_per_slug[s]) for s in m["guider"] if s in guide_per_slug)
-        bilder = [SITE + modellbild(m, f) for f in m["farger"] if modellbild(m, f)]
+        bilder = [SITE + modellbild(m, f) for f in m["farger"] if modellbild(m, f)] + \
+                 [SITE + LIVSSTIL[f][0] for f in m["farger"] if f in LIVSSTIL]
         schema = [
             {"@context": "https://schema.org", "@type": "Product", "name": f'Corder TPU-skal till {m["namn"]}',
              "brand": {"@type": "Brand", "name": "Corder"}, "material": "TPU", "color": ", ".join(m["farger"]),
