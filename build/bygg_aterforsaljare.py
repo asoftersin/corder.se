@@ -135,8 +135,8 @@ def innehall(antal_rader, antal_bilder):
   <div class="wrap b2b-hero-grid">
     <div class="b2b-hero-text rv">
       <span class="caps">För butiker och grossister</span>
-      <h1>Ett kassasortiment som säljer sig självt.</h1>
-      <p>Kablar, laddare och iPhone-skal för kunder som behöver något nu. Litet sortiment, impulspris och snabb rotation vid kassan.</p>
+      <h1>Ett sortiment som säljer i volym.</h1>
+      <p>Kablar, laddare och iPhone-skal för kunder som behöver något nu. Impulspris, snabb rotation och exponering i eget Corder-ställ eller i tunnor längs gångarna.</p>
       <div class="b2b-actions">
         <a class="btn" href="{MAILTO}">Få prislista och startsortiment</a>
         <a class="btn ghost" href="#resurser">Produktdata och bilder</a>
@@ -171,8 +171,8 @@ def innehall(antal_rader, antal_bilder):
     <h2 class="rv">Därför säljer det.</h2>
     <div class="b2b-cards">
       <div class="b2b-card rv"><span>01</span><h3>Akut behov</h3><p>Kabeln är glömd, laddaren står kvar hemma eller skalet har spruckit. Kunden behöver lösningen nu, inte om tre dagar.</p></div>
-      <div class="b2b-card rv"><span>02</span><h3>Impulspris</h3><p>60 kr för skal och kablar, 99 kr för snabbladdare. Under gränsen där kunden tänker efter, och enkelt att plocka med vid kassan.</p></div>
-      <div class="b2b-card rv"><span>03</span><h3>Liten yta</h3><p>Ett kompakt sortiment som täcker de vanligaste behoven: rätt kabel, en snabbladdare och skal till de populäraste iPhone-modellerna.</p></div>
+      <div class="b2b-card rv"><span>02</span><h3>Impulspris</h3><p>60 kr för skal och kablar, 99 kr för snabbladdare. Under gränsen där kunden tänker efter, och lätt att plocka med i förbifarten.</p></div>
+      <div class="b2b-card rv"><span>03</span><h3>Där kunderna går</h3><p>I tunnor längs gångarna eller i ett eget Corder-ställ. Ett kompakt sortiment som täcker de vanligaste behoven: rätt kabel, en snabbladdare och skal till de populäraste iPhone-modellerna.</p></div>
     </div>
   </div>
 </section>
@@ -181,8 +181,8 @@ def innehall(antal_rader, antal_bilder):
   <div class="wrap b2b-case-grid">
     <div class="b2b-case-text rv">
       <span class="caps">Så fungerar det i praktiken</span>
-      <h2>VIP Mullsjö: kassan som bevis.</h2>
-      <p>I VIP Mullsjö står Corder vid kassan, där kunden står med ett behov och några sekunder att bestämma sig. Där säljer vi ungefär 20 000 produkter om året, främst laddkablar.</p>
+      <h2>VIP Mullsjö: tunnorna som bevis.</h2>
+      <p>I VIP Mullsjö säljs Corder från ett eget ställ och från tunnor längs gångarna, där kunderna redan går förbi. Tunnorna står för den stora volymen. Totalt säljer vi ungefär 20 000 produkter om året i butiken, främst laddkablar.</p>
       <p>VIP Mullsjö drivs av Corders medgrundare Anton Lindkvist. Därför vet vi exakt vad som säljer, vad som inte gör det och hur exponeringen ska se ut. Den kunskapen tar vi med till er butik.</p>
     </div>
     <div class="b2b-kollage rv" aria-hidden="true">{kollage}</div>
@@ -193,13 +193,13 @@ def innehall(antal_rader, antal_bilder):
   <div class="wrap">
     <div class="b2b-start-head rv">
       <h2>Kom igång med ett startpaket.</h2>
-      <p>Vi sätter ihop sortimentet efter er yta och era kunder. Ett typiskt kassasortiment:</p>
+      <p>Vi sätter ihop sortimentet efter er yta och era kunder. Ett typiskt upplägg:</p>
     </div>
     <ol class="b2b-steps">
       <li class="rv"><b>Kablar</b><span>USB-C och Lightning, alla 2 meter och flätade. Det som säljer mest.</span></li>
       <li class="rv"><b>Snabbladdare</b><span>20W USB-C och Dual Port för de nya iPhone-modellerna, 18W USB-A för äldre kablar.</span></li>
       <li class="rv"><b>Skal</b><span>De modeller och färger som säljer bäst i ert område, från iPhone 14 till 18 Pro.</span></li>
-      <li class="rv"><b>Exponering</b><span>Vi hjälper till med placering vid kassan, där sortimentet gör störst nytta.</span></li>
+      <li class="rv"><b>Ställ eller tunnor</b><span>Eget Corder-ställ, tunnor längs gångarna eller båda. Vi hjälper till med placeringen där sortimentet säljer mest.</span></li>
     </ol>
   </div>
 </section>
@@ -278,7 +278,7 @@ def bygg_aterforsaljare():
     rader = skriv_produktdata()
     bilder = skriv_bildpaket()
     titel = "Sälj Corder i din butik – för återförsäljare och grossister | Corder"
-    beskr = ("Kablar, laddare och iPhone-skal som säljer vid kassan: ca 20 000 sålda per år i en enda butik. "
+    beskr = ("Kablar, laddare och iPhone-skal som säljer i volym: ca 20 000 sålda per år i en enda butik, från eget ställ och tunnor längs gångarna. "
              "Ladda ner produktdata och bilder eller be om prislista och startsortiment.")
     schema = [
         {"@context": "https://schema.org", "@type": "WebPage", "@id": URL, "url": URL, "name": "Sälj Corder i din butik",
