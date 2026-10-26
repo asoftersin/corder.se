@@ -55,7 +55,7 @@
       <p>Corders TPU-skal till iPhone 14 Pro finns i svart, blå, lila och persika. Samma enkla form som alla våra skal: stötdämpande, formstabilt och med upphöjd kant runt kameran.</p>
     </div>
     <div class="model-gallery" style="--n:4">
-      <figure class="model-shot"><div class="tile"><img src="/img/cut/s/14p-black.webp" alt="Corder TPU-skal till iPhone 14 Pro i svart" width="244" height="480" loading="lazy"></div><figcaption><i style="background:#1c1c1c"></i>Svart</figcaption></figure><figure class="model-shot"><div class="tile"><img src="/img/cut/s/14p-blue.webp" alt="Corder TPU-skal till iPhone 14 Pro i blå" width="244" height="480" loading="lazy"></div><figcaption><i style="background:#4a6684"></i>Blå</figcaption></figure><figure class="model-shot"><div class="tile"><img src="/img/cut/s/14p-purple.webp" alt="Corder TPU-skal till iPhone 14 Pro i lila" width="244" height="480" loading="lazy"></div><figcaption><i style="background:#b9bdf0"></i>Lila</figcaption></figure><figure class="model-shot"><div class="tile"><img src="/img/cut/s/14p-pink.webp" alt="Corder TPU-skal till iPhone 14 Pro i persika" width="244" height="480" loading="lazy"></div><figcaption><i style="background:#f5a493"></i>Persika</figcaption></figure>
+      <figure class="model-shot has-life"><div class="tile"><img src="/img/cut/s/14p-black.webp" alt="Corder TPU-skal till iPhone 14 Pro i svart" width="244" height="480" loading="lazy"><img class="life" src="/img/lifestyle/s/corder-hemma-svart-bord.webp" alt="iPhone i svart Corder-skal på ett marmorbord" width="450" height="600" loading="lazy" style="object-position:50% 50%"><button class="life-btn" type="button" aria-pressed="false">I verkligheten</button></div><figcaption><i style="background:#1c1c1c"></i>Svart</figcaption></figure><figure class="model-shot has-life"><div class="tile"><img src="/img/cut/s/14p-blue.webp" alt="Corder TPU-skal till iPhone 14 Pro i blå" width="244" height="480" loading="lazy"><img class="life" src="/img/lifestyle/s/corder-hemma-bla-svart.webp" alt="Kvinna vid köksbordet med en iPhone i blått Corder-skal" width="640" height="800" loading="lazy" style="object-position:25% 40%"><button class="life-btn" type="button" aria-pressed="false">I verkligheten</button></div><figcaption><i style="background:#4a6684"></i>Blå</figcaption></figure><figure class="model-shot has-life"><div class="tile"><img src="/img/cut/s/14p-purple.webp" alt="Corder TPU-skal till iPhone 14 Pro i lila" width="244" height="480" loading="lazy"><img class="life" src="/img/lifestyle/s/corder-portratt-lila.webp" alt="Kvinna håller upp en iPhone i lila Corder-skal" width="640" height="800" loading="lazy" style="object-position:35% 40%"><button class="life-btn" type="button" aria-pressed="false">I verkligheten</button></div><figcaption><i style="background:#b9bdf0"></i>Lila</figcaption></figure><figure class="model-shot has-life"><div class="tile"><img src="/img/cut/s/14p-pink.webp" alt="Corder TPU-skal till iPhone 14 Pro i persika" width="244" height="480" loading="lazy"><img class="life" src="/img/lifestyle/s/corder-uteservering-persika.webp" alt="Kvinna på en uteservering håller upp en iPhone i persikofärgat Corder-skal" width="640" height="800" loading="lazy" style="object-position:30% 40%"><button class="life-btn" type="button" aria-pressed="false">I verkligheten</button></div><figcaption><i style="background:#f5a493"></i>Persika</figcaption></figure>
     </div>
     <div class="post" style="grid-template-columns:minmax(0, 760px)">
       <article class="prose">
@@ -115,6 +115,13 @@
     <div class="foot-base">© 2026 Corder Group AB · Org.nr 559227-0226 · Kungsbacka · Designed and developed in Sweden</div>
   </div>
 </footer>
-
+<script>
+document.querySelectorAll('.life-btn').forEach(k => k.addEventListener('click', () => {
+  const pa = k.getAttribute('aria-pressed') !== 'true';
+  k.setAttribute('aria-pressed', pa);
+  k.closest('.model-shot').classList.toggle('visa', pa);
+  k.textContent = pa ? 'Visa skalet' : 'I verkligheten';
+}));
+</script>
 </body>
 </html>

@@ -463,6 +463,23 @@ def bygg():
 
 FARG = {"Svart": ("#1c1c1c", "black"), "Blå": ("#4a6684", "blue"), "Lila": ("#b9bdf0", "purple"),
         "Persika": ("#f5a493", "pink"), "Skogsgrön": ("#3d5143", None)}
+# Modellbild per färg. Visas när man håller över skalet eller trycker på knappen.
+# Bilderna visar färgen, inte alltid samma iPhone-modell som sidan gäller.
+LIVSSTIL = {
+    "Skogsgrön": ("/img/lifestyle/s/corder-natt-skogsgron-v3.webp", "50% 40%", "Kvinna på en nattmarknad håller upp en iPhone i skogsgrönt Corder-skal"),
+    "Svart": ("/img/lifestyle/s/corder-hemma-svart-bord.webp", "50% 50%", "iPhone i svart Corder-skal på ett marmorbord"),
+    "Blå": ("/img/lifestyle/s/corder-hemma-bla-svart.webp", "25% 40%", "Kvinna vid köksbordet med en iPhone i blått Corder-skal"),
+    "Lila": ("/img/lifestyle/s/corder-portratt-lila.webp", "35% 40%", "Kvinna håller upp en iPhone i lila Corder-skal"),
+    "Persika": ("/img/lifestyle/s/corder-uteservering-persika.webp", "30% 40%", "Kvinna på en uteservering håller upp en iPhone i persikofärgat Corder-skal"),
+}
+LIVSSTIL_SKRIPT = """<script>
+document.querySelectorAll('.life-btn').forEach(k => k.addEventListener('click', () => {
+  const pa = k.getAttribute('aria-pressed') !== 'true';
+  k.setAttribute('aria-pressed', pa);
+  k.closest('.model-shot').classList.toggle('visa', pa);
+  k.textContent = pa ? 'Visa skalet' : 'I verkligheten';
+}));
+</script>"""
 GAMLA_FARGER = ["Svart", "Blå", "Lila", "Persika"]
 NYA_FARGER = ["Svart", "Skogsgrön"]
 
@@ -558,7 +575,13 @@ def bygg_skal():
             b = modellbild(m, f)
             if b:
                 alt = f'Corder TPU-skal till {m["namn"]} i {f.lower()}'
-                shots.append(f'<figure class="model-shot"><div class="tile">{bild(b, alt)}</div>'
+                liv = ""
+                if f in LIVSSTIL:
+                    src, pos, livalt = LIVSSTIL[f]
+                    w, h = matt(src)
+                    liv = (f'<img class="life" src="{src}" alt="{html.escape(livalt)}" width="{w}" height="{h}" loading="lazy" style="object-position:{pos}">'
+                           f'<button class="life-btn" type="button" aria-pressed="false">I verkligheten</button>')
+                shots.append(f'<figure class="model-shot{" has-life" if liv else ""}"><div class="tile">{bild(b, alt)}{liv}</div>'
                              f'<figcaption><i style="background:{FARG[f][0]}"></i>{f}</figcaption></figure>')
             else:
                 shots.append(f'<figure class="model-shot"><div class="tile empty"><div><b style="background:{FARG[f][0]}"></b>{f}</div></div>'
@@ -628,7 +651,7 @@ def bygg_skal():
 </main>"""
         ut = ROT / "skal" / m["slug"] / "index.html"
         ut.parent.mkdir(parents=True, exist_ok=True)
-        ut.write_text(sida(titel, beskr, url, innehall, schema))
+        ut.write_text(sida(titel, beskr, url, innehall, schema, skript=LIVSSTIL_SKRIPT))
         print("skrev", ut.relative_to(ROT))
 
     lankar = "\n      ".join(modell_lank(m) for m in MODELLER)

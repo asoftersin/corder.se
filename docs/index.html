@@ -21,7 +21,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/inter-tight-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="img/hero-18pro.webp" as="image" media="(min-width: 901px)">
+<link rel="preload" href="img/lifestyle/corder-natt-skogsgron-v3.webp" as="image">
 <link rel="stylesheet" href="/assets/fonts.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://corder.se/#org", "name": "Corder", "legalName": "Corder Group AB", "url": "https://corder.se/", "logo": "https://corder.se/assets/ikon-512.png", "foundingDate": "2019", "taxID": "559227-0226", "address": {"@type": "PostalAddress", "addressLocality": "Kungsbacka", "addressCountry": "SE"}, "email": "sales@corder.se", "sameAs": ["https://www.instagram.com/corderofficial", "https://www.tiktok.com/@corderofficial", "https://www.facebook.com/cordergroup"]}, {"@type": "WebSite", "@id": "https://corder.se/#site", "url": "https://corder.se/", "name": "Corder", "inLanguage": "sv", "publisher": {"@id": "https://corder.se/#org"}}, {"@type": "VideoObject", "@id": "https://corder.se/#film", "name": "Corder på 15 sekunder", "description": "Corders TPU-skal i fem färger, skal till iPhone 14–18 Pro, flätade kablar och snabbladdare i en kort film.", "thumbnailUrl": "https://corder.se/video/corder-film-poster.webp", "contentUrl": "https://corder.se/video/corder-film-1080.mp4", "uploadDate": "2026-10-26", "duration": "PT15S", "inLanguage": "sv", "publisher": {"@id": "https://corder.se/#org"}}]}</script>
 <style>
@@ -89,31 +89,47 @@
   }
 
   /* Hero */
-  .hero { position: relative; background: #2d2c2f; color: #fff; overflow: hidden; overflow: clip; }
+  /* Kampanjbilden är stående, så den fyller högra delen och tonas in mot den mörka bakgrunden */
+  .hero { position: relative; background: #0b0b0b; color: #fff; overflow: hidden; overflow: clip; }
   .hero-stage { position: relative; height: 100vh; min-height: 560px; overflow: hidden; display: flex; align-items: center; padding: 0 var(--gutter); }
-  .hero-photo { position: absolute; inset: 0; }
-  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%; transform-origin: 70% 40%; will-change: transform; }
-  .hero h1 { position: relative; font-size: clamp(2.4rem, 4.4vw, 4rem); max-width: 9.5em; }
+  .hero-photo { position: absolute; top: 0; bottom: 0; right: 0; left: 40%; -webkit-mask-image: linear-gradient(to right, transparent, #000 28%); mask-image: linear-gradient(to right, transparent, #000 28%); }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; transform-origin: 60% 40%; will-change: transform; }
+  .hero-copy { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 22px; }
+  .hero-copy .caps { color: rgba(255,255,255,.7); }
+  .hero h1 { font-size: clamp(2.6rem, 5.6vw, 5.4rem); line-height: .98; max-width: 7em; }
+  .hero-cta { display: inline-flex; align-items: center; min-height: 48px; padding: 0 28px; border-radius: 999px; background: #fff; color: var(--ink); font-size: .9rem; font-weight: 500; transition: background .2s; }
+  .hero-cta:hover { background: #e6e6e6; }
+  .hero-cta:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
   .hero-foot { position: absolute; left: var(--gutter); bottom: 32px; max-width: 360px; color: rgba(255,255,255,.62); }
   .hero-foot .caps { color: #fff; display: block; margin-bottom: 6px; }
-  @media (min-width: 901px) and (max-width: 1400px) {
-    .hero-stage { align-items: flex-start; padding-top: 22vh; }
-    .hero-photo img { object-position: 100% 50%; }
-    .hero h1 { font-size: clamp(2.2rem, 3.4vw, 3rem); }
-  }
-  /* Nästan kvadratiska fönster: fotot täcker bara högra delen och tonas in */
-  @media (min-width: 901px) and (max-aspect-ratio: 8/5) {
-    .hero-photo { left: 34%; -webkit-mask-image: linear-gradient(to right, transparent, #000 22%); mask-image: linear-gradient(to right, transparent, #000 22%); }
-    .hero-photo img { object-position: 78% 50%; }
-  }
   @media (max-width: 900px) {
-    .hero { height: auto; background: #3b3b3f; }
+    .hero { height: auto; }
     .hero-stage { position: relative; height: auto; flex-direction: column; align-items: stretch; padding: 120px 0 0; }
     .hero-stage { min-height: 0; overflow: visible; }
-    .hero h1 { order: -1; padding: 0 var(--gutter); margin-bottom: 8px; }
-    .hero-photo { position: relative; overflow: hidden; }
+    .hero-copy { order: -1; padding: 0 var(--gutter); margin-bottom: 28px; }
+    .hero-photo { position: relative; left: 0; overflow: hidden; -webkit-mask-image: none; mask-image: none; }
     .hero-photo img { height: auto; }
     .hero-foot { display: none; }
+  }
+
+  /* Produkterna från kampanjen, direkt under hjälten */
+  .kampanj { background: #fff; padding: clamp(40px, 5vw, 72px) 0 0; }
+  .kampanj-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: clamp(16px, 2vw, 24px); }
+  .kampanj-head h2 { font-size: clamp(1.3rem, 1.8vw, 1.6rem); }
+  .kampanj-head a { color: var(--muted); font-size: .9rem; }
+  .kampanj-head a:hover { color: var(--ink); }
+  .kampanj-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 18px); }
+  .kampanj-card { display: block; }
+  .kampanj-card .gear-img img { padding: 12% 16% 16%; }
+  .kampanj-card:hover .gear-img img { transform: translateY(-6px) scale(1.03); }
+  .kampanj-cap { padding: 14px 4px 0; display: grid; gap: 2px; }
+  .kampanj-cap .caps { color: var(--muted); }
+  .kampanj-cap b { font-weight: 400; font-size: 1.05rem; }
+  .kampanj-cap span:last-child { color: var(--muted); font-size: .9rem; }
+  @media (max-width: 900px) {
+    .kampanj-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 0 calc(-1 * var(--gutter)); padding: 0 var(--gutter); }
+    .kampanj-grid::-webkit-scrollbar { display: none; }
+    .kampanj-card { flex: 0 0 42vw; scroll-snap-align: start; scroll-margin-left: var(--gutter); }
   }
 
   /* Filmen: växer till full bredd när den scrollas in */
@@ -418,12 +434,31 @@
 
 <section class="hero" id="hero" data-theme="dark">
   <div class="hero-stage">
-    <picture class="hero-photo">
-      <source media="(max-width: 900px)" srcset="img/hero-18pro-mobil.webp" width="900" height="1022">
-      <img src="img/hero-18pro.webp" alt="En hand håller en iPhone 18 Pro i Corders skogsgröna TPU-skal" width="2400" height="1340">
-    </picture>
-    <h1 data-split>Bra mobiltillbehör.<br>Ännu bättre priser.</h1>
+    <div class="hero-photo">
+      <img src="img/lifestyle/corder-natt-skogsgron-v3.webp" alt="Kvinna i grön bomberjacka på en nattmarknad håller upp en iPhone i Corders skogsgröna TPU-skal" width="1122" height="1402" fetchpriority="high">
+    </div>
+    <div class="hero-copy">
+      <span class="caps">Höst 26</span>
+      <h1 data-split>Skogsgrön<br>efter mörker.</h1>
+      <a class="hero-cta" href="#kampanj">Upptäck</a>
+    </div>
     <div class="hero-foot"><span class="caps">Designat i Sverige.</span>Skal, laddare och kablar för iPhone sedan 2019.</div>
+  </div>
+</section>
+
+<section class="kampanj" id="kampanj" data-theme="light" aria-labelledby="kampanj-rubrik">
+  <div class="wrap">
+    <div class="kampanj-head">
+      <h2 id="kampanj-rubrik">Från kampanjen</h2>
+      <a href="/skal/">Alla skal →</a>
+    </div>
+    <div class="kampanj-grid">
+      <a class="kampanj-card" href="/skal/iphone-17-pro/"><div class="gear-img"><img src="img/cut/s/17p-skogsgron.webp" alt="Corder TPU-skal i skogsgrönt till iPhone 17 Pro" loading="lazy" width="240" height="480"></div><span class="kampanj-cap"><span class="caps">Skal</span><b>iPhone 17 Pro</b><span>Skogsgrön</span></span></a>
+      <a class="kampanj-card" href="/skal/iphone-17/"><div class="gear-img"><img src="img/cut/s/17-skogsgron.webp" alt="Corder TPU-skal i skogsgrönt till iPhone 17" loading="lazy" width="244" height="480"></div><span class="kampanj-cap"><span class="caps">Skal</span><b>iPhone 17</b><span>Skogsgrön</span></span></a>
+      <a class="kampanj-card" href="/skal/iphone-17-pro/"><div class="gear-img"><img src="img/cut/s/17p-black.webp" alt="Corder TPU-skal i svart till iPhone 17 Pro" loading="lazy" width="240" height="480"></div><span class="kampanj-cap"><span class="caps">Skal</span><b>iPhone 17 Pro</b><span>Svart</span></span></a>
+      <a class="kampanj-card" href="/skal/iphone-18-pro/"><div class="gear-img"><img src="img/cut/s/17p-skogsgron.webp" alt="Corder TPU-skal i skogsgrönt till iPhone 18 Pro" loading="lazy" width="240" height="480"></div><span class="kampanj-cap"><span class="caps">Skal</span><b>iPhone 18 Pro</b><span>Skogsgrön</span></span></a>
+      <a class="kampanj-card" href="#laddning"><div class="gear-img"><img src="img/produkter/s/laddare-20w-usb-c.webp" alt="Corder snabbladdare 20W med USB-C" loading="lazy" width="600" height="525"></div><span class="kampanj-cap"><span class="caps">Laddare</span><b>Snabbladdare 20W</b><span>USB-C</span></span></a>
+    </div>
   </div>
 </section>
 
@@ -841,13 +876,13 @@ addEventListener('DOMContentLoaded', () => {
     const heroLines = lines(document.querySelector('.hero h1'));
     gsap.from(heroLines, { yPercent: 110, duration: 1.2, ease: 'power4.out', stagger: .12, delay: .15 });
     gsap.from('.hero-photo', { scale: 1.12, autoAlpha: 0, duration: 1.8, ease: 'power3.out' });
-    gsap.from('.hero-foot', { autoAlpha: 0, y: 16, duration: 1, delay: .7, ease: 'power2.out' });
+    gsap.from('.hero-foot, .hero-copy .caps, .hero-cta', { autoAlpha: 0, y: 16, duration: 1, delay: .7, ease: 'power2.out' });
 
     if (desktop) {
       // Hjälten fästs medan bilden zoomar ut och rubriken lyfter bort
       gsap.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=70%', scrub: .6, pin: '.hero-stage' } })
         .fromTo('.hero-photo img', { scale: 1.06 }, { scale: 1, yPercent: -3, ease: 'none' }, 0)
-        .to('.hero h1', { yPercent: -60, autoAlpha: 0, ease: 'none' }, 0)
+        .to('.hero-copy', { yPercent: -40, autoAlpha: 0, ease: 'none' }, 0)
         .to('.hero-foot', { autoAlpha: 0, ease: 'none' }, 0);
     } else {
       gsap.to('.hero-photo img', { yPercent: 8, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
