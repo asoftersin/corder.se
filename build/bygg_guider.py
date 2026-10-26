@@ -345,7 +345,7 @@ def sida(titel, beskr, kanonisk, innehall, schema=None, progress=False, skript="
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/inter-tight-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts.css">
-<link rel="stylesheet" href="/assets/sida.css?v=12">
+<link rel="stylesheet" href="/assets/sida.css?v=13">
 {ld}</head>
 <body>
 <a class="skip" href="#innehall">Hoppa till innehållet</a>

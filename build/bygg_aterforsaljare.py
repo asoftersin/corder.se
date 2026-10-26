@@ -117,6 +117,7 @@ FAQ = [
     ("Vilka iPhone-modeller finns det skal till?", "iPhone 14, 14 Pro, 15, 15 Pro, 16e, 16 och 16 Pro i svart, blå, lila och persika, samt iPhone 17, 17 Pro och 18 Pro i svart och skogsgrön."),
     ("Är produkterna CE-märkta?", "Ja, laddare och kablar är CE-märkta och alla produkter levereras i butiksfärdiga förpackningar med corder-ordmärket."),
     ("Vad kostar det?", "Skal och kablar har rekommenderat butikspris 60 kr och snabbladdare 99 kr. Inköpspriser för butik och grossist finns i prislistan, som vi skickar på begäran."),
+    ("Vad händer om det inte säljer?", "Första startpaketet har 90 dagars säljgaranti. Det som inte har sålts byter vi mot andra artiklar eller tar tillbaka och krediterar, så länge förpackningen är obruten."),
     ("Säljer Corder själva på nätet?", "Nej. Corder säljs bara i fysiska butiker, så ni konkurrerar inte med vår egen webbutik."),
 ]
 
@@ -193,14 +194,17 @@ def innehall(antal_rader, antal_bilder):
   <div class="wrap">
     <div class="b2b-start-head rv">
       <h2>Kom igång med ett startpaket.</h2>
-      <p>Vi sätter ihop sortimentet efter er yta och era kunder. Ett typiskt upplägg:</p>
+      <p>Fyllda och klara att ställa ut, med pris på skylten. Vi anpassar skalen efter era kunder.</p>
     </div>
-    <ol class="b2b-steps">
-      <li class="rv"><b>Kablar</b><span>USB-C och Lightning, alla 2 meter och flätade. Det som säljer mest.</span></li>
-      <li class="rv"><b>Snabbladdare</b><span>20W USB-C och Dual Port för de nya iPhone-modellerna, 18W USB-A för äldre kablar.</span></li>
-      <li class="rv"><b>Skal</b><span>De modeller och färger som säljer bäst i ert område, från iPhone 14 till 18 Pro.</span></li>
-      <li class="rv"><b>Ställ eller tunnor</b><span>Eget Corder-ställ, tunnor längs gångarna eller båda. Vi hjälper till med placeringen där sortimentet säljer mest.</span></li>
-    </ol>
+    <div class="b2b-paket">
+      <div class="rv"><span class="caps">Volym i gången</span><h3>Kabelpaket</h3><b>200 kablar</b><p>USB-C och Lightning, alla 2 meter och flätade, för tunna eller hylla längs gångarna. Det som säljer mest i VIP Mullsjö.</p><small>Rek. pris 60 kr</small></div>
+      <div class="rv"><span class="caps">Tillägg</span><h3>Laddarpaket</h3><b>60 snabbladdare</b><p>20W USB-C och Dual Port för de nya iPhone-modellerna, 18W USB-A för äldre kablar. Ställs bredvid kablarna.</p><small>Rek. pris 99 kr</small></div>
+      <div class="rv dark"><span class="caps">Begränsat antal</span><h3>Corder-ställ</h3><b>60 artiklar och ställ</b><p>Kablar, laddare och skal i vårt eget ställ, som ingår i första ordern. Passar kiosk, disk och mindre butiker.</p><small>Så långt lagret räcker</small></div>
+    </div>
+    <div class="b2b-garanti rv">
+      <div><span class="caps">Säljgaranti</span><h3>Säljer det inte, tar vi tillbaka det.</h3></div>
+      <p>Det som inte har sålts efter 90 dagar byter vi mot andra artiklar eller tar tillbaka och krediterar. Gäller det första startpaketet per butik, för produkter i obruten förpackning.</p>
+    </div>
   </div>
 </section>
 

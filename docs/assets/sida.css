@@ -296,3 +296,18 @@ main:focus { outline: none; }
   .b2b-dl a { min-height: 150px; }
   .b2b-actions .btn { width: 100%; }
 }
+.b2b-paket { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: clamp(32px, 5vw, 56px); }
+.b2b-paket > div { background: var(--soft); border-radius: 22px; padding: clamp(24px, 3vw, 36px); display: flex; flex-direction: column; }
+.b2b-paket h3 { font-size: clamp(1.5rem, 2.4vw, 2rem); font-weight: 400; letter-spacing: -.02em; margin: 26px 0 4px; }
+.b2b-paket b { font-weight: 500; }
+.b2b-paket p { color: #555; line-height: 1.6; margin: 14px 0 22px; }
+.b2b-paket small { margin-top: auto; padding-top: 14px; border-top: 1px solid #deded9; color: var(--muted); }
+.b2b-paket .dark { background: #111; color: #fff; }
+.b2b-paket .dark .caps, .b2b-paket .dark small { color: rgba(255,255,255,.6); }
+.b2b-paket .dark p { color: rgba(255,255,255,.75); }
+.b2b-paket .dark small { border-color: #2a2a2a; }
+.b2b-garanti { margin-top: 14px; background: #3d5143; color: #fff; border-radius: 22px; padding: clamp(28px, 4vw, 48px); display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 4vw, 56px); align-items: end; }
+.b2b-garanti .caps { color: rgba(255,255,255,.7); }
+.b2b-garanti h3 { font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 300; letter-spacing: -.03em; line-height: 1.05; margin: 14px 0 0; }
+.b2b-garanti p { margin: 0; color: rgba(255,255,255,.85); }
+@media (max-width: 900px) { .b2b-paket, .b2b-garanti { grid-template-columns: 1fr; } }
