@@ -270,7 +270,7 @@ HEADER = """<header class="top">
       <li><a href="/skal/">Skal</a></li>
       <li><a href="/#laddning">Laddning</a></li>
       <li><a href="/#butiker">Butiker</a></li>
-      <li><a href="/#aterforsaljare">Företag</a></li>
+      <li><a href="/aterforsaljare/">Återförsäljare</a></li>
       <li><a href="/blogs/nyheter/">Apple-guider</a></li>
     </ul>
   </div>
@@ -282,7 +282,7 @@ FOOTER = """<footer>
     <div class="foot">
       <a href="/" class="logo">corder</a>
       <div><p class="foot-h">Sortiment</p><ul><li><a href="/skal/">TPU-skal</a></li><li><a href="/#laddning">Laddare</a></li><li><a href="/#laddning">Kablar</a></li></ul></div>
-      <div><p class="foot-h">Företag</p><ul><li><a href="/#butiker">Hitta butik</a></li><li><a href="/#aterforsaljare">Bli återförsäljare</a></li><li><a href="mailto:sales@corder.se">sales@corder.se</a></li></ul></div>
+      <div><p class="foot-h">Företag</p><ul><li><a href="/#butiker">Hitta butik</a></li><li><a href="/aterforsaljare/">Bli återförsäljare</a></li><li><a href="mailto:sales@corder.se">sales@corder.se</a></li></ul></div>
       <div><p class="foot-h">Resurser</p><ul><li><a href="/blogs/nyheter/">Apple-guider</a></li><li><a href="https://www.instagram.com/corderofficial">Instagram</a></li><li><a href="https://www.tiktok.com/@corderofficial">TikTok</a></li><li><a href="https://www.facebook.com/cordergroup">Facebook</a></li></ul></div>
     </div>
     <div class="foot-base">© 2026 Corder Group AB · Org.nr 559227-0226 · Kungsbacka · Designed and developed in Sweden</div>
@@ -345,7 +345,7 @@ def sida(titel, beskr, kanonisk, innehall, schema=None, progress=False, skript="
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/inter-tight-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts.css">
-<link rel="stylesheet" href="/assets/sida.css?v=11">
+<link rel="stylesheet" href="/assets/sida.css?v=12">
 {ld}</head>
 <body>
 <a class="skip" href="#innehall">Hoppa till innehållet</a>
@@ -749,8 +749,10 @@ def bygg_omdirigeringar():
 
 
 if __name__ == "__main__":
+    from bygg_aterforsaljare import bygg_aterforsaljare
     bygg()
     bygg_skal()
     bygg_valjare()
     bygg_404()
     bygg_omdirigeringar()
+    bygg_aterforsaljare()

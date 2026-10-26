@@ -36,7 +36,7 @@ Bolag: Corder Group AB, org.nr 559227-0226, Kungsbacka. Kontakt: sales@corder.se
 - [Startsida](https://corder.se/): sortiment, färger, butiker och om Corder
 - [Om Corder](https://corder.se/#om-oss): grundat 2019 av två teknikentusiaster, låga marginaler och låga priser
 - [Hitta butik](https://corder.se/#butiker)
-- [Bli återförsäljare](https://corder.se/#aterforsaljare)
+- [Bli återförsäljare](https://corder.se/aterforsaljare/): för butiker och grossister, ca 20 000 sålda per år i en butik, produktdata (Excel/CSV) och bildpaket. Prislista på begäran via sales@corder.se
 
 ## Guider
 
