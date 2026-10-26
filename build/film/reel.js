@@ -430,7 +430,7 @@ function sceneCharge(ctx, t) {
 const CUTS = [
   { img: 'kabel-usb-c-usb-c-2m', name: 'USB-C till USB-C', spec: '2 m · flätad', bg: P.persika, dark: false },
   { img: 'laddare-20w-usb-c', name: 'Snabbladdare 20W', spec: 'USB-C', bg: P.bla, dark: true },
-  { img: 'kabel-usb-c-lightning-vit', name: 'USB-C till Lightning', spec: '2 m · vit', bg: P.gron, dark: true },
+  { img: '17-black', name: 'TPU-skal iPhone 17', spec: 'Svart', bg: P.gron, dark: true },
   { img: 'laddare-20w-dual-port', name: '20W Dual Port', spec: 'USB-C och USB-A', bg: P.lila, dark: false },
   { img: 'kabel-usb-a-usb-c-2m', name: 'USB-A till USB-C', spec: '2 m · flätad', bg: P.ink, dark: true },
   { img: 'laddare-18w-usb-a', name: 'Laddare 18W', spec: 'USB-A', bg: P.persika, dark: false },

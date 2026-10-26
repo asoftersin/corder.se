@@ -30,6 +30,9 @@ SKAL_EAN = {
     ("iPhone 16e", "Svart"): "7350140690672", ("iPhone 16e", "Blå"): "7350140690689", ("iPhone 16e", "Lila"): "7350140690696", ("iPhone 16e", "Persika"): "7350140690702",
     ("iPhone 16", "Svart"): "7350140690597", ("iPhone 16", "Blå"): "7350140690603", ("iPhone 16", "Lila"): "7350140690610", ("iPhone 16", "Persika"): "7350140690627",
     ("iPhone 16 Pro", "Svart"): "7350140690634", ("iPhone 16 Pro", "Blå"): "7350140690641", ("iPhone 16 Pro", "Lila"): "7350140690658", ("iPhone 16 Pro", "Persika"): "7350140690665",
+    ("iPhone 17", "Svart"): "7350140690788", ("iPhone 17", "Skogsgrön"): "7350140690795",
+    ("iPhone 17 Pro", "Svart"): "7350140690801", ("iPhone 17 Pro", "Skogsgrön"): "7350140690818",
+    ("iPhone 18 Pro", "Svart"): "7350140690825", ("iPhone 18 Pro", "Skogsgrön"): "7350140690832",
 }
 SKAL_MODELLER = [  # modell, slug, bildprefix, färger
     ("iPhone 14", "iphone-14", "14", ["Svart", "Blå", "Lila", "Persika"]),
@@ -48,7 +51,6 @@ LADDNING = [  # artikel, kategori, kontakt, EAN, bild
     ("Laddkabel USB-C till USB-C, 2 m, flätad", "Laddkabel", "USB-C / USB-C", "7350140690283", "kabel-usb-c-usb-c-2m"),
     ("Laddkabel USB-A till USB-C, 2 m, flätad", "Laddkabel", "USB-A / USB-C", "7350140690047", "kabel-usb-a-usb-c-2m"),
     ("Laddkabel USB-C till Lightning, 2 m, flätad, svart", "Laddkabel", "USB-C / Lightning", "7350140690467", "kabel-usb-c-lightning-svart"),
-    ("Laddkabel USB-C till Lightning, 2 m, flätad, vit", "Laddkabel", "USB-C / Lightning", "", "kabel-usb-c-lightning-vit"),
     ("Laddkabel USB-A till Lightning, 2 m, flätad", "Laddkabel", "USB-A / Lightning", "7350140690030", "kabel-usb-a-lightning-2m"),
     ("Snabbladdare 20W USB-C", "Snabbladdare", "USB-C, 20 W", "7350140690504", "laddare-20w-usb-c"),
     ("Snabbladdare 20W Dual Port", "Snabbladdare", "USB-C + USB-A, 20 W", "7350140690771", "laddare-20w-dual-port"),
@@ -101,6 +103,7 @@ def skriv_produktdata():
 
 def skriv_bildpaket():
     filer = sorted((ROT / "img" / "cut").glob("*.webp")) + sorted((ROT / "img" / "produkter").glob("*.webp"))
+    filer = [f for f in filer if f.stem != "kabel-usb-c-lightning-vit"]  # säljs inte
     with zipfile.ZipFile(UT / "corder-bildpaket.zip", "w", zipfile.ZIP_STORED) as z:
         for f in filer:
             z.write(f, f"corder-bildpaket/{f.parent.name}/{f.name}")
@@ -113,7 +116,7 @@ def skriv_bildpaket():
 
 FAQ = [
     ("Säljer ni till grossister och kedjor?", "Ja. Vi säljer både direkt till butiker och via grossister, och tar fram ett startsortiment efter er yta och era kunder."),
-    ("Har alla artiklar EAN-kod?", "Ja, Corder har EAN via GS1 Sverige. Koderna för de nyaste skalen till iPhone 17 och 18 Pro och den vita Lightning-kabeln läggs till i produktdatan när de är registrerade."),
+    ("Har alla artiklar EAN-kod?", "Ja, alla artiklar har EAN via GS1 Sverige. Koderna finns i produktdatan (Excel och CSV) här på sidan."),
     ("Vilka iPhone-modeller finns det skal till?", "iPhone 14, 14 Pro, 15, 15 Pro, 16e, 16 och 16 Pro i svart, blå, lila och persika, samt iPhone 17, 17 Pro och 18 Pro i svart och skogsgrön."),
     ("Är produkterna CE-märkta?", "Ja, laddare och kablar är CE-märkta och alla produkter levereras i butiksfärdiga förpackningar med corder-ordmärket."),
     ("Vad kostar det?", "Skal och kablar har rekommenderat butikspris 60 kr och snabbladdare 99 kr. Inköpspriser för butik och grossist finns i prislistan, som vi skickar på begäran."),
@@ -128,7 +131,7 @@ def innehall(antal_rader, antal_bilder):
         w, h = matt(src)
         return f'<img src="{src}" alt="" width="{w}" height="{h}" loading="lazy" class="k{i}">'
     kollage = "".join(kbild(i, p) for i, p in enumerate(("cut/17p-skogsgron", "produkter/kabel-usb-c-usb-c-2m", "cut/16p-pink",
-                                             "produkter/laddare-20w-dual-port", "cut/16-blue", "produkter/kabel-usb-c-lightning-vit")))
+                                             "produkter/laddare-20w-dual-port", "cut/16-blue", "produkter/kabel-usb-c-lightning-svart")))
     faq = "".join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q, a in FAQ)
     return f"""<main id="innehall" class="b2b">
 
