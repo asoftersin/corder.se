@@ -23,7 +23,7 @@
 <link rel="preload" href="/assets/fonts/inter-tight-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="img/hero-18pro.webp" as="image" media="(min-width: 901px)">
 <link rel="stylesheet" href="/assets/fonts.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://corder.se/#org", "name": "Corder", "legalName": "Corder Group AB", "url": "https://corder.se/", "logo": "https://corder.se/assets/ikon-512.png", "foundingDate": "2019", "taxID": "559227-0226", "address": {"@type": "PostalAddress", "addressLocality": "Kungsbacka", "addressCountry": "SE"}, "email": "sales@corder.se", "sameAs": ["https://www.instagram.com/corderofficial", "https://www.tiktok.com/@corderofficial", "https://www.facebook.com/cordergroup"]}, {"@type": "WebSite", "@id": "https://corder.se/#site", "url": "https://corder.se/", "name": "Corder", "inLanguage": "sv", "publisher": {"@id": "https://corder.se/#org"}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://corder.se/#org", "name": "Corder", "legalName": "Corder Group AB", "url": "https://corder.se/", "logo": "https://corder.se/assets/ikon-512.png", "foundingDate": "2019", "taxID": "559227-0226", "address": {"@type": "PostalAddress", "addressLocality": "Kungsbacka", "addressCountry": "SE"}, "email": "sales@corder.se", "sameAs": ["https://www.instagram.com/corderofficial", "https://www.tiktok.com/@corderofficial", "https://www.facebook.com/cordergroup"]}, {"@type": "WebSite", "@id": "https://corder.se/#site", "url": "https://corder.se/", "name": "Corder", "inLanguage": "sv", "publisher": {"@id": "https://corder.se/#org"}}, {"@type": "VideoObject", "@id": "https://corder.se/#film", "name": "Corder på 15 sekunder", "description": "Corders TPU-skal i fem färger, skal till iPhone 14–18 Pro, flätade kablar och snabbladdare i en kort film.", "thumbnailUrl": "https://corder.se/video/corder-film-poster.webp", "contentUrl": "https://corder.se/video/corder-film-1080.mp4", "uploadDate": "2026-10-26", "duration": "PT15S", "inLanguage": "sv", "publisher": {"@id": "https://corder.se/#org"}}]}</script>
 <style>
   :root {
     --ink: #111111;
@@ -114,6 +114,23 @@
     .hero-photo { position: relative; overflow: hidden; }
     .hero-photo img { height: auto; }
     .hero-foot { display: none; }
+  }
+
+  /* Filmen: växer till full bredd när den scrollas in */
+  .film { background: #fff; padding: clamp(80px, 9vw, 136px) 0 0; overflow: clip; }
+  .film-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: clamp(18px, 2vw, 28px); color: #5c5c5c; }
+  .film-frame { position: relative; width: min(100%, 177.78vh); margin: 0 auto; aspect-ratio: 16 / 9; background: #2d2c2f; border-radius: 28px; overflow: hidden; transform-origin: 50% 0; will-change: transform; }
+  .film-video { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .film-sound { position: absolute; right: clamp(12px, 2vw, 28px); bottom: clamp(12px, 2vw, 28px); display: inline-flex; align-items: center; gap: 9px; padding: 10px 16px 10px 13px; border: 0; border-radius: 999px; background: rgba(17,17,17,.55); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); color: #fff; font: 500 .85rem "Inter Tight", sans-serif; cursor: pointer; transition: background .2s; }
+  .film-sound:hover { background: rgba(17,17,17,.75); }
+  .film-sound:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+  .film-sound svg { width: 18px; height: 18px; }
+  .film-sound .on, .film-sound[aria-pressed="true"] .off { display: none; }
+  .film-sound[aria-pressed="true"] .on { display: block; }
+  @media (max-width: 900px) {
+    .film-frame { border-radius: 16px; width: calc(100% - 2 * var(--gutter)); }
+    .film-sound { padding: 9px; }
+    .film-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   }
 
   /* Intro med ord som tänds vid scroll */
@@ -410,6 +427,22 @@
   </div>
 </section>
 
+<section class="film" id="film" data-theme="light" aria-label="Corder på 15 sekunder">
+  <div class="wrap film-head"><span class="caps">Corder på 15 sekunder</span><span class="caps">Skal · Färger · Laddning</span></div>
+  <div class="film-frame">
+    <video class="film-video" muted loop playsinline preload="metadata" poster="video/corder-film-poster.webp" width="1920" height="1080"
+      aria-label="Kort film om Corder: ett skogsgrönt skal som tål fall, fem färger, skal från iPhone 14 till 18 Pro, kablar och laddare.">
+      <source src="video/corder-film-720.mp4" type="video/mp4" media="(max-width: 900px)">
+      <source src="video/corder-film-1080.mp4" type="video/mp4">
+    </video>
+    <button class="film-sound" type="button" aria-pressed="false">
+      <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m16 9 5 6M21 9l-5 6"/></svg>
+      <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+      <span class="film-label">Slå på ljud</span>
+    </button>
+  </div>
+</section>
+
 <section class="intro" id="innehall" tabindex="-1" data-theme="light">
   <div class="wrap">
     <p class="reveal" id="reveal">Corder gör skal&nbsp;<span class="thumb"><img loading="lazy" src="img/cut/xs/16p-pink.webp" alt="" width="80" height="160"></span>, laddare&nbsp;<span class="thumb"><img loading="lazy" src="img/cut/xs/laddare-20w.webp" alt="" width="184" height="160"></span> och kablar&nbsp;<span class="thumb"><img loading="lazy" src="img/cut/xs/kabel-c-lightning.webp" alt="" width="71" height="160"></span> för iPhone. Med låga marginaler, så att bra tillbehör blir tillgängliga för fler.</p>
@@ -634,6 +667,26 @@ addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('#meny a').forEach(a => a.addEventListener('click', () => setMenu(false)));
   addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
 
+  // Filmen spelas bara när den syns. Ljud på startar om från början så att musiken följer klippen.
+  const film = document.querySelector('.film-video');
+  if (film) {
+    const ljud = document.querySelector('.film-sound');
+    film.muted = true;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      film.controls = true;
+      ljud.hidden = true;
+    } else {
+      new IntersectionObserver(([e]) => { if (e.isIntersecting) film.play().catch(() => {}); else film.pause(); }, { threshold: .25 }).observe(film);
+    }
+    ljud.addEventListener('click', () => {
+      const pa = film.muted;
+      film.muted = !pa;
+      if (pa) { film.currentTime = 0; film.play().catch(() => {}); }
+      ljud.setAttribute('aria-pressed', pa);
+      ljud.querySelector('.film-label').textContent = pa ? 'Stäng av ljud' : 'Slå på ljud';
+    });
+  }
+
   // Verktyg: vilket skal passar din iPhone?
   const modeller = JSON.parse(document.getElementById('modeller').textContent || '[]');
   const stage = document.getElementById('finder-result');
@@ -826,6 +879,8 @@ addEventListener('DOMContentLoaded', () => {
       if (el.classList.contains('w')) introTl.to(el, { color: '#111', duration: .1, ease: 'none' }, i * .1);
       else introTl.from(el, { scale: .4, rotate: -12, autoAlpha: 0, duration: .25, ease: 'back.out(2)' }, i * .1);
     });
+    gsap.fromTo('.film-frame', { scale: desktop ? .86 : .94, borderRadius: desktop ? 36 : 18 }, { scale: 1, borderRadius: desktop ? 0 : 16, ease: 'none',
+      scrollTrigger: { trigger: '.film', start: 'top 90%', end: 'top 8%', scrub: .5 } });
     gsap.from('.gen', { autoAlpha: 0, yPercent: 60, duration: .9, stagger: .06, ease: 'expo.out', scrollTrigger: { trigger: '.finder-pick', start: 'top 85%' } });
     gsap.from('.finder-stage', { autoAlpha: 0, y: 60, scale: .96, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: '.finder-stage', start: 'top 85%' } });
     gsap.from('.intro-sub', { autoAlpha: 0, y: 24, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: '.intro-sub', start: 'top 90%' } });
