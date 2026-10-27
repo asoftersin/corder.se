@@ -292,7 +292,7 @@ FOOTER = """<footer>
 CTA = """<div class="cta">
         <div>
           <h2>Corders TPU-skal</h2>
-          <p>Till iPhone 14 hela vägen till iPhone 18 Pro. Finns hos Go Banana i Jönköping och VIP Mullsjö.</p>
+          <p>Till iPhone 14 hela vägen till iPhone 18 Pro. Säljs i fysiska butiker. Fråga butiken om din modell och färg finns inne.</p>
         </div>
         <a class="btn" href="/#butiker">Hitta butik</a>
       </div>"""
@@ -483,12 +483,12 @@ NYA_FARGER = ["Svart", "Skogsgrön"]
 
 MODELLER = [
     {"slug": "iphone-18-pro", "namn": "iPhone 18 Pro", "bild": None, "gron": True, "extra": {"Svart": "/img/cut/17p-black.webp"}, "farger": NYA_FARGER, "kontakt": "USB-C",
-     "kompat": [("Passar iPhone 17 Pro-skal till iPhone 18 Pro?", "Ofta, eftersom måtten är desamma. Kameraplatån på 18 Pro är dock ungefär en tiondels millimeter tjockare, så tighta skal kan vara för trånga."),
+     "kompat": [("Passar iPhone 17 Pro-skal till iPhone 18 Pro?", "Corders skal till iPhone 17 Pro och 18 Pro tillverkas i samma form och passar båda modellerna."),
                 ("Passar skalet till iPhone 18 Pro Max?", "Nej. Pro Max har större skärm och större mått och behöver ett eget skal."),
                 ("Passar skalet till iPhone Duo?", "Nej. iPhone Duo är vikbar och behöver ett helt annat skal. Corder har inte skal till Duo.")],
      "guider": ["passar-iphone-17-pro-skal-till-iphone-18-pro", "iphone-18-pro-vs-iphone-17-pro", "vilken-laddare-till-iphone-18-pro"]},
     {"slug": "iphone-17-pro", "namn": "iPhone 17 Pro", "bild": None, "gron": True, "extra": {"Svart": "/img/cut/17p-black.webp"}, "farger": NYA_FARGER, "kontakt": "USB-C",
-     "kompat": [("Passar skalet till iPhone 18 Pro?", "Ofta, eftersom måtten är desamma, men kameraplatån på 18 Pro är något tjockare. Apple anger att modellerna officiellt inte delar skal."),
+     "kompat": [("Passar skalet till iPhone 18 Pro?", "Corders skal till iPhone 17 Pro och 18 Pro tillverkas i samma form och passar båda modellerna."),
                 ("Passar iPhone 16 Pro-skal till iPhone 17 Pro?", "Nej. iPhone 17 Pro har en helt ny design med en bred kameraplatå."),
                 ("Passar skalet till iPhone 17?", "Nej. iPhone 17 har en annan form och ett annat kameraparti än 17 Pro.")],
      "guider": ["passar-iphone-17-pro-skal-till-iphone-18-pro", "iphone-18-pro-vs-iphone-17-pro", "vilken-usb-c-kabel-till-iphone"]},
@@ -587,16 +587,16 @@ def bygg_skal():
         kabel = ("USB-C till Lightning eller USB-A till Lightning" if m["kontakt"] == "Lightning" else "USB-C till USB-C")
         specs = [("Material", "TPU (termoplastisk polyuretan)"), ("Passar", f'{m["namn"]}'), ("Färger", ", ".join(m["farger"])),
                  ("Egenskaper", "Stötdämpande, formstabilt, upphöjd kant runt kameran"), ("Laddning", f'Telefonen har {m["kontakt"]}. Rätt kabel: {kabel}, 2 m.'),
-                 ("Finns hos", "Go Banana i Jönköping och VIP Mullsjö")]
+                 ("Finns hos", "Go Banana i Jönköping och VIP Mullsjö. Fråga butiken om modell och färg finns inne.")]
         specs_html = "".join(f"<div><dt>{a}</dt><dd>{html.escape(b)}</dd></div>" for a, b in specs)
         faq = [("Vilka färger finns skalet till " + m["namn"] + " i?", f"Skalet finns i {farger.lower()}."),
                ("Vilket material är skalet gjort av?", "TPU, termoplastisk polyuretan. Det dämpar stötar och behåller formen utan att töja sig.")] + m["kompat"] + \
-              [("Var kan jag köpa skalet?", "Corders skal finns hos Go Banana i Jönköping och VIP Mullsjö. Butiker som vill sälja Corder kan kontakta sales@corder.se.")]
+              [("Var kan jag köpa skalet?", "Corder säljs hos Go Banana i Jönköping och VIP Mullsjö. Sortimentet kan variera, så fråga butiken om din modell och färg finns inne.")]
         faq_html = "\n".join(f"<details><summary>{html.escape(q)}</summary><p>{html.escape(a)}</p></details>" for q, a in faq)
         andra = "\n        ".join(modell_lank(o) for o in MODELLER if o is not m)
         guidekort = "\n      ".join(kort(guide_per_slug[s]) for s in m["guider"] if s in guide_per_slug)
         bilder = [SITE + modellbild(m, f) for f in m["farger"] if modellbild(m, f)] + \
-                 [SITE + LIVSSTIL[f][0] for f in m["farger"] if f in LIVSSTIL]
+                 [SITE + LIVSSTIL[f][0] for f in m["farger"] if f in LIVSSTIL and modellbild(m, f)]
         schema = [
             {"@context": "https://schema.org", "@type": "Product", "name": f'Corder TPU-skal till {m["namn"]}',
              "brand": {"@type": "Brand", "name": "Corder"}, "material": "TPU", "color": ", ".join(m["farger"]),
@@ -726,7 +726,7 @@ GAMLA_PRODUKTER = ["skarmskydd-iphone-14-13-13-pro", "laddkabel-usb-c-till-light
                    "silikonskal-iphone-16-pro", "silikonskal-iphone-16e"]
 GAMLA_KOLLEKTIONER = ["kablar", "mobilskal", "skarmskydd", "laddare", "bastsaljare", "airpods-skal",
                       "nyheter-2", "sommarkollektion-2022", "all", "frontpage"]
-GAMLA_SIDOR = {"pages/om-oss": "/#om-oss", "pages/contact": "/#butiker", "pages/vanliga-fragor-faq": "/",
+GAMLA_SIDOR = {"pages/om-oss": "/#om-oss", "pages/contact": "/#kontakt", "pages/vanliga-fragor-faq": "/",
                "cart": "/", "account": "/", "account/login": "/", "search": "/", "collections": "/#sortiment",
                "products": "/#sortiment"}
 

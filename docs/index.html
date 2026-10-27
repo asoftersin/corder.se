@@ -96,6 +96,7 @@
   .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; transform-origin: 60% 40%; will-change: transform; }
   .hero-copy { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 22px; }
   .hero-copy .caps { color: rgba(255,255,255,.7); }
+  .hero-copy p { max-width: 320px; margin: 0; color: rgba(255,255,255,.85); }
   .hero h1 { font-size: clamp(2.6rem, 5.6vw, 5.4rem); line-height: .98; max-width: 7em; }
   .hero-cta { display: inline-flex; align-items: center; min-height: 48px; padding: 0 28px; border-radius: 999px; background: #fff; color: var(--ink); font-size: .9rem; font-weight: 500; transition: background .2s; }
   .hero-cta:hover { background: #e6e6e6; }
@@ -217,6 +218,8 @@
   .st-phone { position: relative; width: 100%; height: clamp(300px, 29vw, 430px); }
   .st-phone img { position: absolute; inset: 0; margin: auto; height: 100%; width: auto; max-width: none; opacity: 0; transform: translateY(14px) scale(.97); filter: drop-shadow(0 34px 28px rgba(0,0,0,.24)); transition: opacity .55s ease, transform .7s cubic-bezier(.2, .8, .2, 1); }
   .st-phone img.on { opacity: 1; transform: none; }
+  .st-phone .no-image { display: none; position: absolute; inset: 0; align-items: center; justify-content: center; text-align: center; color: #4d4d48; }
+  .st-phone .no-image.on { display: flex; }
   .st-sw { display: flex; gap: 14px; margin-top: 26px; }
   .sw { position: relative; width: 26px; height: 26px; padding: 0; border: 0; border-radius: 50%; background: var(--c); box-shadow: inset 0 0 0 1px rgba(0,0,0,.14); cursor: pointer; }
   .sw::after { content: ""; position: absolute; inset: -6px; border-radius: 50%; border: 1.5px solid var(--ink); opacity: 0; transform: scale(.7); transition: opacity .3s, transform .35s cubic-bezier(.2, .8, .2, 1); }
@@ -420,6 +423,7 @@
   .store:hover { border-color: var(--ink); }
   .store .caps { color: var(--muted); }
   .store h3 { font-size: 1.6rem; }
+  .store p { color: #5c5c5c; font-size: .9rem; margin: 8px 0 0; }
   .store a { margin-top: 14px; font-size: .9rem; font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
   .store.tip { background: #f4f4f2; border-color: transparent; }
 
@@ -464,7 +468,8 @@
     <div class="hero-copy">
       <span class="caps">Höst 26</span>
       <h1 data-split>Skogsgrön<br>efter mörker.</h1>
-      <a class="hero-cta" href="#kampanj">Upptäck</a>
+      <p>Corders skal, laddare och kablar finns hos återförsäljare i fysiska butiker.</p>
+      <a class="hero-cta" href="#hitta-skal">Hitta skal till din iPhone</a>
     </div>
     <div class="hero-foot"><span class="caps">Designat i Sverige.</span>Skal, laddare och kablar för iPhone sedan 2019.</div>
   </div>
@@ -480,7 +485,7 @@
       <a class="kampanj-card" href="/skal/iphone-17-pro/"><div class="gear-img"><img src="img/cut/s/17p-skogsgron.webp" alt="Corder TPU-skal i skogsgrönt till iPhone 17 Pro" loading="lazy" width="240" height="480"></div><span class="kampanj-cap"><span class="caps">Skal</span><b>iPhone 17 Pro</b><span>Skogsgrön</span></span></a>
       <a class="kampanj-card" href="/skal/iphone-17/"><div class="gear-img"><img src="img/cut/s/17-skogsgron.webp" alt="Corder TPU-skal i skogsgrönt till iPhone 17" loading="lazy" width="244" height="480"></div><span class="kampanj-cap"><span class="caps">Skal</span><b>iPhone 17</b><span>Skogsgrön</span></span></a>
       <a class="kampanj-card" href="/skal/iphone-17-pro/"><div class="gear-img"><img src="img/cut/s/17p-black.webp" alt="Corder TPU-skal i svart till iPhone 17 Pro" loading="lazy" width="240" height="480"></div><span class="kampanj-cap"><span class="caps">Skal</span><b>iPhone 17 Pro</b><span>Svart</span></span></a>
-      <a class="kampanj-card" href="/skal/iphone-18-pro/"><div class="gear-img"><img src="img/cut/s/17p-skogsgron.webp" alt="Corder TPU-skal i skogsgrönt till iPhone 18 Pro" loading="lazy" width="240" height="480"></div><span class="kampanj-cap"><span class="caps">Skal</span><b>iPhone 18 Pro</b><span>Skogsgrön</span></span></a>
+      <a class="kampanj-card" href="/skal/iphone-18-pro/"><div class="gear-img"><img src="img/cut/s/17p-skogsgron.webp" alt="Corder TPU-skal i skogsgrönt till iPhone 18 Pro och 17 Pro" loading="lazy" width="240" height="480"></div><span class="kampanj-cap"><span class="caps">Skal</span><b>iPhone 18 Pro</b><span>Skogsgrön</span></span></a>
       <a class="kampanj-card" href="#laddning"><div class="gear-img"><img src="img/produkter/s/laddare-20w-usb-c.webp" alt="Corder snabbladdare 20W med USB-C" loading="lazy" width="600" height="525"></div><span class="kampanj-cap"><span class="caps">Laddare</span><b>Snabbladdare 20W</b><span>USB-C</span></span></a>
     </div>
   </div>
@@ -514,7 +519,7 @@
     <div class="finder-intro">
       <span class="caps">Hitta rätt skal</span>
       <h2 data-split>Vilket skal passar<br>din iPhone?</h2>
-      <p>Välj din modell för att se färgerna och vad som gäller. Osäker på vilken du har? Öppna Inställningar, Allmänt, Om.</p>
+      <p>Välj din modell för att se färgerna och hitta en butik. Osäker på vilken iPhone du har? Öppna Inställningar → Allmänt → Om och titta på Modellnamn.</p>
     </div>
     <div class="finder-pick">
       <span class="caps step"><em>01</em> Generation</span>
@@ -538,7 +543,7 @@
       <div class="st-info"></div>
     </div>
   </div>
-  <script id="modeller" type="application/json">[{"slug": "iphone-18-pro", "namn": "iPhone 18 Pro", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/17p-black.webp"}, {"namn": "Skogsgrön", "hex": "#3d5143", "bild": "/img/cut/s/17p-skogsgron.webp"}], "tips": {"q": "Passar iPhone 17 Pro-skal till iPhone 18 Pro?", "a": "Ofta, eftersom måtten är desamma. Kameraplatån på 18 Pro är dock ungefär en tiondels millimeter tjockare, så tighta skal kan vara för trånga."}}, {"slug": "iphone-17-pro", "namn": "iPhone 17 Pro", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/17p-black.webp"}, {"namn": "Skogsgrön", "hex": "#3d5143", "bild": "/img/cut/s/17p-skogsgron.webp"}], "tips": {"q": "Passar skalet till iPhone 18 Pro?", "a": "Ofta, eftersom måtten är desamma, men kameraplatån på 18 Pro är något tjockare. Apple anger att modellerna officiellt inte delar skal."}}, {"slug": "iphone-17", "namn": "iPhone 17", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/17-black.webp"}, {"namn": "Skogsgrön", "hex": "#3d5143", "bild": "/img/cut/s/17-skogsgron.webp"}], "tips": {"q": "Passar iPhone 16-skal till iPhone 17?", "a": "Nej. iPhone 17 är något större och har ett nytt kameraparti."}}, {"slug": "iphone-16-pro", "namn": "iPhone 16 Pro", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/16p-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/16p-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/16p-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/16p-pink.webp"}], "tips": {"q": "Passar skalet till iPhone 17 Pro?", "a": "Nej. iPhone 17 Pro har en helt ny design med en bred kameraplatå."}}, {"slug": "iphone-16", "namn": "iPhone 16", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/16-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/16-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/16-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/16-pink.webp"}], "tips": {"q": "Passar iPhone 15-skal till iPhone 16?", "a": "Nej. iPhone 16 har en ny kameraplacering och en kameraknapp på sidan."}}, {"slug": "iphone-16e", "namn": "iPhone 16e", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/16e-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/16e-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/16e-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/16e-pink.webp"}], "tips": {"q": "Passar iPhone 16-skal till iPhone 16e?", "a": "Nej. iPhone 16e har bara en kamera och en egen form, så skalet behöver vara gjort för just 16e."}}, {"slug": "iphone-15-pro", "namn": "iPhone 15 Pro", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/15p-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/15p-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/15p-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/15p-pink.webp"}], "tips": {"q": "Passar skalet till iPhone 16 Pro?", "a": "Nej. iPhone 16 Pro är större och har en kameraknapp på sidan."}}, {"slug": "iphone-15", "namn": "iPhone 15", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/15-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/15-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/15-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/15-pink.webp"}], "tips": {"q": "Passar iPhone 14-skal till iPhone 15?", "a": "Nej. iPhone 15 har andra mått."}}, {"slug": "iphone-14-pro", "namn": "iPhone 14 Pro", "kontakt": "Lightning", "kabel": "USB-C till Lightning eller USB-A till Lightning", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/14p-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/14p-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/14p-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/14p-pink.webp"}], "tips": {"q": "Passar iPhone 13 Pro-skal till iPhone 14 Pro?", "a": "Nej. Kamerapartiet på iPhone 14 Pro är både bredare och högre."}}, {"slug": "iphone-14", "namn": "iPhone 14", "kontakt": "Lightning", "kabel": "USB-C till Lightning eller USB-A till Lightning", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/14-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/14-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/14-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/14-pink.webp"}], "tips": {"q": "Passar iPhone 13-skal till iPhone 14?", "a": "Nej. iPhone 14 är lite tjockare och har ett större kameraparti."}}]</script>
+  <script id="modeller" type="application/json">[{"slug": "iphone-18-pro", "namn": "iPhone 18 Pro", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/17p-black.webp"}, {"namn": "Skogsgrön", "hex": "#3d5143", "bild": "/img/cut/s/17p-skogsgron.webp"}], "tips": {"q": "Passar iPhone 17 Pro-skal till iPhone 18 Pro?", "a": "Corders skal till iPhone 17 Pro och 18 Pro tillverkas i samma form och passar båda modellerna."}}, {"slug": "iphone-17-pro", "namn": "iPhone 17 Pro", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/17p-black.webp"}, {"namn": "Skogsgrön", "hex": "#3d5143", "bild": "/img/cut/s/17p-skogsgron.webp"}], "tips": {"q": "Passar skalet till iPhone 18 Pro?", "a": "Corders skal till iPhone 17 Pro och 18 Pro tillverkas i samma form och passar båda modellerna."}}, {"slug": "iphone-17", "namn": "iPhone 17", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/17-black.webp"}, {"namn": "Skogsgrön", "hex": "#3d5143", "bild": "/img/cut/s/17-skogsgron.webp"}], "tips": {"q": "Passar iPhone 16-skal till iPhone 17?", "a": "Nej. iPhone 17 är något större och har ett nytt kameraparti."}}, {"slug": "iphone-16-pro", "namn": "iPhone 16 Pro", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/16p-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/16p-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/16p-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/16p-pink.webp"}], "tips": {"q": "Passar skalet till iPhone 17 Pro?", "a": "Nej. iPhone 17 Pro har en helt ny design med en bred kameraplatå."}}, {"slug": "iphone-16", "namn": "iPhone 16", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/16-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/16-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/16-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/16-pink.webp"}], "tips": {"q": "Passar iPhone 15-skal till iPhone 16?", "a": "Nej. iPhone 16 har en ny kameraplacering och en kameraknapp på sidan."}}, {"slug": "iphone-16e", "namn": "iPhone 16e", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/16e-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/16e-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/16e-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/16e-pink.webp"}], "tips": {"q": "Passar iPhone 16-skal till iPhone 16e?", "a": "Nej. iPhone 16e har bara en kamera och en egen form, så skalet behöver vara gjort för just 16e."}}, {"slug": "iphone-15-pro", "namn": "iPhone 15 Pro", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/15p-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/15p-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/15p-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/15p-pink.webp"}], "tips": {"q": "Passar skalet till iPhone 16 Pro?", "a": "Nej. iPhone 16 Pro är större och har en kameraknapp på sidan."}}, {"slug": "iphone-15", "namn": "iPhone 15", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/15-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/15-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/15-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/15-pink.webp"}], "tips": {"q": "Passar iPhone 14-skal till iPhone 15?", "a": "Nej. iPhone 15 har andra mått."}}, {"slug": "iphone-14-pro", "namn": "iPhone 14 Pro", "kontakt": "Lightning", "kabel": "USB-C till Lightning eller USB-A till Lightning", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/14p-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/14p-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/14p-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/14p-pink.webp"}], "tips": {"q": "Passar iPhone 13 Pro-skal till iPhone 14 Pro?", "a": "Nej. Kamerapartiet på iPhone 14 Pro är både bredare och högre."}}, {"slug": "iphone-14", "namn": "iPhone 14", "kontakt": "Lightning", "kabel": "USB-C till Lightning eller USB-A till Lightning", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/14-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/14-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/14-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/14-pink.webp"}], "tips": {"q": "Passar iPhone 13-skal till iPhone 14?", "a": "Nej. iPhone 14 är lite tjockare och har ett större kameraparti."}}]</script>
 </section>
 
 <section class="night" id="design" data-theme="dark">
@@ -690,11 +695,11 @@
   <div class="wrap">
     <div class="stores-head">
       <h2 data-split>Hitta Corder<br>i butik.</h2>
-      <p>Här finns Corders skal, laddare och kablar. Fråga i butiken efter just din modell.</p>
+      <p>Corder säljs i fysiska butiker. Sortiment och tillgänglighet kan variera, så fråga butiken efter din modell och färg.</p>
     </div>
     <div class="store-grid">
-      <div class="store"><span class="caps">Jönköping</span><h3>Go Banana</h3><a href="https://www.google.com/maps/search/?api=1&amp;query=Go+Banana+J%C3%B6nk%C3%B6ping" rel="noopener" target="_blank">Visa på karta</a></div>
-      <div class="store"><span class="caps">Mullsjö</span><h3>VIP Mullsjö</h3><a href="https://www.google.com/maps/search/?api=1&amp;query=VIP+Mullsj%C3%B6" rel="noopener" target="_blank">Visa på karta</a></div>
+      <div class="store"><span class="caps">Jönköping</span><h3>Go Banana</h3><p>Fråga butiken om din modell finns inne.</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Go+Banana+J%C3%B6nk%C3%B6ping" rel="noopener" target="_blank">Visa på karta</a></div>
+      <div class="store"><span class="caps">Mullsjö</span><h3>VIP Mullsjö</h3><p>Fråga butiken om din modell finns inne.</p><a href="https://www.google.com/maps/search/?api=1&amp;query=VIP+Mullsj%C3%B6" rel="noopener" target="_blank">Visa på karta</a></div>
       <div class="store tip"><span class="caps">Saknar du en butik?</span><h3>Tipsa oss</h3><a href="mailto:sales@corder.se?subject=Butikstips">sales@corder.se</a></div>
     </div>
   </div>
@@ -720,7 +725,7 @@
     <div class="foot">
       <a href="#" class="logo">corder</a>
       <div><p class="foot-h">Sortiment</p><ul><li><a href="/skal/">Mobilskal</a></li><li><a href="#laddning">Laddare</a></li><li><a href="#laddning">Kablar</a></li></ul></div>
-      <div><p class="foot-h">Företag</p><ul><li><a href="#om-oss">Om oss</a></li><li><a href="#butiker">Hitta butik</a></li><li><a href="/aterforsaljare/">Bli återförsäljare</a></li><li><a href="mailto:sales@corder.se">sales@corder.se</a></li></ul></div>
+      <div id="kontakt"><p class="foot-h">Kontakt och företag</p><ul><li><a href="#om-oss">Om oss</a></li><li><a href="#butiker">Hitta butik</a></li><li><a href="/aterforsaljare/">Bli återförsäljare</a></li><li>Produktfrågor: <a href="mailto:sales@corder.se?subject=Produktfr%C3%A5ga">sales@corder.se</a></li><li>Butik eller grossist: <a href="/aterforsaljare/">Kontakta oss</a></li></ul></div>
       <div><p class="foot-h">Resurser</p><ul><li><a href="#guider">Apple-guider</a></li><li><a href="https://www.instagram.com/corderofficial">Instagram</a></li><li><a href="https://www.tiktok.com/@corderofficial">TikTok</a></li><li><a href="https://www.facebook.com/cordergroup">Facebook</a></li></ul></div>
     </div>
     <div class="foot-mark" aria-hidden="true">corder</div>
@@ -788,7 +793,7 @@ addEventListener('DOMContentLoaded', () => {
     const f = aktiv.farger[i];
     farg = f.namn;
     stage.style.setProperty('--tint', f.hex);
-    stPhone.querySelectorAll('img').forEach((im, j) => im.classList.toggle('on', j === i));
+    stPhone.querySelectorAll('.product-visual').forEach((im, j) => im.classList.toggle('on', j === i));
     stSw.querySelectorAll('.sw').forEach((b, j) => b.setAttribute('aria-pressed', j === i));
     stSwName.textContent = f.namn;
   };
@@ -801,7 +806,7 @@ addEventListener('DOMContentLoaded', () => {
   const visaIMobil = () => {
     if (innerWidth >= 900) return;
     const r = stage.getBoundingClientRect();
-    if (r.top > innerHeight * .55) scrollTo({ top: r.top + scrollY - 80, behavior: 'smooth' });
+    if (r.top > innerHeight * .55) scrollTo({ top: r.top + scrollY - 80, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
   };
   const visaModell = (slug, anim = true) => {
     const m = modeller.find(x => x.slug === slug);
@@ -812,7 +817,7 @@ addEventListener('DOMContentLoaded', () => {
     vchips.forEach(c => c.setAttribute('aria-pressed', c.dataset.slug === slug));
     olinks.forEach(o => o.setAttribute('aria-pressed', false));
     stNum.textContent = slug.match(/\d+/)[0];
-    stPhone.innerHTML = m.farger.map(f => f.bild ? `<img src="${f.bild}" srcset="${f.bild} 1x, ${f.bild.replace('/cut/s/', '/cut/')} 2x" width="241" height="480" decoding="async" alt="Corder TPU-skal till ${esc(m.namn)} i ${esc(f.namn.toLowerCase())}">` : '<i></i>').join('');
+    stPhone.innerHTML = m.farger.map(f => f.bild ? `<img class="product-visual" src="${f.bild}" srcset="${f.bild} 1x, ${f.bild.replace('/cut/s/', '/cut/')} 2x" width="241" height="480" decoding="async" alt="Corder TPU-skal till ${esc(m.namn)} i ${esc(f.namn.toLowerCase())}">` : '<span class="product-visual no-image">Produktbild kommer snart</span>').join('');
     stSw.innerHTML = m.farger.map(f => `<button class="sw" type="button" style="--c:${f.hex}" aria-label="${esc(f.namn)}" aria-pressed="false"></button>`).join('');
     stSw.querySelectorAll('.sw').forEach((b, i) => b.addEventListener('click', () => valjFarg(i)));
     stInfo.innerHTML = `<span class="caps">Corder TPU-skal till</span><h3>${esc(m.namn)}</h3>
@@ -820,7 +825,8 @@ addEventListener('DOMContentLoaded', () => {
       <div><dt>Material</dt><dd>TPU, stötdämpande och formstabilt</dd></div>
       <div><dt>Laddning</dt><dd>${esc(m.kontakt)}. Rätt kabel: ${esc(m.kabel)}, 2 m.</dd></div></dl>
       <div class="st-tip"><b>${esc(m.tips.q)}</b>${esc(m.tips.a)}</div>
-      <div class="st-actions"><a class="btn" href="/skal/${m.slug}/">Se skalen till ${esc(m.namn)}</a><a class="btn ghost" href="#butiker">Hitta butik</a></div>`;
+      <p>Sortimentet kan variera mellan butiker. Fråga efter din modell och färg.</p>
+      <div class="st-actions"><a class="btn" href="/skal/${m.slug}/">Se färger och detaljer</a><a class="btn ghost" href="#butiker">Hitta återförsäljare</a></div>`;
     valjFarg(Math.max(0, m.farger.findIndex(f => f.namn === farg)));
     if (anim) intrada();
     return true;
@@ -973,7 +979,7 @@ addEventListener('DOMContentLoaded', () => {
         snap: { snapTo: 1 / steps, duration: { min: .25, max: .6 }, delay: .08, ease: 'power2.inOut' },
         onUpdate: self => { const i = Math.round(self.progress * steps); if (i !== current) showColor(i, i > current ? 1 : -1); }
       });
-      jumpTo = i => window.scrollTo({ top: story.start + (story.end - story.start) * (i / steps) + 1, behavior: 'smooth' });
+      jumpTo = i => window.scrollTo({ top: story.start + (story.end - story.start) * (i / steps) + 1, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
       ctx.add(() => () => { jumpTo = null; });
     }
 
