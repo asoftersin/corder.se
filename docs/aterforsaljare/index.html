@@ -20,7 +20,8 @@
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/inter-tight-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts.css">
-<link rel="stylesheet" href="/assets/sida.css?v=13">
+<link rel="stylesheet" href="/assets/sida.css?v=14">
+
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "@id": "https://corder.se/aterforsaljare/", "url": "https://corder.se/aterforsaljare/", "name": "Sälj Corder i din butik", "description": "Kablar, laddare och iPhone-skal som säljer i volym: ca 20 000 sålda per år i en enda butik, från eget ställ och tunnor längs gångarna. Ladda ner produktdata och bilder eller be om prislista och startsortiment.", "inLanguage": "sv", "publisher": {"@id": "https://corder.se/#org"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Corder", "item": "https://corder.se/"}, {"@type": "ListItem", "position": 2, "name": "Återförsäljare", "item": "https://corder.se/aterforsaljare/"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Säljer ni till grossister och kedjor?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Vi säljer både direkt till butiker och via grossister, och tar fram ett startsortiment efter er yta och era kunder."}}, {"@type": "Question", "name": "Har alla artiklar EAN-kod?", "acceptedAnswer": {"@type": "Answer", "text": "Ja, alla artiklar har EAN via GS1 Sverige. Koderna finns i produktdatan (Excel och CSV) här på sidan."}}, {"@type": "Question", "name": "Vilka iPhone-modeller finns det skal till?", "acceptedAnswer": {"@type": "Answer", "text": "iPhone 14, 14 Pro, 15, 15 Pro, 16e, 16 och 16 Pro i svart, blå, lila och persika, samt iPhone 17, 17 Pro och 18 Pro i svart och skogsgrön."}}, {"@type": "Question", "name": "Är produkterna CE-märkta?", "acceptedAnswer": {"@type": "Answer", "text": "Ja, laddare och kablar är CE-märkta och alla produkter levereras i butiksfärdiga förpackningar med corder-ordmärket."}}, {"@type": "Question", "name": "Vad kostar det?", "acceptedAnswer": {"@type": "Answer", "text": "Skal och kablar har rekommenderat butikspris 60 kr och snabbladdare 99 kr. Inköpspriser för butik och grossist finns i prislistan, som vi skickar på begäran."}}, {"@type": "Question", "name": "Vad händer om det inte säljer?", "acceptedAnswer": {"@type": "Answer", "text": "Första startpaketet har 90 dagars säljgaranti. Det som inte har sålts byter vi mot andra artiklar eller tar tillbaka och krediterar, så länge förpackningen är obruten."}}, {"@type": "Question", "name": "Säljer Corder själva på nätet?", "acceptedAnswer": {"@type": "Answer", "text": "Nej. Corder säljs bara i fysiska butiker, så ni konkurrerar inte med vår egen webbutik."}}]}</script>
@@ -34,7 +35,8 @@
     <button class="menu-btn" aria-expanded="false" aria-controls="meny" onclick="const o=this.closest('.top').classList.toggle('open');this.setAttribute('aria-expanded',o);this.querySelector('b').textContent=o?'Stäng':'Meny';document.body.style.overflow=o?'hidden':''"><span></span><b>Meny</b></button>
     <ul id="meny">
       <li><a href="/skal/">Skal</a></li>
-      <li><a href="/#laddning">Laddning</a></li>
+      <li><a href="/kablar/">Kablar</a></li>
+      <li><a href="/laddare/">Laddare</a></li>
       <li><a href="/#butiker">Butiker</a></li>
       <li><a href="/aterforsaljare/">Återförsäljare</a></li>
       <li><a href="/blogs/nyheter/">Apple-guider</a></li>
@@ -55,6 +57,12 @@
         <a class="btn" href="mailto:sales@corder.se?subject=Prislista%20och%20startsortiment&body=Hej%21%0A%0AVi%20%C3%A4r%20intresserade%20av%20att%20s%C3%A4lja%20Corder.%0A%0AF%C3%B6retag%3A%0AAntal%20butiker%3A%0ATyp%20av%20butik%20%28kiosk%2C%20servicehandel%2C%20grossist%20...%29%3A%0AKontaktperson%20och%20telefon%3A%0A%0ASkicka%20g%C3%A4rna%20prislista%20och%20f%C3%B6rslag%20p%C3%A5%20startsortiment.%0A">Få prislista och startsortiment</a>
         <a class="btn ghost" href="#resurser">Produktdata och bilder</a>
       </div>
+      <ul class="b2b-kvitto">
+        <li><b>60 kr</b> rek. pris för <a href="/skal/">skal</a> och <a href="/kablar/">kablar</a></li>
+        <li><b>99 kr</b> rek. pris för <a href="/laddare/">snabbladdare</a></li>
+        <li><b>90 dagar</b> säljgaranti på första startpaketet</li>
+        <li><b>Hela Sverige</b> leverans till butik eller grossistlager</li>
+      </ul>
     </div>
     <div class="b2b-stat rv">
       <span class="caps">I en enda butik, VIP Mullsjö</span>
@@ -171,9 +179,9 @@
   <div class="wrap">
     <div class="foot">
       <a href="/" class="logo">corder</a>
-      <div><p class="foot-h">Sortiment</p><ul><li><a href="/skal/">TPU-skal</a></li><li><a href="/#laddning">Laddare</a></li><li><a href="/#laddning">Kablar</a></li></ul></div>
-      <div><p class="foot-h">Företag</p><ul><li><a href="/#butiker">Hitta butik</a></li><li><a href="/aterforsaljare/">Bli återförsäljare</a></li><li><a href="mailto:sales@corder.se">sales@corder.se</a></li></ul></div>
-      <div><p class="foot-h">Resurser</p><ul><li><a href="/blogs/nyheter/">Apple-guider</a></li><li><a href="https://www.instagram.com/corderofficial">Instagram</a></li><li><a href="https://www.tiktok.com/@corderofficial">TikTok</a></li><li><a href="https://www.facebook.com/cordergroup">Facebook</a></li></ul></div>
+      <div><p class="foot-h">Sortiment</p><ul><li><a href="/skal/">TPU-skal</a></li><li><a href="/laddare/">Laddare</a></li><li><a href="/kablar/">Kablar</a></li></ul></div>
+      <div><p class="foot-h">Företag</p><ul><li><a href="/#butiker">Hitta butik</a></li><li><a href="/aterforsaljare/">Bli återförsäljare</a></li><li><a href="/pages/vanliga-fragor-faq/#kontakt">Kontakt</a></li><li><a href="mailto:sales@corder.se">sales@corder.se</a></li></ul></div>
+      <div><p class="foot-h">Resurser</p><ul><li><a href="/blogs/nyheter/">Apple-guider</a></li><li><a href="/pages/vanliga-fragor-faq/">Vanliga frågor</a></li><li><a href="/pages/integritet/">Integritet</a></li><li><a href="https://www.instagram.com/corderofficial">Instagram</a></li><li><a href="https://www.tiktok.com/@corderofficial">TikTok</a></li><li><a href="https://www.facebook.com/cordergroup">Facebook</a></li></ul></div>
     </div>
     <div class="foot-base">© 2026 Corder Group AB · Org.nr 559227-0226 · Kungsbacka · Designed and developed in Sweden</div>
   </div>

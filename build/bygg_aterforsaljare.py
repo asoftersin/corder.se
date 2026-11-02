@@ -1,6 +1,6 @@
 """Bygger /aterforsaljare/: sidan för butiker och grossister, produktdata (CSV och Excel) och bildpaket.
 
-Inga priser publiceras här. Prislistan skickas på begäran från sales@corder.se.
+Rekommenderade butikspriser visas, inköpspriserna skickas på begäran från sales@corder.se.
 Kör: python3 -I build/bygg_aterforsaljare.py (Excel skapas bara om openpyxl finns).
 """
 import csv
@@ -12,7 +12,7 @@ from pathlib import Path
 from urllib.parse import quote
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from bygg_guider import ROT, SITE, liten, matt, sida  # noqa: E402
+from bygg_guider import KABLAR, LADDARE, PRIS, ROT, SITE, liten, matt, sida  # noqa: E402
 
 UT = ROT / "aterforsaljare"
 URL = f"{SITE}/aterforsaljare/"
@@ -47,15 +47,6 @@ SKAL_MODELLER = [  # modell, slug, bildprefix, färger
     ("iPhone 18 Pro", "iphone-18-pro", "17p", ["Svart", "Skogsgrön"]),
 ]
 BILDFARG = {"Svart": "black", "Blå": "blue", "Lila": "purple", "Persika": "pink", "Skogsgrön": "skogsgron"}
-LADDNING = [  # artikel, kategori, kontakt, EAN, bild
-    ("Laddkabel USB-C till USB-C, 2 m, flätad", "Laddkabel", "USB-C / USB-C", "7350140690283", "kabel-usb-c-usb-c-2m"),
-    ("Laddkabel USB-A till USB-C, 2 m, flätad", "Laddkabel", "USB-A / USB-C", "7350140690047", "kabel-usb-a-usb-c-2m"),
-    ("Laddkabel USB-C till Lightning, 2 m, flätad, svart", "Laddkabel", "USB-C / Lightning", "7350140690467", "kabel-usb-c-lightning-svart"),
-    ("Laddkabel USB-A till Lightning, 2 m, flätad", "Laddkabel", "USB-A / Lightning", "7350140690030", "kabel-usb-a-lightning-2m"),
-    ("Snabbladdare 20W USB-C", "Snabbladdare", "USB-C, 20 W", "7350140690504", "laddare-20w-usb-c"),
-    ("Snabbladdare 20W Dual Port", "Snabbladdare", "USB-C + USB-A, 20 W", "7350140690771", "laddare-20w-dual-port"),
-    ("Snabbladdare 18W USB-A", "Snabbladdare", "USB-A, 18 W, QC 3.0", "7350140690078", "laddare-18w-usb-a"),
-]
 KOLUMNER = ["Artikel", "Kategori", "Modell", "Färg", "Material/typ", "EAN/GTIN-13", "Bild", "Produktsida"]
 
 
@@ -65,8 +56,9 @@ def produktrader():
         for f in farger:
             rader.append([f"TPU-skal {modell}, {f.lower()}", "Mobilskal", modell, f, "TPU, matt",
                           SKAL_EAN.get((modell, f), ""), f"{SITE}/img/cut/{pre}-{BILDFARG[f]}.webp", f"{SITE}/skal/{slug}/"])
-    for namn, kat, typ, ean, b in LADDNING:
-        rader.append([namn, kat, "", "", typ, ean, f"{SITE}/img/produkter/{b}.webp", f"{SITE}/#laddning"])
+    for sida_, kat, artiklar in (("kablar", "Laddkabel", KABLAR), ("laddare", "Snabbladdare", LADDARE)):
+        for a in artiklar:
+            rader.append([a["artikel"], kat, "", "", a["typ"], a["ean"], f'{SITE}/img/produkter/{a["bild"]}.webp', f'{SITE}/{sida_}/#{a["id"]}'])
     return rader
 
 
@@ -145,6 +137,12 @@ def innehall(antal_rader, antal_bilder):
         <a class="btn" href="{MAILTO}">Få prislista och startsortiment</a>
         <a class="btn ghost" href="#resurser">Produktdata och bilder</a>
       </div>
+      <ul class="b2b-kvitto">
+        <li><b>{PRIS["skal"]} kr</b> rek. pris för <a href="/skal/">skal</a> och <a href="/kablar/">kablar</a></li>
+        <li><b>{PRIS["laddare"]} kr</b> rek. pris för <a href="/laddare/">snabbladdare</a></li>
+        <li><b>90 dagar</b> säljgaranti på första startpaketet</li>
+        <li><b>Hela Sverige</b> leverans till butik eller grossistlager</li>
+      </ul>
     </div>
     <div class="b2b-stat rv">
       <span class="caps">I en enda butik, VIP Mullsjö</span>

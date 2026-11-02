@@ -21,8 +21,10 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/inter-tight-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="img/lifestyle/corder-natt-skogsgron-v3.webp" as="image">
+<link rel="preload" as="image" href="/img/lifestyle/corder-natt-skogsgron-v3.webp" imagesrcset="/img/lifestyle/s/corder-natt-skogsgron-v3.webp 640w, /img/lifestyle/corder-natt-skogsgron-v3.webp 1122w" imagesizes="(max-width: 900px) 100vw, 60vw">
 <link rel="stylesheet" href="/assets/fonts.css">
+<!-- statistik --><!-- /statistik -->
+<!-- butiksdata --><!-- /butiksdata -->
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://corder.se/#org", "name": "Corder", "legalName": "Corder Group AB", "url": "https://corder.se/", "logo": "https://corder.se/assets/ikon-512.png", "foundingDate": "2019", "taxID": "559227-0226", "address": {"@type": "PostalAddress", "addressLocality": "Kungsbacka", "addressCountry": "SE"}, "email": "sales@corder.se", "sameAs": ["https://www.instagram.com/corderofficial", "https://www.tiktok.com/@corderofficial", "https://www.facebook.com/cordergroup"]}, {"@type": "WebSite", "@id": "https://corder.se/#site", "url": "https://corder.se/", "name": "Corder", "inLanguage": "sv", "publisher": {"@id": "https://corder.se/#org"}}, {"@type": "VideoObject", "@id": "https://corder.se/#film", "name": "Corder på 15 sekunder", "description": "Corders TPU-skal i fem färger, skal till iPhone 14–18 Pro, flätade kablar och snabbladdare i en kort film.", "thumbnailUrl": "https://corder.se/video/corder-film-poster.webp", "contentUrl": "https://corder.se/video/corder-film-1080.mp4", "uploadDate": "2026-10-26", "duration": "PT15S", "inLanguage": "sv", "publisher": {"@id": "https://corder.se/#org"}}]}</script>
 <style>
   :root {
@@ -53,9 +55,9 @@
   .top { position: fixed; inset: 0 0 auto 0; z-index: 60; display: flex; justify-content: space-between; align-items: flex-start; padding: 22px var(--gutter); pointer-events: none; color: #fff; transition: color .3s; }
   .top.on-light { color: var(--ink); }
   .top > * { pointer-events: auto; }
-  .brand-nav { display: flex; gap: clamp(28px, 6vw, 96px); align-items: baseline; }
+  .brand-nav { display: flex; gap: clamp(24px, 3vw, 56px); align-items: baseline; }
   .logo { font: 400 1.65rem/1 Jost, sans-serif; letter-spacing: .03em; }
-  .brand-nav ul { display: flex; gap: clamp(24px, 5vw, 80px); list-style: none; margin: 0; padding: 0; font-size: .85rem; font-weight: 500; }
+  .brand-nav ul { display: flex; gap: clamp(16px, 2.2vw, 40px); white-space: nowrap; list-style: none; margin: 0; padding: 0; font-size: .85rem; font-weight: 500; }
   .brand-nav ul a { opacity: .9; }
   .brand-nav ul a:hover { opacity: .55; }
   .card { background: #fff; color: var(--ink); border-radius: 8px; width: min(540px, 40vw); padding: 12px 12px 0; box-shadow: 0 10px 40px rgba(0,0,0,.08); }
@@ -70,6 +72,11 @@
   .card-sub nav { display: flex; gap: 40px; font-size: .82rem; }
   .card-sub nav a:hover { color: var(--muted); }
   .menu-btn { display: none; }
+  @media (min-width: 901px) and (max-width: 1320px) {
+    .card { width: auto; padding: 8px; }
+    .card-row { grid-template-columns: auto auto; gap: 12px; border: 0; padding: 0; }
+    .card-row .card-meta, .card-sub { display: none; }
+  }
   @media (max-width: 900px) {
     .brand-nav ul { display: none; }
     .menu-btn { display: inline-flex; align-items: center; gap: 10px; margin-left: auto; background: none; border: 0; color: inherit; font: 500 .9rem "Inter Tight", sans-serif; padding: 6px 0; cursor: pointer; position: relative; z-index: 2; }
@@ -332,6 +339,8 @@
   .gear-img::after { content: ""; position: absolute; left: 22%; right: 22%; bottom: 10%; height: 5%; border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.14), transparent); }
   .gear-img img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: contain; padding: 14% 12% 18%; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
   .gear-card:hover .gear-img img { transform: translateY(-6px) scale(1.03); }
+  .gear-card > a { display: block; }
+  .gear-head p a { text-decoration: underline; text-underline-offset: 3px; }
   .gear-card figcaption { padding: 16px 4px 0; display: grid; gap: 2px; }
   .gear-card figcaption .caps { color: var(--muted); }
   .gear-card figcaption b { font-weight: 400; font-size: 1.1rem; }
@@ -438,8 +447,8 @@
     <a href="#" class="logo" aria-label="Corder startsida">corder</a>
     <ul id="meny">
       <li><a href="#hitta-skal">Hitta skal</a></li>
-      <li><a href="#sortiment">Sortiment</a></li>
-      <li><a href="#laddning">Laddning</a></li>
+      <li><a href="/kablar/">Kablar</a></li>
+      <li><a href="/laddare/">Laddare</a></li>
       <li><a href="#butiker">Butiker</a></li>
       <li><a href="/aterforsaljare/">Återförsäljare</a></li>
       <li><a href="#guider">Apple-guider</a></li>
@@ -450,7 +459,7 @@
     <div class="card-row">
       <span class="card-mark">c</span>
       <span class="card-meta">Corder TPU-skal<br>iPhone 14–18</span>
-      <span class="card-meta">5 färger<br>Est. 2019</span>
+      <span class="card-meta">5 färger<br>Rek. pris 60 kr</span>
       <a href="#butiker" class="btn">Hitta butik</a>
     </div>
     <div class="card-sub">
@@ -463,12 +472,12 @@
 <section class="hero" id="hero" data-theme="dark">
   <div class="hero-stage">
     <div class="hero-photo">
-      <img src="img/lifestyle/corder-natt-skogsgron-v3.webp" alt="Kvinna i grön bomberjacka på en nattmarknad håller upp en iPhone i Corders skogsgröna TPU-skal" width="1122" height="1402" fetchpriority="high">
+      <img src="/img/lifestyle/corder-natt-skogsgron-v3.webp" srcset="/img/lifestyle/s/corder-natt-skogsgron-v3.webp 640w, /img/lifestyle/corder-natt-skogsgron-v3.webp 1122w" sizes="(max-width: 900px) 100vw, 60vw" alt="Kvinna i grön bomberjacka på en nattmarknad håller upp en iPhone i Corders skogsgröna TPU-skal" width="1122" height="1402" fetchpriority="high">
     </div>
     <div class="hero-copy">
       <span class="caps">Höst 26</span>
       <h1 data-split>Skogsgrön<br>efter mörker.</h1>
-      <p>Corders skal, laddare och kablar finns hos återförsäljare i fysiska butiker.</p>
+      <p>Skal och kablar för 60 kr, laddare för 99 kr. Rekommenderade priser, i fysiska butiker.</p>
       <a class="hero-cta" href="#hitta-skal">Hitta skal till din iPhone</a>
     </div>
     <div class="hero-foot"><span class="caps">Designat i Sverige.</span>Skal, laddare och kablar för iPhone sedan 2019.</div>
@@ -482,11 +491,11 @@
       <a href="/skal/">Alla skal →</a>
     </div>
     <div class="kampanj-grid">
-      <a class="kampanj-card" href="/skal/iphone-17-pro/"><div class="gear-img"><img src="img/cut/s/17p-skogsgron.webp" alt="Corder TPU-skal i skogsgrönt till iPhone 17 Pro" loading="lazy" width="240" height="480"></div><span class="kampanj-cap"><span class="caps">Skal</span><b>iPhone 17 Pro</b><span>Skogsgrön</span></span></a>
-      <a class="kampanj-card" href="/skal/iphone-17/"><div class="gear-img"><img src="img/cut/s/17-skogsgron.webp" alt="Corder TPU-skal i skogsgrönt till iPhone 17" loading="lazy" width="244" height="480"></div><span class="kampanj-cap"><span class="caps">Skal</span><b>iPhone 17</b><span>Skogsgrön</span></span></a>
-      <a class="kampanj-card" href="/skal/iphone-17-pro/"><div class="gear-img"><img src="img/cut/s/17p-black.webp" alt="Corder TPU-skal i svart till iPhone 17 Pro" loading="lazy" width="240" height="480"></div><span class="kampanj-cap"><span class="caps">Skal</span><b>iPhone 17 Pro</b><span>Svart</span></span></a>
-      <a class="kampanj-card" href="/skal/iphone-18-pro/"><div class="gear-img"><img src="img/cut/s/17p-skogsgron.webp" alt="Corder TPU-skal i skogsgrönt till iPhone 18 Pro och 17 Pro" loading="lazy" width="240" height="480"></div><span class="kampanj-cap"><span class="caps">Skal</span><b>iPhone 18 Pro</b><span>Skogsgrön</span></span></a>
-      <a class="kampanj-card" href="#laddning"><div class="gear-img"><img src="img/produkter/s/laddare-20w-usb-c.webp" alt="Corder snabbladdare 20W med USB-C" loading="lazy" width="600" height="525"></div><span class="kampanj-cap"><span class="caps">Laddare</span><b>Snabbladdare 20W</b><span>USB-C</span></span></a>
+      <a class="kampanj-card" href="/skal/iphone-17-pro/"><div class="gear-img"><img src="img/cut/s/17p-skogsgron.webp" alt="Corder TPU-skal i skogsgrönt till iPhone 17 Pro" loading="lazy" width="240" height="480"></div><span class="kampanj-cap"><span class="caps">Skal</span><b>iPhone 17 Pro</b><span>Skogsgrön · 60 kr</span></span></a>
+      <a class="kampanj-card" href="/skal/iphone-17/"><div class="gear-img"><img src="img/cut/s/17-skogsgron.webp" alt="Corder TPU-skal i skogsgrönt till iPhone 17" loading="lazy" width="244" height="480"></div><span class="kampanj-cap"><span class="caps">Skal</span><b>iPhone 17</b><span>Skogsgrön · 60 kr</span></span></a>
+      <a class="kampanj-card" href="/skal/iphone-17-pro/"><div class="gear-img"><img src="img/cut/s/17p-black.webp" alt="Corder TPU-skal i svart till iPhone 17 Pro" loading="lazy" width="240" height="480"></div><span class="kampanj-cap"><span class="caps">Skal</span><b>iPhone 17 Pro</b><span>Svart · 60 kr</span></span></a>
+      <a class="kampanj-card" href="/skal/iphone-18-pro/"><div class="gear-img"><img src="img/cut/s/17p-skogsgron.webp" alt="Corder TPU-skal i skogsgrönt till iPhone 18 Pro och 17 Pro" loading="lazy" width="240" height="480"></div><span class="kampanj-cap"><span class="caps">Skal</span><b>iPhone 18 Pro</b><span>Skogsgrön · 60 kr</span></span></a>
+      <a class="kampanj-card" href="/laddare/#20w-usb-c"><div class="gear-img"><img src="img/produkter/s/laddare-20w-usb-c.webp" alt="Corder snabbladdare 20W med USB-C" loading="lazy" width="600" height="525"></div><span class="kampanj-cap"><span class="caps">Laddare</span><b>Snabbladdare 20W</b><span>USB-C · 99 kr</span></span></a>
     </div>
   </div>
 </section>
@@ -510,7 +519,7 @@
 <section class="intro" id="innehall" tabindex="-1" data-theme="light">
   <div class="wrap">
     <p class="reveal" id="reveal">Corder gör skal&nbsp;<span class="thumb"><img loading="lazy" src="img/cut/xs/16p-pink.webp" alt="" width="80" height="160"></span>, laddare&nbsp;<span class="thumb"><img loading="lazy" src="img/cut/xs/laddare-20w.webp" alt="" width="184" height="160"></span> och kablar&nbsp;<span class="thumb"><img loading="lazy" src="img/cut/xs/kabel-c-lightning.webp" alt="" width="71" height="160"></span> för iPhone. Med låga marginaler, så att bra tillbehör blir tillgängliga för fler.</p>
-    <p class="intro-sub">Och de finns i <b>butiker runt om i södra Sverige.</b></p>
+    <p class="intro-sub">Rek. pris <b>60 kr</b> för skal och kablar, <b>99 kr</b> för laddare. Finns i butik i <b>Jönköping och Mullsjö.</b></p>
   </div>
 </section>
 
@@ -543,7 +552,7 @@
       <div class="st-info"></div>
     </div>
   </div>
-  <script id="modeller" type="application/json">[{"slug": "iphone-18-pro", "namn": "iPhone 18 Pro", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/17p-black.webp"}, {"namn": "Skogsgrön", "hex": "#3d5143", "bild": "/img/cut/s/17p-skogsgron.webp"}], "tips": {"q": "Passar iPhone 17 Pro-skal till iPhone 18 Pro?", "a": "Corders skal till iPhone 17 Pro och 18 Pro tillverkas i samma form och passar båda modellerna."}}, {"slug": "iphone-17-pro", "namn": "iPhone 17 Pro", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/17p-black.webp"}, {"namn": "Skogsgrön", "hex": "#3d5143", "bild": "/img/cut/s/17p-skogsgron.webp"}], "tips": {"q": "Passar skalet till iPhone 18 Pro?", "a": "Corders skal till iPhone 17 Pro och 18 Pro tillverkas i samma form och passar båda modellerna."}}, {"slug": "iphone-17", "namn": "iPhone 17", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/17-black.webp"}, {"namn": "Skogsgrön", "hex": "#3d5143", "bild": "/img/cut/s/17-skogsgron.webp"}], "tips": {"q": "Passar iPhone 16-skal till iPhone 17?", "a": "Nej. iPhone 17 är något större och har ett nytt kameraparti."}}, {"slug": "iphone-16-pro", "namn": "iPhone 16 Pro", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/16p-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/16p-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/16p-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/16p-pink.webp"}], "tips": {"q": "Passar skalet till iPhone 17 Pro?", "a": "Nej. iPhone 17 Pro har en helt ny design med en bred kameraplatå."}}, {"slug": "iphone-16", "namn": "iPhone 16", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/16-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/16-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/16-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/16-pink.webp"}], "tips": {"q": "Passar iPhone 15-skal till iPhone 16?", "a": "Nej. iPhone 16 har en ny kameraplacering och en kameraknapp på sidan."}}, {"slug": "iphone-16e", "namn": "iPhone 16e", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/16e-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/16e-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/16e-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/16e-pink.webp"}], "tips": {"q": "Passar iPhone 16-skal till iPhone 16e?", "a": "Nej. iPhone 16e har bara en kamera och en egen form, så skalet behöver vara gjort för just 16e."}}, {"slug": "iphone-15-pro", "namn": "iPhone 15 Pro", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/15p-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/15p-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/15p-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/15p-pink.webp"}], "tips": {"q": "Passar skalet till iPhone 16 Pro?", "a": "Nej. iPhone 16 Pro är större och har en kameraknapp på sidan."}}, {"slug": "iphone-15", "namn": "iPhone 15", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/15-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/15-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/15-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/15-pink.webp"}], "tips": {"q": "Passar iPhone 14-skal till iPhone 15?", "a": "Nej. iPhone 15 har andra mått."}}, {"slug": "iphone-14-pro", "namn": "iPhone 14 Pro", "kontakt": "Lightning", "kabel": "USB-C till Lightning eller USB-A till Lightning", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/14p-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/14p-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/14p-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/14p-pink.webp"}], "tips": {"q": "Passar iPhone 13 Pro-skal till iPhone 14 Pro?", "a": "Nej. Kamerapartiet på iPhone 14 Pro är både bredare och högre."}}, {"slug": "iphone-14", "namn": "iPhone 14", "kontakt": "Lightning", "kabel": "USB-C till Lightning eller USB-A till Lightning", "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/14-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/14-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/14-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/14-pink.webp"}], "tips": {"q": "Passar iPhone 13-skal till iPhone 14?", "a": "Nej. iPhone 14 är lite tjockare och har ett större kameraparti."}}]</script>
+  <script id="modeller" type="application/json">[{"slug": "iphone-18-pro", "namn": "iPhone 18 Pro", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "pris": 60, "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/17p-black.webp"}, {"namn": "Skogsgrön", "hex": "#3d5143", "bild": "/img/cut/s/17p-skogsgron.webp"}], "tips": {"q": "Passar iPhone 17 Pro-skal till iPhone 18 Pro?", "a": "Corders skal till iPhone 17 Pro och 18 Pro tillverkas i samma form och passar båda modellerna."}}, {"slug": "iphone-17-pro", "namn": "iPhone 17 Pro", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "pris": 60, "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/17p-black.webp"}, {"namn": "Skogsgrön", "hex": "#3d5143", "bild": "/img/cut/s/17p-skogsgron.webp"}], "tips": {"q": "Passar skalet till iPhone 18 Pro?", "a": "Corders skal till iPhone 17 Pro och 18 Pro tillverkas i samma form och passar båda modellerna."}}, {"slug": "iphone-17", "namn": "iPhone 17", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "pris": 60, "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/17-black.webp"}, {"namn": "Skogsgrön", "hex": "#3d5143", "bild": "/img/cut/s/17-skogsgron.webp"}], "tips": {"q": "Passar iPhone 16-skal till iPhone 17?", "a": "Nej. iPhone 17 är något större och har ett nytt kameraparti."}}, {"slug": "iphone-16-pro", "namn": "iPhone 16 Pro", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "pris": 60, "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/16p-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/16p-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/16p-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/16p-pink.webp"}], "tips": {"q": "Passar skalet till iPhone 17 Pro?", "a": "Nej. iPhone 17 Pro har en helt ny design med en bred kameraplatå."}}, {"slug": "iphone-16", "namn": "iPhone 16", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "pris": 60, "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/16-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/16-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/16-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/16-pink.webp"}], "tips": {"q": "Passar iPhone 15-skal till iPhone 16?", "a": "Nej. iPhone 16 har en ny kameraplacering och en kameraknapp på sidan."}}, {"slug": "iphone-16e", "namn": "iPhone 16e", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "pris": 60, "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/16e-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/16e-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/16e-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/16e-pink.webp"}], "tips": {"q": "Passar iPhone 16-skal till iPhone 16e?", "a": "Nej. iPhone 16e har bara en kamera och en egen form, så skalet behöver vara gjort för just 16e."}}, {"slug": "iphone-15-pro", "namn": "iPhone 15 Pro", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "pris": 60, "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/15p-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/15p-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/15p-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/15p-pink.webp"}], "tips": {"q": "Passar skalet till iPhone 16 Pro?", "a": "Nej. iPhone 16 Pro är större och har en kameraknapp på sidan."}}, {"slug": "iphone-15", "namn": "iPhone 15", "kontakt": "USB-C", "kabel": "USB-C till USB-C", "pris": 60, "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/15-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/15-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/15-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/15-pink.webp"}], "tips": {"q": "Passar iPhone 14-skal till iPhone 15?", "a": "Nej. iPhone 15 har andra mått."}}, {"slug": "iphone-14-pro", "namn": "iPhone 14 Pro", "kontakt": "Lightning", "kabel": "USB-C till Lightning eller USB-A till Lightning", "pris": 60, "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/14p-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/14p-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/14p-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/14p-pink.webp"}], "tips": {"q": "Passar iPhone 13 Pro-skal till iPhone 14 Pro?", "a": "Nej. Kamerapartiet på iPhone 14 Pro är både bredare och högre."}}, {"slug": "iphone-14", "namn": "iPhone 14", "kontakt": "Lightning", "kabel": "USB-C till Lightning eller USB-A till Lightning", "pris": 60, "farger": [{"namn": "Svart", "hex": "#1c1c1c", "bild": "/img/cut/s/14-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "bild": "/img/cut/s/14-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "bild": "/img/cut/s/14-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "bild": "/img/cut/s/14-pink.webp"}], "tips": {"q": "Passar iPhone 13-skal till iPhone 14?", "a": "Nej. iPhone 14 är lite tjockare och har ett större kameraparti."}}]</script>
 </section>
 
 <section class="night" id="design" data-theme="dark">
@@ -587,6 +596,7 @@
           <h3>Mobilskal</h3>
           <dl>
             <div><dt>Typ</dt><dd>TPU-skal</dd></div>
+            <div><dt>Rek. pris</dt><dd>60 kr</dd></div>
             <div><dt>iPhone 18-serien</dt><dd><a href="/skal/iphone-18-pro/">18 Pro</a></dd></div>
             <div><dt>iPhone 17-serien</dt><dd><a href="/skal/iphone-17/">17</a>, <a href="/skal/iphone-17-pro/">17 Pro</a></dd></div>
             <div><dt>iPhone 16-serien</dt><dd><a href="/skal/iphone-16e/">16e</a>, <a href="/skal/iphone-16/">16</a>, <a href="/skal/iphone-16-pro/">16 Pro</a></dd></div>
@@ -636,17 +646,17 @@
         <span class="caps">Laddare och kablar</span>
         <h2 data-split>Laddat<br>och kopplat.</h2>
       </div>
-      <p>Flätade laddkablar, alla 2 meter, och snabbladdare för iPhone och andra USB-enheter.</p>
+      <p>Flätade laddkablar, alla 2 meter, och snabbladdare för iPhone och andra USB-enheter. <a href="/kablar/">Alla kablar</a> · <a href="/laddare/">Alla laddare</a></p>
     </div>
     <div class="rail" id="rail">
       <div class="track" id="track">
-        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/s/kabel-usb-c-usb-c-2m.webp" alt="Corder laddkabel USB-C till USB-C, 2 meter, svart flätad" loading="lazy" width="600" height="544"></div><figcaption><span class="caps">Kabel</span><b>USB-C till USB-C</b><span>2 m · Svart</span></figcaption></figure>
-        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/s/kabel-usb-a-usb-c-2m.webp" alt="Corder laddkabel USB-A till USB-C, 2 meter, svart flätad" loading="lazy" width="258" height="600"></div><figcaption><span class="caps">Kabel</span><b>USB-A till USB-C</b><span>2 m · Svart</span></figcaption></figure>
-        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/s/kabel-usb-c-lightning-svart.webp" alt="Corder laddkabel USB-C till Lightning, 2 meter, svart flätad" loading="lazy" width="600" height="534"></div><figcaption><span class="caps">Kabel</span><b>USB-C till Lightning</b><span>2 m · Svart</span></figcaption></figure>
-        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/s/kabel-usb-a-lightning-2m.webp" alt="Corder laddkabel USB-A till Lightning, 2 meter, vit" loading="lazy" width="282" height="600"></div><figcaption><span class="caps">Kabel</span><b>USB-A till Lightning</b><span>2 m · Vit</span></figcaption></figure>
-        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/s/laddare-20w-usb-c.webp" alt="Corder snabbladdare 20W med USB-C" loading="lazy" width="600" height="525"></div><figcaption><span class="caps">Laddare</span><b>Snabbladdare 20W</b><span>USB-C</span></figcaption></figure>
-        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/s/laddare-20w-dual-port.webp" alt="Corder snabbladdare 20W med två portar" loading="lazy" width="600" height="522"></div><figcaption><span class="caps">Laddare</span><b>Snabbladdare 20W Dual Port</b><span>Två portar</span></figcaption></figure>
-        <figure class="gear-card"><div class="gear-img"><img src="img/produkter/s/laddare-18w-usb-a.webp" alt="Corder snabbladdare 18W med USB-A" loading="lazy" width="600" height="523"></div><figcaption><span class="caps">Laddare</span><b>Snabbladdare 18W</b><span>USB-A</span></figcaption></figure>
+        <figure class="gear-card"><a href="/kablar/#usb-c-till-usb-c"><div class="gear-img"><img src="img/produkter/s/kabel-usb-c-usb-c-2m.webp" alt="Corder laddkabel USB-C till USB-C, 2 meter, svart flätad" loading="lazy" width="600" height="544"></div><figcaption><span class="caps">Kabel</span><b>USB-C till USB-C</b><span>2 m · Svart · 60 kr</span></figcaption></a></figure>
+        <figure class="gear-card"><a href="/kablar/#usb-a-till-usb-c"><div class="gear-img"><img src="img/produkter/s/kabel-usb-a-usb-c-2m.webp" alt="Corder laddkabel USB-A till USB-C, 2 meter, svart flätad" loading="lazy" width="258" height="600"></div><figcaption><span class="caps">Kabel</span><b>USB-A till USB-C</b><span>2 m · Svart · 60 kr</span></figcaption></a></figure>
+        <figure class="gear-card"><a href="/kablar/#usb-c-till-lightning"><div class="gear-img"><img src="img/produkter/s/kabel-usb-c-lightning-svart.webp" alt="Corder laddkabel USB-C till Lightning, 2 meter, svart flätad" loading="lazy" width="600" height="534"></div><figcaption><span class="caps">Kabel</span><b>USB-C till Lightning</b><span>2 m · Svart · 60 kr</span></figcaption></a></figure>
+        <figure class="gear-card"><a href="/kablar/#usb-a-till-lightning"><div class="gear-img"><img src="img/produkter/s/kabel-usb-a-lightning-2m.webp" alt="Corder laddkabel USB-A till Lightning, 2 meter, vit" loading="lazy" width="282" height="600"></div><figcaption><span class="caps">Kabel</span><b>USB-A till Lightning</b><span>2 m · Vit · 60 kr</span></figcaption></a></figure>
+        <figure class="gear-card"><a href="/laddare/#20w-usb-c"><div class="gear-img"><img src="img/produkter/s/laddare-20w-usb-c.webp" alt="Corder snabbladdare 20W med USB-C" loading="lazy" width="600" height="525"></div><figcaption><span class="caps">Laddare</span><b>Snabbladdare 20W</b><span>USB-C · 99 kr</span></figcaption></a></figure>
+        <figure class="gear-card"><a href="/laddare/#20w-dual-port"><div class="gear-img"><img src="img/produkter/s/laddare-20w-dual-port.webp" alt="Corder snabbladdare 20W med två portar" loading="lazy" width="600" height="522"></div><figcaption><span class="caps">Laddare</span><b>Snabbladdare 20W Dual Port</b><span>Två portar · 99 kr</span></figcaption></a></figure>
+        <figure class="gear-card"><a href="/laddare/#18w-usb-a"><div class="gear-img"><img src="img/produkter/s/laddare-18w-usb-a.webp" alt="Corder snabbladdare 18W med USB-A" loading="lazy" width="600" height="523"></div><figcaption><span class="caps">Laddare</span><b>Snabbladdare 18W</b><span>USB-A · 99 kr</span></figcaption></a></figure>
       </div>
     </div>
     <div class="wrap rail-foot"><div class="rail-progress"><span id="rail-bar"></span></div><span class="caps" id="rail-hint">Svep för fler</span></div>
@@ -698,8 +708,7 @@
       <p>Corder säljs i fysiska butiker. Sortiment och tillgänglighet kan variera, så fråga butiken efter din modell och färg.</p>
     </div>
     <div class="store-grid">
-      <div class="store"><span class="caps">Jönköping</span><h3>Go Banana</h3><p>Fråga butiken om din modell finns inne.</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Go+Banana+J%C3%B6nk%C3%B6ping" rel="noopener" target="_blank">Visa på karta</a></div>
-      <div class="store"><span class="caps">Mullsjö</span><h3>VIP Mullsjö</h3><p>Fråga butiken om din modell finns inne.</p><a href="https://www.google.com/maps/search/?api=1&amp;query=VIP+Mullsj%C3%B6" rel="noopener" target="_blank">Visa på karta</a></div>
+      <!-- butiker --><div class="store"><span class="caps">Jönköping</span><h3>Go Banana</h3><p>Fråga butiken om din modell finns inne.</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Go+Banana+J%C3%B6nk%C3%B6ping" rel="noopener" target="_blank" data-h="karta" data-v="Go Banana">Visa på karta</a></div><div class="store"><span class="caps">Mullsjö</span><h3>VIP Mullsjö</h3><p>Fråga butiken om din modell finns inne.</p><a href="https://www.google.com/maps/search/?api=1&amp;query=VIP+Mullsj%C3%B6" rel="noopener" target="_blank" data-h="karta" data-v="VIP Mullsjö">Visa på karta</a></div><!-- /butiker -->
       <div class="store tip"><span class="caps">Saknar du en butik?</span><h3>Tipsa oss</h3><a href="mailto:sales@corder.se?subject=Butikstips">sales@corder.se</a></div>
     </div>
   </div>
@@ -724,9 +733,9 @@
   <div class="wrap">
     <div class="foot">
       <a href="#" class="logo">corder</a>
-      <div><p class="foot-h">Sortiment</p><ul><li><a href="/skal/">Mobilskal</a></li><li><a href="#laddning">Laddare</a></li><li><a href="#laddning">Kablar</a></li></ul></div>
-      <div id="kontakt"><p class="foot-h">Kontakt och företag</p><ul><li><a href="#om-oss">Om oss</a></li><li><a href="#butiker">Hitta butik</a></li><li><a href="/aterforsaljare/">Bli återförsäljare</a></li><li>Produktfrågor: <a href="mailto:sales@corder.se?subject=Produktfr%C3%A5ga">sales@corder.se</a></li><li>Butik eller grossist: <a href="/aterforsaljare/">Kontakta oss</a></li></ul></div>
-      <div><p class="foot-h">Resurser</p><ul><li><a href="#guider">Apple-guider</a></li><li><a href="https://www.instagram.com/corderofficial">Instagram</a></li><li><a href="https://www.tiktok.com/@corderofficial">TikTok</a></li><li><a href="https://www.facebook.com/cordergroup">Facebook</a></li></ul></div>
+      <div><p class="foot-h">Sortiment</p><ul><li><a href="/skal/">Mobilskal</a></li><li><a href="/laddare/">Laddare</a></li><li><a href="/kablar/">Kablar</a></li></ul></div>
+      <div id="kontakt"><p class="foot-h">Kontakt och företag</p><ul><li><a href="#om-oss">Om oss</a></li><li><a href="#butiker">Hitta butik</a></li><li><a href="/aterforsaljare/">Bli återförsäljare</a></li><li>Produktfrågor: <a href="mailto:sales@corder.se?subject=Produktfr%C3%A5ga">sales@corder.se</a></li><li>Butik eller grossist: <a href="/aterforsaljare/">Kontakta oss</a></li><li><a href="/pages/vanliga-fragor-faq/">Vanliga frågor</a></li></ul></div>
+      <div><p class="foot-h">Resurser</p><ul><li><a href="#guider">Apple-guider</a></li><li><a href="/pages/integritet/">Integritet</a></li><li><a href="https://www.instagram.com/corderofficial">Instagram</a></li><li><a href="https://www.tiktok.com/@corderofficial">TikTok</a></li><li><a href="https://www.facebook.com/cordergroup">Facebook</a></li></ul></div>
     </div>
     <div class="foot-mark" aria-hidden="true">corder</div>
     <div class="foot-base">© 2026 Corder Group AB · Org.nr 559227-0226 · Kungsbacka · Designed and developed in Sweden</div>
@@ -752,6 +761,7 @@ addEventListener('DOMContentLoaded', () => {
   if (film) {
     const ljud = document.querySelector('.film-sound');
     film.muted = true;
+    film.addEventListener('playing', () => window.corderH?.('film-spelad'), { once: true });
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
       film.controls = true;
       ljud.hidden = true;
@@ -761,7 +771,7 @@ addEventListener('DOMContentLoaded', () => {
     ljud.addEventListener('click', () => {
       const pa = film.muted;
       film.muted = !pa;
-      if (pa) { film.currentTime = 0; film.play().catch(() => {}); }
+      if (pa) { film.currentTime = 0; film.play().catch(() => {}); window.corderH?.('film-ljud'); }
       ljud.setAttribute('aria-pressed', pa);
       ljud.querySelector('.film-label').textContent = pa ? 'Stäng av ljud' : 'Slå på ljud';
     });
@@ -821,7 +831,7 @@ addEventListener('DOMContentLoaded', () => {
     stSw.innerHTML = m.farger.map(f => `<button class="sw" type="button" style="--c:${f.hex}" aria-label="${esc(f.namn)}" aria-pressed="false"></button>`).join('');
     stSw.querySelectorAll('.sw').forEach((b, i) => b.addEventListener('click', () => valjFarg(i)));
     stInfo.innerHTML = `<span class="caps">Corder TPU-skal till</span><h3>${esc(m.namn)}</h3>
-      <dl><div><dt>Färger</dt><dd>${m.farger.map(f => esc(f.namn)).join(', ')}</dd></div>
+      <dl><div><dt>Rek. pris</dt><dd>${esc(m.pris)} kr</dd></div><div><dt>Färger</dt><dd>${m.farger.map(f => esc(f.namn)).join(', ')}</dd></div>
       <div><dt>Material</dt><dd>TPU, stötdämpande och formstabilt</dd></div>
       <div><dt>Laddning</dt><dd>${esc(m.kontakt)}. Rätt kabel: ${esc(m.kabel)}, 2 m.</dd></div></dl>
       <div class="st-tip"><b>${esc(m.tips.q)}</b>${esc(m.tips.a)}</div>
@@ -857,9 +867,9 @@ addEventListener('DOMContentLoaded', () => {
     visaIMobil();
   };
   if (modeller.length && stage) {
-    gens.forEach(g => g.addEventListener('click', () => valjGen(g.dataset.gen)));
-    vchips.forEach(c => c.addEventListener('click', e => { if (visaModell(c.dataset.slug)) { e.preventDefault(); visaIMobil(); } }));
-    olinks.forEach(o => o.addEventListener('click', () => visaOvrig(o.dataset.other)));
+    gens.forEach(g => g.addEventListener('click', () => { valjGen(g.dataset.gen); window.corderH?.('skalmodell', aktiv.slug); }));
+    vchips.forEach(c => c.addEventListener('click', e => { if (visaModell(c.dataset.slug)) { e.preventDefault(); visaIMobil(); window.corderH?.('skalmodell', c.dataset.slug); } }));
+    olinks.forEach(o => o.addEventListener('click', () => { visaOvrig(o.dataset.other); window.corderH?.('skalmodell-saknas', o.dataset.other); }));
     valjGen(gens[0].dataset.gen, false);
     addEventListener('resize', flyttaBar);
     document.fonts && document.fonts.ready.then(flyttaBar);

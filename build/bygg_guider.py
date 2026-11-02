@@ -1,15 +1,18 @@
 """Bygger Corders guidesidor från innehall/<slug>.html.
 
-Bara de tre guider som drar trafik enligt Search Console finns kvar, med samma URL
-som på Shopify (/blogs/nyheter/<slug>/). Originalen från Shopify ligger orörda i
-kalla/ som arkiv. Sajten byggs till ../docs/ (GitHub Pages). Kör från repots rot:
+Guiderna har samma URL som på Shopify (/blogs/nyheter/<slug>/). Originalen från Shopify
+ligger orörda i kalla/ som arkiv. Skriptet bygger också skalsidor, kablar, laddare,
+vanliga frågor, integritet och sitemap till ../docs/ (GitHub Pages). Kör från repots rot:
 
     python3 build/bygg_guider.py
 """
 import html
 import json
 import math
+import os
 import re
+import subprocess
+from datetime import date
 from functools import lru_cache
 from pathlib import Path
 
@@ -19,6 +22,46 @@ BYGG = Path(__file__).resolve().parent
 ROT = BYGG.parent / "docs"
 INNEHALL = BYGG / "innehall"
 SITE = "https://corder.se"
+# Adressen till den publika insamlingen (utan /e). Tom = inget spårskript läggs in på sidorna.
+STATISTIK_URL = os.environ.get("STATISTIK_URL", "")
+
+# Rekommenderade butikspriser i kronor. Enda stället där priserna anges.
+PRIS = {"skal": 60, "kabel": 60, "laddare": 99}
+PRISNOTIS = "Rekommenderat pris. Butiken sätter sitt eget pris."
+
+# Fyll i adress, öppettider och telefon när de är bekräftade. Tomma fält visas inte.
+BUTIKER = [
+    {"namn": "Go Banana", "ort": "Jönköping", "karta": "Go+Banana+J%C3%B6nk%C3%B6ping",
+     "adress": "", "postnummer": "", "oppettider": "", "telefon": ""},
+    {"namn": "VIP Mullsjö", "ort": "Mullsjö", "karta": "VIP+Mullsj%C3%B6",
+     "adress": "", "postnummer": "", "oppettider": "", "telefon": ""},
+]
+
+KABLAR = [
+    {"id": "usb-c-till-usb-c", "namn": "USB-C till USB-C", "artikel": "Laddkabel USB-C till USB-C, 2 m, flätad", "typ": "USB-C / USB-C",
+     "ean": "7350140690283", "bild": "kabel-usb-c-usb-c-2m", "farg": "Svart", "alt": "Corder laddkabel USB-C till USB-C, 2 meter, svart flätad",
+     "passar": "iPhone 15 och senare, med en USB-C-laddare.", "text": "Kabeln till nyare iPhones. Tillsammans med en USB-C-laddare ger den snabbladdning."},
+    {"id": "usb-a-till-usb-c", "namn": "USB-A till USB-C", "artikel": "Laddkabel USB-A till USB-C, 2 m, flätad", "typ": "USB-A / USB-C",
+     "ean": "7350140690047", "bild": "kabel-usb-a-usb-c-2m", "farg": "Svart", "alt": "Corder laddkabel USB-A till USB-C, 2 meter, svart flätad",
+     "passar": "iPhone 15 och senare, med en äldre laddare eller USB-port.", "text": "För dig med USB-C i telefonen men en laddare, bil eller dator med den större USB-A-porten."},
+    {"id": "usb-c-till-lightning", "namn": "USB-C till Lightning", "artikel": "Laddkabel USB-C till Lightning, 2 m, flätad, svart", "typ": "USB-C / Lightning",
+     "ean": "7350140690467", "bild": "kabel-usb-c-lightning-svart", "farg": "Svart", "alt": "Corder laddkabel USB-C till Lightning, 2 meter, svart flätad",
+     "passar": "iPhone 14 och äldre, med en USB-C-laddare.", "text": "För iPhone med Lightning och en modern USB-C-laddare."},
+    {"id": "usb-a-till-lightning", "namn": "USB-A till Lightning", "artikel": "Laddkabel USB-A till Lightning, 2 m, flätad", "typ": "USB-A / Lightning",
+     "ean": "7350140690030", "bild": "kabel-usb-a-lightning-2m", "farg": "Vit", "alt": "Corder laddkabel USB-A till Lightning, 2 meter, vit",
+     "passar": "iPhone 14 och äldre, med en äldre laddare eller USB-port.", "text": "Den klassiska kabeln till iPhone med Lightning och en laddare med USB-A-port."},
+]
+LADDARE = [
+    {"id": "20w-usb-c", "namn": "Snabbladdare 20W", "artikel": "Snabbladdare 20W USB-C", "typ": "USB-C, 20 W",
+     "ean": "7350140690504", "bild": "laddare-20w-usb-c", "alt": "Corder snabbladdare 20W med USB-C",
+     "passar": "iPhone 15 och senare med USB-C-kabel, och iPhone 14 och äldre med USB-C till Lightning-kabel.", "text": "Snabbladdar din iPhone och räcker för de flesta i vardagen."},
+    {"id": "20w-dual-port", "namn": "Snabbladdare 20W Dual Port", "artikel": "Snabbladdare 20W Dual Port", "typ": "USB-C + USB-A, 20 W",
+     "ean": "7350140690771", "bild": "laddare-20w-dual-port", "alt": "Corder snabbladdare 20W med två portar",
+     "passar": "Både USB-C-kablar och kablar med USB-A.", "text": "Två portar, så att både nya och gamla kablar passar i samma laddare."},
+    {"id": "18w-usb-a", "namn": "Snabbladdare 18W", "artikel": "Snabbladdare 18W USB-A", "typ": "USB-A, 18 W, QC 3.0",
+     "ean": "7350140690078", "bild": "laddare-18w-usb-a", "alt": "Corder snabbladdare 18W med USB-A",
+     "passar": "Kablar med USB-A. iPhone snabbladdas däremot bäst via USB-C.", "text": "För dig som redan har kablar med USB-A."},
+]
 
 GUIDER = [
     {
@@ -268,7 +311,8 @@ HEADER = """<header class="top">
     <button class="menu-btn" aria-expanded="false" aria-controls="meny" onclick="const o=this.closest('.top').classList.toggle('open');this.setAttribute('aria-expanded',o);this.querySelector('b').textContent=o?'Stäng':'Meny';document.body.style.overflow=o?'hidden':''"><span></span><b>Meny</b></button>
     <ul id="meny">
       <li><a href="/skal/">Skal</a></li>
-      <li><a href="/#laddning">Laddning</a></li>
+      <li><a href="/kablar/">Kablar</a></li>
+      <li><a href="/laddare/">Laddare</a></li>
       <li><a href="/#butiker">Butiker</a></li>
       <li><a href="/aterforsaljare/">Återförsäljare</a></li>
       <li><a href="/blogs/nyheter/">Apple-guider</a></li>
@@ -281,9 +325,9 @@ FOOTER = """<footer>
   <div class="wrap">
     <div class="foot">
       <a href="/" class="logo">corder</a>
-      <div><p class="foot-h">Sortiment</p><ul><li><a href="/skal/">TPU-skal</a></li><li><a href="/#laddning">Laddare</a></li><li><a href="/#laddning">Kablar</a></li></ul></div>
-      <div><p class="foot-h">Företag</p><ul><li><a href="/#butiker">Hitta butik</a></li><li><a href="/aterforsaljare/">Bli återförsäljare</a></li><li><a href="mailto:sales@corder.se">sales@corder.se</a></li></ul></div>
-      <div><p class="foot-h">Resurser</p><ul><li><a href="/blogs/nyheter/">Apple-guider</a></li><li><a href="https://www.instagram.com/corderofficial">Instagram</a></li><li><a href="https://www.tiktok.com/@corderofficial">TikTok</a></li><li><a href="https://www.facebook.com/cordergroup">Facebook</a></li></ul></div>
+      <div><p class="foot-h">Sortiment</p><ul><li><a href="/skal/">TPU-skal</a></li><li><a href="/laddare/">Laddare</a></li><li><a href="/kablar/">Kablar</a></li></ul></div>
+      <div><p class="foot-h">Företag</p><ul><li><a href="/#butiker">Hitta butik</a></li><li><a href="/aterforsaljare/">Bli återförsäljare</a></li><li><a href="/pages/vanliga-fragor-faq/#kontakt">Kontakt</a></li><li><a href="mailto:sales@corder.se">sales@corder.se</a></li></ul></div>
+      <div><p class="foot-h">Resurser</p><ul><li><a href="/blogs/nyheter/">Apple-guider</a></li><li><a href="/pages/vanliga-fragor-faq/">Vanliga frågor</a></li><li><a href="/pages/integritet/">Integritet</a></li><li><a href="https://www.instagram.com/corderofficial">Instagram</a></li><li><a href="https://www.tiktok.com/@corderofficial">TikTok</a></li><li><a href="https://www.facebook.com/cordergroup">Facebook</a></li></ul></div>
     </div>
     <div class="foot-base">© 2026 Corder Group AB · Org.nr 559227-0226 · Kungsbacka · Designed and developed in Sweden</div>
   </div>
@@ -319,7 +363,13 @@ SKRIPT = """<script>
 </script>"""
 
 
-def sida(titel, beskr, kanonisk, innehall, schema=None, progress=False, skript=""):
+def statistik_tagg():
+    if not STATISTIK_URL:
+        return ""
+    return f'<script src="/assets/s.js" data-e="{STATISTIK_URL.rstrip("/")}/e" defer></script>'
+
+
+def sida(titel, beskr, kanonisk, innehall, schema=None, progress=False, skript="", og_typ="article"):
     ld = "".join(f'<script type="application/ld+json">{json.dumps(s, ensure_ascii=False)}</script>\n'
                  for s in (schema or []))
     head = HEADER.replace("{progress}", '<div class="progress" aria-hidden="true"></div>' if progress else "")
@@ -331,7 +381,7 @@ def sida(titel, beskr, kanonisk, innehall, schema=None, progress=False, skript="
 <title>{html.escape(titel)}</title>
 <meta name="description" content="{html.escape(beskr)}">
 <link rel="canonical" href="{kanonisk}">
-<meta property="og:type" content="article">
+<meta property="og:type" content="{og_typ}">
 <meta property="og:title" content="{html.escape(titel)}">
 <meta property="og:description" content="{html.escape(beskr)}">
 <meta property="og:url" content="{kanonisk}">
@@ -345,7 +395,8 @@ def sida(titel, beskr, kanonisk, innehall, schema=None, progress=False, skript="
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/inter-tight-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts.css">
-<link rel="stylesheet" href="/assets/sida.css?v=13">
+<link rel="stylesheet" href="/assets/sida.css?v=14">
+{statistik_tagg()}
 {ld}</head>
 <body>
 <a class="skip" href="#innehall">Hoppa till innehållet</a>
@@ -359,6 +410,53 @@ def sida(titel, beskr, kanonisk, innehall, schema=None, progress=False, skript="
 </body>
 </html>
 """
+
+
+def samling(namn, url, poster):
+    """Schema för en översiktssida: samlingen och dess brödsmulor."""
+    return [
+        {"@context": "https://schema.org", "@type": "CollectionPage", "name": namn, "url": url, "inLanguage": "sv",
+         "mainEntity": {"@type": "ItemList", "itemListElement": [
+             {"@type": "ListItem", "position": i, "name": n, "url": u} for i, (n, u) in enumerate(poster, 1)]}},
+        brodsmulor((namn, url)),
+    ]
+
+
+def brodsmulor(*led):
+    alla = [("Corder", SITE + "/"), *led]
+    return {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": i, "name": n, "item": u} for i, (n, u) in enumerate(alla, 1)]}
+
+
+def erbjudande(pris, url):
+    """Corder säljer bara via fysiska butiker, så priset anges som tillgängligt i butik."""
+    return {"@type": "Offer", "price": str(pris), "priceCurrency": "SEK",
+            "availability": "https://schema.org/InStoreOnly", "url": url}
+
+
+def butik_rad(b):
+    adress = ", ".join(x for x in (b["adress"], " ".join(y for y in (b["postnummer"], b["ort"]) if y) if b["adress"] else "") if x)
+    delar = [f'<b>{html.escape(b["namn"])}</b><span>{html.escape(adress or b["ort"])}</span>']
+    if b["oppettider"]:
+        delar.append(f'<span>{html.escape(b["oppettider"])}</span>')
+    lankar = [f'<a href="https://www.google.com/maps/search/?api=1&amp;query={b["karta"]}" rel="noopener" target="_blank" data-h="karta" data-v="{html.escape(b["namn"])}">Visa på karta</a>']
+    if b["telefon"]:
+        lankar.append(f'<a href="tel:{b["telefon"].replace(" ", "").replace("-", "")}" data-h="telefon" data-v="{html.escape(b["namn"])}">{html.escape(b["telefon"])}</a>')
+    return f'<li>{"".join(delar)}<span class="kop-lankar">{"".join(lankar)}</span></li>'
+
+
+def kop_block(pris, vad):
+    """Pris och butiker, direkt under produkten."""
+    butiker = "".join(butik_rad(b) for b in BUTIKER)
+    return f"""<section class="kop" id="kop" aria-label="Pris och butiker">
+      <div class="kop-pris"><span class="caps">Rek. pris</span><b>{pris} kr</b><small>{PRISNOTIS}</small></div>
+      <div class="kop-butiker"><span class="caps">Finns i butik</span><ul>{butiker}</ul><small>Sortimentet varierar. Fråga butiken om {vad} finns inne.</small></div>
+    </section>"""
+
+
+def kop_fast(pris):
+    """Fast rad längst ner på mobil."""
+    return f'<div class="kop-fast"><span>Rek. pris <b>{pris} kr</b></span><a class="btn" href="#kop">Hitta butik</a></div>'
 
 
 def bygg():
@@ -454,7 +552,8 @@ def bygg():
 </main>"""
     ut = ROT / "blogs" / "nyheter" / "index.html"
     ut.write_text(sida("Apple-guider | Corder", "Raka svar om TPU-skal, skärmskydd och vilka skal som passar vilken iPhone, från Corder.",
-                       f"{SITE}/blogs/nyheter/", index))
+                       f"{SITE}/blogs/nyheter/", index, samling("Apple-guider", f"{SITE}/blogs/nyheter/",
+                                                                  [(g["kort"], f'{SITE}/blogs/nyheter/{g["slug"]}/') for g in GUIDER])))
     print("skrev", ut.relative_to(ROT))
 
 
@@ -585,13 +684,16 @@ def bygg_skal():
                 shots.append(f'<figure class="model-shot"><div class="tile empty"><div><b style="background:{FARG[f][0]}"></b>{f}</div></div>'
                              f'<figcaption><i style="background:{FARG[f][0]}"></i>{f}</figcaption></figure>')
         kabel = ("USB-C till Lightning eller USB-A till Lightning" if m["kontakt"] == "Lightning" else "USB-C till USB-C")
+        ankar = "usb-c-till-lightning" if m["kontakt"] == "Lightning" else "usb-c-till-usb-c"
         specs = [("Material", "TPU (termoplastisk polyuretan)"), ("Passar", f'{m["namn"]}'), ("Färger", ", ".join(m["farger"])),
                  ("Egenskaper", "Stötdämpande, formstabilt, upphöjd kant runt kameran"), ("Laddning", f'Telefonen har {m["kontakt"]}. Rätt kabel: {kabel}, 2 m.'),
                  ("Finns hos", "Go Banana i Jönköping och VIP Mullsjö. Fråga butiken om modell och färg finns inne.")]
         specs_html = "".join(f"<div><dt>{a}</dt><dd>{html.escape(b)}</dd></div>" for a, b in specs)
+        specs_html = specs_html.replace(f"Rätt kabel: {kabel}, 2 m.", f'Rätt kabel: <a href="/kablar/#{ankar}">{kabel}, 2 m</a>.')
         faq = [("Vilka färger finns skalet till " + m["namn"] + " i?", f"Skalet finns i {farger.lower()}."),
                ("Vilket material är skalet gjort av?", "TPU, termoplastisk polyuretan. Det dämpar stötar och behåller formen utan att töja sig.")] + m["kompat"] + \
-              [("Var kan jag köpa skalet?", "Corder säljs hos Go Banana i Jönköping och VIP Mullsjö. Sortimentet kan variera, så fråga butiken om din modell och färg finns inne.")]
+              [("Vad kostar skalet?", f'Rekommenderat pris är {PRIS["skal"]} kr. Butiken sätter sitt eget pris.'),
+               ("Var kan jag köpa skalet?", "Corder säljs hos Go Banana i Jönköping och VIP Mullsjö. Sortimentet kan variera, så fråga butiken om din modell och färg finns inne.")]
         faq_html = "\n".join(f"<details><summary>{html.escape(q)}</summary><p>{html.escape(a)}</p></details>" for q, a in faq)
         andra = "\n        ".join(modell_lank(o) for o in MODELLER if o is not m)
         guidekort = "\n      ".join(kort(guide_per_slug[s]) for s in m["guider"] if s in guide_per_slug)
@@ -601,13 +703,10 @@ def bygg_skal():
             {"@context": "https://schema.org", "@type": "Product", "name": f'Corder TPU-skal till {m["namn"]}',
              "brand": {"@type": "Brand", "name": "Corder"}, "material": "TPU", "color": ", ".join(m["farger"]),
              "description": beskr, "url": url, **({"image": bilder} if bilder else {}),
-             "manufacturer": {"@type": "Organization", "name": "Corder Group AB"}},
+             "manufacturer": {"@type": "Organization", "name": "Corder Group AB"}, "offers": erbjudande(PRIS["skal"], url)},
             {"@context": "https://schema.org", "@type": "FAQPage",
              "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]},
-            {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
-                {"@type": "ListItem", "position": 1, "name": "Corder", "item": SITE + "/"},
-                {"@type": "ListItem", "position": 2, "name": "Skal", "item": SITE + "/skal/"},
-                {"@type": "ListItem", "position": 3, "name": m["namn"], "item": url}]},
+            brodsmulor(("Skal", SITE + "/skal/"), (m["namn"], url)),
         ]
         innehall = f"""<main id="innehall" tabindex="-1">
   <div class="wrap">
@@ -623,6 +722,7 @@ def bygg_skal():
     <div class="model-gallery{" few" if len(m["farger"]) <= 2 else ""}" style="--n:{len(m["farger"])}">
       {"".join(shots)}
     </div>
+    {kop_block(PRIS["skal"], "din modell och färg")}
     <div class="post" style="grid-template-columns:minmax(0, 760px)">
       <article class="prose">
         <h2 id="om-skalet" style="margin-top:0">Om skalet</h2>
@@ -647,10 +747,11 @@ def bygg_skal():
       </div>
     </div>
   </section>
-</main>"""
+</main>
+{kop_fast(PRIS["skal"])}"""
         ut = ROT / "skal" / m["slug"] / "index.html"
         ut.parent.mkdir(parents=True, exist_ok=True)
-        ut.write_text(sida(titel, beskr, url, innehall, schema, skript=LIVSSTIL_SKRIPT))
+        ut.write_text(sida(titel, beskr, url, innehall, schema, skript=LIVSSTIL_SKRIPT, og_typ="product"))
         print("skrev", ut.relative_to(ROT))
 
     lankar = "\n      ".join(modell_lank(m) for m in MODELLER)
@@ -658,7 +759,7 @@ def bygg_skal():
   <div class="wrap">
     <div class="index-head">
       <h1>Skal till iPhone.</h1>
-      <p>TPU-skal från iPhone 14 hela vägen till iPhone 18 Pro. Välj din modell för att se färger och vad som passar.</p>
+      <p>TPU-skal från iPhone 14 hela vägen till iPhone 18 Pro, rek. pris {PRIS["skal"]} kr. Välj din modell för att se färger och vad som passar.</p>
     </div>
     <div class="model-grid" style="padding-bottom:clamp(48px,6vw,80px)">
       {lankar}
@@ -668,7 +769,8 @@ def bygg_skal():
 </main>"""
     ut = ROT / "skal" / "index.html"
     ut.write_text(sida("Skal till iPhone 14–18 Pro | Corder", "Corders TPU-skal till iPhone 14, 15, 16, 17 och 18 Pro. Välj din modell och se färger, kompatibilitet och var du hittar skalen i butik.",
-                       f"{SITE}/skal/", index))
+                       f"{SITE}/skal/", index, samling("Skal", f"{SITE}/skal/",
+                                                       [(m["namn"], f'{SITE}/skal/{m["slug"]}/') for m in MODELLER])))
     print("skrev skal/index.html")
 
 
@@ -680,6 +782,7 @@ def bygg_valjare():
         data.append({
             "slug": m["slug"], "namn": m["namn"], "kontakt": m["kontakt"],
             "kabel": "USB-C till Lightning eller USB-A till Lightning" if m["kontakt"] == "Lightning" else "USB-C till USB-C",
+            "pris": PRIS["skal"],
             "farger": [{"namn": f, "hex": FARG[f][0], "bild": liten(modellbild(m, f)) if modellbild(m, f) else None} for f in m["farger"]],
             "tips": {"q": m["kompat"][0][0], "a": m["kompat"][0][1]},
         })
@@ -689,6 +792,250 @@ def bygg_valjare():
     slut = t.index("</script>", start)
     sida_.write_text(t[:start] + json.dumps(data, ensure_ascii=False) + t[slut:])
     print("skrev modelldata till index.html")
+
+def byt_mellan(t, start, slut, ny):
+    a = t.index(start) + len(start)
+    return t[:a] + ny + t[t.index(slut, a):]
+
+
+def bygg_startsidans_data():
+    """Butikskort, butiksdata och spårskript på den handredigerade startsidan."""
+    sida_ = ROT / "index.html"
+    t = sida_.read_text()
+    kort_ = "".join(
+        f'<div class="store"><span class="caps">{html.escape(b["ort"])}</span><h3>{html.escape(b["namn"])}</h3>'
+        + (f'<p>{html.escape(b["adress"])}, {html.escape(" ".join(x for x in (b["postnummer"], b["ort"]) if x))}</p>' if b["adress"] else "")
+        + (f'<p>{html.escape(b["oppettider"])}</p>' if b["oppettider"] else "")
+        + '<p>Fråga butiken om din modell finns inne.</p>'
+        + f'<a href="https://www.google.com/maps/search/?api=1&amp;query={b["karta"]}" rel="noopener" target="_blank" data-h="karta" data-v="{html.escape(b["namn"])}">Visa på karta</a>'
+        + (f'<a href="tel:{b["telefon"].replace(" ", "").replace("-", "")}" data-h="telefon" data-v="{html.escape(b["namn"])}">{html.escape(b["telefon"])}</a>' if b["telefon"] else "")
+        + "</div>" for b in BUTIKER)
+    t = byt_mellan(t, "<!-- butiker -->", "<!-- /butiker -->", kort_)
+    # Butiksdata kräver adress, så butiker utan bekräftad adress tas inte med.
+    lokala = [{"@context": "https://schema.org", "@type": "Store", "name": b["namn"],
+               "address": {"@type": "PostalAddress", "streetAddress": b["adress"], "postalCode": b["postnummer"], "addressLocality": b["ort"], "addressCountry": "SE"},
+               **({"telephone": b["telefon"]} if b["telefon"] else {}), **({"openingHours": b["oppettider"]} if b["oppettider"] else {})}
+              for b in BUTIKER if b["adress"]]
+    ld = f'<script type="application/ld+json">{json.dumps(lokala, ensure_ascii=False)}</script>' if lokala else ""
+    t = byt_mellan(t, "<!-- butiksdata -->", "<!-- /butiksdata -->", ld)
+    t = byt_mellan(t, "<!-- statistik -->", "<!-- /statistik -->", statistik_tagg())
+    sida_.write_text(t)
+    print("skrev butiker och statistik till index.html")
+
+
+def fragor_html(faq):
+    return "\n".join(f"<details><summary>{html.escape(q)}</summary><p>{html.escape(a)}</p></details>" for q, a in faq)
+
+
+def faq_schema(faq):
+    return {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+        {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}
+
+
+def bygg_tillbehor():
+    guide_per_slug = {g["slug"]: g for g in GUIDER}
+    sidor = [
+        {"slug": "kablar", "namn": "Laddkablar", "kort": "Kablar", "rubrik": "Laddkablar.", "pris": PRIS["kabel"], "produkter": KABLAR, "kategori": "Laddkabel",
+         "titel": f'Laddkablar till iPhone, flätade och 2 meter – rek. pris {PRIS["kabel"]} kr | Corder',
+         "beskr": f'Flätade laddkablar på 2 meter med USB-C och Lightning till iPhone. Rek. pris {PRIS["kabel"]} kr. Se vilken kabel som passar din iPhone och var den finns i butik.',
+         "ingress": f'Flätade och 2 meter långa, så att du når från väggen till sängen. Rek. pris {PRIS["kabel"]} kr.',
+         "guide": ("Vilken kabel passar?", [("iPhone 15 och senare", "USB-C i telefonen. Välj USB-C till USB-C, eller USB-A till USB-C om laddaren har en USB-A-port."),
+                                            ("iPhone 14 och äldre", "Lightning i telefonen. Välj USB-C till Lightning, eller USB-A till Lightning om laddaren har en USB-A-port.")]),
+         "faq": [("Vilken kabel behöver jag till iPhone 15 eller senare?", "iPhone 15 och senare har USB-C. Använd USB-C till USB-C med en USB-C-laddare, eller USB-A till USB-C med en äldre laddare."),
+                 ("Vilken kabel behöver jag till iPhone 14?", "iPhone 14 och äldre har Lightning. Använd USB-C till Lightning eller USB-A till Lightning."),
+                 ("Hur långa är kablarna?", "Alla Corders kablar är 2 meter."),
+                 ("Vad kostar kablarna?", f'Rekommenderat pris är {PRIS["kabel"]} kr. Butiken sätter sitt eget pris.'),
+                 ("Går det att köpa kablarna på nätet?", "Nej. Corder säljs i fysiska butiker, till exempel hos Go Banana i Jönköping och VIP Mullsjö.")],
+         "guider": ["vilken-usb-c-kabel-till-iphone", "vilken-laddare-till-iphone-18-pro"]},
+        {"slug": "laddare", "namn": "Snabbladdare", "kort": "Laddare", "rubrik": "Snabbladdare.", "pris": PRIS["laddare"], "produkter": LADDARE, "kategori": "Snabbladdare",
+         "titel": f'Snabbladdare till iPhone, 20W och 18W – rek. pris {PRIS["laddare"]} kr | Corder',
+         "beskr": f'Snabbladdare till iPhone: 20W USB-C, 20W Dual Port och 18W USB-A. Rek. pris {PRIS["laddare"]} kr. Se vilken laddare som passar och var den finns i butik.',
+         "ingress": f'Tre laddare för nya och gamla kablar. Rek. pris {PRIS["laddare"]} kr.',
+         "guide": ("Vilken laddare passar?", [("Du har en USB-C-kabel", "Välj 20W USB-C. Det ger snabbladdning för iPhone."),
+                                              ("Du har båda sorternas kablar", "Välj 20W Dual Port med både USB-C och USB-A."),
+                                              ("Du har bara USB-A-kablar", "Välj 18W USB-A, eller byt till USB-C för snabbast laddning av iPhone.")]),
+         "faq": [("Räcker 20W till min iPhone?", "Ja, för de flesta. 20W snabbladdar telefonen, men når inte Apples allra snabbaste siffror på de nyaste modellerna."),
+                 ("Kan en laddare skada batteriet?", "Nej. Telefonen tar bara emot så mycket ström som den klarar."),
+                 ("Vad kostar laddarna?", f'Rekommenderat pris är {PRIS["laddare"]} kr. Butiken sätter sitt eget pris.'),
+                 ("Är laddarna CE-märkta?", "Ja, Corders laddare och kablar är CE-märkta.")],
+         "guider": ["vilken-laddare-till-iphone-18-pro", "vilken-usb-c-kabel-till-iphone"]},
+    ]
+    for s in sidor:
+        url = f'{SITE}/{s["slug"]}/'
+        kort_ = []
+        produkter = []
+        for p in s["produkter"]:
+            src = f'/img/produkter/{p["bild"]}.webp'
+            rader = [("Typ", p["typ"]), ("Passar", p["passar"]), ("EAN", p["ean"])]
+            if p.get("farg"):
+                rader.insert(1, ("Färg", p["farg"]))
+            dl = "".join(f"<div><dt>{a}</dt><dd>{html.escape(b)}</dd></div>" for a, b in rader)
+            kort_.append(f"""<article class="produkt" id="{p["id"]}">
+        <div class="produkt-bild">{bild(src, p["alt"])}</div>
+        <div class="produkt-text">
+          <span class="caps">{s["kategori"]}</span>
+          <h2>{html.escape(p["namn"])}</h2>
+          <p>{html.escape(p["text"])}</p>
+          <dl class="specs-list">{dl}</dl>
+          <p class="produkt-pris"><b>{s["pris"]} kr</b> <span>Rek. pris</span></p>
+        </div>
+      </article>""")
+            produkter.append({"@context": "https://schema.org", "@type": "Product", "name": f'Corder {p["artikel"]}', "brand": {"@type": "Brand", "name": "Corder"},
+                              "gtin13": p["ean"], "description": p["text"], "url": f'{url}#{p["id"]}', "image": [SITE + src],
+                              "manufacturer": {"@type": "Organization", "name": "Corder Group AB"}, "offers": erbjudande(s["pris"], url)})
+        rubrik, rad = s["guide"]
+        val = "".join(f"<div><dt>{html.escape(a)}</dt><dd>{html.escape(b)}</dd></div>" for a, b in rad)
+        guidekort = "\n      ".join(kort(guide_per_slug[x]) for x in s["guider"])
+        innehall = f"""<main id="innehall" tabindex="-1">
+  <div class="wrap">
+    <div class="model-head">
+      <div>
+        <nav class="crumbs" aria-label="Brödsmulor"><a href="/">Corder</a><span>/</span><span>{s["kort"]}</span></nav>
+        <h1>{s["rubrik"]}</h1>
+      </div>
+      <p>{html.escape(s["ingress"])}</p>
+    </div>
+    {kop_block(s["pris"], "artikeln")}
+    <div class="produkt-lista">
+      {"".join(kort_)}
+    </div>
+    <div class="post" style="grid-template-columns:minmax(0, 760px)">
+      <article class="prose">
+        <h2 style="margin-top:0">{html.escape(rubrik)}</h2>
+        <dl class="specs-list">{val}</dl>
+        <h2 id="vanliga-fragor">Vanliga frågor</h2>
+        <div class="faq">
+{fragor_html(s["faq"])}
+        </div>
+      </article>
+    </div>
+  </div>
+  <section class="related">
+    <div class="wrap">
+      <h2>Läs mer</h2>
+      <div class="cards">
+      {guidekort}
+      </div>
+    </div>
+  </section>
+</main>
+{kop_fast(s["pris"])}"""
+        schema = [*produkter, faq_schema(s["faq"]), brodsmulor((s["kort"], url))]
+        ut = ROT / s["slug"] / "index.html"
+        ut.parent.mkdir(parents=True, exist_ok=True)
+        ut.write_text(sida(s["titel"], s["beskr"], url, innehall, schema, og_typ="product"))
+        print("skrev", ut.relative_to(ROT))
+
+
+FRAGOR = [
+    ("Köpa", [
+        ("Var kan jag köpa Corder?", "I fysiska butiker, till exempel hos Go Banana i Jönköping och VIP Mullsjö. Corder säljs inte på nätet. Sortimentet varierar, så fråga butiken om din modell och färg finns inne."),
+        ("Vad kostar produkterna?", f'Rekommenderat pris är {PRIS["skal"]} kr för skal och kablar och {PRIS["laddare"]} kr för snabbladdare. Butiken sätter sitt eget pris.'),
+        ("Min butik har inte Corder. Kan ni fixa det?", "Tipsa oss gärna på sales@corder.se."),
+    ]),
+    ("Skal och passform", [
+        ("Vilka iPhone-modeller finns det skal till?", "iPhone 14, 14 Pro, 15, 15 Pro, 16e, 16, 16 Pro, 17, 17 Pro och 18 Pro."),
+        ("Hur vet jag vilken iPhone jag har?", "Öppna Inställningar, Allmänt och Om. Där står modellnamnet."),
+        ("Finns det skal till Plus, Pro Max eller iPhone Duo?", "Nej. Våra skal är gjorda för de vanliga storlekarna, och iPhone Duo är vikbar och behöver ett helt annat skal."),
+        ("Vad är skalen gjorda av?", "TPU, termoplastisk polyuretan. Det dämpar stötar och behåller formen."),
+    ]),
+    ("Kablar och laddare", [
+        ("Vilken kabel behöver jag?", "iPhone 15 och senare har USB-C. iPhone 14 och äldre har Lightning. På sidan om kablar ser du vilken som passar din laddare."),
+        ("Hur långa är kablarna?", "Alla Corders kablar är 2 meter."),
+    ]),
+    ("Fel och reklamation", [
+        ("Min produkt är trasig. Vad gör jag?", "Vänd dig till butiken där du köpte produkten och ta med kvittot. Det är butiken som hanterar reklamationer."),
+        ("Hur länge kan jag reklamera?", "Enligt konsumentköplagen kan du reklamera ett ursprungligt fel i upp till tre år från köpet. Fel som visar sig inom två år räknas som regel som ursprungliga."),
+        ("Kan jag lämna tillbaka en produkt som jag ångrat?", "Det beror på butiken, eftersom ångerrätt inte gäller vid köp i fysisk butik. Fråga vad som gäller när du handlar."),
+    ]),
+]
+
+
+def bygg_info():
+    alla = [f for _, grupp in FRAGOR for f in grupp]
+    url = f"{SITE}/pages/vanliga-fragor-faq/"
+    grupper = "\n".join(f'<h2>{html.escape(rubrik)}</h2>\n<div class="faq">\n{fragor_html(grupp)}\n</div>' for rubrik, grupp in FRAGOR)
+    innehall = f"""<main id="innehall" tabindex="-1">
+  <div class="wrap">
+    <div class="index-head">
+      <h1>Vanliga frågor.</h1>
+      <p>Om köp, pris, passform och reklamation. Hittar du inte svaret, hör av dig.</p>
+    </div>
+    <div class="post" style="grid-template-columns:minmax(0, 760px)">
+      <article class="prose">
+{grupper}
+        <h2 id="kontakt">Kontakt</h2>
+        <p>Frågor om produkter, eller om du vill sälja Corder: <a href="mailto:sales@corder.se">sales@corder.se</a>. Butiker och grossister hittar mer på <a href="/aterforsaljare/">sidan för återförsäljare</a>.</p>
+        <p>Corder Group AB, org.nr 559227-0226, Kungsbacka.</p>
+      </article>
+    </div>
+  </div>
+</main>"""
+    ut = ROT / "pages" / "vanliga-fragor-faq" / "index.html"
+    ut.parent.mkdir(parents=True, exist_ok=True)
+    ut.write_text(sida("Vanliga frågor om köp, pris och reklamation | Corder",
+                       "Svar om var du köper Corder, rekommenderade priser, vilka skal och kablar som passar och hur en reklamation går till.",
+                       url, innehall, [faq_schema(alla), brodsmulor(("Vanliga frågor", url))]))
+
+    url = f"{SITE}/pages/integritet/"
+    innehall = f"""<main id="innehall" tabindex="-1">
+  <div class="wrap">
+    <div class="index-head">
+      <h1>Integritet.</h1>
+      <p>Så hanterar corder.se uppgifter om besök.</p>
+    </div>
+    <div class="post" style="grid-template-columns:minmax(0, 760px)">
+      <article class="prose">
+        <p class="ingress">Vi använder inga cookies och sparar ingenting i din webbläsare. Vi har ingen inloggning, nätbutik eller nyhetsbrev och säljer inga uppgifter.</p>
+        <h2>Besöksstatistik</h2>
+        <p>Vi mäter besök med ett eget statistikverktyg för att se vilka sidor som är användbara och om besökare hittar till butikerna.</p>
+        <h3>Det här sparas</h3>
+        <ul>
+          <li>Vilken sida som besöktes och från vilken webbplats besökaren kom.</li>
+          <li>Enhetstyp (mobil, surfplatta eller dator) och land.</li>
+          <li>Klick på till exempel kartlänkar, e-postlänkar och nedladdningar.</li>
+        </ul>
+        <h3>Det här sparas inte</h3>
+        <ul>
+          <li>IP-adresser och uppgifter om din webbläsare sparas inte.</li>
+          <li>Vi kan inte följa dig mellan dagar eller mellan webbplatser. För att räkna besökare per dag beräknas ett engångsvärde med hjälp av IP-adress, webbläsare och en slumpnyckel som raderas efter dygnet.</li>
+        </ul>
+        <p>Enskilda händelser raderas efter 90 dagar. Därefter finns bara summerade siffror per dag kvar. Om din webbläsare skickar Do Not Track eller Global Privacy Control mäter vi inte alls.</p>
+        <p>Statistiken behandlas hos Cloudflare, och själva webbplatsen drivs på GitHub Pages. Båda hanterar tekniska uppgifter, som IP-adresser, för att kunna leverera tjänsten.</p>
+        <h2>E-post</h2>
+        <p>Om du mejlar oss använder vi dina uppgifter för att svara dig.</p>
+        <h2>Kontakt</h2>
+        <p>Personuppgiftsansvarig är Corder Group AB, org.nr 559227-0226. Frågor, eller begäran om att få se eller radera uppgifter, skickas till <a href="mailto:sales@corder.se">sales@corder.se</a>. Du kan klaga hos Integritetsskyddsmyndigheten (IMY).</p>
+      </article>
+    </div>
+  </div>
+</main>"""
+    ut = ROT / "pages" / "integritet" / "index.html"
+    ut.parent.mkdir(parents=True, exist_ok=True)
+    ut.write_text(sida("Integritet | Corder", "Så hanterar corder.se uppgifter om besök: inga cookies, inga sparade IP-adresser och enbart summerad statistik över tid.",
+                       url, innehall, [brodsmulor(("Integritet", url))]))
+    print("skrev pages/vanliga-fragor-faq och pages/integritet")
+
+
+def senast_andrad(fil):
+    """Datum för filens senaste commit, eller i dag om filen har ändringar som inte är committade."""
+    rel = str(fil.relative_to(ROT.parent))
+    andrad = subprocess.run(["git", "status", "--porcelain", "--", rel], cwd=ROT.parent, capture_output=True, text=True).stdout.strip()
+    datum = subprocess.run(["git", "log", "-1", "--format=%cs", "--", rel], cwd=ROT.parent, capture_output=True, text=True).stdout.strip()
+    return date.today().isoformat() if andrad or not datum else datum
+
+
+def bygg_sitemap():
+    """Alla riktiga sidor. Omdirigeringar och 404 tas inte med."""
+    sidor = []
+    for fil in sorted(ROT.rglob("index.html"), key=lambda f: (len(f.parts), str(f))):
+        if 'http-equiv="refresh"' not in fil.read_text():
+            vag = fil.parent.relative_to(ROT).as_posix()
+            sidor.append((SITE + "/" if vag == "." else f"{SITE}/{vag}/", senast_andrad(fil)))
+    rader = "\n".join(f"  <url><loc>{u}</loc><lastmod>{d}</lastmod></url>" for u, d in sidor)
+    (ROT / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{rader}\n</urlset>\n')
+    print(f"skrev sitemap.xml med {len(sidor)} sidor")
+
 
 def bygg_404():
     innehall = """<main id="innehall" tabindex="-1">
@@ -726,7 +1073,7 @@ GAMLA_PRODUKTER = ["skarmskydd-iphone-14-13-13-pro", "laddkabel-usb-c-till-light
                    "silikonskal-iphone-16-pro", "silikonskal-iphone-16e"]
 GAMLA_KOLLEKTIONER = ["kablar", "mobilskal", "skarmskydd", "laddare", "bastsaljare", "airpods-skal",
                       "nyheter-2", "sommarkollektion-2022", "all", "frontpage"]
-GAMLA_SIDOR = {"pages/om-oss": "/#om-oss", "pages/contact": "/#kontakt", "pages/vanliga-fragor-faq": "/",
+GAMLA_SIDOR = {"pages/om-oss": "/#om-oss", "pages/contact": "/pages/vanliga-fragor-faq/#kontakt",
                "cart": "/", "account": "/", "account/login": "/", "search": "/", "collections": "/#sortiment",
                "products": "/#sortiment"}
 
@@ -755,12 +1102,14 @@ def bygg_omdirigeringar():
     def produktmal(handle):
         if handle.startswith("silikonskal-iphone-"):
             return "/skal/iphone-" + handle.removeprefix("silikonskal-iphone-") + "/"
-        if handle.startswith(("laddkabel", "laddningskabel", "stromadapter")):
-            return "/#laddning"
+        if handle.startswith(("laddkabel", "laddningskabel")):
+            return "/kablar/"
+        if handle.startswith("stromadapter"):
+            return "/laddare/"
         return "/#sortiment"
     mal.update({f"products/{p}": produktmal(p) for p in GAMLA_PRODUKTER})
     mal.update({f"collections/{k}": "/#sortiment" for k in GAMLA_KOLLEKTIONER})
-    mal.update({"collections/mobilskal": "/skal/", "collections/kablar": "/#laddning", "collections/laddare": "/#laddning",
+    mal.update({"collections/mobilskal": "/skal/", "collections/kablar": "/kablar/", "collections/laddare": "/laddare/",
                 "collections": "/skal/", "products": "/skal/"})
     mal.update({f"blogs/nyheter/{s}": "/blogs/nyheter/" for s in gamla_guider()})
     for vag, till in mal.items():
@@ -774,7 +1123,11 @@ if __name__ == "__main__":
     from bygg_aterforsaljare import bygg_aterforsaljare
     bygg()
     bygg_skal()
+    bygg_tillbehor()
+    bygg_info()
     bygg_valjare()
+    bygg_startsidans_data()
     bygg_404()
     bygg_omdirigeringar()
     bygg_aterforsaljare()
+    bygg_sitemap()

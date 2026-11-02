@@ -1,0 +1,13 @@
+# Adminportalen. Hela tjänsten ligger bakom Cloudflare Access.
+name = "corder-admin"
+main = "src/admin.js"
+compatibility_date = "2026-10-01"
+
+[vars]
+ACCESS_TEAM = "ERSATT-MED-TEAMNAMN"
+ACCESS_AUD = "ERSATT-MED-AUD-FRAN-ACCESS"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "corder-statistik"
+database_id = "ERSATT-MED-ID-FRAN-wrangler-d1-create"

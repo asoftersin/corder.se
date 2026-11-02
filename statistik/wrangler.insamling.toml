@@ -1,0 +1,15 @@
+# Publik: tar emot händelser från corder.se och städar en gång per dygn.
+name = "corder-statistik"
+main = "src/insamling.js"
+compatibility_date = "2026-10-01"
+
+[vars]
+TILLATNA_URSPRUNG = "https://corder.se"
+
+[triggers]
+crons = ["15 2 * * *"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "corder-statistik"
+database_id = "ERSATT-MED-ID-FRAN-wrangler-d1-create"
