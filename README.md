@@ -19,6 +19,8 @@ python3 build/bygg_guider.py
 
 Startsidan (`docs/index.html`) redigeras direkt, utom modelldata, butikskort och spårskript som fylls i av bygget.
 
+Provrummet (`docs/assets/provrum.js`) öppnas från heron och färgkorten och läser samma modelldata. Skärmmåtten som ringar in modellen ligger i `SKARMAR` i skriptet: lägg till nya iPhone-modeller där.
+
 Excel-filen med produktdata uppdateras bara om `openpyxl` finns installerat.
 
 Kontrollera resultatet med `python3 build/kontrollera.py`. Samma kontroll, och statistikmotorns tester, körs på GitHub vid varje push.

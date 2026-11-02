@@ -436,6 +436,81 @@
   .store a { margin-top: 14px; font-size: .9rem; font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
   .store.tip { background: #f4f4f2; border-color: transparent; }
 
+  /* Provrummet: helskärm där färgen fyller hela skärmen */
+  .pr { --bg: #141d17; --fg: #fff; --pr-namn: #2b3a30; position: fixed; inset: 0; width: 100%; height: 100vh; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; overflow: hidden; background: var(--yta, var(--bg)); color: var(--fg); transition: color .35s; }
+  .pr::backdrop { background: transparent; }
+  html.pr-oppen { overflow: hidden; }
+  .pr-flod { position: absolute; inset: 0; }
+  .pr-val a { text-decoration: underline; text-underline-offset: 2px; }
+  .pr-logo { position: absolute; left: var(--gutter); top: 22px; z-index: 2; }
+  .pr-stang { position: absolute; right: calc(var(--gutter) - 10px); top: 12px; z-index: 2; width: 48px; height: 48px; background: none; border: 0; color: inherit; cursor: pointer; }
+  .pr-stang span, .pr-stang span::before { position: absolute; left: 13px; top: 23px; width: 22px; height: 1.5px; background: currentColor; transform: rotate(45deg); }
+  .pr-stang span::before { content: ""; left: 0; top: 0; transform: rotate(90deg); }
+  .pr-sida { position: relative; height: 100%; }
+  .pr-sida[hidden] { display: none; }
+  .pr button:focus-visible, .pr a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+  .pr-val { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(32px, 6vw, 96px); align-items: center; padding: 92px var(--gutter) 40px; overflow-y: auto; }
+  .pr-val .caps { display: block; opacity: .65; margin-bottom: 14px; }
+  .pr-val h2 { font-size: clamp(2.6rem, 6vw, 5.6rem); line-height: .98; }
+  .pr-val p { max-width: 400px; margin: 24px 0 0; font-size: .92rem; opacity: .75; }
+  .pr-val .pr-ledtrad { opacity: 1; font-size: 1.05rem; }
+  .pr-listor .caps { margin: 0 0 8px; }
+  .pr-lista + .caps { margin-top: 28px; }
+  .pr-lista { display: grid; grid-template-columns: 1fr 1fr; column-gap: clamp(20px, 3vw, 40px); }
+  .pr-lista.trolig .pr-rad { font-size: clamp(2.2rem, 4.2vw, 3.6rem); }
+  .pr-rad { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; min-height: 60px; padding: 10px 0; background: none; border: 0; border-top: 1px solid color-mix(in srgb, currentColor 22%, transparent); color: inherit; font: 300 clamp(1.7rem, 3vw, 2.5rem)/1.1 "Inter Tight", sans-serif; letter-spacing: -.025em; text-align: left; cursor: pointer; transition: padding .3s cubic-bezier(.16,1,.3,1); }
+  .pr-rad:hover { padding-left: 10px; }
+  .pr-prickar { display: flex; flex: none; }
+  .pr-prickar i { width: 11px; height: 11px; margin-left: -2px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 1px color-mix(in srgb, currentColor 45%, transparent), 0 0 0 2px var(--bg); }
+  .pr-prov { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(320px, .75fr); }
+  .pr-scen { position: relative; min-height: 0; display: grid; place-items: center; overflow: hidden; container-type: size; perspective: 1400px; touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: grab; }
+  .pr-namn { position: absolute; left: 50%; top: 50%; translate: -50% -50%; white-space: nowrap; font-size: min(calc(172cqw / var(--n, 9)), 62cqh); font-weight: 300; letter-spacing: -.05em; line-height: 1; color: var(--pr-namn); transition: color .35s; }
+  .pr-skal { position: relative; width: auto; height: 82cqh; max-width: 74cqw; object-fit: contain; transform: rotateY(var(--ry, 0deg)) rotateX(var(--rx, 0deg)); transition: transform .4s cubic-bezier(.16,1,.3,1); filter: drop-shadow(0 34px 44px rgba(0,0,0,.42)); pointer-events: none; }
+  .pr-panel { align-self: center; display: flex; flex-direction: column; gap: 22px; padding: 80px var(--gutter) 32px 0; }
+  .pr-byt { display: flex; gap: 12px; align-items: baseline; padding: 0; background: none; border: 0; color: inherit; font: 500 .72rem "Inter Tight", sans-serif; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
+  .pr-byt u { font-weight: 400; letter-spacing: 0; text-transform: none; font-size: .85rem; opacity: .75; text-underline-offset: 2px; }
+  .pr-rubrik { font-size: clamp(1.9rem, 3.4vw, 3rem); }
+  .pr-sw { display: flex; gap: 12px; }
+  .pr-sw button { width: 44px; height: 44px; padding: 0; border-radius: 50%; background: var(--c); border: 3px solid var(--bg); box-shadow: 0 0 0 1px color-mix(in srgb, currentColor 40%, transparent); color: inherit; cursor: pointer; transition: box-shadow .25s; }
+  .pr-sw button[aria-pressed="true"] { box-shadow: 0 0 0 2px currentColor; }
+  .pr-till { display: grid; gap: 8px; }
+  .pr-till button { display: grid; grid-template-columns: 20px 1fr auto; gap: 10px; align-items: center; min-height: 48px; padding: 0 14px; background: none; border: 1px solid color-mix(in srgb, currentColor 30%, transparent); border-radius: 10px; color: inherit; font: 400 .92rem "Inter Tight", sans-serif; text-align: left; cursor: pointer; transition: background .2s; }
+  .pr-till i { position: relative; width: 14px; height: 14px; }
+  .pr-till i::before, .pr-till i::after { content: ""; position: absolute; left: 0; top: 6px; width: 14px; height: 1.5px; background: currentColor; transition: transform .25s; }
+  .pr-till i::after { transform: rotate(90deg); }
+  .pr-till em { font-style: normal; opacity: .75; }
+  .pr-till button[aria-pressed="true"] { background: color-mix(in srgb, currentColor 14%, transparent); border-color: currentColor; }
+  .pr-till button[aria-pressed="true"] i::before { transform: translate(1px, 2px) rotate(45deg) scaleX(.45); transform-origin: left; }
+  .pr-till button[aria-pressed="true"] i::after { transform: translate(4px, 5px) rotate(-45deg) scaleX(.9); transform-origin: left; }
+  .pr .pr-cta { display: flex; align-items: center; justify-content: space-between; min-height: 58px; padding: 0 24px; border-radius: 999px; background: var(--fg); color: var(--bg); font-size: 1rem; font-weight: 500; transition: background .35s, color .35s, transform .2s; }
+  .pr .pr-cta:hover { transform: scale(1.015); }
+  .pr-cta b { font-weight: 500; font-variant-numeric: tabular-nums; }
+  .pr-not { margin: 0; font-size: .8rem; line-height: 1.45; opacity: .7; }
+  .hero-din { display: flex; flex-direction: column; gap: 10px; }
+  .hero-din[hidden] { display: none; }
+  .hero-din .caps { color: rgba(255,255,255,.7); }
+  .hero-din-val { display: flex; flex-wrap: wrap; gap: 8px; }
+  .hero-din-val a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border: 1px solid rgba(255,255,255,.5); border-radius: 999px; font-size: .95rem; }
+  @media (max-width: 900px) {
+    .pr-val { display: block; padding: 76px var(--gutter) 32px; }
+    .pr-val h2 { font-size: clamp(2.5rem, 12vw, 3.4rem); }
+    .pr-val p { margin-top: 14px; }
+    .pr-listor { margin-top: 26px; }
+    .pr-prov { grid-template-columns: 1fr; grid-template-rows: minmax(0, 1fr) auto; }
+    .pr-scen { margin-top: 60px; }
+    .pr-skal { height: 96cqh; max-width: 80cqw; filter: drop-shadow(0 18px 22px rgba(0,0,0,.42)); }
+    .pr-panel { align-self: end; gap: 12px; padding: 12px var(--gutter) calc(14px + env(safe-area-inset-bottom)); }
+    .pr-rubrik { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    .pr-byt { justify-content: space-between; }
+    .pr-sw { justify-content: center; }
+    .pr-till { grid-template-columns: 1fr 1fr; }
+    .pr-till button { grid-template-columns: 14px 1fr; gap: 2px 8px; padding: 8px 12px; font-size: .84rem; line-height: 1.2; }
+    .pr-till em { grid-column: 2; font-size: .78rem; }
+    .pr-not { font-size: .72rem; text-align: center; }
+  }
+  @media (max-width: 900px) and (max-height: 700px) { .pr-not { display: none; } }
+  @media (prefers-reduced-motion: reduce) { .pr, .pr-skal, .pr-rad, .pr-cta, .pr-namn { transition: none; } }
+
 </style>
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -478,7 +553,8 @@
       <span class="caps">Höst 26</span>
       <h1 data-split>Skogsgrön<br>efter mörker.</h1>
       <p>Skal och kablar för 60 kr, laddare för 99 kr. Rekommenderade priser, i fysiska butiker.</p>
-      <a class="hero-cta" href="#hitta-skal">Hitta skal till din iPhone</a>
+      <a class="hero-cta" href="#hitta-skal" data-provrum data-h="provrum" data-v="hero">Prova färgerna på din iPhone</a>
+      <div class="hero-din" hidden><span class="caps">Eller direkt till din modell</span><div class="hero-din-val"></div></div>
     </div>
     <div class="hero-foot"><span class="caps">Designat i Sverige.</span>Skal, laddare och kablar för iPhone sedan 2019.</div>
   </div>
@@ -630,11 +706,11 @@
       <a href="/skal/">Alla skal per modell →</a>
     </div>
     <div class="farger-grid">
-      <a class="farg-kort" href="/skal/iphone-17-pro/" style="--c:#3d5143;--t:#fff"><div class="farg-bild"><img src="img/lifestyle/s/corder-stad-skogsgron-staende.webp" alt="Kvinna vid kajen i Göteborg tittar på sin iPhone i skogsgrönt Corder-skal" loading="lazy" width="480" height="640" style="object-position:30% 40%"></div><div class="farg-band"><b>Skogsgrön</b><span>iPhone 17–18</span></div></a>
-      <a class="farg-kort" href="/skal/" style="--c:#1c1c1c;--t:#fff"><div class="farg-bild skal"><img src="img/cut/s/16p-black.webp" alt="Corder TPU-skal i svart" loading="lazy" width="241" height="480"></div><div class="farg-band"><b>Svart</b><span>Alla modeller</span></div></a>
-      <a class="farg-kort" href="/skal/iphone-16-pro/" style="--c:#4a6684;--t:#fff"><div class="farg-bild skal"><img src="img/cut/s/16p-blue.webp" alt="Corder TPU-skal i blått" loading="lazy" width="241" height="480"></div><div class="farg-band"><b>Blå</b><span>iPhone 14–16</span></div></a>
-      <a class="farg-kort" href="/skal/iphone-16-pro/" style="--c:#f5a493;--t:#111"><div class="farg-bild"><img src="img/lifestyle/s/corder-uteservering-persika.webp" alt="Kvinna på en uteservering håller upp en iPhone i persikofärgat Corder-skal" loading="lazy" width="640" height="800" style="object-position:30% 40%"></div><div class="farg-band"><b>Persika</b><span>iPhone 14–16</span></div></a>
-      <a class="farg-kort" href="/skal/iphone-16-pro/" style="--c:#b9bdf0;--t:#111"><div class="farg-bild"><img src="img/lifestyle/s/corder-portratt-lila.webp" alt="Kvinna håller upp en iPhone i lila Corder-skal" loading="lazy" width="640" height="800" style="object-position:35% 40%"></div><div class="farg-band"><b>Lila</b><span>iPhone 14–16</span></div></a>
+      <a class="farg-kort" href="/skal/iphone-17-pro/" data-provrum data-farg="Skogsgrön" data-h="provrum" data-v="farg" style="--c:#3d5143;--t:#fff"><div class="farg-bild"><img src="img/lifestyle/s/corder-stad-skogsgron-staende.webp" alt="Kvinna vid kajen i Göteborg tittar på sin iPhone i skogsgrönt Corder-skal" loading="lazy" width="480" height="640" style="object-position:30% 40%"></div><div class="farg-band"><b>Skogsgrön</b><span>iPhone 17–18</span></div></a>
+      <a class="farg-kort" href="/skal/" data-provrum data-farg="Svart" data-h="provrum" data-v="farg" style="--c:#1c1c1c;--t:#fff"><div class="farg-bild skal"><img src="img/cut/s/16p-black.webp" alt="Corder TPU-skal i svart" loading="lazy" width="241" height="480"></div><div class="farg-band"><b>Svart</b><span>Alla modeller</span></div></a>
+      <a class="farg-kort" href="/skal/iphone-16-pro/" data-provrum data-farg="Blå" data-h="provrum" data-v="farg" style="--c:#4a6684;--t:#fff"><div class="farg-bild skal"><img src="img/cut/s/16p-blue.webp" alt="Corder TPU-skal i blått" loading="lazy" width="241" height="480"></div><div class="farg-band"><b>Blå</b><span>iPhone 14–16</span></div></a>
+      <a class="farg-kort" href="/skal/iphone-16-pro/" data-provrum data-farg="Persika" data-h="provrum" data-v="farg" style="--c:#f5a493;--t:#111"><div class="farg-bild"><img src="img/lifestyle/s/corder-uteservering-persika.webp" alt="Kvinna på en uteservering håller upp en iPhone i persikofärgat Corder-skal" loading="lazy" width="640" height="800" style="object-position:30% 40%"></div><div class="farg-band"><b>Persika</b><span>iPhone 14–16</span></div></a>
+      <a class="farg-kort" href="/skal/iphone-16-pro/" data-provrum data-farg="Lila" data-h="provrum" data-v="farg" style="--c:#b9bdf0;--t:#111"><div class="farg-bild"><img src="img/lifestyle/s/corder-portratt-lila.webp" alt="Kvinna håller upp en iPhone i lila Corder-skal" loading="lazy" width="640" height="800" style="object-position:35% 40%"></div><div class="farg-band"><b>Lila</b><span>iPhone 14–16</span></div></a>
     </div>
   </div>
 </section>
@@ -742,6 +818,7 @@
   </div>
 </footer>
 
+<script src="/assets/provrum.js?v=1" defer></script>
 <script src="/assets/vendor/gsap.min.js" defer></script>
 <script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
 <script>
