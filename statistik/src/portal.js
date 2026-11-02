@@ -26,6 +26,18 @@ th, td { padding:8px 0; border-bottom:1px solid var(--line); text-align:right; }
 th { color:var(--muted); font-weight:500; font-size:.78rem; }
 th:first-child, td:first-child { text-align:left; word-break:break-word; padding-right:16px; }
 td.tom { color:var(--muted); text-align:left; }
+.arenden { margin-bottom:36px; }
+.ar-huvud { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px; margin-bottom:10px; }
+.ar-huvud h2 { margin:0; }
+.ar-rad { border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin-bottom:8px; }
+.ar-rad.ny { border-color:var(--green); box-shadow:inset 3px 0 0 var(--green); }
+.ar-topp { display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center; }
+.ar-topp b { font-weight:500; }
+.ar-topp span, .ar-rad p { color:var(--muted); font-size:.88rem; }
+.ar-rad p { margin:6px 0 0; white-space:pre-wrap; word-break:break-word; }
+.ar-rad ul { margin:6px 0 0; padding-left:18px; font-size:.88rem; }
+.ar-knappar { display:flex; gap:6px; margin-top:10px; }
+.ar-tom { color:var(--muted); font-size:.9rem; }
 .not { color:var(--muted); font-size:.82rem; margin-top:40px; max-width:680px; }
 .fel { background:#fbeaea; color:#7a1f1f; padding:14px 18px; border-radius:10px; margin-bottom:24px; }
 </style></head>
@@ -35,6 +47,7 @@ td.tom { color:var(--muted); text-align:left; }
 <button data-d="7" aria-pressed="false">7 dagar</button><button data-d="30" aria-pressed="true">30 dagar</button><button data-d="90" aria-pressed="false">90 dagar</button>
 <a class="exp" id="exp" href="/export.csv?dagar=30">Exportera CSV</a></div></header>
 <div id="fel"></div>
+<section class="arenden" aria-labelledby="ar-rubrik"><div class="ar-huvud"><h2 id="ar-rubrik">Ansökningar och beställningar</h2><a class="exp" href="/arenden.csv">Exportera ärenden</a></div><div id="arenden"></div></section>
 <section class="tal" id="tal" aria-live="polite"></section>
 <section class="trend"><h2>Sidvisningar per dag</h2><div id="graf"></div></section>
 <div class="rutnat" id="tabeller"></div>
@@ -65,20 +78,51 @@ async function ladda(dagar) {
     const r = await svar.json(), d = r.dimensioner, h = d.handelser || [];
     const visn = r.trend.reduce((a, x) => a + x.sidvisningar, 0), bes = r.trend.reduce((a, x) => a + x.besokare, 0);
     const butik = summa(h, n => /^(karta|telefon|hitta-butik)/.test(n));
-    const handlare = del(h, n => /^(nedladdning|epost · Prislista)/.test(n)).reduce((a, p) => a + p.antal, 0);
+    const handlare = del(h, n => /^(nedladdning|epost · Prislista|ansokan|bestallning)/.test(n)).reduce((a, p) => a + p.antal, 0);
     document.getElementById('tal').innerHTML = [[visn,'Sidvisningar'],[bes,'Dagliga besökare, summerat'],[butik,'Klick mot butik'],[handlare,'Prislista och nedladdningar']]
       .map(([v, t]) => '<div><b>' + tal(v) + '</b><span>' + esc(t) + '</span></div>').join('');
     document.getElementById('graf').innerHTML = graf(r.trend);
     document.getElementById('tabeller').innerHTML = [
       tabell(NAMN.sidor, d.sidor || []), tabell(NAMN.kallor, d.kallor || []),
-      tabell('Vald skalmodell', del(h, n => n.startsWith('skalmodell')), 'Val'),
+      tabell('Vald skalmodell', del(h, n => /^skalmodell( |$)/.test(n)), 'Val'),
       tabell('Butiksklick', del(h, n => /^(karta|telefon|hitta-butik)/.test(n)), 'Klick'),
-      tabell('Återförsäljare', del(h, n => /^(nedladdning|epost)/.test(n)), 'Klick'),
-      tabell('Övriga händelser', del(h, n => !/^(skalmodell|karta|telefon|hitta-butik|nedladdning|epost)/.test(n)), 'Antal'),
+      tabell('Saknade modeller', del(h, n => /^(skalmodell-saknas|modell-saknas)/.test(n)), 'Klick'),
+      tabell('Återförsäljare', del(h, n => /^(nedladdning|epost|ansokan|bestallning|material)/.test(n)), 'Klick'),
+      tabell('Övriga händelser', del(h, n => !/^(skalmodell|modell-saknas|karta|telefon|hitta-butik|nedladdning|epost|ansokan|bestallning|material)/.test(n)), 'Antal'),
       tabell(NAMN.kampanjer, d.kampanjer || []), tabell(NAMN.enheter, d.enheter || []), tabell(NAMN.lander, d.lander || []),
     ].join('');
   } catch (e) { fel.innerHTML = '<div class="fel" role="alert">Kunde inte hämta statistiken. Ladda om sidan, eller logga in igen.</div>'; }
 }
+const TYP = { ansokan:'Ansökan', bestallning:'Beställning' };
+function arendeRad(a) {
+  let rader = [];
+  try { rader = JSON.parse(a.rader || '[]'); } catch {}
+  const info = [a.ort, a.butikstyp, a.butiker && a.butiker + ' butiker', a.telefon].filter(Boolean).map(esc).join(' · ');
+  return '<article class="ar-rad ' + (a.status === 'ny' ? 'ny' : '') + '"><div class="ar-topp"><b>' + esc(a.foretag) + '</b><span>' + esc(TYP[a.typ] || a.typ) + ' · ' + esc(a.skapad) + ' · ' + esc(a.status) + '</span></div>'
+    + '<p>' + esc(a.kontakt) + ' · <a href="mailto:' + esc(a.epost) + '">' + esc(a.epost) + '</a>' + (info ? ' · ' + info : '') + '</p>'
+    + (a.meddelande ? '<p>' + esc(a.meddelande) + '</p>' : '')
+    + (rader.length ? '<ul>' + rader.map(r => '<li>' + esc(r.antal) + ' st ' + esc(r.artikel || '') + ' (' + esc(r.ean) + ')</li>').join('') + '</ul>' : '')
+    + '<div class="ar-knappar"><button data-id="' + Number(a.id) + '" data-status="' + (a.status === 'ny' ? 'hanterad' : 'ny') + '">' + (a.status === 'ny' ? 'Markera hanterad' : 'Markera som ny') + '</button>'
+    + '<button data-id="' + Number(a.id) + '" data-radera="1" aria-label="Radera ärende från ' + esc(a.foretag) + '">Radera</button></div></article>';
+}
+async function laddaArenden() {
+  const yta = document.getElementById('arenden');
+  try {
+    const r = await fetch('/api/arenden');
+    if (!r.ok) throw new Error(r.status);
+    const lista = await r.json();
+    yta.innerHTML = lista.length ? lista.map(arendeRad).join('') : '<p class="ar-tom">Inga ärenden än.</p>';
+  } catch { yta.innerHTML = '<div class="fel" role="alert">Kunde inte hämta ärendena.</div>'; }
+}
+document.getElementById('arenden').addEventListener('click', async e => {
+  const k = e.target.closest('button[data-id]');
+  if (!k) return;
+  if (k.dataset.radera && !confirm('Radera ärendet? Det går inte att ångra.')) return;
+  const r = await fetch('/api/arenden/' + k.dataset.id, { method: k.dataset.radera ? 'DELETE' : 'POST', headers: { 'Content-Type': 'application/json' }, body: k.dataset.radera ? undefined : JSON.stringify({ status: k.dataset.status }) });
+  if (!r.ok) alert('Det gick inte att ändra ärendet.');
+  laddaArenden();
+});
 document.querySelectorAll('[data-d]').forEach(k => k.addEventListener('click', () => ladda(+k.dataset.d)));
 ladda(30);
+laddaArenden();
 </script></body></html>`;

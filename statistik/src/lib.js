@@ -50,6 +50,36 @@ export function tolkaHandelse(data, egenVard = 'corder.se') {
   };
 }
 
+const EPOST = /^[^\s@"'<>]{1,64}@[^\s@"'<>]{1,190}\.[^\s@"'<>.]{2,}$/;
+export const MAX_ARENDEN_PER_BESOKARE = 10;
+export const MAX_ARENDEN_PER_DAG = 300;
+export const SPARA_ARENDEN_DAGAR = 730;
+
+// Fällan är ett dolt fält som bara robotar fyller i. Ett formulär som skickas på under två sekunder är också en robot.
+export const arRobotformular = data => !data || !!data.webbplats || (typeof data.tid === 'number' && data.tid < 2000);
+
+// Ogiltiga formulär ger null.
+export function tolkaArende(data) {
+  if (!data || typeof data !== 'object' || !['ansokan', 'bestallning'].includes(data.typ)) return null;
+  const foretag = kort(data.foretag, 120), kontakt = kort(data.kontakt, 120), epost = kort(data.epost, 254);
+  if (!foretag || !kontakt || !epost || !EPOST.test(epost)) return null;
+  const leverans = kort(data.leverans, 200);
+  let rader = null;
+  if (data.typ === 'bestallning') {
+    if (!Array.isArray(data.rader) || !data.rader.length || data.rader.length > 150) return null;
+    rader = [];
+    for (const r of data.rader) {
+      const antal = Number(r?.antal);
+      if (!/^\d{13}$/.test(r?.ean) || !Number.isInteger(antal) || antal < 1 || antal > 100000) return null;
+      rader.push({ ean: r.ean, artikel: kort(r.artikel, 120), antal });
+    }
+  }
+  return {
+    typ: data.typ, foretag, kontakt, epost, telefon: kort(data.telefon, 40), ort: kort(data.ort, 80), butikstyp: kort(data.butikstyp, 60),
+    butiker: kort(String(data.butiker ?? ''), 10), meddelande: [leverans && `Leverans: ${leverans}`, kort(data.meddelande, 2000)].filter(Boolean).join('\n') || null, rader: rader && JSON.stringify(rader),
+  };
+}
+
 export async function besokshash(nyckel, ip, ua) {
   const d = new TextEncoder().encode(`${nyckel}|${ip}|${ua}`);
   const h = new Uint8Array(await crypto.subtle.digest('SHA-256', d));

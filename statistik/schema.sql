@@ -31,3 +31,28 @@ CREATE TABLE IF NOT EXISTS dagsumma (
   unika INTEGER NOT NULL,
   PRIMARY KEY (dag, dimension, nyckel)
 );
+
+-- Ansökningar och beställningar från butiker. Raderas senast efter 24 månader.
+CREATE TABLE IF NOT EXISTS arenden (
+  id INTEGER PRIMARY KEY,
+  skapad TEXT NOT NULL,
+  typ TEXT NOT NULL,          -- 'ansokan' eller 'bestallning'
+  status TEXT NOT NULL DEFAULT 'ny',
+  foretag TEXT NOT NULL,
+  kontakt TEXT NOT NULL,
+  epost TEXT NOT NULL,
+  telefon TEXT,
+  ort TEXT,
+  butikstyp TEXT,
+  butiker TEXT,
+  meddelande TEXT,
+  rader TEXT                  -- JSON med ean, artikel och antal
+);
+
+-- Räknar formulär per dygn för att stoppa missbruk. Raderas efter dygnet.
+CREATE TABLE IF NOT EXISTS arende_takt (
+  dag TEXT NOT NULL,
+  besokare TEXT NOT NULL,
+  antal INTEGER NOT NULL,
+  PRIMARY KEY (dag, besokare)
+);

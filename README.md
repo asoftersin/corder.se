@@ -21,6 +21,8 @@ Startsidan (`docs/index.html`) redigeras direkt, utom modelldata, butikskort och
 
 Excel-filen med produktdata uppdateras bara om `openpyxl` finns installerat.
 
+Kontrollera resultatet med `python3 build/kontrollera.py`. Samma kontroll, och statistikmotorns tester, körs på GitHub vid varje push.
+
 ## Förhandsgranska lokalt
 
 ```bash

@@ -60,6 +60,25 @@ const csvCell = v => {
   return /[;"\n]/.test(saker) ? `"${saker.replace(/"/g, '""')}"` : saker;
 };
 
+function arendenCsv(rader) {
+  const kol = ['skapad', 'typ', 'status', 'foretag', 'kontakt', 'epost', 'telefon', 'ort', 'butikstyp', 'butiker', 'meddelande', 'rader'];
+  return '\ufeff' + [kol, ...rader.map(r => kol.map(k => r[k]))].map(x => x.map(csvCell).join(';')).join('\r\n') + '\r\n';
+}
+
+// Ändringar kräver JSON från portalen själv, så att en annan webbplats inte kan skicka dem med din inloggning.
+const egenBegaran = (request, url) => request.headers.get('Origin') === url.origin && request.headers.get('Content-Type') === 'application/json';
+
+async function andraArende(request, env, id) {
+  if (request.method === 'DELETE') {
+    await env.DB.prepare('DELETE FROM arenden WHERE id = ?').bind(id).run();
+    return svar('{}', 'application/json; charset=utf-8');
+  }
+  const { status } = await request.json().catch(() => ({}));
+  if (!['ny', 'hanterad'].includes(status)) return svar('Ogiltig status', 'text/plain; charset=utf-8', 400);
+  await env.DB.prepare('UPDATE arenden SET status = ? WHERE id = ?').bind(status, id).run();
+  return svar('{}', 'application/json; charset=utf-8');
+}
+
 function csv(r) {
   const rader = [['Dimension', 'Nyckel', 'Antal', 'Dagliga besökare summerat']];
   for (const d of r.trend) rader.push(['dag', d.dag, d.sidvisningar, d.besokare]);
@@ -69,11 +88,22 @@ function csv(r) {
 
 export default {
   async fetch(request, env) {
-    if (request.method !== 'GET') return svar('Metoden stöds inte', 'text/plain; charset=utf-8', 405);
     let ok = false;
     try { ok = await inloggad(request, env); } catch (e) { console.error('inloggning', e.message); }
     if (!ok) return svar('Du behöver logga in.', 'text/plain; charset=utf-8', 403);
     const url = new URL(request.url);
+    const arende = url.pathname.match(/^\/api\/arenden\/(\d+)$/);
+    if (arende && ['POST', 'DELETE'].includes(request.method)) {
+      if (!egenBegaran(request, url)) return svar('Nekad', 'text/plain; charset=utf-8', 403);
+      return andraArende(request, env, +arende[1]);
+    }
+    if (request.method !== 'GET') return svar('Metoden stöds inte', 'text/plain; charset=utf-8', 405);
+    if (url.pathname === '/api/arenden' || url.pathname === '/arenden.csv') {
+      const { results } = await env.DB.prepare('SELECT * FROM arenden ORDER BY id DESC LIMIT 500').all();
+      return url.pathname === '/arenden.csv'
+        ? svar(arendenCsv(results), 'text/csv; charset=utf-8', 200, { 'Content-Disposition': 'attachment; filename="corder-arenden.csv"' })
+        : svar(JSON.stringify(results), 'application/json; charset=utf-8');
+    }
     if (url.pathname === '/') return svar(PORTAL, 'text/html; charset=utf-8');
     if (url.pathname === '/api/rapport' || url.pathname === '/export.csv') {
       const dagar = [7, 30, 90].includes(+url.searchParams.get('dagar')) ? +url.searchParams.get('dagar') : 30;

@@ -54,6 +54,22 @@ Allt körs från den här mappen. Gratisnivån räcker.
 
 7. Öppna `https://corder-admin.<konto>.workers.dev`, logga in med engångskoden och kontrollera att besöket syns.
 
+## Ansökningar och beställningar
+
+Formulären på `/aterforsaljare/` och `/aterforsaljare/bestall/` skickas till `POST /f` och syns överst i portalen, där de kan markeras som hanterade, raderas och exporteras. De raderas automatiskt efter 24 månader. Så länge `STATISTIK_URL` saknas i bygget, eller om tjänsten inte svarar, öppnas besökarens e-postprogram i stället.
+
+Har databasen redan driftsatts körs `npm run db:skapa` igen för att skapa de nya tabellerna. Det påverkar inte befintliga data.
+
+Skydd mot skräp: ursprungskontroll, dold fälla, tidskontroll och högst 10 formulär per besökare och 300 totalt per dygn. Vill ni ha ett hårdare skydd kan Cloudflare Turnstile läggas till.
+
+**Mejl om nya ärenden är valfritt.** Utan det syns ärendena bara i portalen, så kontrollera den regelbundet. För att slå på det: skapa ett konto hos [Resend](https://resend.com), verifiera avsändardomänen och kör:
+
+```bash
+npx wrangler secret put RESEND_API_KEY -c wrangler.insamling.toml
+```
+
+Lägg sedan till `AVISERA_FRAN` och `AVISERA_TILL` under `[vars]` i `wrangler.insamling.toml` och driftsätt. Nämn Resend på integritetssidan när det är på.
+
 ## Köra lokalt
 
 Skapa `statistik/.dev.vars`:
@@ -83,6 +99,10 @@ Starta sedan `statistik-insamling` och `statistik-admin` från `.claude/launch.j
 | `skalmodell`, `skalmodell-saknas` | Val i skalväljaren |
 | `epost`, `nedladdning` | Klick på e-postlänk eller produktdata och bildpaket |
 | `film-spelad`, `film-ljud` | Filmen startar eller ljudet slås på |
+| `modell-saknas` | Någon öppnar en modell vi saknar skal till |
+| `kit`, `passar-modell` | Klick i Allt till din iPhone, val i Vad passar min iPhone? |
+| `ansokan-skickad`, `bestallning-skickad`, `ansokan-mejl`, `bestallning-mejl` | Ett formulär skickas (bara händelsen, inga uppgifter) |
+| `bestall`, `material`, `material-utskrift` | Klick till beställning och säljmaterial, utskrift av skylt |
 
 Lägg till fler med `data-h="namn" data-v="värde"` på en länk eller knapp.
 

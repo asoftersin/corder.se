@@ -357,3 +357,141 @@ main:focus { outline: none; }
 .b2b-kvitto b { display: block; color: var(--ink); font-weight: 500; font-size: 1.05rem; }
 .b2b-kvitto a { text-underline-offset: 3px; }
 @media (max-width: 520px) { .b2b-kvitto { grid-template-columns: 1fr; } }
+
+/* Två knappar i uppmaningen */
+.cta-knappar { display: flex; flex-wrap: wrap; gap: 10px; }
+.cta .btn.ghost { background: transparent; color: #fff; box-shadow: inset 0 0 0 1px rgba(255,255,255,.55); }
+.tabell { overflow-x: auto; }
+
+/* Allt till din iPhone */
+.kit { margin-bottom: clamp(40px, 6vw, 72px); }
+.kit h2 { font-size: clamp(1.5rem, 2.8vw, 2rem); font-weight: 400; letter-spacing: -.02em; margin: 0 0 18px; }
+.kit-delar { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.kit-del { display: flex; align-items: center; gap: 16px; padding: 14px 18px; border: 1px solid var(--line); border-radius: 14px; text-decoration: none; transition: border-color .2s; }
+.kit-del:hover { border-color: var(--ink); }
+.kit-del img { width: 56px; height: 72px; object-fit: contain; flex: none; }
+.kit-del span { display: grid; gap: 1px; line-height: 1.35; }
+.kit-del small { color: var(--muted); font-size: .78rem; }
+.kit-del b { font-weight: 500; font-size: .95rem; }
+.kit-del em { font-style: normal; color: var(--muted); font-size: .88rem; }
+.kit-summa { color: var(--muted); font-size: .92rem; margin: 14px 0 0; }
+.kit-summa b { color: var(--ink); font-weight: 500; }
+@media (max-width: 760px) { .kit-delar { grid-template-columns: 1fr; } }
+
+/* Modeller utan skal */
+.saknas { background: var(--soft); border-radius: var(--radius); padding: clamp(22px, 3vw, 36px); margin-bottom: clamp(32px, 5vw, 56px); }
+.saknas h2 { font-size: clamp(1.3rem, 2.2vw, 1.6rem); font-weight: 400; margin: 0; }
+.saknas > p { color: var(--muted); margin: 8px 0 16px; max-width: 620px; }
+.saknas-lista { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 8px; align-items: start; }
+.saknas-rad { background: var(--paper); border-radius: 10px; padding: 0 16px; }
+.saknas-rad summary { cursor: pointer; min-height: 48px; display: flex; align-items: center; font-weight: 500; font-size: .95rem; }
+.saknas-rad p { margin: 0 0 14px; color: var(--muted); font-size: .9rem; line-height: 1.55; }
+
+/* Vad passar min iPhone? */
+.passar-val { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin-bottom: 20px; }
+.passar-val label { font-weight: 500; }
+.passar-val select { font: inherit; min-height: 48px; min-width: 220px; padding: 0 14px; border: 1px solid var(--ink); border-radius: 10px; background: var(--paper); color: var(--ink); }
+.passar-val a { color: var(--muted); font-size: .92rem; text-underline-offset: 3px; }
+.passar-tabell { margin-bottom: clamp(32px, 5vw, 56px); }
+.passar-tabell table { width: 100%; border-collapse: collapse; font-size: .95rem; line-height: 1.45; }
+.passar-tabell th, .passar-tabell td { text-align: left; padding: 14px 16px 14px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.passar-tabell thead th { color: var(--muted); font-weight: 500; font-size: .82rem; }
+.passar-tabell tbody th { font-weight: 500; white-space: nowrap; }
+.passar-tabell a { text-underline-offset: 3px; }
+.passar-tabell tr[hidden] { display: none; }
+.passar-tabell tr:target { background: var(--soft); }
+@media (max-width: 820px) {
+  .passar-tabell thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .passar-tabell tr { display: block; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .passar-tabell tbody th, .passar-tabell td { display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding: 3px 0; border: 0; }
+  .passar-tabell tbody th { display: block; font-size: 1.1rem; padding-bottom: 8px; }
+  .passar-tabell td::before { content: attr(data-rubrik); color: var(--muted); font-size: .85rem; }
+}
+
+/* Ansökan till återförsäljare */
+.b2b-ansok { background: #3d5143; color: #fff; padding: clamp(72px, 9vw, 128px) 0; scroll-margin-top: 64px; }
+.b2b-ansok-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+.b2b-ansok h2 { font-size: clamp(2.2rem, 4.6vw, 3.8rem); font-weight: 300; letter-spacing: -.03em; line-height: 1.05; margin: 0; }
+.b2b-ansok-text p { color: rgba(255,255,255,.78); font-size: 1.08rem; margin: 20px 0 0; }
+.b2b-ansok-text a { color: #fff; }
+@media (max-width: 860px) { .b2b-ansok-grid { grid-template-columns: 1fr; } }
+
+/* Formulär */
+.form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; background: var(--paper); color: var(--ink); border-radius: 22px; padding: clamp(22px, 3vw, 36px); }
+.form label { display: grid; gap: 5px; font-size: .88rem; font-weight: 500; }
+.form .bred { grid-column: 1 / -1; }
+.form input, .form select, .form textarea { font: 400 1rem/1.4 inherit; font-family: inherit; width: 100%; min-height: 48px; padding: 10px 12px; border: 1px solid #b9b9b5; border-radius: 10px; background: var(--paper); color: var(--ink); }
+.form textarea { min-height: 96px; resize: vertical; }
+.form input:focus-visible, .form select:focus-visible, .form textarea:focus-visible { outline: 2px solid var(--ink); outline-offset: 1px; border-color: var(--ink); }
+.form .falla { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.form small { color: var(--muted); font-size: .82rem; line-height: 1.45; }
+.form .btn { justify-self: start; border: 0; cursor: pointer; font-family: inherit; min-height: 48px; padding: 12px 28px; font-size: 1rem; }
+.form-svar { grid-column: 1 / -1; padding: 14px 16px; border-radius: 10px; background: var(--soft); font-size: .95rem; line-height: 1.5; }
+.form-svar:empty { display: none; }
+.form-svar.fel { background: #fbeaea; color: #7a1f1f; }
+.form-svar textarea { margin-top: 10px; font-size: .85rem; }
+@media (max-width: 520px) { .form { grid-template-columns: 1fr; } }
+
+/* Beställning */
+.best-sok { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: end; margin-bottom: 16px; }
+.best-sok label { display: grid; gap: 5px; font-size: .88rem; font-weight: 500; }
+.best-sok input { font: inherit; min-height: 48px; padding: 10px 12px; border: 1px solid #b9b9b5; border-radius: 10px; width: 100%; }
+.best-summa { font-size: .95rem; color: var(--muted); padding-bottom: 12px; }
+.best-summa b { color: var(--ink); font-weight: 500; }
+.best-tabell { margin-bottom: clamp(32px, 5vw, 56px); }
+.best-tabell table { width: 100%; border-collapse: collapse; font-size: .92rem; line-height: 1.4; }
+.best-tabell th, .best-tabell td { text-align: left; padding: 8px 12px 8px 0; border-bottom: 1px solid var(--line); }
+.best-tabell thead th { color: var(--muted); font-weight: 500; font-size: .8rem; }
+.best-tabell tbody th { font-weight: 400; }
+.best-tabell input { font: inherit; width: 84px; min-height: 44px; padding: 6px 10px; border: 1px solid #b9b9b5; border-radius: 8px; text-align: right; }
+.best-tabell tr.grupp th { padding-top: 22px; font-weight: 500; border-bottom: 1px solid var(--ink); }
+.best-tabell tr[hidden] { display: none; }
+@media (max-width: 620px) { .best-tabell .ean { display: none; } }
+
+/* Kundcase */
+.case-tal { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 12px; margin-bottom: clamp(40px, 6vw, 72px); }
+.case-tal div { background: var(--soft); border-radius: 14px; padding: 22px 24px; }
+.case-tal b { display: block; font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 300; letter-spacing: -.03em; line-height: 1.1; }
+.case-tal span { color: var(--muted); font-size: .9rem; }
+
+/* Säljmaterial: storleken styrs av skyltens bredd, så förhandsvisning och utskrift ser likadana ut */
+.mat-val { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 14px 16px; background: var(--soft); border-radius: 14px; padding: 20px; margin-bottom: 28px; }
+.mat-val label { display: grid; gap: 5px; font-size: .88rem; font-weight: 500; }
+.mat-val input { font: inherit; min-height: 48px; padding: 10px 12px; border: 1px solid #b9b9b5; border-radius: 10px; width: 100%; background: var(--paper); }
+.mat-knapp { align-self: end; }
+.mat-rutnat { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: clamp(24px, 3vw, 36px); padding-bottom: clamp(56px, 7vw, 96px); }
+.mat-post h2 { font-size: 1.05rem; font-weight: 500; margin: 0 0 3px; }
+.mat-post > p { color: var(--muted); font-size: .88rem; line-height: 1.45; margin: 0 0 10px; }
+.mat-post .btn { margin-top: 12px; border: 0; cursor: pointer; font-family: inherit; min-height: 44px; }
+.skylt { container-type: inline-size; aspect-ratio: 210 / 297; background: #fff; color: #111; box-shadow: 0 0 0 1px var(--line); border-radius: 4px; overflow: hidden; }
+.skylt-inne { height: 100%; display: flex; flex-direction: column; padding: 8cqw; }
+.skylt-logo { font-size: 6cqw; letter-spacing: .03em; }
+.skylt h3 { font-size: 13cqw; font-weight: 300; letter-spacing: -.04em; line-height: 1; margin: 7cqw 0 3cqw; }
+.skylt p { font-size: 3.8cqw; line-height: 1.4; color: #444; margin: 0; }
+.skylt-bild { flex: 1; min-height: 0; display: flex; justify-content: center; align-items: center; gap: 4cqw; padding: 3cqw 0; }
+.skylt-bild img { height: 100%; max-width: 42%; min-height: 0; object-fit: contain; }
+.skylt-pris { font-size: 24cqw; font-weight: 300; letter-spacing: -.05em; line-height: 1; margin-top: auto; }
+.skylt-pris small { font-size: 7cqw; letter-spacing: 0; }
+.skylt-fot { display: flex; justify-content: space-between; gap: 3cqw; font-size: 2.6cqw; color: #666; border-top: .3cqw solid #111; margin-top: 4cqw; padding-top: 2cqw; }
+/* Laddarna är vita och syns inte mot vitt papper */
+.skylt.tonad .skylt-bild { background: #e6e5e0; border-radius: 3cqw; margin-top: 4cqw; }
+.skylt.morkgron { background: #3d5143; color: #fff; }
+.skylt.morkgron p, .skylt.morkgron .skylt-fot { color: rgba(255,255,255,.8); }
+.skylt.morkgron .skylt-fot { border-color: #fff; }
+.skylt table { width: 100%; border-collapse: collapse; font-size: 3.5cqw; line-height: 1.3; margin-top: 4cqw; }
+.skylt th, .skylt td { text-align: left; padding: 2.4cqw 2cqw 2.4cqw 0; border-bottom: .2cqw solid #bbb; vertical-align: top; }
+.skylt thead th { font-weight: 500; font-size: 2.9cqw; color: #555; }
+.skylt tbody th { font-weight: 500; }
+@media print {
+  @page { size: A4 portrait; margin: 0; }
+  body * { visibility: hidden; }
+  html, body { background: #fff; padding: 0 !important; }
+  .top, footer, .skip, .index-head, .mat-val { display: none !important; }
+  .mat-rutnat { display: block; padding: 0; }
+  .mat-post { display: none; }
+  body:not([data-skriv]) .mat-post, body[data-skriv="alla"] .mat-post, .mat-post.skriv { display: block; break-after: page; }
+  .mat-post > h2, .mat-post > p, .mat-post > .btn { display: none; }
+  .skylt, .skylt * { visibility: visible; }
+  .skylt { width: 210mm; height: 297mm; aspect-ratio: auto; box-shadow: none; border-radius: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  main .wrap { max-width: none; padding: 0; margin: 0; }
+}

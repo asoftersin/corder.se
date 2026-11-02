@@ -104,3 +104,48 @@ test('insamlingen läser innehållet innan svaret skickas', async () => {
   await ins.fetch(req, { TILLATNA_URSPRUNG: 'https://corder.se' }, { waitUntil() {} });
   assert.equal(req.bodyUsed, true);
 });
+
+test('formulär: giltiga ärenden godkänns och fel stoppas', async () => {
+  const { tolkaArende, arRobotformular } = await import('../src/lib.js');
+  const bas = { typ: 'ansokan', foretag: 'Kiosken', kontakt: 'Kim', epost: 'kim@kiosken.se', tid: 9000 };
+  assert.equal(tolkaArende(bas).foretag, 'Kiosken');
+  assert.equal(tolkaArende({ ...bas, typ: 'annat' }), null);
+  assert.equal(tolkaArende({ ...bas, epost: 'inte-en-adress' }), null);
+  assert.equal(tolkaArende({ ...bas, epost: 'a"b@x.se' }), null);
+  assert.equal(tolkaArende({ ...bas, foretag: '  ' }), null);
+  const best = { ...bas, typ: 'bestallning', rader: [{ ean: '7350140690283', artikel: 'Kabel', antal: 5 }] };
+  assert.deepEqual(JSON.parse(tolkaArende(best).rader), best.rader);
+  assert.equal(tolkaArende({ ...best, leverans: 'Storgatan 1', meddelande: 'Hej' }).meddelande, 'Leverans: Storgatan 1\nHej');
+  assert.equal(tolkaArende({ ...best, rader: [] }), null);
+  assert.equal(tolkaArende({ ...best, rader: [{ ean: 'abc', antal: 5 }] }), null);
+  assert.equal(tolkaArende({ ...best, rader: [{ ean: '7350140690283', antal: 0 }] }), null);
+  assert.equal(tolkaArende({ ...best, rader: Array(151).fill(best.rader[0]) }), null);
+  assert.equal(arRobotformular({ ...bas, webbplats: 'x' }), true);
+  assert.equal(arRobotformular({ ...bas, tid: 500 }), true);
+  assert.equal(arRobotformular(bas), false);
+});
+
+test('formulär: främmande ursprung nekas och robotfällan sparar inget', async () => {
+  const { default: ins } = await import('../src/insamling.js');
+  let sparat = 0;
+  const env = { TILLATNA_URSPRUNG: 'https://corder.se', DB: new Proxy({}, { get() { sparat++; throw new Error('databasen ska inte användas'); } }) };
+  const ctx = { waitUntil() {} };
+  const post = (origin, kropp) => ins.fetch(new Request('https://x.workers.dev/f', { method: 'POST', headers: { Origin: origin, 'User-Agent': 'Mozilla/5.0' }, body: JSON.stringify(kropp) }), env, ctx);
+  assert.equal((await post('https://ond.se', {})).status, 403);
+  assert.equal((await post('https://corder.se', { typ: 'ansokan', webbplats: 'spam' })).status, 201);
+  assert.equal((await post('https://corder.se', { typ: 'annat', tid: 9000 })).status, 400);
+  assert.equal(sparat, 0);
+});
+
+test('portalens ändringar kräver inloggning och egen begäran', async () => {
+  const { default: admin } = await import('../src/admin.js');
+  const utan = await admin.fetch(new Request('https://x.workers.dev/api/arenden/1', { method: 'DELETE' }), {});
+  assert.equal(utan.status, 403);
+  const lista = await admin.fetch(new Request('https://x.workers.dev/api/arenden'), {});
+  assert.equal(lista.status, 403);
+  let anvand = 0;
+  const env = { LOKAL_UTAN_INLOGGNING: 'ja', DB: new Proxy({}, { get() { anvand++; throw new Error('nej'); } }) };
+  const frammande = await admin.fetch(new Request('http://localhost:8788/api/arenden/1', { method: 'DELETE', headers: { Origin: 'https://ond.se', 'Content-Type': 'application/json' } }), env);
+  assert.equal(frammande.status, 403);
+  assert.equal(anvand, 0);
+});

@@ -12,7 +12,7 @@ from pathlib import Path
 from urllib.parse import quote
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from bygg_guider import KABLAR, LADDARE, PRIS, ROT, SITE, liten, matt, sida  # noqa: E402
+from bygg_guider import KABLAR, LADDARE, MODELLER, PRIS, ROT, SITE, SKAL_EAN, STATISTIK_URL, bild, brodsmulor, liten, matt, sida  # noqa: E402
 
 UT = ROT / "aterforsaljare"
 URL = f"{SITE}/aterforsaljare/"
@@ -22,18 +22,6 @@ TEXT = ("Hej!\n\nVi är intresserade av att sälja Corder.\n\nFöretag:\nAntal b
         "Kontaktperson och telefon:\n\nSkicka gärna prislista och förslag på startsortiment.\n")
 MAILTO = f"mailto:{MAIL}?subject={quote(AMNE)}&body={quote(TEXT)}"
 
-SKAL_EAN = {
-    ("iPhone 14", "Svart"): "7350140690405", ("iPhone 14", "Blå"): "7350140690719", ("iPhone 14", "Lila"): "7350140690726", ("iPhone 14", "Persika"): "7350140690733",
-    ("iPhone 14 Pro", "Svart"): "7350140690412", ("iPhone 14 Pro", "Blå"): "7350140690740", ("iPhone 14 Pro", "Lila"): "7350140690757", ("iPhone 14 Pro", "Persika"): "7350140690764",
-    ("iPhone 15", "Svart"): "7350140690511", ("iPhone 15", "Blå"): "7350140690528", ("iPhone 15", "Lila"): "7350140690535", ("iPhone 15", "Persika"): "7350140690542",
-    ("iPhone 15 Pro", "Svart"): "7350140690559", ("iPhone 15 Pro", "Blå"): "7350140690566", ("iPhone 15 Pro", "Lila"): "7350140690573", ("iPhone 15 Pro", "Persika"): "7350140690580",
-    ("iPhone 16e", "Svart"): "7350140690672", ("iPhone 16e", "Blå"): "7350140690689", ("iPhone 16e", "Lila"): "7350140690696", ("iPhone 16e", "Persika"): "7350140690702",
-    ("iPhone 16", "Svart"): "7350140690597", ("iPhone 16", "Blå"): "7350140690603", ("iPhone 16", "Lila"): "7350140690610", ("iPhone 16", "Persika"): "7350140690627",
-    ("iPhone 16 Pro", "Svart"): "7350140690634", ("iPhone 16 Pro", "Blå"): "7350140690641", ("iPhone 16 Pro", "Lila"): "7350140690658", ("iPhone 16 Pro", "Persika"): "7350140690665",
-    ("iPhone 17", "Svart"): "7350140690788", ("iPhone 17", "Skogsgrön"): "7350140690795",
-    ("iPhone 17 Pro", "Svart"): "7350140690801", ("iPhone 17 Pro", "Skogsgrön"): "7350140690818",
-    ("iPhone 18 Pro", "Svart"): "7350140690825", ("iPhone 18 Pro", "Skogsgrön"): "7350140690832",
-}
 SKAL_MODELLER = [  # modell, slug, bildprefix, färger
     ("iPhone 14", "iphone-14", "14", ["Svart", "Blå", "Lila", "Persika"]),
     ("iPhone 14 Pro", "iphone-14-pro", "14p", ["Svart", "Blå", "Lila", "Persika"]),
@@ -98,7 +86,8 @@ def skriv_bildpaket():
     filer = [f for f in filer if f.stem != "kabel-usb-c-lightning-vit"]  # säljs inte
     with zipfile.ZipFile(UT / "corder-bildpaket.zip", "w", zipfile.ZIP_STORED) as z:
         for f in filer:
-            z.write(f, f"corder-bildpaket/{f.parent.name}/{f.name}")
+            # Fast datum, så att filen bara ändras när bilderna gör det.
+            z.writestr(zipfile.ZipInfo(f"corder-bildpaket/{f.parent.name}/{f.name}", (2026, 1, 1, 0, 0, 0)), f.read_bytes())
         z.writestr("corder-bildpaket/LASMIG.txt",
                    "Frilagda produktbilder från Corder (WebP med transparent bakgrund).\n"
                    "Fritt att använda för att marknadsföra och sälja Corders produkter.\n"
@@ -115,6 +104,34 @@ FAQ = [
     ("Vad händer om det inte säljer?", "Första startpaketet har 90 dagars säljgaranti. Det som inte har sålts byter vi mot andra artiklar eller tar tillbaka och krediterar, så länge förpackningen är obruten."),
     ("Säljer Corder själva på nätet?", "Nej. Corder säljs bara i fysiska butiker, så ni konkurrerar inte med vår egen webbutik."),
 ]
+
+
+def formular(typ, amne, tack, falt, knapp):
+    url = f'{STATISTIK_URL.rstrip("/")}/f' if STATISTIK_URL else ""
+    notis = ("Vi använder uppgifterna för att svara er." if url else "Knappen öppnar ditt e-postprogram med uppgifterna ifyllda.")
+    return f"""<form class="form" data-form="{typ}" data-url="{url}" data-mejl="{MAIL}" data-amne="{amne}" data-tack="{tack}">
+      {falt}
+      <label class="falla" aria-hidden="true">Lämna tomt<input name="webbplats" tabindex="-1" autocomplete="off"></label>
+      <small class="bred">{notis} Läs mer under <a href="/pages/integritet/">integritet</a>.</small>
+      <button class="btn" type="submit">{knapp}</button>
+      <div class="form-svar" role="status" aria-live="polite"></div>
+    </form>"""
+
+
+GRUNDFALT = """<label>Företag<input name="foretag" required maxlength="120" autocomplete="organization"></label>
+      <label>Kontaktperson<input name="kontakt" required maxlength="120" autocomplete="name"></label>
+      <label>E-post<input name="epost" type="email" required maxlength="254" autocomplete="email"></label>
+      <label>Telefon<input name="telefon" type="tel" maxlength="40" autocomplete="tel"></label>"""
+
+
+def ansokan():
+    typer = "".join(f"<option>{t}</option>" for t in ("Kiosk", "Servicehandel", "Livsmedelsbutik", "Drivmedelsstation", "Elektronikbutik", "Grossist", "Annat"))
+    falt = f"""{GRUNDFALT}
+      <label>Ort<input name="ort" maxlength="80" autocomplete="address-level2"></label>
+      <label>Typ av butik<select name="butikstyp"><option value="">Välj</option>{typer}</select></label>
+      <label>Antal butiker<input name="butiker" type="number" min="1" max="99999" inputmode="numeric"></label>
+      <label class="bred">Något vi bör veta?<textarea name="meddelande" maxlength="2000"></textarea></label>"""
+    return formular("ansokan", "Prislista och startsortiment", "Tack! Vi har tagit emot er ansökan och hör av oss via e-post.", falt, "Skicka ansökan")
 
 
 def innehall(antal_rader, antal_bilder):
@@ -134,7 +151,7 @@ def innehall(antal_rader, antal_bilder):
       <h1>Ett sortiment som säljer i volym.</h1>
       <p>Kablar, laddare och iPhone-skal för kunder som behöver något nu. Impulspris, snabb rotation och exponering i eget Corder-ställ eller i tunnor längs gångarna.</p>
       <div class="b2b-actions">
-        <a class="btn" href="{MAILTO}">Få prislista och startsortiment</a>
+        <a class="btn" href="#ansok">Få prislista och startsortiment</a>
         <a class="btn ghost" href="#resurser">Produktdata och bilder</a>
       </div>
       <ul class="b2b-kvitto">
@@ -186,6 +203,7 @@ def innehall(antal_rader, antal_bilder):
       <h2>VIP Mullsjö: tunnorna som bevis.</h2>
       <p>I VIP Mullsjö säljs Corder från ett eget ställ och från tunnor längs gångarna, där kunderna redan går förbi. Tunnorna står för den stora volymen. Totalt säljer vi ungefär 20 000 produkter om året i butiken, främst laddkablar.</p>
       <p>VIP Mullsjö drivs av Corders medgrundare Anton Lindkvist. Därför vet vi exakt vad som säljer, vad som inte gör det och hur exponeringen ska se ut. Den kunskapen tar vi med till er butik.</p>
+      <p><a href="vip-mullsjo/">Läs hela kundcaset</a></p>
     </div>
     <div class="b2b-kollage rv" aria-hidden="true">{kollage}</div>
   </div>
@@ -233,7 +251,12 @@ def innehall(antal_rader, antal_bilder):
       <a class="rv" href="corder-produktdata.xlsx" download><span class="caps">Excel</span><b>Produktdata</b><small>{antal_rader} artiklar med EAN, modell, färg och bildlänk</small></a>
       <a class="rv" href="corder-produktdata.csv" download><span class="caps">CSV</span><b>Produktdata</b><small>Samma data för affärssystem och import</small></a>
       <a class="rv" href="corder-bildpaket.zip" download><span class="caps">ZIP</span><b>Bildpaket</b><small>{antal_bilder} frilagda produktbilder med transparent bakgrund</small></a>
-      <a class="rv dark" href="{MAILTO}"><span class="caps">Mejl</span><b>Prislista</b><small>Inköpspriser för butik och grossist, på begäran</small></a>
+      <a class="rv dark" href="#ansok"><span class="caps">Formulär</span><b>Prislista</b><small>Inköpspriser för butik och grossist, på begäran</small></a>
+    </div>
+    <div class="b2b-dl" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))">
+      <a class="rv" href="bestall/" data-h="bestall"><span class="caps">Säljer ni redan Corder?</span><b>Beställ påfyllning</b><small>Välj artiklar och antal efter EAN</small></a>
+      <a class="rv" href="material/" data-h="material"><span class="caps">Utskrift</span><b>Säljmaterial</b><small>Skyltar med ert butiksnamn och era priser</small></a>
+      <a class="rv" href="vip-mullsjo/"><span class="caps">Kundcase</span><b>VIP Mullsjö</b><small>Så säljs 20 000 produkter om året i en butik</small></a>
     </div>
   </div>
 </section>
@@ -245,11 +268,14 @@ def innehall(antal_rader, antal_bilder):
   </div>
 </section>
 
-<section class="b2b-end">
-  <div class="wrap rv">
-    <h2>Vill ni sälja Corder?</h2>
-    <p>Berätta lite om er butik eller kedja, så skickar vi prislista och ett förslag på startsortiment.</p>
-    <a class="btn" href="{MAILTO}">{MAIL}</a>
+<section class="b2b-ansok" id="ansok">
+  <div class="wrap b2b-ansok-grid">
+    <div class="b2b-ansok-text rv">
+      <h2>Vill ni sälja Corder?</h2>
+      <p>Berätta lite om er butik eller kedja, så skickar vi prislista och ett förslag på startsortiment.</p>
+      <p>Hellre mejl? Skriv till <a href="{MAILTO}">{MAIL}</a>.</p>
+    </div>
+    {ansokan()}
   </div>
 </section>
 
@@ -278,6 +304,196 @@ SKRIPT = """<script>
 </script>"""
 
 
+FORM_SKRIPT = '<script src="/assets/f.js?v=1" defer></script>'
+ANTAL_PER_DAG = round(20000 / 365)
+
+
+def skriv(vag, html_):
+    ut = UT / vag / "index.html"
+    ut.parent.mkdir(parents=True, exist_ok=True)
+    ut.write_text(html_, encoding="utf-8")
+    print("skrev", ut.relative_to(ROT))
+
+
+def bygg_bestall():
+    url = f"{URL}bestall/"
+    grupper = {}
+    for artikel, kat, modell, farg, _, ean, _, _ in produktrader():
+        grupper.setdefault(modell or kat, []).append((artikel, farg, ean))
+    rader = []
+    for grupp, artiklar in grupper.items():
+        rader.append(f'<tr class="grupp"><th colspan="3" scope="colgroup">{grupp}</th></tr>')
+        rader += [f"""<tr data-sok="{(artikel + " " + ean).lower()}"><th scope="row"><label for="a{ean}">{artikel}</label></th><td class="ean">{ean}</td><td><input id="a{ean}" type="number" min="0" max="100000" inputmode="numeric" data-ean="{ean}" data-artikel="{artikel}"></td></tr>""" for artikel, _, ean in artiklar]
+    falt = f"""{GRUNDFALT}
+      <label class="bred">Leveransadress<input name="leverans" maxlength="200" autocomplete="street-address"></label>
+      <label class="bred">Meddelande<textarea name="meddelande" maxlength="2000"></textarea></label>"""
+    innehall_ = f"""<main id="innehall" tabindex="-1">
+  <div class="wrap">
+    <div class="index-head">
+      <div><nav class="crumbs" aria-label="Brödsmulor"><a href="/">Corder</a><span>/</span><a href="/aterforsaljare/">Återförsäljare</a></nav><h1>Beställ påfyllning.</h1></div>
+      <p>För er som redan säljer Corder. Beställningen blir bindande först när vi har bekräftat pris och leverans via e-post.</p>
+    </div>
+    <div class="best-sok">
+      <label>Sök artikel eller EAN<input type="search" id="best-sok" autocomplete="off"></label>
+      <div class="best-summa" role="status"><b id="best-antal">0</b> st valda</div>
+    </div>
+    <div class="best-tabell">
+      <table>
+        <thead><tr><th scope="col">Artikel</th><th scope="col" class="ean">EAN</th><th scope="col">Antal</th></tr></thead>
+        <tbody>{"".join(rader)}</tbody>
+      </table>
+    </div>
+    <div style="max-width:760px;padding-bottom:clamp(72px,9vw,128px)">
+      {formular("bestallning", "Beställning", "Tack! Vi har tagit emot beställningen och bekräftar pris och leverans via e-post.", falt, "Skicka beställning")}
+    </div>
+  </div>
+</main>"""
+    skript = """<script>
+(() => {
+  const falt = [...document.querySelectorAll('input[data-ean]')];
+  const summa = document.getElementById('best-antal');
+  const rader = [...document.querySelectorAll('tr[data-sok]')];
+  const grupper = [...document.querySelectorAll('tr.grupp')];
+  document.addEventListener('input', e => {
+    if (e.target.matches('input[data-ean]')) summa.textContent = falt.reduce((a, i) => a + Math.max(0, Math.floor(+i.value) || 0), 0);
+    if (e.target.id !== 'best-sok') return;
+    const q = e.target.value.trim().toLowerCase();
+    rader.forEach(r => { r.hidden = !r.dataset.sok.includes(q); });
+    grupper.forEach(g => {
+      let n = g.nextElementSibling, syns = false;
+      while (n && !n.classList.contains('grupp')) { syns ||= !n.hidden; n = n.nextElementSibling; }
+      g.hidden = !syns;
+    });
+  });
+})();
+</script>"""
+    skriv("bestall", sida("Beställ påfyllning för återförsäljare | Corder", "Beställ Corders kablar, laddare och skal efter artikel och EAN.", url, innehall_,
+                          [brodsmulor(("Återförsäljare", URL), ("Beställ påfyllning", url))], skript=FORM_SKRIPT + skript, noindex=True))
+
+
+def skylt(id_, rubrik, beskr, inne, klass=""):
+    return f"""<article class="mat-post" id="{id_}">
+        <h2>{rubrik}</h2>
+        <p>{beskr}</p>
+        <div class="skylt {klass}"><div class="skylt-inne">
+          <div class="skylt-logo">corder</div>
+          {inne}
+          <div class="skylt-fot"><span data-butik></span><span>Designat i Sverige</span></div>
+        </div></div>
+        <button class="btn" type="button" data-skriv="{id_}">Skriv ut</button>
+      </article>"""
+
+
+def skyltbilder(*src):
+    return '<div class="skylt-bild">' + "".join(bild(s, extra='decoding="async"') for s in src) + "</div>"
+
+
+def bygg_material():
+    url = f"{URL}material/"
+    kabeltabell = """<table>
+            <thead><tr><th scope="col">Din iPhone</th><th scope="col">Laddare med USB-C</th><th scope="col">Laddare med USB-A</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">iPhone 15 och senare</th><td>USB-C till USB-C</td><td>USB-A till USB-C</td></tr>
+              <tr><th scope="row">iPhone 14 och äldre</th><td>USB-C till Lightning</td><td>USB-A till Lightning</td></tr>
+            </tbody>
+          </table>"""
+    skyltar = [
+        skylt("kablar", "Kablar", "Till tunna eller hylla längs gångarna.",
+              f'<h3>Laddkablar.</h3><p>Flätade och 2 meter. USB-C och Lightning.</p>{skyltbilder("/img/produkter/kabel-usb-c-usb-c-2m.webp", "/img/produkter/kabel-usb-c-lightning-svart.webp")}<div class="skylt-pris"><span data-pris="kabel">{PRIS["kabel"]}</span><small> kr</small></div>'),
+        skylt("laddare", "Laddare", "Att ställa bredvid kablarna.",
+              f'<h3>Snabbladdare.</h3><p>20W USB-C, 20W Dual Port och 18W USB-A.</p>{skyltbilder("/img/produkter/laddare-20w-usb-c.webp", "/img/produkter/laddare-20w-dual-port.webp")}<div class="skylt-pris"><span data-pris="laddare">{PRIS["laddare"]}</span><small> kr</small></div>', "tonad"),
+        skylt("skal", "Skal", "Till stället eller skalhyllan.",
+              f'<h3>Skal till din iPhone.</h3><p>TPU-skal till iPhone 14 hela vägen till iPhone 18 Pro. Fråga personalen om din modell.</p>{skyltbilder("/img/cut/17p-skogsgron.webp", "/img/cut/16p-pink.webp")}<div class="skylt-pris"><span data-pris="skal">{PRIS["skal"]}</span><small> kr</small></div>'),
+        skylt("vilken-kabel", "Vilken kabel passar?", "Sparar frågor i kassan. Sätt den vid kablarna.",
+              f'<h3>Vilken kabel passar?</h3><p>Hitta din iPhone och din laddare.</p>{kabeltabell}<p style="margin-top:auto">Alla kablar är 2 meter. Modellnamnet står under Inställningar, Allmänt, Om.</p>'),
+        skylt("salj-har", "Här säljs Corder", "Till dörr, fönster eller disk.",
+              f'<h3 style="margin-top:auto">Här finns Corder.</h3><p>Kablar, laddare och iPhone-skal när du behöver dem nu.</p>{skyltbilder("/img/cut/17p-skogsgron.webp", "/img/produkter/kabel-usb-c-usb-c-2m.webp")}', "morkgron"),
+    ]
+    innehall_ = f"""<main id="innehall" tabindex="-1">
+  <div class="wrap">
+    <div class="index-head">
+      <div><nav class="crumbs" aria-label="Brödsmulor"><a href="/">Corder</a><span>/</span><a href="/aterforsaljare/">Återförsäljare</a></nav><h1>Säljmaterial.</h1></div>
+      <p>Skyltar i A4 att skriva ut. Lägg till ert butiksnamn och ändra till era priser. Inget sparas eller skickas.</p>
+    </div>
+    <form class="mat-val" onsubmit="return false">
+      <label>Butikens namn<input id="mat-butik" maxlength="40" autocomplete="off"></label>
+      <label>Pris kablar, kr<input data-prisval="kabel" type="number" min="0" max="9999" value="{PRIS["kabel"]}"></label>
+      <label>Pris laddare, kr<input data-prisval="laddare" type="number" min="0" max="9999" value="{PRIS["laddare"]}"></label>
+      <label>Pris skal, kr<input data-prisval="skal" type="number" min="0" max="9999" value="{PRIS["skal"]}"></label>
+      <button class="btn mat-knapp" type="button" data-skriv="alla">Skriv ut alla</button>
+    </form>
+    <div class="mat-rutnat">
+      {"".join(skyltar)}
+    </div>
+  </div>
+</main>"""
+    skript = """<script>
+(() => {
+  document.getElementById('mat-butik').addEventListener('input', e => {
+    document.querySelectorAll('[data-butik]').forEach(s => { s.textContent = e.target.value; });
+  });
+  document.querySelectorAll('[data-prisval]').forEach(i => i.addEventListener('input', () => {
+    document.querySelectorAll(`[data-pris="${i.dataset.prisval}"]`).forEach(s => { s.textContent = i.value; });
+  }));
+  document.addEventListener('click', e => {
+    const k = e.target.closest('[data-skriv]');
+    if (!k) return;
+    const id = k.dataset.skriv;
+    document.body.dataset.skriv = id;
+    document.querySelectorAll('.mat-post').forEach(p => p.classList.toggle('skriv', p.id === id));
+    window.corderH?.('material-utskrift', id);
+    window.print();
+  });
+  addEventListener('afterprint', () => { delete document.body.dataset.skriv; });
+})();
+</script>"""
+    skriv("material", sida("Säljmaterial för butiker | Corder", "Skyltar i A4 till butiker som säljer Corder, med eget butiksnamn och egna priser.", url, innehall_,
+                           [brodsmulor(("Återförsäljare", URL), ("Säljmaterial", url))], skript=skript, noindex=True))
+
+
+def bygg_case():
+    url = f"{URL}vip-mullsjo/"
+    beskr = "Så säljer VIP Mullsjö ungefär 20 000 Corder-produkter om året, främst laddkablar, från tunnor längs gångarna och ett eget ställ."
+    innehall_ = f"""<main id="innehall" tabindex="-1">
+  <div class="wrap">
+    <div class="index-head">
+      <div><nav class="crumbs" aria-label="Brödsmulor"><a href="/">Corder</a><span>/</span><a href="/aterforsaljare/">Återförsäljare</a></nav><h1>VIP Mullsjö.</h1></div>
+      <p>Så säljs ungefär 20 000 Corder-produkter om året i en enda butik.</p>
+    </div>
+    <div class="case-tal">
+      <div><b>20 000</b><span>sålda produkter per år, ungefär</span></div>
+      <div><b>ca {ANTAL_PER_DAG}</b><span>produkter per dag i snitt</span></div>
+      <div><b>60 %</b><span>av försäljningen är kablar, ca 12 000 per år</span></div>
+    </div>
+    <div class="post" style="grid-template-columns:minmax(0, 760px)">
+      <article class="prose">
+        <p class="ingress">VIP Mullsjö säljer Corder där kunderna redan går: i tunnor längs gångarna och i ett eget ställ.</p>
+        <h2>Tunnorna står för volymen</h2>
+        <p>Den stora volymen kommer från tunnorna. Kunden behöver inte leta upp en tillbehörshylla, utan ser kablarna i förbifarten. Priset står på skylten, och 60 kr är lätt att plocka med när kabeln är glömd eller trasig.</p>
+        <h2>Kablarna drar, resten följer med</h2>
+        <p>Laddkablar står för ungefär 12 000 av de 20 000 produkterna. Skal och laddare står för ungefär 8 000. Därför börjar vi gärna med kablar i en ny butik och lägger till laddare bredvid. Skalen anpassas efter butikens kunder.</p>
+        <h2>Så kan ni göra samma sak</h2>
+        <ul>
+          <li>Börja med ett <a href="/aterforsaljare/#ansok">startpaket</a>. Första paketet per butik har 90 dagars säljgaranti.</li>
+          <li>Ställ produkterna längs gångarna, inte bara vid kassan.</li>
+          <li>Skriv ut <a href="/aterforsaljare/material/">skyltar</a> med era priser och butiksnamn.</li>
+        </ul>
+        <h2>Bra att veta</h2>
+        <p>VIP Mullsjö drivs av Corders medgrundare Anton Lindkvist, och siffrorna är ungefärliga. Resultatet i en annan butik beror på läge och kundflöde, så se dem som ett exempel på vad rätt exponering kan ge, inte som ett löfte.</p>
+        <div class="cta">
+          <div><h2>Vill ni testa i er butik?</h2><p>Berätta om butiken, så skickar vi prislista och förslag på startsortiment.</p></div>
+          <div class="cta-knappar"><a class="btn" href="/aterforsaljare/#ansok">Få prislista</a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</main>"""
+    schema = [{"@context": "https://schema.org", "@type": "Article", "headline": "VIP Mullsjö: 20 000 sålda Corder-produkter om året", "description": beskr, "inLanguage": "sv", "mainEntityOfPage": url,
+               "author": {"@type": "Organization", "name": "Corder"}, "publisher": {"@type": "Organization", "name": "Corder"}, "datePublished": "2026-11-02", "dateModified": "2026-11-02"},
+              brodsmulor(("Återförsäljare", URL), ("VIP Mullsjö", url))]
+    skriv("vip-mullsjo", sida("VIP Mullsjö: 20 000 sålda produkter om året | Corder", beskr, url, innehall_, schema))
+
+
 def bygg_aterforsaljare():
     UT.mkdir(parents=True, exist_ok=True)
     rader = skriv_produktdata()
@@ -294,9 +510,12 @@ def bygg_aterforsaljare():
         {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
             {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ]},
     ]
-    html_ = sida(titel, beskr, URL, innehall(rader, bilder), schema=schema, skript=SKRIPT)
+    html_ = sida(titel, beskr, URL, innehall(rader, bilder), schema=schema, skript=FORM_SKRIPT + SKRIPT)
     (UT / "index.html").write_text(html_, encoding="utf-8")
     print(f"skrev aterforsaljare/ med {rader} artiklar och {bilder} bilder")
+    bygg_bestall()
+    bygg_material()
+    bygg_case()
 
 
 if __name__ == "__main__":
