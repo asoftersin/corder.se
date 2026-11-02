@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test test/",
+    "test": "node --test test/lib.test.js",
     "db:lokal": "wrangler d1 execute corder-statistik --local --persist-to .wrangler/delad --file schema.sql -c wrangler.insamling.toml",
     "db:skapa": "wrangler d1 execute corder-statistik --remote --file schema.sql -c wrangler.insamling.toml",
     "dev:insamling": "wrangler dev -c wrangler.insamling.toml --persist-to .wrangler/delad --port 8787",
