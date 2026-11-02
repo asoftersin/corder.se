@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Din inköpslapp | Corder</title>
+<meta name="description" content="Välj skal, kabel och laddare och ta med lappen till butiken, med streckkoder och rekommenderade priser.">
+<link rel="canonical" href="https://corder.se/inkopslapp/">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Din inköpslapp | Corder">
+<meta property="og:description" content="Välj skal, kabel och laddare och ta med lappen till butiken, med streckkoder och rekommenderade priser.">
+<meta property="og:url" content="https://corder.se/inkopslapp/">
+<meta property="og:site_name" content="Corder">
+<meta property="og:locale" content="sv_SE">
+<meta property="og:image" content="https://corder.se/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/fonts/inter-tight-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/sida.css?v=17">
+<script src="/assets/s.js" data-e="https://corder-statistik.corder-statistik.workers.dev/e" defer></script>
+</head>
+<body>
+<a class="skip" href="#innehall">Hoppa till innehållet</a>
+
+<header class="top">
+  <div class="wrap">
+    <a href="/" class="logo" aria-label="Corder startsida">corder</a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="meny" onclick="const o=this.closest('.top').classList.toggle('open');this.setAttribute('aria-expanded',o);this.querySelector('b').textContent=o?'Stäng':'Meny';document.body.style.overflow=o?'hidden':''"><span></span><b>Meny</b></button>
+    <ul id="meny">
+      <li><a href="/skal/">Skal</a></li>
+      <li><a href="/kablar/">Kablar</a></li>
+      <li><a href="/laddare/">Laddare</a></li>
+      <li><a href="/#butiker">Butiker</a></li>
+      <li><a href="/aterforsaljare/">Återförsäljare</a></li>
+      <li><a href="/blogs/nyheter/">Apple-guider</a></li>
+    </ul>
+  </div>
+  
+</header>
+
+<main id="innehall" class="lapp" tabindex="-1">
+  <div class="wrap lapp-grid">
+    <div class="lapp-intro">
+      <span class="caps">Inköpslapp</span>
+      <h1>Ta med den<br>till butiken.</h1>
+      <p>Corder säljs i fysiska butiker. Spara lappen i telefonen och visa den i butiken, så ser personalen direkt vilka artiklar du menar.</p>
+      <div class="lapp-val">
+        <label><select id="lapp-modell" aria-label="Din iPhone"><option value="iphone-18-pro">iPhone 18 Pro</option><option value="iphone-17-pro">iPhone 17 Pro</option><option value="iphone-17">iPhone 17</option><option value="iphone-16-pro">iPhone 16 Pro</option><option value="iphone-16">iPhone 16</option><option value="iphone-16e">iPhone 16e</option><option value="iphone-15-pro">iPhone 15 Pro</option><option value="iphone-15">iPhone 15</option><option value="iphone-14-pro">iPhone 14 Pro</option><option value="iphone-14">iPhone 14</option></select></label>
+        <div class="lapp-farger" id="lapp-farger" role="group" aria-label="Välj färg"></div>
+      </div>
+    </div>
+    <div class="kvitto-yta"><article class="kvitto" id="kvitto" aria-label="Din inköpslapp"><noscript><p>Inköpslappen behöver JavaScript. <a href="/skal/">Se alla skal</a>.</p></noscript></article></div>
+    <div class="lapp-knappar"><button class="btn" id="lapp-spara" type="button">Spara lappen</button><button class="btn ghost" id="lapp-dela" type="button">Dela</button></div>
+    <p class="lapp-status" id="lapp-status" role="status"></p>
+    <section class="lapp-butiker" aria-labelledby="lapp-butiker">
+      <h2 id="lapp-butiker">Här finns Corder</h2>
+      <ul><li><b>Go Banana</b><span>Jönköping</span><span class="kop-lankar"><a href="https://www.google.com/maps/search/?api=1&amp;query=Go+Banana+J%C3%B6nk%C3%B6ping" rel="noopener" target="_blank" data-h="karta" data-v="Go Banana">Visa på karta</a></span></li><li><b>VIP Mullsjö</b><span>Mullsjö</span><span class="kop-lankar"><a href="https://www.google.com/maps/search/?api=1&amp;query=VIP+Mullsj%C3%B6" rel="noopener" target="_blank" data-h="karta" data-v="VIP Mullsjö">Visa på karta</a></span></li></ul>
+      <p>Ingen av dem nära dig? Visa lappen i din mobilbutik. På lappen står hur de beställer Corder.</p>
+    </section>
+  </div>
+</main>
+<script id="lapp-data" type="application/json">{"pris": {"skal": 60, "kabel": 60, "laddare": 99}, "modeller": [{"slug": "iphone-18-pro", "namn": "iPhone 18 Pro", "kabel": {"namn": "USB-C till USB-C", "ean": "7350140690283", "bild": "/img/produkter/kabel-usb-c-usb-c-2m.webp"}, "laddare": {"namn": "Snabbladdare 20W", "ean": "7350140690504", "bild": "/img/produkter/laddare-20w-usb-c.webp"}, "farger": [{"namn": "Svart", "hex": "#1c1c1c", "ean": "7350140690825", "bild": "/img/cut/17p-black.webp"}, {"namn": "Skogsgrön", "hex": "#3d5143", "ean": "7350140690832", "bild": "/img/cut/17p-skogsgron.webp"}]}, {"slug": "iphone-17-pro", "namn": "iPhone 17 Pro", "kabel": {"namn": "USB-C till USB-C", "ean": "7350140690283", "bild": "/img/produkter/kabel-usb-c-usb-c-2m.webp"}, "laddare": {"namn": "Snabbladdare 20W", "ean": "7350140690504", "bild": "/img/produkter/laddare-20w-usb-c.webp"}, "farger": [{"namn": "Svart", "hex": "#1c1c1c", "ean": "7350140690801", "bild": "/img/cut/17p-black.webp"}, {"namn": "Skogsgrön", "hex": "#3d5143", "ean": "7350140690818", "bild": "/img/cut/17p-skogsgron.webp"}]}, {"slug": "iphone-17", "namn": "iPhone 17", "kabel": {"namn": "USB-C till USB-C", "ean": "7350140690283", "bild": "/img/produkter/kabel-usb-c-usb-c-2m.webp"}, "laddare": {"namn": "Snabbladdare 20W", "ean": "7350140690504", "bild": "/img/produkter/laddare-20w-usb-c.webp"}, "farger": [{"namn": "Svart", "hex": "#1c1c1c", "ean": "7350140690788", "bild": "/img/cut/17-black.webp"}, {"namn": "Skogsgrön", "hex": "#3d5143", "ean": "7350140690795", "bild": "/img/cut/17-skogsgron.webp"}]}, {"slug": "iphone-16-pro", "namn": "iPhone 16 Pro", "kabel": {"namn": "USB-C till USB-C", "ean": "7350140690283", "bild": "/img/produkter/kabel-usb-c-usb-c-2m.webp"}, "laddare": {"namn": "Snabbladdare 20W", "ean": "7350140690504", "bild": "/img/produkter/laddare-20w-usb-c.webp"}, "farger": [{"namn": "Svart", "hex": "#1c1c1c", "ean": "7350140690634", "bild": "/img/cut/16p-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "ean": "7350140690641", "bild": "/img/cut/16p-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "ean": "7350140690658", "bild": "/img/cut/16p-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "ean": "7350140690665", "bild": "/img/cut/16p-pink.webp"}]}, {"slug": "iphone-16", "namn": "iPhone 16", "kabel": {"namn": "USB-C till USB-C", "ean": "7350140690283", "bild": "/img/produkter/kabel-usb-c-usb-c-2m.webp"}, "laddare": {"namn": "Snabbladdare 20W", "ean": "7350140690504", "bild": "/img/produkter/laddare-20w-usb-c.webp"}, "farger": [{"namn": "Svart", "hex": "#1c1c1c", "ean": "7350140690597", "bild": "/img/cut/16-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "ean": "7350140690603", "bild": "/img/cut/16-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "ean": "7350140690610", "bild": "/img/cut/16-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "ean": "7350140690627", "bild": "/img/cut/16-pink.webp"}]}, {"slug": "iphone-16e", "namn": "iPhone 16e", "kabel": {"namn": "USB-C till USB-C", "ean": "7350140690283", "bild": "/img/produkter/kabel-usb-c-usb-c-2m.webp"}, "laddare": {"namn": "Snabbladdare 20W", "ean": "7350140690504", "bild": "/img/produkter/laddare-20w-usb-c.webp"}, "farger": [{"namn": "Svart", "hex": "#1c1c1c", "ean": "7350140690672", "bild": "/img/cut/16e-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "ean": "7350140690689", "bild": "/img/cut/16e-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "ean": "7350140690696", "bild": "/img/cut/16e-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "ean": "7350140690702", "bild": "/img/cut/16e-pink.webp"}]}, {"slug": "iphone-15-pro", "namn": "iPhone 15 Pro", "kabel": {"namn": "USB-C till USB-C", "ean": "7350140690283", "bild": "/img/produkter/kabel-usb-c-usb-c-2m.webp"}, "laddare": {"namn": "Snabbladdare 20W", "ean": "7350140690504", "bild": "/img/produkter/laddare-20w-usb-c.webp"}, "farger": [{"namn": "Svart", "hex": "#1c1c1c", "ean": "7350140690559", "bild": "/img/cut/15p-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "ean": "7350140690566", "bild": "/img/cut/15p-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "ean": "7350140690573", "bild": "/img/cut/15p-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "ean": "7350140690580", "bild": "/img/cut/15p-pink.webp"}]}, {"slug": "iphone-15", "namn": "iPhone 15", "kabel": {"namn": "USB-C till USB-C", "ean": "7350140690283", "bild": "/img/produkter/kabel-usb-c-usb-c-2m.webp"}, "laddare": {"namn": "Snabbladdare 20W", "ean": "7350140690504", "bild": "/img/produkter/laddare-20w-usb-c.webp"}, "farger": [{"namn": "Svart", "hex": "#1c1c1c", "ean": "7350140690511", "bild": "/img/cut/15-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "ean": "7350140690528", "bild": "/img/cut/15-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "ean": "7350140690535", "bild": "/img/cut/15-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "ean": "7350140690542", "bild": "/img/cut/15-pink.webp"}]}, {"slug": "iphone-14-pro", "namn": "iPhone 14 Pro", "kabel": {"namn": "USB-C till Lightning", "ean": "7350140690467", "bild": "/img/produkter/kabel-usb-c-lightning-svart.webp"}, "laddare": {"namn": "Snabbladdare 20W", "ean": "7350140690504", "bild": "/img/produkter/laddare-20w-usb-c.webp"}, "farger": [{"namn": "Svart", "hex": "#1c1c1c", "ean": "7350140690412", "bild": "/img/cut/14p-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "ean": "7350140690740", "bild": "/img/cut/14p-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "ean": "7350140690757", "bild": "/img/cut/14p-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "ean": "7350140690764", "bild": "/img/cut/14p-pink.webp"}]}, {"slug": "iphone-14", "namn": "iPhone 14", "kabel": {"namn": "USB-C till Lightning", "ean": "7350140690467", "bild": "/img/produkter/kabel-usb-c-lightning-svart.webp"}, "laddare": {"namn": "Snabbladdare 20W", "ean": "7350140690504", "bild": "/img/produkter/laddare-20w-usb-c.webp"}, "farger": [{"namn": "Svart", "hex": "#1c1c1c", "ean": "7350140690405", "bild": "/img/cut/14-black.webp"}, {"namn": "Blå", "hex": "#4a6684", "ean": "7350140690719", "bild": "/img/cut/14-blue.webp"}, {"namn": "Lila", "hex": "#b9bdf0", "ean": "7350140690726", "bild": "/img/cut/14-purple.webp"}, {"namn": "Persika", "hex": "#f5a493", "ean": "7350140690733", "bild": "/img/cut/14-pink.webp"}]}]}</script>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a href="/" class="logo">corder</a>
+      <div><p class="foot-h">Sortiment</p><ul><li><a href="/skal/">TPU-skal</a></li><li><a href="/laddare/">Laddare</a></li><li><a href="/kablar/">Kablar</a></li></ul></div>
+      <div><p class="foot-h">Företag</p><ul><li><a href="/#butiker">Hitta butik</a></li><li><a href="/aterforsaljare/">Bli återförsäljare</a></li><li><a href="/pages/vanliga-fragor-faq/#kontakt">Kontakt</a></li><li><a href="mailto:sales@corder.se">sales@corder.se</a></li></ul></div>
+      <div><p class="foot-h">Resurser</p><ul><li><a href="/passar/">Vad passar min iPhone?</a></li><li><a href="/blogs/nyheter/">Apple-guider</a></li><li><a href="/pages/vanliga-fragor-faq/">Vanliga frågor</a></li><li><a href="/pages/integritet/">Integritet</a></li><li><a href="https://www.instagram.com/corderofficial">Instagram</a></li><li><a href="https://www.tiktok.com/@corderofficial">TikTok</a></li><li><a href="https://www.facebook.com/cordergroup">Facebook</a></li></ul></div>
+    </div>
+    <div class="foot-base">© 2026 Corder Group AB · Org.nr 559227-0226 · Kungsbacka · Designed and developed in Sweden</div>
+  </div>
+</footer>
+<script src="/assets/lapp.js?v=1" defer></script>
+</body>
+</html>

@@ -528,7 +528,7 @@
     <div class="finder-intro">
       <span class="caps">Hitta rätt skal</span>
       <h2 data-split>Vilket skal passar<br>din iPhone?</h2>
-      <p>Välj din modell för att se färgerna och hitta en butik. Osäker på vilken iPhone du har? <a href="/blogs/nyheter/vilken-iphone-har-jag/">Så hittar du din modell</a>.</p>
+      <p>Välj din modell och färg, så får du en inköpslapp att visa i butiken. Osäker på vilken iPhone du har? <a href="/blogs/nyheter/vilken-iphone-har-jag/">Så hittar du din modell</a>.</p>
     </div>
     <div class="finder-pick">
       <span class="caps step"><em>01</em> Generation</span>
@@ -807,6 +807,8 @@ addEventListener('DOMContentLoaded', () => {
     stPhone.querySelectorAll('.product-visual').forEach((im, j) => im.classList.toggle('on', j === i));
     stSw.querySelectorAll('.sw').forEach((b, j) => b.setAttribute('aria-pressed', j === i));
     stSwName.textContent = f.namn;
+    const lapp = stInfo.querySelector('.st-lapp');
+    if (lapp) lapp.href = `/inkopslapp/?m=${aktiv.slug}&f=${f.namn.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase()}`;
   };
   const intrada = () => {
     if (!rorelse()) return;
@@ -837,8 +839,8 @@ addEventListener('DOMContentLoaded', () => {
       <div><dt>Laddning</dt><dd>${esc(m.kontakt)}. Rätt kabel: ${esc(m.kabel)}, 2 m.</dd></div>
       <div><dt>Allt till din iPhone</dt><dd><a href="/skal/${m.slug}/#allt">Skal, kabel och laddare, ${esc(m.kit)} kr i rek. pris</a></dd></div></dl>
       <div class="st-tip"><b>${esc(m.tips.q)}</b>${esc(m.tips.a)}</div>
-      <p>Sortimentet kan variera mellan butiker. Fråga efter din modell och färg.</p>
-      <div class="st-actions"><a class="btn" href="/skal/${m.slug}/">Se färger och detaljer</a><a class="btn ghost" href="#butiker">Hitta återförsäljare</a></div>`;
+      <p>Sortimentet kan variera mellan butiker. Skapa en inköpslapp med streckkod och visa den i butiken.</p>
+      <div class="st-actions"><a class="btn st-lapp" href="/inkopslapp/?m=${m.slug}" data-h="inkopslapp" data-v="finder">Skapa inköpslapp</a><a class="btn ghost" href="/skal/${m.slug}/">Se färger och detaljer</a></div>`;
     valjFarg(Math.max(0, m.farger.findIndex(f => f.namn === farg)));
     if (anim) intrada();
     return true;

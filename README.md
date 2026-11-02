@@ -5,7 +5,7 @@ Varumärkessidan för Corder (Corder Group AB). Statisk sajt som publiceras med 
 ## Struktur
 
 - `docs/` – det som publiceras: startsida, guider, ikoner, typsnitt och bilder.
-- `build/bygg_guider.py` – bygger guider, skalsidor, kablar, laddare, vanliga frågor, integritet, 404-sidan, sitemap och omdirigeringar från gamla Shopify-adresser. Priser och butiker anges här (`PRIS`, `BUTIKER`).
+- `build/bygg_guider.py` – bygger guider, skalsidor, kablar, laddare, inköpslappen, vanliga frågor, integritet, 404-sidan, sitemap och omdirigeringar från gamla Shopify-adresser. Priser och butiker anges här (`PRIS`, `BUTIKER`).
 - `build/innehall/` – guidernas brödtext. Titlar, beskrivningar och vanliga frågor ligger i skriptet.
 - `build/kalla/` – exporten av de gamla Shopify-artiklarna (arkiv).
 - `build/bildkallor/` – originalbilder och renderingar i full upplösning.

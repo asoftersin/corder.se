@@ -495,3 +495,88 @@ main:focus { outline: none; }
   .skylt { width: 210mm; height: 297mm; aspect-ratio: auto; box-shadow: none; border-radius: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   main .wrap { max-width: none; padding: 0; margin: 0; }
 }
+
+/* Inköpslappen: ett kvitto att visa i butiken */
+.lapp { --tint: #3d5143; color: #fff; background: var(--tint); }
+.lapp.levande { transition: background-color .5s; }
+.lapp[data-ton="ljus"] { color: #111; }
+.lapp-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 460px); grid-template-rows: auto auto 1fr; column-gap: clamp(32px, 7vw, 112px); padding-top: clamp(28px, 6vw, 88px); padding-bottom: clamp(48px, 7vw, 104px); }
+.lapp-intro { grid-column: 1; }
+.lapp-intro .caps { display: block; opacity: .75; }
+.lapp h1 { font-size: clamp(2.6rem, 6vw, 5rem); font-weight: 300; letter-spacing: -.035em; line-height: 1.02; margin: 14px 0 20px; }
+.lapp-intro > p { max-width: 46ch; margin: 0 0 28px; line-height: 1.55; }
+.lapp-val { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 26px; }
+.lapp-val label { position: relative; display: block; }
+.lapp-val select { appearance: none; -webkit-appearance: none; min-height: 46px; padding: 0 44px 0 20px; font: 500 1rem "Inter Tight", system-ui, sans-serif; color: inherit; background: transparent; border: 1.5px solid currentColor; border-radius: 999px; cursor: pointer; }
+.lapp-val select option { color: #111; }
+.lapp-val label::after { content: ""; position: absolute; right: 20px; top: 18px; width: 7px; height: 7px; border: solid currentColor; border-width: 0 1.5px 1.5px 0; transform: rotate(45deg); pointer-events: none; }
+.lapp-farger { display: flex; align-items: center; gap: 18px; min-height: 46px; font-size: .9rem; font-weight: 500; }
+.lapp .sw { position: relative; width: 26px; height: 26px; padding: 0; border: 0; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 1.5px rgba(255,255,255,.75); cursor: pointer; }
+.lapp[data-ton="ljus"] .sw { box-shadow: 0 0 0 1.5px rgba(0,0,0,.35); }
+.lapp .sw::before { content: ""; position: absolute; inset: -9px; }
+.lapp .sw::after { content: ""; position: absolute; inset: -6px; border-radius: 50%; border: 2px solid currentColor; opacity: 0; }
+.lapp .sw[aria-pressed="true"]::after { opacity: 1; }
+.lapp .sw:focus-visible, .lapp-val select:focus-visible, .lapp-knappar .btn:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.lapp-knappar { grid-column: 1; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+.lapp-knappar .btn { min-height: 52px; padding: 0 30px; font: 500 1rem "Inter Tight", system-ui, sans-serif; border: 0; cursor: pointer; background: #fff; color: #111; }
+.lapp[data-ton="ljus"] .lapp-knappar .btn { background: #111; color: #fff; }
+.lapp-knappar .btn.ghost, .lapp[data-ton="ljus"] .lapp-knappar .btn.ghost { background: transparent; color: inherit; box-shadow: inset 0 0 0 1.5px currentColor; }
+.lapp-status { grid-column: 1; min-height: 1.5em; margin: 12px 0 0; font-size: .9rem; line-height: 1.5; overflow-wrap: anywhere; }
+.lapp-butiker { grid-column: 1; align-self: end; margin-top: 40px; }
+.lapp-butiker h2 { font-size: 1.25rem; margin-bottom: 12px; }
+.lapp-butiker ul { list-style: none; margin: 0 0 14px; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 0 28px; max-width: 520px; }
+.lapp-butiker li { display: grid; padding: 12px 0; border-top: 1px solid color-mix(in srgb, currentColor 30%, transparent); font-size: .92rem; line-height: 1.45; }
+.lapp-butiker li b { font-weight: 500; font-size: 1.05rem; }
+.lapp-butiker .kop-lankar { display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.lapp-butiker > p { max-width: 46ch; margin: 0; font-size: .92rem; line-height: 1.5; }
+.lapp-butiker > p a { text-underline-offset: 3px; }
+
+.kvitto-yta { grid-column: 2; grid-row: 1 / span 4; align-self: start; position: sticky; top: 88px; clip-path: inset(0 -60px -60px -60px); filter: drop-shadow(0 26px 34px rgba(0,0,0,.26)); }
+.kvitto-yta::before { content: ""; position: absolute; z-index: 2; inset: 0 -14px auto; height: 7px; border-radius: 99px; background: #0b0b0b; }
+.kvitto { --t: 9px; position: relative; color: #111; background: #fff; padding: 30px 24px calc(22px + var(--t)); -webkit-mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / calc(2 * var(--t)) 100%; mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / calc(2 * var(--t)) 100%; font-variant-numeric: tabular-nums; line-height: 1.35; }
+.lapp.skriv .kvitto { animation: lapp-ut 1s steps(16) both; }
+@keyframes lapp-ut { from { transform: translateY(-100%); } to { transform: none; } }
+.kvitto header { display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 18px; }
+.kvitto .logo { font-size: 1.7rem; }
+.k-rad { display: grid; justify-items: center; padding: 16px 0 14px; border-top: 1.5px dashed #c9c9c9; }
+.k-rad.ny { animation: lapp-rad .45s cubic-bezier(.2, .8, .2, 1); }
+@keyframes lapp-rad { from { opacity: 0; transform: translateY(-10px); } }
+.k-rubrik { justify-self: stretch; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 14px; margin-bottom: 14px; }
+.k-rubrik img { width: 48px; height: 64px; object-fit: contain; }
+.k-rubrik b { display: block; font-weight: 500; font-size: 1.02rem; }
+.k-rubrik span { display: block; color: #6e6e6e; font-size: .88rem; }
+.k-rubrik em { font-style: normal; font-weight: 500; white-space: nowrap; }
+.k-kod { display: block; fill: #000; }
+.k-ean { margin-top: 5px; font-size: .84rem; letter-spacing: .24em; }
+.k-ta { min-height: 24px; padding: 0; color: #6e6e6e; background: none; border: 0; font: 400 .8rem "Inter Tight", system-ui, sans-serif; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
+.k-ta:hover { color: #111; }
+.k-lagg { display: grid; grid-template-columns: 30px minmax(0, 1fr) auto; column-gap: 12px; align-items: center; width: 100%; min-height: 62px; margin: 0 0 10px; padding: 9px 14px 9px 10px; color: #111; text-align: left; background: #f4f4f2; border: 0; border-radius: 10px; font: 400 .88rem/1.3 "Inter Tight", system-ui, sans-serif; cursor: pointer; transition: background-color .2s; }
+.k-lagg:hover { background: #e9e9e5; }
+.k-lagg:focus-visible, .k-ta:focus-visible { outline: 2px solid #111; outline-offset: 2px; }
+.k-lagg > span { grid-row: span 2; display: grid; place-items: center; width: 30px; height: 30px; color: #fff; background: #111; border-radius: 50%; font-size: 1.1rem; line-height: 1; }
+.k-lagg b { font-weight: 500; font-size: .95rem; }
+.k-lagg small { grid-column: 2; color: #6e6e6e; font-size: .84rem; }
+.k-lagg em { grid-column: 3; grid-row: 1 / span 2; font-style: normal; font-weight: 500; }
+.k-summa { display: flex; align-items: baseline; justify-content: space-between; padding: 14px 0; border-top: 1.5px dashed #c9c9c9; border-bottom: 1.5px dashed #c9c9c9; }
+.k-summa b { font-size: 1.7rem; font-weight: 500; letter-spacing: -.02em; }
+.k-not { margin: 12px 0 0; color: #555; font-size: .82rem; line-height: 1.45; }
+.k-not b { font-weight: 500; color: #111; }
+.k-personal { color: #111; }
+@media (max-width: 860px) {
+  .lapp-grid { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
+  .lapp-intro, .kvitto-yta, .lapp-knappar, .lapp-status, .lapp-butiker { grid-column: 1; grid-row: auto; }
+  .lapp h1 { font-size: clamp(2.3rem, 11vw, 3.4rem); margin-bottom: 12px; }
+  .lapp-intro > p { margin-bottom: 18px; font-size: 1rem; }
+  .kvitto-yta { position: relative; top: 0; margin-top: 24px; }
+  /* Knapparna följer med medan lappen skrollar förbi. */
+  .lapp-knappar { position: sticky; bottom: 12px; z-index: 5; margin: 18px -4px 0; padding: 8px; background: var(--tint); border-radius: 999px; box-shadow: 0 8px 26px rgba(0,0,0,.28); }
+  .lapp.levande .lapp-knappar { transition: background-color .5s; }
+  .lapp-knappar .btn { flex: 1; padding: 0 18px; }
+  .lapp-knappar .btn.ghost { flex: 0 0 auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lapp.skriv .kvitto, .k-rad.ny { animation: none; }
+  .lapp.levande, .lapp.levande .lapp-knappar { transition: none; }
+}
+.kop-pris .btn { margin-top: 16px; }
+.kit-summa a { font-weight: 500; text-underline-offset: 3px; white-space: nowrap; }

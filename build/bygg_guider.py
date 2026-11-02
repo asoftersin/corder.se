@@ -430,7 +430,7 @@ def sida(titel, beskr, kanonisk, innehall, schema=None, progress=False, skript="
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/inter-tight-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts.css">
-<link rel="stylesheet" href="/assets/sida.css?v=15">
+<link rel="stylesheet" href="/assets/sida.css?v=17">
 {statistik_tagg()}
 {ld}</head>
 <body>
@@ -480,18 +480,20 @@ def butik_rad(b):
     return f'<li>{"".join(delar)}<span class="kop-lankar">{"".join(lankar)}</span></li>'
 
 
-def kop_block(pris, vad):
+def kop_block(pris, vad, lapp=""):
     """Pris och butiker, direkt under produkten."""
     butiker = "".join(butik_rad(b) for b in BUTIKER)
+    knapp = f'<a class="btn" href="{lapp}" data-h="inkopslapp" data-v="kop">Skapa inköpslapp</a>' if lapp else ""
     return f"""<section class="kop" id="kop" aria-label="Pris och butiker">
-      <div class="kop-pris"><span class="caps">Rek. pris</span><b>{pris} kr</b><small>{PRISNOTIS}</small></div>
+      <div class="kop-pris"><span class="caps">Rek. pris</span><b>{pris} kr</b><small>{PRISNOTIS}</small>{knapp}</div>
       <div class="kop-butiker"><span class="caps">Finns i butik</span><ul>{butiker}</ul><small>Sortimentet varierar. Fråga butiken om {vad} finns inne.</small></div>
     </section>"""
 
 
-def kop_fast(pris):
+def kop_fast(pris, lapp=""):
     """Fast rad längst ner på mobil."""
-    return f'<div class="kop-fast"><span>Rek. pris <b>{pris} kr</b></span><a class="btn" href="#kop">Hitta butik</a></div>'
+    knapp = f'<a class="btn" href="{lapp}" data-h="inkopslapp" data-v="fast">Skapa inköpslapp</a>' if lapp else '<a class="btn" href="#kop">Hitta butik</a>'
+    return f'<div class="kop-fast"><span>Rek. pris <b>{pris} kr</b></span>{knapp}</div>'
 
 
 def bygg():
@@ -725,7 +727,7 @@ def kit_block(m):
     return f"""<section class="kit" id="allt" aria-labelledby="allt-rubrik">
       <h2 id="allt-rubrik">Allt till din {m["namn"]}</h2>
       <div class="kit-delar">{kort_}</div>
-      <p class="kit-summa"><b>{summa} kr</b> i rek. pris tillsammans. Produkterna säljs styckvis, så ta bara det du behöver.</p>
+      <p class="kit-summa"><b>{summa} kr</b> i rek. pris tillsammans. Produkterna säljs styckvis, så ta bara det du behöver. <a href="/inkopslapp/?m={m['slug']}&amp;k=1&amp;l=1" data-h="inkopslapp" data-v="kit">Lägg allt på en inköpslapp</a></p>
     </section>"""
 
 
@@ -844,7 +846,7 @@ def bygg_skal():
     <div class="model-gallery{" few" if len(m["farger"]) <= 2 else ""}" style="--n:{len(m["farger"])}">
       {"".join(shots)}
     </div>
-    {kop_block(PRIS["skal"], "din modell och färg")}
+    {kop_block(PRIS["skal"], "din modell och färg", f'/inkopslapp/?m={m["slug"]}')}
     {kit_block(m)}
     <div class="post" style="grid-template-columns:minmax(0, 760px)">
       <article class="prose">
@@ -875,7 +877,7 @@ def bygg_skal():
     </div>
   </section>
 </main>
-{kop_fast(PRIS["skal"])}"""
+{kop_fast(PRIS["skal"], f'/inkopslapp/?m={m["slug"]}')}"""
         ut = ROT / "skal" / m["slug"] / "index.html"
         ut.parent.mkdir(parents=True, exist_ok=True)
         ut.write_text(sida(titel, beskr, url, innehall, schema, skript=LIVSSTIL_SKRIPT, og_typ="product"))
@@ -925,6 +927,48 @@ def bygg_valjare():
 def byt_mellan(t, start, slut, ny):
     a = t.index(start) + len(start)
     return t[:a] + ny + t[t.index(slut, a):]
+
+
+def bygg_inkopslapp():
+    """Lappen att visa i butiken. Väljs på sidan och ligger i adressen, så att inget sparas i webbläsaren."""
+    url = f"{SITE}/inkopslapp/"
+    def tillbehor(p):
+        return {"namn": p["namn"], "ean": p["ean"], "bild": f'/img/produkter/{p["bild"]}.webp'}
+    modeller = []
+    for m in MODELLER:
+        kabel, laddare, _ = kit_for(m)
+        modeller.append({"slug": m["slug"], "namn": m["namn"], "kabel": tillbehor(kabel), "laddare": tillbehor(laddare),
+                         "farger": [{"namn": f, "hex": FARG[f][0], "ean": SKAL_EAN[(m["namn"], f)], "bild": modellbild(m, f)} for f in m["farger"]]})
+    data = json.dumps({"pris": PRIS, "modeller": modeller}, ensure_ascii=False)
+    val = "".join(f'<option value="{m["slug"]}">{m["namn"]}</option>' for m in MODELLER)
+    butiker = "".join(butik_rad(b) for b in BUTIKER)
+    innehall = f"""<main id="innehall" class="lapp" tabindex="-1">
+  <div class="wrap lapp-grid">
+    <div class="lapp-intro">
+      <span class="caps">Inköpslapp</span>
+      <h1>Ta med den<br>till butiken.</h1>
+      <p>Corder säljs i fysiska butiker. Spara lappen i telefonen och visa den i butiken, så ser personalen direkt vilka artiklar du menar.</p>
+      <div class="lapp-val">
+        <label><select id="lapp-modell" aria-label="Din iPhone">{val}</select></label>
+        <div class="lapp-farger" id="lapp-farger" role="group" aria-label="Välj färg"></div>
+      </div>
+    </div>
+    <div class="kvitto-yta"><article class="kvitto" id="kvitto" aria-label="Din inköpslapp"><noscript><p>Inköpslappen behöver JavaScript. <a href="/skal/">Se alla skal</a>.</p></noscript></article></div>
+    <div class="lapp-knappar"><button class="btn" id="lapp-spara" type="button">Spara lappen</button><button class="btn ghost" id="lapp-dela" type="button">Dela</button></div>
+    <p class="lapp-status" id="lapp-status" role="status"></p>
+    <section class="lapp-butiker" aria-labelledby="lapp-butiker">
+      <h2 id="lapp-butiker">Här finns Corder</h2>
+      <ul>{butiker}</ul>
+      <p>Ingen av dem nära dig? Visa lappen i din mobilbutik. På lappen står hur de beställer Corder.</p>
+    </section>
+  </div>
+</main>
+<script id="lapp-data" type="application/json">{data}</script>"""
+    ut = ROT / "inkopslapp" / "index.html"
+    ut.parent.mkdir(parents=True, exist_ok=True)
+    ut.write_text(sida("Din inköpslapp | Corder", "Välj skal, kabel och laddare och ta med lappen till butiken, med streckkoder och rekommenderade priser.",
+                       url, innehall, skript='<script src="/assets/lapp.js?v=1" defer></script>', noindex=True))
+    print("skrev inkopslapp/index.html")
 
 
 def bygg_startsidans_data():
@@ -1333,6 +1377,7 @@ if __name__ == "__main__":
     bygg_passar()
     bygg_info()
     bygg_valjare()
+    bygg_inkopslapp()
     bygg_startsidans_data()
     bygg_404()
     bygg_omdirigeringar()

@@ -122,6 +122,14 @@ for fil, (s, text) in sidor.items():
     if gomd == (adress in karta):
         fel.append(f"sitemap.xml: {adress} {'ska inte vara med' if gomd else 'saknas'}")
 
+# Streckkoderna på inköpslappen ska gå att skanna i kassan.
+lapp = re.search(r'id="lapp-data"[^>]*>(.*?)</script>', (ROT / "inkopslapp" / "index.html").read_text(), re.S)
+for m in json.loads(lapp[1])["modeller"]:
+    for artikel in [*m["farger"], m["kabel"], m["laddare"]]:
+        e = artikel["ean"]
+        if not re.fullmatch(r"\d{13}", e) or sum(int(c) * (3 if i % 2 else 1) for i, c in enumerate(e)) % 10:
+            fel.append(f"inkopslapp: ogiltig EAN {e} ({m['namn']}, {artikel['namn']})")
+
 print(f"Kontrollerade {len(sidor)} sidor.")
 if fel:
     print(f"{len(fel)} fel:")
