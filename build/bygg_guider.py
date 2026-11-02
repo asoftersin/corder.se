@@ -30,10 +30,11 @@ PRIS = {"skal": 60, "kabel": 60, "laddare": 99}
 PRISNOTIS = "Rekommenderat pris. Butiken sätter sitt eget pris."
 
 # Fyll i adress, öppettider och telefon när de är bekräftade. Tomma fält visas inte.
+# lat och lon placerar butiken på Sverigekartan på startsidan, ortens läge räcker.
 BUTIKER = [
-    {"namn": "Go Banana", "ort": "Jönköping", "karta": "Go+Banana+J%C3%B6nk%C3%B6ping",
+    {"namn": "Go Banana", "ort": "Jönköping", "karta": "Go+Banana+J%C3%B6nk%C3%B6ping", "lat": 57.78, "lon": 14.16,
      "adress": "", "postnummer": "", "oppettider": "", "telefon": ""},
-    {"namn": "VIP Mullsjö", "ort": "Mullsjö", "karta": "VIP+Mullsj%C3%B6",
+    {"namn": "VIP Mullsjö", "ort": "Mullsjö", "karta": "VIP+Mullsj%C3%B6", "lat": 57.92, "lon": 13.88,
      "adress": "", "postnummer": "", "oppettider": "", "telefon": ""},
 ]
 
@@ -976,7 +977,7 @@ def bygg_startsidans_data():
     sida_ = ROT / "index.html"
     t = sida_.read_text()
     kort_ = "".join(
-        f'<div class="store"><span class="caps">{html.escape(b["ort"])}</span><h3>{html.escape(b["namn"])}</h3>'
+        f'<div class="store" data-lat="{b["lat"]}" data-lon="{b["lon"]}"><span class="caps">{html.escape(b["ort"])}</span><h3>{html.escape(b["namn"])}</h3>'
         + (f'<p>{html.escape(b["adress"])}, {html.escape(" ".join(x for x in (b["postnummer"], b["ort"]) if x))}</p>' if b["adress"] else "")
         + (f'<p>{html.escape(b["oppettider"])}</p>' if b["oppettider"] else "")
         + '<p>Fråga butiken om din modell finns inne.</p>'
@@ -1167,9 +1168,11 @@ def bygg_info():
           <li>Vilken sida som besöktes och från vilken webbplats besökaren kom.</li>
           <li>Enhetstyp (mobil, surfplatta eller dator) och land.</li>
           <li>Klick på till exempel kartlänkar, e-postlänkar och nedladdningar.</li>
+          <li>Om du önskar Corder till en ort på Sverigekartan sparas ortens namn. Annars sparas bara om du sökte en ort nära eller långt från en butik, inte vilken ort.</li>
         </ul>
         <h3>Det här sparas inte</h3>
         <ul>
+          <li>Din plats. Väljer du Använd min plats på Sverigekartan räknas avståndet ut i din webbläsare och platsen skickas aldrig.</li>
           <li>IP-adresser och uppgifter om din webbläsare sparas inte.</li>
           <li>Vi kan inte följa dig mellan dagar eller mellan webbplatser. För att räkna besökare per dag beräknas ett engångsvärde med hjälp av IP-adress, webbläsare och en slumpnyckel som raderas efter dygnet.</li>
         </ul>

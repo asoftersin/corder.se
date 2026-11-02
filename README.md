@@ -21,6 +21,8 @@ Startsidan (`docs/index.html`) redigeras direkt, utom modelldata, butikskort och
 
 Provrummet (`docs/assets/provrum.js`) öppnas från heron och färgkorten och läser samma modelldata. Skärmmåtten som ringar in modellen ligger i `SKARMAR` i skriptet: lägg till nya iPhone-modeller där.
 
+Sverigekartan (`docs/assets/karta.js`) läser butikerna från butikskorten på startsidan. Nya butiker läggs till i `BUTIKER` med `lat` och `lon`, då hamnar de på kartan av sig själva. Önskade orter syns som händelsen `onskad-ort` i statistikportalen.
+
 Excel-filen med produktdata uppdateras bara om `openpyxl` finns installerat.
 
 Kontrollera resultatet med `python3 build/kontrollera.py`. Samma kontroll, och statistikmotorns tester, körs på GitHub vid varje push.

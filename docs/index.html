@@ -423,18 +423,59 @@
   .dot:focus-visible { outline-color: #fff; outline-offset: 4px; border-radius: 50%; }
 
   /* Butiker */
-  .stores { padding: clamp(100px, 12vw, 180px) 0; }
-  .stores-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 48px; flex-wrap: wrap; }
-  .stores-head h2 { font-size: clamp(2.6rem, 5vw, 4.4rem); }
-  .stores-head p { color: var(--muted); max-width: 360px; margin: 0; }
-  .store-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 16px; }
-  .store { border: 1px solid var(--line); border-radius: 12px; padding: 26px; display: flex; flex-direction: column; gap: 6px; transition: border-color .2s; }
-  .store:hover { border-color: var(--ink); }
-  .store .caps { color: var(--muted); }
-  .store h3 { font-size: 1.6rem; }
-  .store p { color: #5c5c5c; font-size: .9rem; margin: 8px 0 0; }
+  .stores { background: #101814; color: #fff; padding: clamp(84px, 9vw, 140px) 0; --pa: #f5a493; }
+  .ks { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); grid-template-areas: "text karta" "svar karta" "butiker karta"; grid-template-rows: auto auto 1fr; column-gap: clamp(24px, 5vw, 80px); }
+  .ks-text { grid-area: text; }
+  .ks-text > .caps { display: block; margin-bottom: 18px; color: rgba(255,255,255,.65); }
+  .ks-text h2 { font-size: clamp(2.6rem, 5.4vw, 5rem); }
+  .ks-lead { color: rgba(255,255,255,.72); max-width: 44ch; margin: 22px 0 0; }
+  .ks-sok { position: relative; margin-top: clamp(28px, 4vw, 48px); }
+  .ks-rad { display: flex; align-items: baseline; gap: .32em; border-bottom: 1px solid rgba(255,255,255,.45); padding-bottom: 8px; font-size: clamp(1.8rem, 3.4vw, 3rem); font-weight: 300; letter-spacing: -.02em; transition: border-color .2s; }
+  .ks-rad:focus-within { border-color: var(--pa); }
+  .ks-rad label { white-space: nowrap; color: rgba(255,255,255,.6); }
+  .ks-rad input { flex: 1; min-width: 0; background: none; border: 0; outline: 0; padding: 0; color: #fff; font: inherit; letter-spacing: inherit; caret-color: var(--pa); }
+  .ks-rad input::placeholder { color: rgba(255,255,255,.3); }
+  .ks-rad button { flex: none; align-self: center; border: 0; background: none; color: #fff; font: 500 .85rem "Inter Tight", system-ui, sans-serif; letter-spacing: 0; padding: 10px 2px 10px 10px; cursor: pointer; }
+  .ks-lista { position: absolute; z-index: 5; left: 0; right: 0; margin: 6px 0 0; padding: 6px; list-style: none; background: #fff; color: var(--ink); border-radius: 12px; box-shadow: 0 18px 50px rgba(0,0,0,.45); }
+  .ks-lista li { padding: 11px 14px; border-radius: 8px; cursor: pointer; }
+  .ks-lista li:hover, .ks-lista li[aria-selected="true"] { background: #ececea; }
+  .ks-snabb { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .ks-snabb button { min-height: 40px; padding: 0 15px; border-radius: 999px; border: 1px solid rgba(255,255,255,.24); background: none; color: #fff; font: 500 .84rem "Inter Tight", system-ui, sans-serif; cursor: pointer; transition: border-color .2s, background .2s; }
+  .ks-snabb button:hover { border-color: #fff; }
+  .ks-snabb .ks-plats { background: #fff; border-color: #fff; color: var(--ink); }
+  .ks-snabb .ks-plats[aria-busy="true"] { opacity: .6; }
+  .ks-svar { grid-area: svar; margin-top: 30px; }
+  .ks-svar:empty { margin-top: 0; }
+  .ks-svar p { color: rgba(255,255,255,.78); max-width: 50ch; margin: 10px 0 0; }
+  .ks-svar a:not(.ks-cta) { text-decoration: underline; text-underline-offset: 3px; }
+  .ks-km { display: block; font-size: clamp(3.2rem, 7vw, 6.4rem); font-weight: 300; letter-spacing: -.04em; line-height: 1; color: var(--pa); }
+  .ks-val { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  .ks-cta { display: inline-flex; align-items: center; min-height: 48px; padding: 0 24px; border: 1px solid #fff; border-radius: 999px; background: #fff; color: var(--ink); font: 500 .9rem "Inter Tight", system-ui, sans-serif; cursor: pointer; transition: opacity .2s; }
+  .ks-cta:hover { opacity: .85; }
+  .ks-cta.ghost { background: none; color: #fff; border-color: rgba(255,255,255,.45); }
+  .ks-svar .ks-mer { font-size: .9rem; margin-top: 18px; color: rgba(255,255,255,.65); }
+  .ks-lank { border: 0; background: none; padding: 0; color: #fff; font: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+  .ks-tack { margin-top: 18px; padding: 16px 18px; border: 1px solid rgba(245,164,147,.5); border-radius: 12px; max-width: 52ch; }
+  .ks-tack b { display: block; color: var(--pa); font-weight: 500; }
+  .ks-tack span { color: rgba(255,255,255,.78); font-size: .92rem; }
+  .ks-sok :focus-visible, .ks-svar :focus-visible, .store a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+  .ks-rad input:focus-visible { outline: 0; }
+  .ks-karta { grid-area: karta; position: sticky; top: 150px; align-self: start; height: min(calc(100vh - 170px), 820px); min-height: 460px; }
+  .ks-duk { display: block; width: 100%; height: 100%; -webkit-mask-image: linear-gradient(to bottom, transparent, #000 7%, #000 93%, transparent), linear-gradient(to right, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(to bottom, transparent, #000 7%, #000 93%, transparent), linear-gradient(to right, transparent, #000 7%, #000 93%, transparent); -webkit-mask-composite: source-in; mask-composite: intersect; }
+  .store-grid { grid-area: butiker; align-self: start; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr)); gap: 12px; margin-top: clamp(36px, 5vw, 64px); }
+  .store { border: 1px solid rgba(255,255,255,.16); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; gap: 6px; transition: border-color .2s; }
+  .store:hover { border-color: rgba(255,255,255,.6); }
+  .store .caps { color: rgba(255,255,255,.6); }
+  .store h3 { font-size: 1.5rem; }
+  .store p { color: rgba(255,255,255,.7); font-size: .88rem; margin: 8px 0 0; }
   .store a { margin-top: 14px; font-size: .9rem; font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
-  .store.tip { background: #f4f4f2; border-color: transparent; }
+  @media (max-width: 900px) {
+    .ks { grid-template-columns: minmax(0, 1fr); grid-template-areas: "text" "svar" "karta" "butiker"; grid-template-rows: none; }
+    .ks-karta { position: static; height: min(112vw, 68vh); min-height: 400px; margin-top: 18px; }
+    .ks-svar { margin-top: 12px; }
+    .ks-svar:empty { display: none; }
+  }
+  .store.tip { background: rgba(255,255,255,.07); border-color: transparent; }
 
   /* Provrummet: helskärm där färgen fyller hela skärmen */
   .pr { --bg: #141d17; --fg: #fff; --pr-namn: #2b3a30; position: fixed; inset: 0; width: 100%; height: 100vh; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; overflow: hidden; background: var(--yta, var(--bg)); color: var(--fg); transition: color .35s; }
@@ -715,6 +756,37 @@
   </div>
 </section>
 
+<section class="stores" id="butiker" data-theme="dark" aria-labelledby="butiker-rubrik">
+  <div class="wrap ks">
+    <div class="ks-text">
+      <span class="caps">Hitta Corder i butik</span>
+      <h2 id="butiker-rubrik" data-split>Hur nära är<br>Corder dig?</h2>
+      <p class="ks-lead">Corder säljs bara i fysiska butiker. Sortimentet varierar, så fråga butiken efter din modell och färg.</p>
+      <form class="ks-sok" role="search" hidden>
+        <div class="ks-rad">
+          <label for="ks-ort">Jag bor i</label>
+          <input id="ks-ort" type="text" placeholder="din ort" autocomplete="off" autocapitalize="words" spellcheck="false" enterkeyhint="search" role="combobox" aria-expanded="false" aria-controls="ks-lista" aria-autocomplete="list">
+          <button type="submit">Visa</button>
+        </div>
+        <ul class="ks-lista" id="ks-lista" role="listbox" aria-label="Orter" hidden></ul>
+        <div class="ks-snabb">
+          <button class="ks-plats" type="button">Använd min plats</button>
+          <button type="button" data-ort="Stockholm">Stockholm</button>
+          <button type="button" data-ort="Göteborg">Göteborg</button>
+          <button type="button" data-ort="Malmö">Malmö</button>
+          <button type="button" data-ort="Jönköping">Jönköping</button>
+        </div>
+      </form>
+    </div>
+    <div class="ks-karta" hidden><canvas class="ks-duk" role="img" aria-label="Sverigekarta som visar Corders butiker i Jönköping och Mullsjö"></canvas></div>
+    <div class="ks-svar" aria-live="polite"></div>
+    <div class="store-grid">
+      <!-- butiker --><div class="store" data-lat="57.78" data-lon="14.16"><span class="caps">Jönköping</span><h3>Go Banana</h3><p>Fråga butiken om din modell finns inne.</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Go+Banana+J%C3%B6nk%C3%B6ping" rel="noopener" target="_blank" data-h="karta" data-v="Go Banana">Visa på karta</a></div><div class="store" data-lat="57.92" data-lon="13.88"><span class="caps">Mullsjö</span><h3>VIP Mullsjö</h3><p>Fråga butiken om din modell finns inne.</p><a href="https://www.google.com/maps/search/?api=1&amp;query=VIP+Mullsj%C3%B6" rel="noopener" target="_blank" data-h="karta" data-v="VIP Mullsjö">Visa på karta</a></div><!-- /butiker -->
+      <div class="store tip"><span class="caps">Saknar du en butik?</span><h3>Tipsa oss</h3><a href="mailto:sales@corder.se?subject=Butikstips">sales@corder.se</a></div>
+    </div>
+  </div>
+</section>
+
 <section class="gear" id="laddning" data-theme="light">
   <div class="gear-pin">
     <div class="wrap gear-head">
@@ -777,19 +849,6 @@
   </div>
 </section>
 
-<section class="stores" id="butiker" data-theme="light">
-  <div class="wrap">
-    <div class="stores-head">
-      <h2 data-split>Hitta Corder<br>i butik.</h2>
-      <p>Corder säljs i fysiska butiker. Sortiment och tillgänglighet kan variera, så fråga butiken efter din modell och färg.</p>
-    </div>
-    <div class="store-grid">
-      <!-- butiker --><div class="store"><span class="caps">Jönköping</span><h3>Go Banana</h3><p>Fråga butiken om din modell finns inne.</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Go+Banana+J%C3%B6nk%C3%B6ping" rel="noopener" target="_blank" data-h="karta" data-v="Go Banana">Visa på karta</a></div><div class="store"><span class="caps">Mullsjö</span><h3>VIP Mullsjö</h3><p>Fråga butiken om din modell finns inne.</p><a href="https://www.google.com/maps/search/?api=1&amp;query=VIP+Mullsj%C3%B6" rel="noopener" target="_blank" data-h="karta" data-v="VIP Mullsjö">Visa på karta</a></div><!-- /butiker -->
-      <div class="store tip"><span class="caps">Saknar du en butik?</span><h3>Tipsa oss</h3><a href="mailto:sales@corder.se?subject=Butikstips">sales@corder.se</a></div>
-    </div>
-  </div>
-</section>
-
 <section class="retail" id="aterforsaljare" data-theme="light">
   <div class="wrap">
     <h2 data-split>Sälj Corder<br>i din butik.</h2>
@@ -819,6 +878,7 @@
 </footer>
 
 <script src="/assets/provrum.js?v=1" defer></script>
+<script src="/assets/karta.js?v=1" defer></script>
 <script src="/assets/vendor/gsap.min.js" defer></script>
 <script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
 <script>
@@ -984,12 +1044,6 @@ addEventListener('DOMContentLoaded', () => {
   if (!window.gsap || !window.ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
 
-  // Headerns färg följer sektionen under den
-  document.querySelectorAll('[data-theme]').forEach(sec => ScrollTrigger.create({
-    trigger: sec, start: 'top 40px', end: 'bottom 40px',
-    onToggle: self => { if (self.isActive) top.classList.toggle('on-light', sec.dataset.theme === 'light'); }
-  }));
-
   ScrollTrigger.create({ start: 80, onToggle: self => top.classList.toggle('solid', self.isActive) });
 
   const mm = gsap.matchMedia();
@@ -1113,6 +1167,12 @@ addEventListener('DOMContentLoaded', () => {
 
     return () => document.documentElement.classList.remove('motion');
   });
+
+  // Headerns färg följer sektionen under den. Skapas efter de fästa sektionerna, annars räknas deras längd inte med.
+  document.querySelectorAll('[data-theme]').forEach(sec => ScrollTrigger.create({
+    trigger: sec, start: 'top 40px', end: 'bottom 40px',
+    onToggle: self => { if (self.isActive) top.classList.toggle('on-light', sec.dataset.theme === 'light'); }
+  }));
 
   // Bilder som laddas sent ändrar höjder, så räkna om när allt är klart
   addEventListener('load', () => ScrollTrigger.refresh());
