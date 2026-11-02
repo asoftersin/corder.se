@@ -22,7 +22,7 @@
 <link rel="preload" href="/assets/fonts/inter-tight-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts.css">
 <link rel="stylesheet" href="/assets/sida.css?v=15">
-
+<script src="/assets/s.js" data-e="https://corder-statistik.corder-statistik.workers.dev/e" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Corder", "item": "https://corder.se/"}, {"@type": "ListItem", "position": 2, "name": "Återförsäljare", "item": "https://corder.se/aterforsaljare/"}, {"@type": "ListItem", "position": 3, "name": "Beställ påfyllning", "item": "https://corder.se/aterforsaljare/bestall/"}]}</script>
 </head>
 <body>
@@ -61,7 +61,7 @@
       </table>
     </div>
     <div style="max-width:760px;padding-bottom:clamp(72px,9vw,128px)">
-      <form class="form" data-form="bestallning" data-url="" data-mejl="sales@corder.se" data-amne="Beställning" data-tack="Tack! Vi har tagit emot beställningen och bekräftar pris och leverans via e-post.">
+      <form class="form" data-form="bestallning" data-url="https://corder-statistik.corder-statistik.workers.dev/f" data-mejl="sales@corder.se" data-amne="Beställning" data-tack="Tack! Vi har tagit emot beställningen och bekräftar pris och leverans via e-post.">
       <label>Företag<input name="foretag" required maxlength="120" autocomplete="organization"></label>
       <label>Kontaktperson<input name="kontakt" required maxlength="120" autocomplete="name"></label>
       <label>E-post<input name="epost" type="email" required maxlength="254" autocomplete="email"></label>
@@ -69,7 +69,7 @@
       <label class="bred">Leveransadress<input name="leverans" maxlength="200" autocomplete="street-address"></label>
       <label class="bred">Meddelande<textarea name="meddelande" maxlength="2000"></textarea></label>
       <label class="falla" aria-hidden="true">Lämna tomt<input name="webbplats" tabindex="-1" autocomplete="off"></label>
-      <small class="bred">Knappen öppnar ditt e-postprogram med uppgifterna ifyllda. Läs mer under <a href="/pages/integritet/">integritet</a>.</small>
+      <small class="bred">Vi använder uppgifterna för att svara er. Läs mer under <a href="/pages/integritet/">integritet</a>.</small>
       <button class="btn" type="submit">Skicka beställning</button>
       <div class="form-svar" role="status" aria-live="polite"></div>
     </form>

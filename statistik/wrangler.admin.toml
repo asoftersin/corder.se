@@ -1,13 +1,11 @@
-# Adminportalen. Hela tjänsten ligger bakom Cloudflare Access.
+# Adminportalen. Skyddas med hemligheten PORTAL_LOSENORD, se README.md.
 name = "corder-admin"
 main = "src/admin.js"
 compatibility_date = "2026-10-01"
-
-[vars]
-ACCESS_TEAM = "ERSATT-MED-TEAMNAMN"
-ACCESS_AUD = "ERSATT-MED-AUD-FRAN-ACCESS"
+workers_dev = true
+preview_urls = false
 
 [[d1_databases]]
 binding = "DB"
 database_name = "corder-statistik"
-database_id = "ERSATT-MED-ID-FRAN-wrangler-d1-create"
+database_id = "ee5094ee-c882-4689-94fa-dc52cc105c64"

@@ -88,7 +88,7 @@ def skriv_bildpaket():
         for f in filer:
             # Fast datum, så att filen bara ändras när bilderna gör det.
             z.writestr(zipfile.ZipInfo(f"corder-bildpaket/{f.parent.name}/{f.name}", (2026, 1, 1, 0, 0, 0)), f.read_bytes())
-        z.writestr("corder-bildpaket/LASMIG.txt",
+        z.writestr(zipfile.ZipInfo("corder-bildpaket/LASMIG.txt", (2026, 1, 1, 0, 0, 0)),
                    "Frilagda produktbilder från Corder (WebP med transparent bakgrund).\n"
                    "Fritt att använda för att marknadsföra och sälja Corders produkter.\n"
                    "Frågor: sales@corder.se\n")

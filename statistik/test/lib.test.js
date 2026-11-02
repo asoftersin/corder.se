@@ -149,3 +149,18 @@ test('portalens ändringar kräver inloggning och egen begäran', async () => {
   assert.equal(frammande.status, 403);
   assert.equal(anvand, 0);
 });
+
+test('portalens lösenord: fel och korta lösenord släpps inte in', async () => {
+  const { default: admin } = await import('../src/admin.js');
+  const losen = 'ett-langt-slumpat-losenord-for-test';
+  const basic = v => ({ Authorization: `Basic ${btoa(v)}` });
+  const db = { prepare: () => ({ all: async () => ({ results: [] }) }) };
+  const be = (headers, env = { PORTAL_LOSENORD: losen, DB: db }) => admin.fetch(new Request('https://x.workers.dev/api/arenden', { headers }), env);
+  const utan = await be({});
+  assert.equal(utan.status, 401);
+  assert.match(utan.headers.get('WWW-Authenticate'), /^Basic/);
+  assert.equal((await be(basic('corder:fel'))).status, 401);
+  assert.equal((await be({ Authorization: 'Basic %%%' })).status, 401);
+  assert.equal((await be(basic(`corder:${losen}`))).status, 200);
+  assert.equal((await be(basic('corder:kort'), { PORTAL_LOSENORD: 'kort', DB: db })).status, 401);
+});

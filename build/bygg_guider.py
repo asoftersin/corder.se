@@ -22,8 +22,8 @@ BYGG = Path(__file__).resolve().parent
 ROT = BYGG.parent / "docs"
 INNEHALL = BYGG / "innehall"
 SITE = "https://corder.se"
-# Adressen till den publika insamlingen (utan /e). Tom = inget spårskript läggs in på sidorna.
-STATISTIK_URL = os.environ.get("STATISTIK_URL", "")
+# Adressen till den publika insamlingen (utan /e). Tom = inget spårskript och formulären skickas som mejl.
+STATISTIK_URL = os.environ.get("STATISTIK_URL", "https://corder-statistik.corder-statistik.workers.dev")
 
 # Rekommenderade butikspriser i kronor. Enda stället där priserna anges.
 PRIS = {"skal": 60, "kabel": 60, "laddare": 99}

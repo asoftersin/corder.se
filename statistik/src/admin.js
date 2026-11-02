@@ -1,4 +1,4 @@
-// Adminportalen. Nekar allt utan giltig Cloudflare Access-token, även om Access skulle vara avstängt.
+// Adminportalen. Nekar allt utan rätt lösenord eller giltig Cloudflare Access-token.
 import { dagarSedan, summeraSatser, svenskDag, verifieraToken } from './lib.js';
 import { PORTAL } from './portal.js';
 
@@ -18,11 +18,24 @@ async function hamtaNycklar(team) {
   return cache.nycklar;
 }
 
+// Jämför hashar byte för byte, så att svarstiden inte avslöjar något om lösenordet.
+async function ratLosenord(request, losenord) {
+  if (losenord.length < 20) return false; // Ett kort lösenord räknas som inget lösenord.
+  const [typ, kod] = (request.headers.get('Authorization') || '').split(' ');
+  if (typ !== 'Basic' || !kod) return false;
+  let givet;
+  try { givet = new TextDecoder().decode(Uint8Array.from(atob(kod), c => c.charCodeAt(0))).split(':').slice(1).join(':'); } catch { return false; }
+  const hash = async s => new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s)));
+  const [x, y] = await Promise.all([hash(givet), hash(losenord)]);
+  return x.reduce((skillnad, b, i) => skillnad | (b ^ y[i]), 0) === 0;
+}
+
 async function inloggad(request, env) {
   if (env.LOKAL_UTAN_INLOGGNING === 'ja') {
     // Bara för wrangler dev. Gäller aldrig på en publik adress.
     return ['localhost', '127.0.0.1'].includes(new URL(request.url).hostname);
   }
+  if (env.PORTAL_LOSENORD) return ratLosenord(request, env.PORTAL_LOSENORD);
   const token = request.headers.get('Cf-Access-Jwt-Assertion');
   if (!token || !env.ACCESS_TEAM || !env.ACCESS_AUD) return false;
   const nycklar = await hamtaNycklar(env.ACCESS_TEAM);
@@ -90,6 +103,7 @@ export default {
   async fetch(request, env) {
     let ok = false;
     try { ok = await inloggad(request, env); } catch (e) { console.error('inloggning', e.message); }
+    if (!ok && env.PORTAL_LOSENORD) return svar('Du behöver logga in.', 'text/plain; charset=utf-8', 401, { 'WWW-Authenticate': 'Basic realm="Corder", charset="UTF-8"' });
     if (!ok) return svar('Du behöver logga in.', 'text/plain; charset=utf-8', 403);
     const url = new URL(request.url);
     const arende = url.pathname.match(/^\/api\/arenden\/(\d+)$/);

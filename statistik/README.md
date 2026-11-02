@@ -3,10 +3,9 @@
 Egen besöksstatistik utan cookies. Två Cloudflare Workers delar en D1-databas:
 
 - `corder-statistik` (publik) tar emot händelser på `POST /e` och städar en gång per dygn.
-- `corder-admin` (bakom Cloudflare Access) visar portalen och CSV-exporten.
+- `corder-admin` (skyddad med lösenord) visar portalen och CSV-exporten.
 
-De är separata eftersom Access skyddar en hel `workers.dev`-adress. Insamlingen måste vara öppen och portalen stängd.
-Portalen kontrollerar dessutom själv Access-token och nekar allt utan giltig token.
+Portalen nekar allt utan rätt lösenord. Den kan också skyddas med Cloudflare Access: ta då bort `PORTAL_LOSENORD` och fyll i `ACCESS_TEAM` och `ACCESS_AUD`.
 
 Vad som sparas beskrivs på https://corder.se/pages/integritet/. Ändra den sidan om mätningen ändras.
 
@@ -40,9 +39,13 @@ Allt körs från den här mappen. Gratisnivån räcker.
    npm run driftsatt
    ```
 
-4. Skydda portalen i Cloudflare-panelen under Workers & Pages → `corder-admin` → Settings → Domains & Routes → `workers.dev`: slå på Cloudflare Access och tillåt bara din e-postadress. Lämna `corder-statistik` utan Access.
+4. Skapa ett långt slumpat lösenord till portalen, spara det i en lösenordshanterare och klistra in det när kommandot frågar. Det måste ha minst 20 tecken, annars släpps ingen in:
 
-5. Kopiera team-namnet (`<team>.cloudflareaccess.com`) och programmets AUD-värde från Zero Trust → Access → Applications. Fyll i `ACCESS_TEAM` och `ACCESS_AUD` i `wrangler.admin.toml` och driftsätt igen. Portalen svarar 403 tills det är gjort.
+   ```bash
+   npx wrangler secret put PORTAL_LOSENORD -c wrangler.admin.toml
+   ```
+
+5. Portalen svarar nu med en inloggningsruta. Användarnamnet kan vara vad som helst.
 
 6. Slå på mätningen på sajten. Bygg med adressen till insamlingen och publicera:
 
@@ -50,9 +53,9 @@ Allt körs från den här mappen. Gratisnivån räcker.
    STATISTIK_URL=https://corder-statistik.<konto>.workers.dev python3 ../build/bygg_guider.py
    ```
 
-   Lägg in adressen permanent som standardvärde för `STATISTIK_URL` i `build/bygg_guider.py`, annars försvinner spårskriptet vid nästa bygge.
+   Adressen ligger som standardvärde för `STATISTIK_URL` i `build/bygg_guider.py`. Driftsatt adress är `https://corder-statistik.corder-statistik.workers.dev`, och portalen finns på `https://corder-admin.corder-statistik.workers.dev`.
 
-7. Öppna `https://corder-admin.<konto>.workers.dev`, logga in med engångskoden och kontrollera att besöket syns.
+7. Öppna `https://corder-admin.<konto>.workers.dev`, logga in med lösenordet och kontrollera att besöket syns.
 
 ## Ansökningar och beställningar
 
