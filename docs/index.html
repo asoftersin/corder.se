@@ -97,7 +97,7 @@
 
   /* Hero */
   /* Kampanjbilden är stående, så den fyller högra delen och tonas in mot den mörka bakgrunden */
-  .hero { position: relative; background: #0b0b0b; color: #fff; overflow: hidden; overflow: clip; }
+  .hero { position: relative; background: var(--hero-bg, #0b0b0b); transition: background-color .8s ease; color: #fff; overflow: hidden; overflow: clip; }
   .hero-stage { position: relative; height: 100vh; min-height: 560px; overflow: hidden; display: flex; align-items: center; padding: 0 var(--gutter); }
   .hero-photo { position: absolute; top: 0; bottom: 0; right: 0; left: 40%; -webkit-mask-image: linear-gradient(to right, transparent, #000 28%); mask-image: linear-gradient(to right, transparent, #000 28%); }
   .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; transform-origin: 60% 40%; will-change: transform; }
@@ -110,13 +110,34 @@
   .hero-cta:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
   .hero-foot { position: absolute; left: var(--gutter); bottom: 32px; max-width: 360px; color: rgba(255,255,255,.62); }
   .hero-foot .caps { color: #fff; display: block; margin-bottom: 6px; }
+  .hero-photo::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to bottom, rgba(0,0,0,.5), transparent 130px); }
+  .hero-lager { position: absolute; inset: 0; transform-origin: 60% 40%; will-change: transform; }
+  .hero-lager img { position: absolute; inset: 0; }
+  .hero-farger { display: flex; align-items: center; gap: 4px; margin-left: -8px; }
+  .hero-farg { position: relative; display: flex; align-items: center; min-height: 44px; min-width: 44px; padding: 0 8px; background: none; border: 0; color: #fff; font: inherit; font-size: .8rem; cursor: pointer; border-radius: 999px; }
+  .hero-farg i { width: 24px; height: 24px; flex: none; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 1px rgba(255,255,255,.55); transition: box-shadow .25s ease; }
+  .hero-farg:hover i { box-shadow: 0 0 0 2px rgba(255,255,255,.85); }
+  .hero-farg span { display: grid; max-width: 0; overflow: hidden; white-space: nowrap; transition: max-width .45s cubic-bezier(.16,1,.3,1), margin .45s cubic-bezier(.16,1,.3,1); }
+  .hero-farg[aria-pressed="true"] i { box-shadow: 0 0 0 2px #0b0b0b, 0 0 0 4px #fff; }
+  .hero-farg[aria-pressed="true"] span { max-width: 90px; margin-left: 11px; }
+  .hero-farg:focus-visible, .hero-paus:focus-visible { outline: 2px solid #fff; outline-offset: 1px; }
+  .hero-spelar .hero-farg[aria-pressed="true"]::after { content: ""; position: absolute; left: 8px; right: 8px; bottom: 3px; height: 2px; background: #fff; transform-origin: left; animation: hero-forlopp 6.5s linear forwards; }
+  .hero-pausad .hero-farg::after { animation-play-state: paused !important; }
+  .hero-stopp .hero-farg::after { display: none; }
+  @keyframes hero-forlopp { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .hero-paus { width: 44px; height: 44px; flex: none; background: none; border: 0; color: rgba(255,255,255,.75); cursor: pointer; font-size: .7rem; border-radius: 50%; }
+  .hero-paus::before { content: "❚❚"; }
+  .hero-paus[aria-pressed="true"]::before { content: "▶"; }
+  .hero-paus[hidden], html:not(.js-hero) .hero-farger { display: none; }
   @media (max-width: 900px) {
     .hero { height: auto; }
-    .hero-stage { position: relative; height: auto; flex-direction: column; align-items: stretch; padding: 120px 0 0; }
-    .hero-stage { min-height: 0; overflow: visible; }
-    .hero-copy { order: -1; padding: 0 var(--gutter); margin-bottom: 28px; }
-    .hero-photo { position: relative; left: 0; overflow: hidden; -webkit-mask-image: none; mask-image: none; }
-    .hero-photo img { height: auto; }
+    .hero-stage { height: 100vh; height: 100svh; min-height: 620px; align-items: flex-end; padding: 0 var(--gutter) 96px; }
+    .hero-copy { gap: 14px; width: 100%; }
+    .hero-photo { left: 0; -webkit-mask-image: none; mask-image: none; }
+    .hero-photo::after { background: linear-gradient(to bottom, rgba(0,0,0,.5), transparent 130px, transparent 38%, rgba(0,0,0,.82) 72%); }
+    .hero h1 { font-size: clamp(2.6rem, 12vw, 4rem); }
+    .hero-lager img { object-position: 92% 38%; }
+    .hero-copy:has(.hero-din:not([hidden])) p { display: none; }
     .hero-foot { display: none; }
   }
 
@@ -588,16 +609,18 @@
   </div>
 </div>
 
+<script>document.documentElement.classList.add('js-hero')</script>
 <section class="hero" id="hero" data-theme="dark">
   <div class="hero-stage">
     <div class="hero-photo">
-      <img src="/img/lifestyle/corder-natt-skogsgron-v3.webp" srcset="/img/lifestyle/s/corder-natt-skogsgron-v3.webp 640w, /img/lifestyle/m/corder-natt-skogsgron-v3.webp 828w, /img/lifestyle/corder-natt-skogsgron-v3.webp 1122w" sizes="(max-width: 900px) 100vw, 60vw" alt="Kvinna i grön bomberjacka på en nattmarknad håller upp en iPhone i Corders skogsgröna TPU-skal" width="1122" height="1402" fetchpriority="high">
+      <div class="hero-lager"><img src="/img/lifestyle/corder-natt-skogsgron-v3.webp" srcset="/img/lifestyle/s/corder-natt-skogsgron-v3.webp 640w, /img/lifestyle/m/corder-natt-skogsgron-v3.webp 828w, /img/lifestyle/corder-natt-skogsgron-v3.webp 1122w" sizes="(max-width: 900px) 100vw, 60vw" alt="Kvinna i grön bomberjacka på en nattmarknad håller upp en iPhone i Corders skogsgröna TPU-skal" width="1122" height="1402" fetchpriority="high"></div>
     </div>
     <div class="hero-copy">
-      <span class="caps">Höst 26</span>
+      <span class="caps">Höst 26 · <span class="hero-finns">iPhone 17–18</span></span>
       <h1 data-split>Skogsgrön<br>efter mörker.</h1>
       <p>Skal och kablar för 60 kr, laddare för 99 kr. Rekommenderade priser, i fysiska butiker.</p>
-      <a class="hero-cta" href="#hitta-skal" data-h="finder" data-v="hero">Hitta skal till din iPhone ↓</a>
+      <a class="hero-cta" href="#hitta-skal" data-provrum data-farg="Skogsgrön" data-h="provrum" data-v="hero">Prova skogsgrön på din iPhone</a>
+      <div class="hero-farger" role="group" aria-label="Välj färg"><button type="button" class="hero-paus" aria-pressed="false" aria-label="Pausa bildväxlingen"></button></div>
       <div class="hero-din" hidden><span class="caps">Eller direkt till din modell</span><div class="hero-din-val"></div></div>
     </div>
     <div class="hero-foot"><span class="caps">Designat i Sverige.</span>Skal, laddare och kablar för iPhone sedan 2019.</div>
@@ -885,6 +908,7 @@
 </footer>
 
 <script src="/assets/provrum.js?v=1" defer></script>
+<script src="/assets/hero.js?v=1" defer></script>
 <script src="/assets/karta.js?v=1" defer></script>
 <script src="/assets/vendor/gsap.min.js" defer></script>
 <script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
@@ -1075,16 +1099,16 @@ addEventListener('DOMContentLoaded', () => {
     const heroLines = lines(document.querySelector('.hero h1'));
     gsap.from(heroLines, { yPercent: 110, duration: 1.2, ease: 'power4.out', stagger: .12, delay: .15 });
     gsap.from('.hero-photo', { scale: 1.12, autoAlpha: 0, duration: 1.8, ease: 'power3.out' });
-    gsap.from('.hero-foot, .hero-copy .caps, .hero-cta', { autoAlpha: 0, y: 16, duration: 1, delay: .7, ease: 'power2.out' });
+    gsap.from('.hero-foot, .hero-copy .caps, .hero-cta, .hero-farger', { autoAlpha: 0, y: 16, duration: 1, delay: .7, ease: 'power2.out' });
 
     if (desktop) {
       // Hjälten fästs medan bilden zoomar ut och rubriken lyfter bort
       gsap.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=70%', scrub: .6, pin: '.hero-stage' } })
-        .fromTo('.hero-photo img', { scale: 1.06 }, { scale: 1, yPercent: -3, ease: 'none' }, 0)
+        .fromTo('.hero-lager', { scale: 1.06 }, { scale: 1, yPercent: -3, ease: 'none' }, 0)
         .to('.hero-copy', { yPercent: -40, autoAlpha: 0, ease: 'none' }, 0)
         .to('.hero-foot', { autoAlpha: 0, ease: 'none' }, 0);
     } else {
-      gsap.to('.hero-photo img', { yPercent: 8, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+      gsap.to('.hero-lager', { yPercent: 8, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
     }
 
     // Övriga rubriker
