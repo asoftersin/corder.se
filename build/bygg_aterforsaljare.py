@@ -1,6 +1,6 @@
 """Bygger /aterforsaljare/: sidan för butiker och grossister, produktdata (CSV och Excel) och bildpaket.
 
-Rekommenderade butikspriser visas, inköpspriserna skickas på begäran från sales@corder.se.
+Inga priser visas på sajten, prislistan skickas på begäran från sales@corder.se.
 Kör: python3 -I build/bygg_aterforsaljare.py (Excel skapas bara om openpyxl finns).
 """
 import csv
@@ -12,7 +12,7 @@ from pathlib import Path
 from urllib.parse import quote
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from bygg_guider import KABLAR, LADDARE, MODELLER, PRIS, ROT, SITE, SKAL_EAN, STATISTIK_URL, bild, brodsmulor, liten, matt, sida  # noqa: E402
+from bygg_guider import KABLAR, LADDARE, MODELLER, ROT, SITE, SKAL_EAN, STATISTIK_URL, bild, brodsmulor, liten, matt, sida  # noqa: E402
 
 UT = ROT / "aterforsaljare"
 URL = f"{SITE}/aterforsaljare/"
@@ -100,7 +100,7 @@ FAQ = [
     ("Har alla artiklar EAN-kod?", "Ja, alla artiklar har EAN via GS1 Sverige. Koderna finns i produktdatan (Excel och CSV) här på sidan."),
     ("Vilka iPhone-modeller finns det skal till?", "iPhone 14, 14 Pro, 15, 15 Pro, 16e, 16 och 16 Pro i svart, blå, lila och persika, samt iPhone 17, 17 Pro och 18 Pro i svart och skogsgrön."),
     ("Är produkterna CE-märkta?", "Ja, laddare och kablar är CE-märkta och alla produkter levereras i butiksfärdiga förpackningar med corder-ordmärket."),
-    ("Vad kostar det?", "Skal och kablar har rekommenderat butikspris 60 kr och snabbladdare 99 kr. Inköpspriser för butik och grossist finns i prislistan, som vi skickar på begäran."),
+    ("Vad kostar det?", "Priser för butik och grossist finns i prislistan, som vi skickar på begäran till sales@corder.se."),
     ("Vad händer om det inte säljer?", "Första startpaketet har 90 dagars säljgaranti. Det som inte har sålts byter vi mot andra artiklar eller tar tillbaka och krediterar, så länge förpackningen är obruten."),
     ("Säljer Corder själva på nätet?", "Nej. Corder säljs bara i fysiska butiker, så ni konkurrerar inte med vår egen webbutik."),
 ]
@@ -155,8 +155,8 @@ def innehall(antal_rader, antal_bilder):
         <a class="btn ghost" href="#resurser">Produktdata och bilder</a>
       </div>
       <ul class="b2b-kvitto">
-        <li><b>{PRIS["skal"]} kr</b> rek. pris för <a href="/skal/">skal</a> och <a href="/kablar/">kablar</a></li>
-        <li><b>{PRIS["laddare"]} kr</b> rek. pris för <a href="/laddare/">snabbladdare</a></li>
+        <li><b>20 000</b> sålda per år i en enda butik</li>
+        <li><b>Alla artiklar</b> har EAN via GS1 Sverige</li>
         <li><b>90 dagar</b> säljgaranti på första startpaketet</li>
         <li><b>Hela Sverige</b> leverans till butik eller grossistlager</li>
       </ul>
@@ -190,7 +190,7 @@ def innehall(antal_rader, antal_bilder):
     <h2 class="rv">Därför säljer det.</h2>
     <div class="b2b-cards">
       <div class="b2b-card rv"><span>01</span><h3>Akut behov</h3><p>Kabeln är glömd, laddaren står kvar hemma eller skalet har spruckit. Kunden behöver lösningen nu, inte om tre dagar.</p></div>
-      <div class="b2b-card rv"><span>02</span><h3>Impulspris</h3><p>60 kr för skal och kablar, 99 kr för snabbladdare. Under gränsen där kunden tänker efter, och lätt att plocka med i förbifarten.</p></div>
+      <div class="b2b-card rv"><span>02</span><h3>Impulspris</h3><p>Lågt pris, under gränsen där kunden tänker efter, och lätt att plocka med i förbifarten.</p></div>
       <div class="b2b-card rv"><span>03</span><h3>Där kunderna går</h3><p>I tunnor längs gångarna eller i ett eget Corder-ställ. Ett kompakt sortiment som täcker de vanligaste behoven: rätt kabel, en snabbladdare och skal till de populäraste iPhone-modellerna.</p></div>
     </div>
   </div>
@@ -216,8 +216,8 @@ def innehall(antal_rader, antal_bilder):
       <p>Fyllda och klara att ställa ut, med pris på skylten. Vi anpassar skalen efter era kunder.</p>
     </div>
     <div class="b2b-paket">
-      <div class="rv"><span class="caps">Volym i gången</span><h3>Kabelpaket</h3><b>200 kablar</b><p>USB-C och Lightning, alla 2 meter och flätade, för tunna eller hylla längs gångarna. Det som säljer mest i VIP Mullsjö.</p><small>Rek. pris 60 kr</small></div>
-      <div class="rv"><span class="caps">Tillägg</span><h3>Laddarpaket</h3><b>60 snabbladdare</b><p>20W USB-C och Dual Port för de nya iPhone-modellerna, 18W USB-A för äldre kablar. Ställs bredvid kablarna.</p><small>Rek. pris 99 kr</small></div>
+      <div class="rv"><span class="caps">Volym i gången</span><h3>Kabelpaket</h3><b>200 kablar</b><p>USB-C och Lightning, alla 2 meter och flätade, för tunna eller hylla längs gångarna. Det som säljer mest i VIP Mullsjö.</p></div>
+      <div class="rv"><span class="caps">Tillägg</span><h3>Laddarpaket</h3><b>60 snabbladdare</b><p>20W USB-C och Dual Port för de nya iPhone-modellerna, 18W USB-A för äldre kablar. Ställs bredvid kablarna.</p></div>
       <div class="rv dark"><span class="caps">Begränsat antal</span><h3>Corder-ställ</h3><b>60 artiklar och ställ</b><p>Kablar, laddare och skal i vårt eget ställ, som ingår i första ordern. Passar kiosk, disk och mindre butiker.</p><small>Så långt lagret räcker</small></div>
     </div>
     <div class="b2b-garanti rv">
@@ -399,11 +399,11 @@ def bygg_material():
           </table>"""
     skyltar = [
         skylt("kablar", "Kablar", "Till tunna eller hylla längs gångarna.",
-              f'<h3>Laddkablar.</h3><p>Flätade och 2 meter. USB-C och Lightning.</p>{skyltbilder("/img/produkter/kabel-usb-c-usb-c-2m.webp", "/img/produkter/kabel-usb-c-lightning-svart.webp")}<div class="skylt-pris"><span data-pris="kabel">{PRIS["kabel"]}</span><small> kr</small></div>'),
+              f'<h3>Laddkablar.</h3><p>Flätade och 2 meter. USB-C och Lightning.</p>{skyltbilder("/img/produkter/kabel-usb-c-usb-c-2m.webp", "/img/produkter/kabel-usb-c-lightning-svart.webp")}<div class="skylt-pris"><span data-pris="kabel">__</span><small> kr</small></div>'),
         skylt("laddare", "Laddare", "Att ställa bredvid kablarna.",
-              f'<h3>Snabbladdare.</h3><p>20W USB-C, 20W Dual Port och 18W USB-A.</p>{skyltbilder("/img/produkter/laddare-20w-usb-c.webp", "/img/produkter/laddare-20w-dual-port.webp")}<div class="skylt-pris"><span data-pris="laddare">{PRIS["laddare"]}</span><small> kr</small></div>', "tonad"),
+              f'<h3>Snabbladdare.</h3><p>20W USB-C, 20W Dual Port och 18W USB-A.</p>{skyltbilder("/img/produkter/laddare-20w-usb-c.webp", "/img/produkter/laddare-20w-dual-port.webp")}<div class="skylt-pris"><span data-pris="laddare">__</span><small> kr</small></div>', "tonad"),
         skylt("skal", "Skal", "Till stället eller skalhyllan.",
-              f'<h3>Skal till din iPhone.</h3><p>TPU-skal till iPhone 14 hela vägen till iPhone 18 Pro. Fråga personalen om din modell.</p>{skyltbilder("/img/cut/17p-skogsgron.webp", "/img/cut/16p-pink.webp")}<div class="skylt-pris"><span data-pris="skal">{PRIS["skal"]}</span><small> kr</small></div>'),
+              f'<h3>Skal till din iPhone.</h3><p>TPU-skal till iPhone 14 hela vägen till iPhone 18 Pro. Fråga personalen om din modell.</p>{skyltbilder("/img/cut/17p-skogsgron.webp", "/img/cut/16p-pink.webp")}<div class="skylt-pris"><span data-pris="skal">__</span><small> kr</small></div>'),
         skylt("vilken-kabel", "Vilken kabel passar?", "Sparar frågor i kassan. Sätt den vid kablarna.",
               f'<h3>Vilken kabel passar?</h3><p>Hitta din iPhone och din laddare.</p>{kabeltabell}<p style="margin-top:auto">Alla kablar är 2 meter. Modellnamnet står under Inställningar, Allmänt, Om.</p>'),
         skylt("salj-har", "Här säljs Corder", "Till dörr, fönster eller disk.",
@@ -417,9 +417,9 @@ def bygg_material():
     </div>
     <form class="mat-val" onsubmit="return false">
       <label>Butikens namn<input id="mat-butik" maxlength="40" autocomplete="off"></label>
-      <label>Pris kablar, kr<input data-prisval="kabel" type="number" min="0" max="9999" value="{PRIS["kabel"]}"></label>
-      <label>Pris laddare, kr<input data-prisval="laddare" type="number" min="0" max="9999" value="{PRIS["laddare"]}"></label>
-      <label>Pris skal, kr<input data-prisval="skal" type="number" min="0" max="9999" value="{PRIS["skal"]}"></label>
+      <label>Pris kablar, kr<input data-prisval="kabel" type="number" min="0" max="9999" placeholder="Ert pris"></label>
+      <label>Pris laddare, kr<input data-prisval="laddare" type="number" min="0" max="9999" placeholder="Ert pris"></label>
+      <label>Pris skal, kr<input data-prisval="skal" type="number" min="0" max="9999" placeholder="Ert pris"></label>
       <button class="btn mat-knapp" type="button" data-skriv="alla">Skriv ut alla</button>
     </form>
     <div class="mat-rutnat">
@@ -433,7 +433,7 @@ def bygg_material():
     document.querySelectorAll('[data-butik]').forEach(s => { s.textContent = e.target.value; });
   });
   document.querySelectorAll('[data-prisval]').forEach(i => i.addEventListener('input', () => {
-    document.querySelectorAll(`[data-pris="${i.dataset.prisval}"]`).forEach(s => { s.textContent = i.value; });
+    document.querySelectorAll(`[data-pris="${i.dataset.prisval}"]`).forEach(s => { s.textContent = i.value || '__'; });
   }));
   document.addEventListener('click', e => {
     const k = e.target.closest('[data-skriv]');
@@ -469,7 +469,7 @@ def bygg_case():
       <article class="prose">
         <p class="ingress">VIP Mullsjö säljer Corder där kunderna redan går: i tunnor längs gångarna och i ett eget ställ.</p>
         <h2>Tunnorna står för volymen</h2>
-        <p>Den stora volymen kommer från tunnorna. Kunden behöver inte leta upp en tillbehörshylla, utan ser kablarna i förbifarten. Priset står på skylten, och 60 kr är lätt att plocka med när kabeln är glömd eller trasig.</p>
+        <p>Den stora volymen kommer från tunnorna. Kunden behöver inte leta upp en tillbehörshylla, utan ser kablarna i förbifarten. Priset står på skylten, och priset är lätt att plocka med när kabeln är glömd eller trasig.</p>
         <h2>Kablarna drar, resten följer med</h2>
         <p>Laddkablar står för ungefär 12 000 av de 20 000 produkterna. Skal och laddare står för ungefär 8 000. Därför börjar vi gärna med kablar i en ny butik och lägger till laddare bredvid. Skalen anpassas efter butikens kunder.</p>
         <h2>Så kan ni göra samma sak</h2>

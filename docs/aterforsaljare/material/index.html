@@ -52,9 +52,9 @@
     </div>
     <form class="mat-val" onsubmit="return false">
       <label>Butikens namn<input id="mat-butik" maxlength="40" autocomplete="off"></label>
-      <label>Pris kablar, kr<input data-prisval="kabel" type="number" min="0" max="9999" value="60"></label>
-      <label>Pris laddare, kr<input data-prisval="laddare" type="number" min="0" max="9999" value="99"></label>
-      <label>Pris skal, kr<input data-prisval="skal" type="number" min="0" max="9999" value="60"></label>
+      <label>Pris kablar, kr<input data-prisval="kabel" type="number" min="0" max="9999" placeholder="Ert pris"></label>
+      <label>Pris laddare, kr<input data-prisval="laddare" type="number" min="0" max="9999" placeholder="Ert pris"></label>
+      <label>Pris skal, kr<input data-prisval="skal" type="number" min="0" max="9999" placeholder="Ert pris"></label>
       <button class="btn mat-knapp" type="button" data-skriv="alla">Skriv ut alla</button>
     </form>
     <div class="mat-rutnat">
@@ -63,7 +63,7 @@
         <p>Till tunna eller hylla längs gångarna.</p>
         <div class="skylt "><div class="skylt-inne">
           <div class="skylt-logo">corder</div>
-          <h3>Laddkablar.</h3><p>Flätade och 2 meter. USB-C och Lightning.</p><div class="skylt-bild"><img src="/img/produkter/s/kabel-usb-c-usb-c-2m.webp" alt="" width="600" height="544" decoding="async"><img src="/img/produkter/s/kabel-usb-c-lightning-svart.webp" alt="" width="600" height="534" decoding="async"></div><div class="skylt-pris"><span data-pris="kabel">60</span><small> kr</small></div>
+          <h3>Laddkablar.</h3><p>Flätade och 2 meter. USB-C och Lightning.</p><div class="skylt-bild"><img src="/img/produkter/s/kabel-usb-c-usb-c-2m.webp" alt="" width="600" height="544" decoding="async"><img src="/img/produkter/s/kabel-usb-c-lightning-svart.webp" alt="" width="600" height="534" decoding="async"></div><div class="skylt-pris"><span data-pris="kabel">__</span><small> kr</small></div>
           <div class="skylt-fot"><span data-butik></span><span>Designat i Sverige</span></div>
         </div></div>
         <button class="btn" type="button" data-skriv="kablar">Skriv ut</button>
@@ -72,7 +72,7 @@
         <p>Att ställa bredvid kablarna.</p>
         <div class="skylt tonad"><div class="skylt-inne">
           <div class="skylt-logo">corder</div>
-          <h3>Snabbladdare.</h3><p>20W USB-C, 20W Dual Port och 18W USB-A.</p><div class="skylt-bild"><img src="/img/produkter/s/laddare-20w-usb-c.webp" alt="" width="600" height="525" decoding="async"><img src="/img/produkter/s/laddare-20w-dual-port.webp" alt="" width="600" height="522" decoding="async"></div><div class="skylt-pris"><span data-pris="laddare">99</span><small> kr</small></div>
+          <h3>Snabbladdare.</h3><p>20W USB-C, 20W Dual Port och 18W USB-A.</p><div class="skylt-bild"><img src="/img/produkter/s/laddare-20w-usb-c.webp" alt="" width="600" height="525" decoding="async"><img src="/img/produkter/s/laddare-20w-dual-port.webp" alt="" width="600" height="522" decoding="async"></div><div class="skylt-pris"><span data-pris="laddare">__</span><small> kr</small></div>
           <div class="skylt-fot"><span data-butik></span><span>Designat i Sverige</span></div>
         </div></div>
         <button class="btn" type="button" data-skriv="laddare">Skriv ut</button>
@@ -81,7 +81,7 @@
         <p>Till stället eller skalhyllan.</p>
         <div class="skylt "><div class="skylt-inne">
           <div class="skylt-logo">corder</div>
-          <h3>Skal till din iPhone.</h3><p>TPU-skal till iPhone 14 hela vägen till iPhone 18 Pro. Fråga personalen om din modell.</p><div class="skylt-bild"><img src="/img/cut/s/17p-skogsgron.webp" alt="" width="240" height="480" decoding="async"><img src="/img/cut/s/16p-pink.webp" alt="" width="241" height="480" decoding="async"></div><div class="skylt-pris"><span data-pris="skal">60</span><small> kr</small></div>
+          <h3>Skal till din iPhone.</h3><p>TPU-skal till iPhone 14 hela vägen till iPhone 18 Pro. Fråga personalen om din modell.</p><div class="skylt-bild"><img src="/img/cut/s/17p-skogsgron.webp" alt="" width="240" height="480" decoding="async"><img src="/img/cut/s/16p-pink.webp" alt="" width="241" height="480" decoding="async"></div><div class="skylt-pris"><span data-pris="skal">__</span><small> kr</small></div>
           <div class="skylt-fot"><span data-butik></span><span>Designat i Sverige</span></div>
         </div></div>
         <button class="btn" type="button" data-skriv="skal">Skriv ut</button>
@@ -131,7 +131,7 @@
     document.querySelectorAll('[data-butik]').forEach(s => { s.textContent = e.target.value; });
   });
   document.querySelectorAll('[data-prisval]').forEach(i => i.addEventListener('input', () => {
-    document.querySelectorAll(`[data-pris="${i.dataset.prisval}"]`).forEach(s => { s.textContent = i.value; });
+    document.querySelectorAll(`[data-pris="${i.dataset.prisval}"]`).forEach(s => { s.textContent = i.value || '__'; });
   }));
   document.addEventListener('click', e => {
     const k = e.target.closest('[data-skriv]');

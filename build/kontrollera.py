@@ -76,10 +76,10 @@ def kolla_schema(fil, poster):
             for v in o.get("hasVariant", []):
                 if not re.fullmatch(r"\d{13}", v.get("gtin13", "")):
                     fel.append(f"{fil}: variant utan EAN: {v.get('name')}")
-                if v.get("offers", {}).get("priceCurrency") != "SEK" or not v.get("offers", {}).get("price"):
-                    fel.append(f"{fil}: variant utan pris: {v.get('name')}")
-        if typ == "Product" and not o.get("offers"):
-            fel.append(f"{fil}: Product utan offers: {o.get('name')}")
+                if "offers" in v:
+                    fel.append(f"{fil}: pris i schema: {v.get('name')}")
+        if typ == "Product" and "offers" in o:
+            fel.append(f"{fil}: pris i schema: {o.get('name')}")
 
 
 for fil, (s, text) in sidor.items():
@@ -96,6 +96,8 @@ for fil, (s, text) in sidor.items():
         fel.append(f"{rel}: {s.h1} H1-rubriker")
     if s.bilder_utan_matt:
         fel.append(f"{rel}: {s.bilder_utan_matt} bilder utan mått")
+    if re.search(r"\d\s?kr\b|[Rr]ek\. ?pris", text):
+        fel.append(f"{rel}: pris på publik sida")
     if re.search(r"localhost:\d|ERSATT-MED", text):
         fel.append(f"{rel}: innehåller lokal adress eller platshållare")
     for lank in s.lankar:

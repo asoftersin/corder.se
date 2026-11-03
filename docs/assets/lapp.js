@@ -17,12 +17,11 @@
   lage.farg = hittaFarg(startModell, q.get('f'));
 
   const rader = () => [
-    { id: 'skal', typ: 'Skal', namn: `Skal till ${lage.modell.namn}`, under: lage.farg.namn, ean: lage.farg.ean, pris: data.pris.skal, bild: lage.farg.bild },
-    { id: 'kabel', typ: 'Kabel', namn: `Laddkabel ${lage.modell.kabel.namn}`, under: '2 meter', ean: lage.modell.kabel.ean, pris: data.pris.kabel, bild: lage.modell.kabel.bild },
-    { id: 'laddare', typ: 'Laddare', namn: lage.modell.laddare.namn, under: 'Passar kabeln ovan', ean: lage.modell.laddare.ean, pris: data.pris.laddare, bild: lage.modell.laddare.bild },
+    { id: 'skal', typ: 'Skal', namn: `Skal till ${lage.modell.namn}`, under: lage.farg.namn, ean: lage.farg.ean, bild: lage.farg.bild },
+    { id: 'kabel', typ: 'Kabel', namn: `Laddkabel ${lage.modell.kabel.namn}`, under: '2 meter', ean: lage.modell.kabel.ean, bild: lage.modell.kabel.bild },
+    { id: 'laddare', typ: 'Laddare', namn: lage.modell.laddare.namn, under: 'Passar kabeln ovan', ean: lage.modell.laddare.ean, bild: lage.modell.laddare.bild },
   ];
   const valda = () => rader().filter(r => r.id === 'skal' || lage[r.id]);
-  const summa = () => valda().reduce((a, r) => a + r.pris, 0);
 
   // EAN-13: 95 moduler. Returnerar svarta streck som [start, bredd, lång].
   const streck = ean => {
@@ -57,17 +56,16 @@
   const rita = () => {
     const delar = rader().map(r => {
       if (r.id !== 'skal' && !lage[r.id]) {
-        return `<button class="k-lagg" type="button" data-lagg="${r.id}"><span aria-hidden="true">+</span><b>Lägg till ${r.typ.toLowerCase()}</b><small>${esc(r.namn)}</small><em>${r.pris} kr</em></button>`;
+        return `<button class="k-lagg" type="button" data-lagg="${r.id}"><span aria-hidden="true">+</span><b>Lägg till ${r.typ.toLowerCase()}</b><small>${esc(r.namn)}</small></button>`;
       }
       const ta = r.id === 'skal' ? '' : `<button class="k-ta" type="button" data-ta="${r.id}" aria-label="Ta bort ${esc(r.typ.toLowerCase())}">Ta bort</button>`;
       return `<div class="k-rad${nyttId === r.id ? ' ny' : ''}">
-        <div class="k-rubrik">${r.bild ? `<img src="${r.bild}" alt="" width="48" height="64" decoding="async">` : ''}<div><b>${esc(r.namn)}</b><span>${esc(r.under)}</span>${ta}</div><em>${r.pris} kr</em></div>
+        <div class="k-rubrik">${r.bild ? `<img src="${r.bild}" alt="" width="48" height="64" decoding="async">` : ''}<div><b>${esc(r.namn)}</b><span>${esc(r.under)}</span>${ta}</div></div>
         ${kod(r.ean)}
       </div>`;
     });
     kvitto.innerHTML = `<header><span class="logo">corder</span><span class="caps">Inköpslapp</span></header>
       ${delar.join('')}
-      <div class="k-summa"><span>Summa rek. pris</span><b>${summa()} kr</b></div>
       <p class="k-not">Visa lappen i butiken. Sortimentet varierar, så fråga om det finns inne. Butiken sätter sitt eget pris.</p>
       <p class="k-not k-personal"><b>Till personalen:</b> Saknar ni Corder? Beställ på <a href="/aterforsaljare/" data-h="inkopslapp-butik">corder.se/aterforsaljare</a></p>`;
     nyttId = null;
@@ -179,11 +177,6 @@
       x.fillStyle = '#6e6e6e';
       x.font = typsnitt(400, 32);
       x.fillText(r.under, tx, topp + 110);
-      x.fillStyle = '#111';
-      x.font = typsnitt(500, 38);
-      x.textAlign = 'right';
-      x.fillText(`${r.pris} kr`, HG, topp + 62);
-      x.textAlign = 'left';
       const kx = V + Math.floor((inre - 95 * S) / 2), ky = y + 200;
       streck(r.ean).forEach(([s, n, l]) => x.fillRect(kx + s * S, ky, n * S, l ? H_KOD : H_KOD - 14));
       x.font = typsnitt(400, 34);
@@ -192,16 +185,6 @@
       x.textAlign = 'left';
       y += rad;
     });
-    streckad(y);
-    y += 76;
-    x.fillStyle = '#111';
-    x.font = typsnitt(400, 36);
-    x.fillText('Summa rek. pris', V, y);
-    x.font = typsnitt(500, 52);
-    x.textAlign = 'right';
-    x.fillText(`${summa()} kr`, HG, y + 2);
-    x.textAlign = 'left';
-    y += 34;
     streckad(y);
     y += 56;
     x.fillStyle = '#555';

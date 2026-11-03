@@ -4,7 +4,6 @@
   const modeller = JSON.parse(document.getElementById('modeller')?.textContent || '[]');
   if (!modeller.length || !window.HTMLDialogElement) return;
 
-  const PRIS = { kabel: 60, laddare: 99 };
   // Mörk bakgrund som låter skalet lysa. Svart skal behöver ljus bakgrund för att synas.
   const FLOD = {
     Skogsgrön: { bg: '#141d17', fg: '#fff', namn: '#2b3a30' },
@@ -55,7 +54,7 @@
           <button type="button" data-till="laddare" aria-pressed="false"></button>
         </div>
         <a class="pr-cta" data-h="inkopslapp" data-v="provrum"></a>
-        <p class="pr-not">Rek. pris. Finns i Jönköping och Mullsjö. Bor du någon annanstans? Visa lappen i din mobilbutik, där står hur de beställer.</p>
+        <p class="pr-not">Finns i Jönköping och Mullsjö. Bor du någon annanstans? Visa lappen i din mobilbutik, där står hur de beställer.</p>
       </div>
     </div>`;
   document.body.append(d);
@@ -95,12 +94,11 @@
   };
 
   const uppdatera = () => {
-    const summa = lage.modell.pris + (lage.kabel ? PRIS.kabel : 0) + (lage.laddare ? PRIS.laddare : 0);
     const delar = [`m=${lage.modell.slug}`, `f=${nyckel(lage.farg.namn)}`];
     if (lage.kabel) delar.push('k=1');
     if (lage.laddare) delar.push('l=1');
     cta.href = `/inkopslapp/?${delar.join('&')}`;
-    cta.innerHTML = `<span>Skapa inköpslapp</span><b>${summa} kr</b>`;
+    cta.innerHTML = `<span>Skapa inköpslapp</span>`;
     tillagg.forEach(b => b.setAttribute('aria-pressed', lage[b.dataset.till]));
     history.replaceState({ ...history.state, pr: { m: lage.modell.slug, f: lage.farg.namn, k: lage.kabel, l: lage.laddare } }, '');
   };
@@ -130,8 +128,8 @@
     const startfarg = m.farger.find(f => f.namn === lage.onskad) || m.farger.find(f => f.namn === 'Skogsgrön') || m.farger.find(f => f.namn === 'Lila') || m.farger[0];
     byt.innerHTML = `<span>${esc(m.namn)}</span><u>Byt modell</u>`;
     sw.innerHTML = m.farger.map(f => `<button type="button" style="--c:${f.hex}" data-farg="${esc(f.namn)}" aria-label="${esc(f.namn)}" aria-pressed="false"></button>`).join('');
-    tillagg[0].innerHTML = `<i aria-hidden="true"></i><span>Kabel till ${esc(m.kontakt)}</span><em>${PRIS.kabel} kr</em>`;
-    tillagg[1].innerHTML = `<i aria-hidden="true"></i><span>Laddare</span><em>${PRIS.laddare} kr</em>`;
+    tillagg[0].innerHTML = `<i aria-hidden="true"></i><span>Kabel till ${esc(m.kontakt)}</span>`;
+    tillagg[1].innerHTML = `<i aria-hidden="true"></i><span>Laddare</span>`;
     val.hidden = true;
     prov.hidden = false;
     valjFarg(startfarg, x, y, 1);

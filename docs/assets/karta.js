@@ -235,7 +235,7 @@
 
   // Svaret: det som är nära blir en lapp, det som är långt bort blir en önskan.
   const kmText = km => `${km < 100 ? Math.max(1, Math.round(km)) : Math.round(km / 10) * 10} km`;
-  const tipsText = ort => `Hej! Har ni tänkt på att ta in Corder? Svenska skal, kablar och laddare till iPhone för 60–99 kr i rekommenderat pris. Jag letar efter dem i ${ort}. Allt för butiker finns på https://corder.se/aterforsaljare/`;
+  const tipsText = ort => `Hej! Har ni tänkt på att ta in Corder? Svenska skal, kablar och laddare till iPhone. Jag letar efter dem i ${ort}. Allt för butiker finns på https://corder.se/aterforsaljare/`;
   const tipsLank = ort => `mailto:?subject=${encodeURIComponent('Har ni tänkt på att ta in Corder?')}&body=${encodeURIComponent(tipsText(ort))}`;
   const onskaKnapp = (ort, kort) => (window.corderH
     ? `<button class="${kort ? 'ks-lank' : 'ks-cta'}" type="button" data-onska>Önska Corder i ${esc(ort)}</button>`
