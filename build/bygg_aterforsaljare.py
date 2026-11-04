@@ -12,7 +12,7 @@ from pathlib import Path
 from urllib.parse import quote
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from bygg_guider import KABLAR, LADDARE, MODELLER, ROT, SITE, SKAL_EAN, STATISTIK_URL, bild, brodsmulor, liten, matt, sida  # noqa: E402
+from bygg_guider import KABLAR, LADDARE, MAGSAFE, MODELLER, ROT, SITE, SKAL_EAN, STATISTIK_URL, bild, brodsmulor, liten, matt, sida  # noqa: E402
 
 UT = ROT / "aterforsaljare"
 URL = f"{SITE}/aterforsaljare/"
@@ -31,8 +31,8 @@ SKAL_MODELLER = [  # modell, slug, bildprefix, färger
     ("iPhone 16", "iphone-16", "16", ["Svart", "Blå", "Lila", "Persika"]),
     ("iPhone 16 Pro", "iphone-16-pro", "16p", ["Svart", "Blå", "Lila", "Persika"]),
     ("iPhone 17", "iphone-17", "17", ["Svart", "Skogsgrön"]),
-    ("iPhone 17 Pro", "iphone-17-pro", "17p", ["Svart", "Skogsgrön"]),
-    ("iPhone 18 Pro", "iphone-18-pro", "17p", ["Svart", "Skogsgrön"]),
+    ("iPhone 17 Pro", "iphone-17-pro", "18p", ["Svart", "Skogsgrön"]),
+    ("iPhone 18 Pro", "iphone-18-pro", "18p", ["Svart", "Skogsgrön"]),
 ]
 BILDFARG = {"Svart": "black", "Blå": "blue", "Lila": "purple", "Persika": "pink", "Skogsgrön": "skogsgron"}
 KOLUMNER = ["Artikel", "Kategori", "Modell", "Färg", "Material/typ", "EAN/GTIN-13", "Bild", "Produktsida"]
@@ -42,7 +42,7 @@ def produktrader():
     rader = []
     for modell, slug, pre, farger in SKAL_MODELLER:
         for f in farger:
-            rader.append([f"TPU-skal {modell}, {f.lower()}", "Mobilskal", modell, f, "TPU, matt",
+            rader.append([f"{'MagSafe-skal' if slug in MAGSAFE else 'TPU-skal'} {modell}, {f.lower()}", "Mobilskal", modell, f, "PC+TPU, frostad, MagSafe" if slug in MAGSAFE else "TPU, matt",
                           SKAL_EAN.get((modell, f), ""), f"{SITE}/img/cut/{pre}-{BILDFARG[f]}.webp", f"{SITE}/skal/{slug}/"])
     for sida_, kat, artiklar in (("kablar", "Laddkabel", KABLAR), ("laddare", "Snabbladdare", LADDARE)):
         for a in artiklar:
@@ -83,13 +83,13 @@ def skriv_produktdata():
 
 def skriv_bildpaket():
     filer = sorted((ROT / "img" / "cut").glob("*.webp")) + sorted((ROT / "img" / "produkter").glob("*.webp"))
-    filer = [f for f in filer if f.stem != "kabel-usb-c-lightning-vit"]  # säljs inte
+    filer = [f for f in filer if f.stem != "kabel-usb-c-lightning-svart"]  # finns inte, kabeln är vit
     with zipfile.ZipFile(UT / "corder-bildpaket.zip", "w", zipfile.ZIP_STORED) as z:
         for f in filer:
             # Fast datum, så att filen bara ändras när bilderna gör det.
             z.writestr(zipfile.ZipInfo(f"corder-bildpaket/{f.parent.name}/{f.name}", (2026, 1, 1, 0, 0, 0)), f.read_bytes())
         z.writestr(zipfile.ZipInfo("corder-bildpaket/LASMIG.txt", (2026, 1, 1, 0, 0, 0)),
-                   "Frilagda produktbilder från Corder (WebP med transparent bakgrund).\n"
+                   "Produktbilder från Corder: frilagda skal, kablar och laddare (WebP med transparent bakgrund) och ett förpackningsfoto.\n"
                    "Fritt att använda för att marknadsföra och sälja Corders produkter.\n"
                    "Frågor: sales@corder.se\n")
     return len(filer)
@@ -140,7 +140,7 @@ def innehall(antal_rader, antal_bilder):
         w, h = matt(src)
         return f'<img src="{src}" alt="" width="{w}" height="{h}" loading="lazy" class="k{i}">'
     kollage = "".join(kbild(i, p) for i, p in enumerate(("cut/17p-skogsgron", "produkter/kabel-usb-c-usb-c-2m", "cut/16p-pink",
-                                             "produkter/laddare-20w-dual-port", "cut/16-blue", "produkter/kabel-usb-c-lightning-svart")))
+                                             "produkter/laddare-20w-dual-port", "cut/16-blue", "produkter/kabel-usb-c-lightning-vit")))
     faq = "".join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q, a in FAQ)
     return f"""<main id="innehall" class="b2b">
 
@@ -250,7 +250,7 @@ def innehall(antal_rader, antal_bilder):
     <div class="b2b-dl">
       <a class="rv" href="corder-produktdata.xlsx" download><span class="caps">Excel</span><b>Produktdata</b><small>{antal_rader} artiklar med EAN, modell, färg och bildlänk</small></a>
       <a class="rv" href="corder-produktdata.csv" download><span class="caps">CSV</span><b>Produktdata</b><small>Samma data för affärssystem och import</small></a>
-      <a class="rv" href="corder-bildpaket.zip" download><span class="caps">ZIP</span><b>Bildpaket</b><small>{antal_bilder} frilagda produktbilder med transparent bakgrund</small></a>
+      <a class="rv" href="corder-bildpaket.zip" download><span class="caps">ZIP</span><b>Bildpaket</b><small>{antal_bilder} bilder: frilagda produkter och ett förpackningsfoto</small></a>
       <a class="rv dark" href="#ansok"><span class="caps">Formulär</span><b>Prislista</b><small>Inköpspriser för butik och grossist, på begäran</small></a>
     </div>
     <div class="b2b-dl" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))">
@@ -399,11 +399,11 @@ def bygg_material():
           </table>"""
     skyltar = [
         skylt("kablar", "Kablar", "Till tunna eller hylla längs gångarna.",
-              f'<h3>Laddkablar.</h3><p>Flätade och 2 meter. USB-C och Lightning.</p>{skyltbilder("/img/produkter/kabel-usb-c-usb-c-2m.webp", "/img/produkter/kabel-usb-c-lightning-svart.webp")}<div class="skylt-pris"><span data-pris="kabel">__</span><small> kr</small></div>'),
+              f'<h3>Laddkablar.</h3><p>Flätade och 2 meter. USB-C och Lightning.</p>{skyltbilder("/img/produkter/kabel-usb-c-usb-c-2m.webp", "/img/produkter/kabel-usb-c-lightning-vit.webp")}<div class="skylt-pris"><span data-pris="kabel">__</span><small> kr</small></div>'),
         skylt("laddare", "Laddare", "Att ställa bredvid kablarna.",
               f'<h3>Snabbladdare.</h3><p>20W USB-C, 20W Dual Port och 18W USB-A.</p>{skyltbilder("/img/produkter/laddare-20w-usb-c.webp", "/img/produkter/laddare-20w-dual-port.webp")}<div class="skylt-pris"><span data-pris="laddare">__</span><small> kr</small></div>', "tonad"),
         skylt("skal", "Skal", "Till stället eller skalhyllan.",
-              f'<h3>Skal till din iPhone.</h3><p>TPU-skal till iPhone 14 hela vägen till iPhone 18 Pro. Fråga personalen om din modell.</p>{skyltbilder("/img/cut/17p-skogsgron.webp", "/img/cut/16p-pink.webp")}<div class="skylt-pris"><span data-pris="skal">__</span><small> kr</small></div>'),
+              f'<h3>Skal till din iPhone.</h3><p>Skal till iPhone 14 hela vägen till iPhone 18 Pro, med MagSafe från iPhone 17. Fråga personalen om din modell.</p>{skyltbilder("/img/cut/17p-skogsgron.webp", "/img/cut/16p-pink.webp")}<div class="skylt-pris"><span data-pris="skal">__</span><small> kr</small></div>'),
         skylt("vilken-kabel", "Vilken kabel passar?", "Sparar frågor i kassan. Sätt den vid kablarna.",
               f'<h3>Vilken kabel passar?</h3><p>Hitta din iPhone och din laddare.</p>{kabeltabell}<p style="margin-top:auto">Alla kablar är 2 meter. Modellnamnet står under Inställningar, Allmänt, Om.</p>'),
         skylt("salj-har", "Här säljs Corder", "Till dörr, fönster eller disk.",
