@@ -614,7 +614,7 @@ GAMLA_FARGER = ["Svart", "Blå", "Lila", "Persika"]
 NYA_FARGER = ["Svart", "Skogsgrön"]
 
 MODELLER = [
-    {"slug": "iphone-18-pro", "namn": "iPhone 18 Pro", "bild": None, "gron": True, "extra": {"Svart": "/img/cut/17p-black.webp"}, "farger": NYA_FARGER, "kontakt": "USB-C",
+    {"slug": "iphone-18-pro", "namn": "iPhone 18 Pro", "bild": None, "gron": True, "extra": {"Svart": "/img/cut/18p-black.webp", "Skogsgrön": "/img/cut/18p-skogsgron.webp"}, "farger": NYA_FARGER, "kontakt": "USB-C",
      "kompat": [("Passar iPhone 17 Pro-skal till iPhone 18 Pro?", "Corders skal till iPhone 17 Pro och 18 Pro tillverkas i samma form och passar båda modellerna."),
                 ("Passar skalet till iPhone 18 Pro Max?", "Nej. Pro Max har större skärm och större mått och behöver ett eget skal."),
                 ("Passar skalet till iPhone Duo?", "Nej. iPhone Duo är vikbar och behöver ett helt annat skal. Corder har inte skal till Duo.")],
